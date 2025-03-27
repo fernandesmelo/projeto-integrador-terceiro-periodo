@@ -35,7 +35,7 @@ const Login = () => {
         >
             Entrar
         </button>
-        <Link to="/about" className={styles.link}>Esqueceu a senha?</Link>
+        <Link to="/nova-senha" className={styles.link}>Esqueceu a senha?</Link>
       </div>
     </div>
   );
