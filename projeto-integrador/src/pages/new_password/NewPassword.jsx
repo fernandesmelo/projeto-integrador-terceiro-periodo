@@ -5,6 +5,7 @@ const NewPassword = () => {
   const navigate = useNavigate();
 
   function handleNewPassword() {
+    alert("Nova senha cadastrada com sucesso! Aguarde o seu novo acesso ser aprovado.");
     navigate("/");
   }
 
