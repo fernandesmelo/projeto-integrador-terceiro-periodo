@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/login";
 import Dashboard from "./pages/Dashboard";
 import AdminPage from "./pages/AdminPage";
-import NewPassword from "./pages/NewPassword";
+import NewPassword from "./pages/new_password/NewPassword";
 
 const AppRoutes = () => {
   return (

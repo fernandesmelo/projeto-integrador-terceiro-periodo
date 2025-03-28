@@ -1,12 +1,10 @@
 import styles from './NewPassword.module.css';
-import Header from '../components/Header';
 
 const NewPassword = () => {
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <Header/>
-        <h2>Login</h2>
+        <h2 className={styles.login}>Login</h2>
 
         <input type="email" placeholder="Email" className={styles.input} />
         <input type="password" placeholder="Senha" className={styles.input} />
