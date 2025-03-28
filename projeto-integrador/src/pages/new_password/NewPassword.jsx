@@ -1,23 +1,28 @@
-import styles from './NewPassword.module.css';
+import { useNavigate } from "react-router-dom";
+import styles from "./NewPassword.module.css";
 
 const NewPassword = () => {
+  const navigate = useNavigate();
+
+  function handleNewPassword() {
+    navigate("/");
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <h2 className={styles.login}>Login</h2>
-
+        <p className={styles.login}>Cadastre sua nova senha</p>
         <input type="email" placeholder="Email" className={styles.input} />
         <input type="password" placeholder="Senha" className={styles.input} />
-        <input type="password" placeholder="Nova Senha" className={styles.input} />
-
-        <button 
-          className={styles.button}
-        >
-            Entrar
-        </button>
+        <input
+          type="password"
+          placeholder="Confirme sua senha"
+          className={styles.input}
+        />
+        <button className={styles.button} onClick={handleNewPassword}>Cadastrar</button>
       </div>
     </div>
   );
-}
+};
 
 export default NewPassword;

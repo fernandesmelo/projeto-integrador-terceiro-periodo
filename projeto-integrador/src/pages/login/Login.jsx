@@ -28,12 +28,8 @@ const Login = () => {
         </select>
         <input type="email" placeholder="Email" className={styles.input} />
         <input type="password" placeholder="Senha" className={styles.input} />
-        <button className={styles.button} onClick={handleLogin}>
-          Entrar
-        </button>
-        <Link to="/nova-senha" className={styles.link}>
-          Esqueceu a senha?
-        </Link>
+        <button className={styles.button} onClick={handleLogin}>Entrar</button>
+        <Link to="/nova-senha" className={styles.link}>Esqueceu a senha?</Link>
       </div>
     </div>
   );
