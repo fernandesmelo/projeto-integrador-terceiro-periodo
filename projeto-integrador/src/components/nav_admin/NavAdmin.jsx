@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import styles from './nav.module.css'
+import styles from './NavAdmin.module.css'
 
 const NavAdmin = () => {
     const navigate = useNavigate()

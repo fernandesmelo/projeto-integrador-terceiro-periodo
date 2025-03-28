@@ -1,5 +1,5 @@
-import Header from '../components/header'
-import NavAdmin from '../components/NavAdmin'
+import Header from '../../components/header/Header'
+import NavAdmin from '../../components/nav_admin/NavAdmin'
 import styles from './AdminPage.module.css'
 
 const AdminPage = () => {

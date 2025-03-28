@@ -1,5 +1,5 @@
-import Header from "../components/header"
-import Nav from "../components/Nav"
+import Header from "../../components/header/Header"
+import Nav from "../../components/nav/Nav"
 import styles from "./Dashboard.module.css"
 
 
