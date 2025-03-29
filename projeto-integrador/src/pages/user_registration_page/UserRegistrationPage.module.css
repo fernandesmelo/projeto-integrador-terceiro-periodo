@@ -11,7 +11,7 @@
 .user_registration {
     display: flex;
     flex-direction: column;
-    margin: 1rem 0 0 1rem; 
+    margin: 6rem 0 0 24rem;
 }
 
 .user_registration h3 {
