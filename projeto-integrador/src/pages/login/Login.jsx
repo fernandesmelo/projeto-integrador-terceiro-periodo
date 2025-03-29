@@ -22,8 +22,8 @@ const Login = () => {
           <option value="admin">Assistente</option>
           <option value="assistente">Perito</option>
         </select>
-        <input type="email" placeholder="Email" className={styles.input} />
-        <input type="password" placeholder="Senha" className={styles.input} />
+        <input type="text" id="cpf" placeholder="CPF" className={styles.input}/>
+        <input type="password" placeholder="Senha" className={styles.input}/>
         <button className={styles.button} onClick={handleLogin}>Entrar</button>
         <Link to="/nova-senha" className={styles.link}>Esqueceu a senha?</Link>
       </div>
