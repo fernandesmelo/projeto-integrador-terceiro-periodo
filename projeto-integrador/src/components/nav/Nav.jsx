@@ -5,7 +5,7 @@ const Nav = () => {
     const navigate = useNavigate();
 
     function handleAdmin() {
-        navigate('/admin')
+        navigate('/administrador-do-sistema');
     }
 
     return (
