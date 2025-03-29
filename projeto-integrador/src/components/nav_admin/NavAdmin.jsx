@@ -7,6 +7,9 @@ const NavAdmin = () => {
   return (
     <div>
       <div className={styles.nav}>
+        <div className={styles.image}>
+            <img src="#" alt="Logo" />
+        </div>
         <p className={styles.item}>Solicitações</p>
         <p className={styles.item} onClick={() => navigate("/cadastrar-usuario")}>Cadastrar usuário</p>
         <p className={styles.item} onClick={() => navigate("/inicio")}>Voltar</p>
