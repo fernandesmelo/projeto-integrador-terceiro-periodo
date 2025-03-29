@@ -16,11 +16,7 @@ const Login = () => {
         <img src="#" alt="Logo" />
         <h3>Nome do sistema</h3>
         <p>Faça login</p>
-        <select
-          className={styles.select}
-          value={role}
-          onChange={(e) => setRole(e.target.value)}
-        >
+        <select className={styles.select} value={role} onChange={(e) => setRole(e.target.value)}>
           <option value="">Selecione o cargo</option>
           <option value="perito">Admin</option>
           <option value="admin">Assistente</option>

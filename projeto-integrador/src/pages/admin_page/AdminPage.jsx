@@ -1,6 +1,6 @@
-import Header from '../../components/header/Header'
-import NavAdmin from '../../components/nav_admin/NavAdmin'
-import styles from './AdminPage.module.css'
+import Header from '../../components/header/Header';
+import NavAdmin from '../../components/nav_admin/NavAdmin';
+import styles from './AdminPage.module.css';
 
 const AdminPage = () => {
     return (
@@ -13,4 +13,4 @@ const AdminPage = () => {
     )
 }
 
-export default AdminPage
+export default AdminPage;

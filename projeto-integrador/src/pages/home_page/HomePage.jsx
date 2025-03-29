@@ -1,6 +1,6 @@
-import Header from "../../components/header/Header"
-import Nav from "../../components/nav/Nav"
-import styles from "./HomePage.module.css"
+import Header from "../../components/header/Header";
+import Nav from "../../components/nav/Nav";
+import styles from "./HomePage.module.css";
 
 
 const Inicio = () => {
@@ -14,4 +14,4 @@ const Inicio = () => {
     )
 }
 
-export default Inicio
+export default Inicio;
