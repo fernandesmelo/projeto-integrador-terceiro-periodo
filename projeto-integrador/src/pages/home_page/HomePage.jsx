@@ -1,6 +1,6 @@
 import Header from "../../components/header/Header"
 import Nav from "../../components/nav/Nav"
-import styles from "./Dashboard.module.css"
+import styles from "./HomePage.module.css"
 
 
 const Inicio = () => {
