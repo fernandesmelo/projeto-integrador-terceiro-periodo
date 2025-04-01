@@ -43,6 +43,7 @@ const UserRegistrationPage = () => {
                     <input type="text" id="cep" placeholder="Insira o CEP" className={styles.input}/>
                     <label htmlFor="complemento">Complemento:</label>
                     <input type="text" id="complemento" placeholder="Insira o complemento" className={styles.input}/>
+                    <button className={styles.button}>Cadastrar</button>
                 </div>
             </div>
         </div>
