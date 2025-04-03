@@ -1,4 +1,6 @@
 .nav {
+    position: fixed;
+    margin-top: 4.563rem;
     height: calc(100vh - 4.563rem);
     background-color: var(--blue-800);
     width: 23rem;

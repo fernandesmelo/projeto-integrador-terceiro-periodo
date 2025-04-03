@@ -1,4 +1,9 @@
 .content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
     background-color: var(--blue-900);
     height: 4.563rem;
     color: white;
