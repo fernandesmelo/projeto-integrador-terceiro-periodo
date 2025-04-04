@@ -55,7 +55,7 @@ const Login = () => {
         </select>
 
         <input
-          type="email"
+          type="number"
           placeholder="cpf"
           value={cpf}
           onChange={(e) => setCpf(e.target.value)}

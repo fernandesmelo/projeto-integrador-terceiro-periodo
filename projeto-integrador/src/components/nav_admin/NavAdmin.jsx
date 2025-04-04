@@ -8,7 +8,7 @@ const NavAdmin = () => {
     <div>
       <div className={styles.nav}>
         <p className={styles.item}>Solicitações</p>
-        <p className={styles.item}>Cadastrar usuário</p>
+        <p className={styles.item} onClick={() => navigate('/cadastrar-usuario')}>Cadastrar usuário</p>
         <p className={styles.item} onClick={() => navigate("/inicio")}>Voltar</p>
       </div>
     </div>
