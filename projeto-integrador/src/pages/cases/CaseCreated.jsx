@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Nav from "../../components/nav/Nav";
 import styles from "./CaseCreated.module.css";
 import Swal from "sweetalert2";
 
 const CaseCreated = () => {
-  const [nicInput, setNicInput] = useState("");
-  const [nic, setNic] = useState([]);
-
+  const navigate = useNavigate();
+  const [nic, setNic] = useState("");
   const [title, setTitle] = useState("");
   const [inquiryNumber, setInquiryNumber] = useState("");
   const [BO, setBO] = useState("");
@@ -27,6 +27,26 @@ const CaseCreated = () => {
   const [users, setUsers] = useState([]);
   const [envolved, setEnvolved] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const limparCampos = () => {
+    setNic("");
+    setTitle("");
+    setInquiryNumber("");
+    setBO("");
+    setCaseType("ACIDENTE");
+    setObservations("");
+    setLocation({
+      street: "",
+      houseNumber: "",
+      district: "",
+      city: "",
+      state: "",
+      zipCode: "",
+      complement: "",
+    });
+    setEnvolved([]);
+    setDropdownOpen(false);
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -60,17 +80,6 @@ const CaseCreated = () => {
         ? prev.filter((id) => id !== userId)
         : [...prev, userId]
     );
-  };
-
-  const addNic = () => {
-    if (nicInput.trim() !== "") {
-      setNic([...nic, nicInput.trim()]);
-      setNicInput("");
-    }
-  };
-
-  const removeNic = (indexToRemove) => {
-    setNic((prev) => prev.filter((_, index) => index !== indexToRemove));
   };
 
   const handleLocationChange = (field, value) => {
@@ -113,10 +122,12 @@ const CaseCreated = () => {
         Swal.fire({
           icon: "success",
           title: "Caso cadastrado!",
-          text: "O caso foi salvo com sucesso.",
+          text: "Clique em ok e seja redirecionado para a página de casos.",
           confirmButtonColor: "#3085d6",
+        }).then(() => {
+          navigate("/casos");
         });
-        // Se quiser limpar o formulário, pode colocar isso aqui.
+        limparCampos();
       } else {
         Swal.fire({
           icon: "error",
@@ -284,32 +295,16 @@ const CaseCreated = () => {
             </div>
 
             <div>
-              <label htmlFor="NIC">NIC</label>
+              <label htmlFor="NIC">NIC*</label>
               <input
                 className={styles.input}
                 id="NIC"
                 type="text"
-                placeholder="NIC"
-                value={nicInput}
-                onChange={(e) => setNicInput(e.target.value)}
+                placeholder="Número de Identificação do Paciente"
+                value={nic}
+                onChange={(e) => setNic(e.target.value)}
+                required
               />
-              <button type="button" className={styles.button} onClick={addNic}>
-                Adicionar NIC
-              </button>
-              <ul>
-                {nic.map((item, index) => (
-                  <li key={index}>
-                    {item}
-                    <button
-                      type="button"
-                      onClick={() => removeNic(index)}
-                      className={styles.removeButton} // opcional: crie um estilo no CSS
-                    >
-                      ❌
-                    </button>
-                  </li>
-                ))}
-              </ul>
             </div>
 
             <div>
