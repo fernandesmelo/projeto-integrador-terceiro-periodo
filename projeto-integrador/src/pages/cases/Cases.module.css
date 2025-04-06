@@ -18,3 +18,10 @@
     display: flex;
     justify-content: space-between;
 }
+
+.pag {
+    padding: 5px 10px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}

@@ -8,15 +8,22 @@ import styles from './Cases.module.css'
 import { useState, useEffect } from 'react';
 import axios from "axios"
 
-const API_URL = `https://sistema-odonto-legal.onrender.com/api/cases/mycases`;
+
 
 const Cases = () => {
     const [page, setPage] = useState(1);
     const [cases, setCases] = useState([]);
-    const [totalPages, setTotalPages] = useState(1);
+    const casesPerPage = 2
+
+    const API_URL = `https://sistema-odonto-legal.onrender.com/api/cases/mycases`;
+
+    const paginatedCase = cases.slice((page - 1) * casesPerPage, page * casesPerPage)
+    const lengthPag = Math.ceil(cases.length / casesPerPage)
+    const arrayPag = [...Array(lengthPag)]
+
 
     const token = localStorage.getItem('token')
-    const getData = async (page = 1) => {
+    const getData = async (page) => {
         try {
             const response = await axios.get(API_URL, {
                 headers: {
@@ -26,11 +33,32 @@ const Cases = () => {
             });
             console.log(response)
             setCases(response.data);
-            setTotalPages(response.data.totalPages);
+
         } catch (error) {
             console.error('Erro ao buscar dados:', error);
         }
     };
+
+    const filterStatus = async (status, page = 1) => {
+        console.log(status)
+        const FILTER_URL = `https://sistema-odonto-legal.onrender.com/api/cases/search`
+        console.log(FILTER_URL)
+
+        try {
+            const response = await axios.get(FILTER_URL, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                },
+                params: { 
+                    status,
+                    page
+                }
+            })
+            setCases(response.data)
+        } catch (error) {
+            console.error('Erro na busca de filtros', error)
+        }
+    }
 
     useEffect(() => {
         getData(page);
@@ -59,6 +87,7 @@ const Cases = () => {
                                 type='button'
                                 variant='secondary'
                                 disabled={false}
+                                onClick={() => getData(1)}
                             >
                                 Limpar filtros
                             </Button>
@@ -71,19 +100,20 @@ const Cases = () => {
                             searchDisabled={true}
                             variant='secondary'
                         />
-                        <select>
-                            <option>Todos os status</option>
+                        <select onChange={(e) => filterStatus(e.target.value)}>
+                            <option>TODOS OS STATUS</option>
+                            <option value="ABERTO">ABERTO</option>
+                            <option value='FINALIZADO'>FINALIZADO</option>
+                            <option value='ARQUIVADO'>ARQUIVADO</option>
                         </select>
                         <input type="date" name="" id="" />
                     </div>
                     <Table
-                        cases={cases}
+                        cases={paginatedCase}
                     />
                     <div>
-                        {Array.from({ length: totalPages }, (_, index) => (
-                            <button key={index} onClick={() => setPage(index + 1)}>
-                                {index + 1}
-                            </button>
+                        {arrayPag.map((_, i) => (
+                            <button key={i} className={styles.pag} onClick={() => setPage(i + 1)}>{i + 1}</button>
                         ))}
                     </div>
                 </div>

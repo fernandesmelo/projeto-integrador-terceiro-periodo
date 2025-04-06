@@ -25,7 +25,7 @@ const Table = ({cases}) => {
               <td>{item.protocol}</td>
               <td>{item.title}</td>
               <td>{item.caseType}</td>
-              <td>{item.patient.map(p => p.nic).join(', ')}</td>
+              <td>{item.patient.nic}</td>
               <td>{item.status}</td>
               <td>{item.openedAt}</td>
               <td>{item.evidence?.length || 0}</td>
