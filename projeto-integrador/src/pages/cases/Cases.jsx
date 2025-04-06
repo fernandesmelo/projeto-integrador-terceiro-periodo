@@ -60,9 +60,9 @@ const Cases = () => {
         }
     }
 
-    useEffect(() => {
-        getData(page);
-    }, [page]);
+  useEffect(() => {
+    getData(page);
+  }, [page]);
 
     return (
         <div>
