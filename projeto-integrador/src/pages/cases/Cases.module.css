@@ -1,0 +1,20 @@
+.content {
+    display: flex;
+}
+
+.caseContent {
+    margin-left: 23rem;
+    margin-top: 4.6rem;
+    width: 100%;
+    padding: 1rem 1rem;
+}
+
+.title {
+    color: black;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}

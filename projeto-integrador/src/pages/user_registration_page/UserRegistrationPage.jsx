@@ -8,13 +8,13 @@ const UserRegistrationPage = () => {
     const [name, setName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
-    const [date, setDate] = useState('')
+    const [dateOfBirth, setDateOfBirth] = useState('')
     const [cpf, setCpf] = useState('')
     const [role, setRole] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [road, setRoad] = useState('')
-    const [number, setNumber] = useState('')
+    const [houseNumber, setHouseNumber] = useState(0)
     const [neighborhood, setNeighborhood] = useState('')
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
@@ -25,23 +25,29 @@ const UserRegistrationPage = () => {
         e.preventDefault();
         const token = localStorage.getItem("token");
 
+        const [year, month, day] = dateOfBirth.split("-");  // Divide a data no formato YYYY-MM-DD
+
+    // Formata a data no formato DD/MM/YYYY
+        const formattedDate = `${day}/${month}/${year}`;
+
+
         const dados = {
             name,
             lastName,
             email,
-            dateOfBirth: date,
+            dateOfBirth : formattedDate,
             cpf,
             role,
             password,
             address: {
                 street: road,
-                houseNumber: number,
+                houseNumber,
                 district: neighborhood,
                 city,
+                zipCode: cep,
                 state
             }
         };
-
         console.log('Payload enviado pro back:', dados); // 👈 debug
 
         try {
@@ -106,8 +112,8 @@ const UserRegistrationPage = () => {
                             type="date"
                             id="dataNascimento"
                             className={styles.input}
-                            value={date}
-                            onChange={(e) => setDate(e.target.value)}
+                            value={dateOfBirth}
+                            onChange={(e) => setDateOfBirth(e.target.value)}
                         />
                         <label htmlFor="cpf">CPF:</label>
                         <input
@@ -161,8 +167,8 @@ const UserRegistrationPage = () => {
                         <input
                             type="number"
                             id="numero"
-                            value={number}
-                            onChange={(e) => setNumber(e.target.value)}
+                            value={houseNumber}
+                            onChange={(e) => setHouseNumber(Number(e.target.value))}
                             placeholder="Insira o número"
                             className={styles.input}
                         />

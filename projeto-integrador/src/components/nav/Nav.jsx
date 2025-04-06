@@ -19,7 +19,7 @@ const Nav = () => {
                 <p className={styles.item} tabIndex={0} role="button" onClick={() => navigate('/')}>
                     <CgScreen size={31} strokeWidth={1} style={{ color: "var(--icons)" }} /> Início
                 </p>
-                <p className={styles.item} tabIndex={0} role="button">
+                <p onClick={() => navigate('/casos')} className={styles.item} tabIndex={0} role="button">
                     <RiFileShield2Fill size={32} style={{ color: "var(--icons)" }} /> Casos Periciais
                 </p>
                 <p className={styles.item} tabIndex={0} role="button">

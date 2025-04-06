@@ -1,16 +1,16 @@
 import styles from './InputSearch.module.css'
 import { FaSearch } from "react-icons/fa";
+import clsx from 'clsx';
 
 
-const InputSearch = () => {
+const InputSearch = ({placeholder, variant}) => {
     return (
         <form className={styles.searchContainer}>
             <input
-                className={styles.input}
+                className={clsx(styles.input, styles[variant])}
                 type="text"
-                placeholder="Pesquise por nome, data ou cpf"
+                placeholder={placeholder}
             />
-            <FaSearch className={styles.search} />
         </form>
 
 
