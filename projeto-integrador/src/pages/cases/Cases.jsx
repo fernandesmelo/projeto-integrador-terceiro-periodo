@@ -30,7 +30,7 @@ const Cases = () => {
   const getData = async () => {
     try {
       const response = await axios.get(
-        `https://sistema-odonto-legal.onrender.com/api/cases/search/mycases`,
+        `https://sistema-odonto-legal.onrender.com/api/cases/search/all`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
