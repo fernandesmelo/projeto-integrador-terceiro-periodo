@@ -119,9 +119,10 @@ const Cases = () => {
               onChange={(e) => {
                 setStatusFilter(e.target.value);
                 setPage(1);
-              }}
-            >
-              <option value="">TODOS OS STATUS</option>
+              }} // adiciona o filtro para buscar meus casos no botão de satus
+            > 
+              <option value="">FILTRAR POR: </option>
+              <option value="">MEUS CASOS: </option>  
               <option value="ABERTO">ABERTO</option>
               <option value="FINALIZADO">FINALIZADO</option>
               <option value="ARQUIVADO">ARQUIVADO</option>
