@@ -5,8 +5,10 @@ import styles from "./EvidenceRegistrationPage.module.css";
 
 const EvidenceRegistrationPage = () => {
   const [titulo, setTitulo] = useState("");
+  const [testemunha, setTestemunha] = useState("");
   const [descricaoTecnica, setDescricaoTecnica] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
+  const [condicaoDaEvidencia, setCondicaoDaEvidencia] = useState("");
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
   const [observacao, setObservacao] = useState("");
@@ -50,8 +52,17 @@ const EvidenceRegistrationPage = () => {
               placeholder="Insira a descrição técnica"
               className={styles.input}
               value={titulo}
-              onChange={(e) => setTitulo(e.target.value)}
+              onChange={(e) => setDescricaoTecnica(e.target.value)}
               required // Campo obrigatório
+            />
+            <label htmlFor="testemunha">Testemunha:</label>
+            <input
+              type="text"
+              id="testemunha"
+              placeholder="Insira a testemunha"
+              className={styles.input}
+              value={testemunha}
+              onChange={(e) => setTestemunha(e.target.value)}
             />
             <label htmlFor="imagem">Imagem (radiografias, fotografias intraorais):</label>
             <input
@@ -72,7 +83,7 @@ const EvidenceRegistrationPage = () => {
               </div>
             )}
             <label htmlFor="condicaoEvidencia">Condição da evidência:</label>
-            <select id="condicaoEvidencia" required className={styles.input}>
+            <select id="condicaoEvidencia" onChange={(e) => setCondicaoDaEvidencia(e.target.value)} required className={styles.input}>
               <option value="">Selecione a condição</option>
               <option>Íntegra</option>
               <option>Alterada</option>
