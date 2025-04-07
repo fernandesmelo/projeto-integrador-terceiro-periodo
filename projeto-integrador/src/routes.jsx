@@ -20,7 +20,7 @@ const AppRoutes = () => {
         <Route path="/cadastrar-usuario" element={<UserRegistrationPage />}/>
         <Route path="/casos" element={<Cases />}/>
         <Route path="/casos/cadastrar" element={<CaseCreated />}/>
-        <Route path="/casos/cadastar-evidencias" element={<EvidenceRegistrationPage />}/>
+        <Route path="/casos/cadastrar-evidencias" element={<EvidenceRegistrationPage />}/>
       </Routes>
     </Router>
   );
