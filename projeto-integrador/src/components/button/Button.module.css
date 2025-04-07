@@ -1,0 +1,43 @@
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: "Segoe UI", sans-serif;
+  }
+  
+  .primary {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .secondary:hover {
+    background-color: #565e64;
+  }
+  
+  .disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  
+  @media (max-width: 600px) {
+    .button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+    }
+  }
