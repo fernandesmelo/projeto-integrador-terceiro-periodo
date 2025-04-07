@@ -2,8 +2,11 @@ import React from "react";
 import styles from "./Table.module.css";
 import { BiPencil, BiSearch } from "react-icons/bi";
 import Button from "../button/Button";
+import { useNavigate } from "react-router-dom";
 
 const Table = ({cases}) => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.container}>
       <table className={styles.tabela}>
@@ -29,7 +32,7 @@ const Table = ({cases}) => {
               <td>{item.status}</td>
               <td>{item.openedAt}</td>
               <td>{item.evidence?.length || 0}</td>
-              <td><BiSearch /><BiPencil /><Button>Adicionar evidencia</Button></td>
+              <td><BiSearch /><BiPencil /><Button onClick={() => navigate("/casos/cadastrar-evidencias")}>Adicionar evidencia</Button></td>
             </tr>
           ))}
            
