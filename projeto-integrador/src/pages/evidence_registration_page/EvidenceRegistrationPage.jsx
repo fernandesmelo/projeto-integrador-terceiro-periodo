@@ -92,7 +92,7 @@ const EvidenceRegistrationPage = () => {
               id="descriptionTechnical"
               placeholder="Insira a descrição técnica"
               className={styles.input}
-              value={title}
+              value={descriptionTechnical}
               onChange={(e) => setdescriptionTechnical(e.target.value)}
               required // Campo obrigatório
             />
