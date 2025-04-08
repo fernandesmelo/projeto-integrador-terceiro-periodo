@@ -5,6 +5,7 @@ import styles from "./EvidenceRegistrationPage.module.css";
 import axios from "axios";
 
 const EvidenceRegistrationPage = () => {
+  const { protocol } = useParams();
   const [title, settitle] = useState("");
   const [testimony, settestimony] = useState("");
   const [descriptionTechnical, setdescriptionTechnical] = useState("");
@@ -29,6 +30,7 @@ const EvidenceRegistrationPage = () => {
       "https://sistema-odonto-legal.onrender.com/api/evidence/create";
 
     const dados = {
+      protocol,
       title,
       testimony,
       descriptionTechnical,
