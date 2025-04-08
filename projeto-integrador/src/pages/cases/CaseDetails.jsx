@@ -18,6 +18,14 @@ const CaseDetails = () => {
 
   useEffect(() => {
     const fetchCaseDetails = async () => {
+      Swal.fire({
+        title: "Carregando...",
+        text: "Buscando detalhes do caso.",
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
       try {
         const response = await axios.get(
           `https://sistema-odonto-legal.onrender.com/api/cases/search/protocol`,
@@ -39,6 +47,8 @@ const CaseDetails = () => {
           text: err.response?.data?.message || "Tente novamente mais tarde.",
           confirmButtonColor: "#d33",
         });
+      } finally {
+        Swal.close(); 
       }
     };
 
