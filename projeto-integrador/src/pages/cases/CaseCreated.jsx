@@ -4,6 +4,7 @@ import Header from "../../components/header/Header";
 import Nav from "../../components/nav/Nav";
 import styles from "./CaseCreated.module.css";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const CaseCreated = () => {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ const CaseCreated = () => {
     const token = localStorage.getItem("token");
     const fetchUsers = async () => {
       try {
-        const res = await fetch(
+        const res = await axios.get(
           "https://sistema-odonto-legal.onrender.com/api/search/all",
           {
             headers: {
@@ -64,7 +65,7 @@ const CaseCreated = () => {
             },
           }
         );
-        const data = await res.json();
+        const data = res.data;
         setUsers(data);
       } catch (error) {
         console.error("Erro ao buscar usuários:", error);
@@ -101,24 +102,31 @@ const CaseCreated = () => {
       involved: envolved,
     };
 
-    console.log("Payload enviado pro back:", data); // 👈 debug
+    console.log("Payload enviado pro back:", data);
 
     try {
-      const res = await fetch(
+      Swal.fire({
+        title: "Enviando...",
+        text: "Por favor, aguarde enquanto o caso é cadastrado.",
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
+      const res = await axios.post(
         "https://sistema-odonto-legal.onrender.com/api/cases/create",
+        data,
         {
-          method: "POST",
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(data),
         }
       );
 
-      const result = await res.json();
+      Swal.close();
 
-      if (res.ok) {
+      if (res.status === 201) {
         Swal.fire({
           icon: "success",
           title: "Caso cadastrado!",
@@ -132,17 +140,18 @@ const CaseCreated = () => {
         Swal.fire({
           icon: "error",
           title: "Erro ao cadastrar",
-          text: result?.message || "Tente novamente mais tarde.",
+          text: res.data?.message || "Tente novamente mais tarde.",
           confirmButtonColor: "#d33",
         });
       }
     } catch (err) {
       Swal.fire({
         icon: "error",
-        title: `Erro ${err}`,
-        text: "Não foi possível enviar os dados. Verifique sua conexão.",
+        title: `Erro`,
+        text: err.response?.data?.message || "Tente novamente mais tarde.",
         confirmButtonColor: "#d33",
       });
+      console.error(err); // log no console para ajudar na depuração
     }
   };
 

@@ -8,6 +8,7 @@ import styles from "./Cases.module.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Cases = () => {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ const Cases = () => {
   const [dateFilter, setDateFilter] = useState("");
 
   const token = localStorage.getItem("token");
+  localStorage.getItem('token')
   const casesPerPage = 2;
 
   const paginatedCase = cases.slice(
@@ -56,11 +58,80 @@ const Cases = () => {
           date: dateFilter || undefined,
         },
       });
+
       setCases(response.data);
     } catch (error) {
-      console.error("Erro na busca de filtros:", error);
+      if (error.response) {
+        // Aqui você pega a mensagem do servidor
+        const errorMessage = error.response.data.message || 'Erro desconhecido';
+
+        // Exibindo o erro com SweetAlert2
+        Swal.fire({
+          icon: 'error',
+          title: 'Erro!',
+          text: errorMessage, // Mensagem de erro do servidor
+        });
+        setStatusFilter('')
+      } else {
+        // Se não houver resposta do servidor (erro de rede, etc.)
+        Swal.fire({
+          icon: 'error',
+          title: 'Erro!',
+          text: 'Não foi possível se conectar ao servidor.',
+        });
+      }
     }
   };
+
+  const applyFilterDate = async () => {
+    const urlApi = 'https://sistema-odonto-legal.onrender.com/api/cases/search/date'
+    try {
+      const response = await axios.get(urlApi, {
+        headers: {
+          Authorization: `bearer ${token}`
+        },
+        params: {
+          date : dateFilter
+        }
+      })
+      setCases(response.data)
+
+      if (response.data.length === 0) {
+        Swal.fire({
+          icon: 'error',
+          text: 'nenhum caso com essa data foi encontrado',
+          title: 'Erro!'
+        })
+        getData()
+      }
+    } catch (err) {
+      Swal.fire({
+        icon: 'error',
+        text: err,
+        title: 'Erro!'
+      })
+    }
+  }
+
+  const protocolSearch = async () => {
+    const apiProtocol = 'https://sistema-odonto-legal.onrender.com/api/cases/search/protocol'
+    try {
+      console.log(protocoloFilter)
+      const response = await axios.get(apiProtocol, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        params: {
+          protocol: protocoloFilter
+        }
+      })
+      console.log(response.data)
+      setCases([response.data])
+    } catch (err) {
+      console.error(err)
+      Swal.fire('Erro!', 'nenhum caso com esse protocolo foi encotrado', 'error')
+    }
+  }
 
   const clearFilters = () => {
     setStatusFilter("");
@@ -71,12 +142,12 @@ const Cases = () => {
   };
 
   useEffect(() => {
-    if (statusFilter || protocoloFilter || dateFilter) {
+    if (statusFilter) {
       applyFilters();
     } else {
       getData();
     }
-  }, [statusFilter, protocoloFilter, dateFilter]);
+  }, [statusFilter]);
 
   return (
     <div>
@@ -113,6 +184,12 @@ const Cases = () => {
                 setProtocoloFilter(e.target.value);
                 setPage(1);
               }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault()
+                  protocolSearch()
+                }
+              }}
             />
             <select
               value={statusFilter}
@@ -120,9 +197,9 @@ const Cases = () => {
                 setStatusFilter(e.target.value);
                 setPage(1);
               }} // adiciona o filtro para buscar meus casos no botão de satus
-            > 
+            >
               <option value="">FILTRAR POR: </option>
-              <option value="">MEUS CASOS: </option>  
+              <option value="">MEUS CASOS: </option>
               <option value="ABERTO">ABERTO</option>
               <option value="FINALIZADO">FINALIZADO</option>
               <option value="ARQUIVADO">ARQUIVADO</option>
@@ -133,6 +210,11 @@ const Cases = () => {
               onChange={(e) => {
                 setDateFilter(e.target.value);
                 setPage(1);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  applyFilterDate()
+                }
               }}
             />
           </div>

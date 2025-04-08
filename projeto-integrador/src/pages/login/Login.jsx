@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 import axios from "axios";
+import Swal from "sweetalert2";
+import logo from "../../assets/logo.png";
 
 const API_URL = "https://sistema-odonto-legal.onrender.com/api/login";
 
 const Login = () => {
-
   const [role, setRole] = useState("");
   const [cpf, setCpf] = useState("");
   const [password, setPassword] = useState("");
@@ -14,34 +15,46 @@ const Login = () => {
 
   async function handleLogin() {
     if (!role || !cpf || !password) {
-      alert("Preencha todos os campos!");
+      Swal.fire("Erro!", "Preencha todos os campos!", "error");
       return;
     }
+
+    Swal.fire({
+      title: "Entrando...",
+      text: "Verificando credenciais.",
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
 
     try {
       const response = await axios.post(API_URL, {
         cpf,
         password,
-        role: role.toUpperCase() // 🔥 Corrigindo o problema 
+        role: role.toUpperCase(), // 🔥 Corrigindo o problema
       });
-      console.log(response)
+      console.log(response);
       const token = response.data.token;
       localStorage.setItem("token", token);
       localStorage.setItem("role", role.toUpperCase());
-      alert("Login bem-sucedido!");
-
+      Swal.fire("Sucesso!", "Login bem-sucedido!", "success");
       navigate("/inicio");
     } catch (error) {
       console.error("Erro no login", error.response?.data || error);
-      alert("Erro ao fazer login. Verifique suas credenciais.");
+      Swal.fire(
+        "Erro!",
+        "Erro ao fazer login. Verifique suas credenciais.",
+        "error"
+      );
     }
   }
   return (
     <div className={styles.container}>
-      <div className={styles.card}> 
-        <img src="#" alt="Logo" />
+      <div className={styles.card}>
+        <img src={logo} alt="Logo" />
         <h3>Nome do sistema</h3>
-       
+
         <p>Faça login</p>
         <select
           className={styles.select}
