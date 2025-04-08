@@ -58,14 +58,13 @@ const EvidenceRegistrationPage = () => {
     };
 
     try {
-      const response = await axios.post(apiURL, {
-        params: {},
+      const response = await axios.post(apiURL, dados, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("token")}`,
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(dados),
       });
+      alert("Evidência cadastrada com sucesso!");
     } catch (error) {
       console.error("Erro ao enviar os dados:", error);
       alert("Erro ao enviar os dados. Tente novamente mais tarde.");
