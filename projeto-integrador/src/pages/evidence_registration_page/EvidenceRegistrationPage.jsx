@@ -2,28 +2,84 @@ import React, { useState } from "react";
 import Header from "../../components/header/Header";
 import Nav from "../../components/nav/Nav";
 import styles from "./EvidenceRegistrationPage.module.css";
+import axios from "axios";
 
 const EvidenceRegistrationPage = () => {
-  const [titulo, setTitulo] = useState("");
-  const [testemunha, setTestemunha] = useState("");
-  const [descricaoTecnica, setDescricaoTecnica] = useState("");
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [condicaoDaEvidencia, setCondicaoDaEvidencia] = useState("");
+  const [title, settitle] = useState("");
+  const [testimony, settestimony] = useState("");
+  const [descriptionTechnical, setdescriptionTechnical] = useState("");
+  const [photo, setphoto] = useState(null);
+  const [condition, setcondition] = useState("");
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
-  const [observacao, setObservacao] = useState("");
-  const [categoria, setCategoria] = useState("");
+  const [obs, setobs] = useState("");
+  const [category, setcategory] = useState("");
 
-  const handleImageChange = (event) => {
-    setSelectedImage(event.target.files[0]);
-  };
-
-  const handleSubmit = (e) => {
+  const sendEvidence = async (e) => {
     e.preventDefault();
 
-    if (!titulo || !descricaoTecnica || !condicaoDaEvidencia) {
-      alert("Título, descrição técnica e condição da evidência são campos obrigatórios!");
+    if (!title || !descriptionTechnical || !condition) {
+      alert(
+        "Título, descrição técnica e condição da evidência são campos obrigatórios!"
+      );
       return;
+    }
+
+    const apiURL =
+      "https://sistema-odonto-legal.onrender.com/api/evidence/create";
+
+    const dados = {
+      title,
+      testimony,
+      descriptionTechnical,
+      photo,
+      condition: {
+        INTEGRA,
+        ALTERADA,
+        DANIFICADA,
+        CORROMPIDO,
+        CONTAMINADA,
+        APAGADA,
+        VOLATIL,
+        INACESSIVEL,
+      },
+      latitude,
+      longitude,
+      obs,
+      category: {
+        DENTAL,
+        RADIOGRAFICA,
+        FOTOGRAFICA,
+        DOCUMENTAL,
+        BIOLOGICA,
+        LESIONAL,
+        DIGITAL,
+      },
+    };
+
+    try {
+      const response = await axios.post(apiURL, {
+        params: {},
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dados),
+      });
+    } catch (error) {
+      console.error("Erro ao enviar os dados:", error);
+      alert("Erro ao enviar os dados. Tente novamente mais tarde.");
+    }
+  };
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setphoto(reader.result); // Armazena a imagem em base64 no estado `photo`
+      };
+      reader.readAsDataURL(file); // Converte o arquivo para base64
     }
   };
 
@@ -34,37 +90,39 @@ const EvidenceRegistrationPage = () => {
         <Nav />
         <div className={styles.evidence_registration}>
           <h3>Insira as informações das evidências</h3>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="titulo">Título:</label>
+          <form onSubmit={sendEvidence}>
+            <label htmlFor="title">Título:</label>
             <input
               type="text"
-              id="titulo"
+              id="title"
               placeholder="Insira o título"
               className={styles.input}
-              value={titulo}
-              onChange={(e) => setTitulo(e.target.value)}
+              value={title}
+              onChange={(e) => settitle(e.target.value)}
               required
             />
-             <label htmlFor="descricaoTecnica">Descrição Técnica:</label>
+            <label htmlFor="descriptionTechnical">Descrição Técnica:</label>
             <input
               type="text"
-              id="descricaoTecnica"
+              id="descriptionTechnical"
               placeholder="Insira a descrição técnica"
               className={styles.input}
-              value={titulo}
-              onChange={(e) => setDescricaoTecnica(e.target.value)}
+              value={title}
+              onChange={(e) => setdescriptionTechnical(e.target.value)}
               required // Campo obrigatório
             />
-            <label htmlFor="testemunha">Testemunha:</label>
+            <label htmlFor="testimony">testimony:</label>
             <input
               type="text"
-              id="testemunha"
-              placeholder="Insira a testemunha"
+              id="testimony"
+              placeholder="Insira a testimony"
               className={styles.input}
-              value={testemunha}
-              onChange={(e) => setTestemunha(e.target.value)}
+              value={testimony}
+              onChange={(e) => settestimony(e.target.value)}
             />
-            <label htmlFor="imagem">Imagem (radiografias, fotografias intraorais):</label>
+            <label htmlFor="imagem">
+              Imagem (radiografias, fotografias intraorais):
+            </label>
             <input
               type="file"
               id="imagem"
@@ -73,25 +131,32 @@ const EvidenceRegistrationPage = () => {
               accept="image/*"
               required // Campo obrigatório
             />
-            {selectedImage && (
+            {photo && (
               <div>
                 <img
-                  src={URL.createObjectURL(selectedImage)}
+                  src={URL.createObjectURL(photo)}
                   alt="Imagem selecionada"
                   style={{ maxWidth: "200px" }}
+                  value={photo}
+                  onChange={(e) => setphoto(e.target.value)}
                 />
               </div>
             )}
             <label htmlFor="condicaoEvidencia">Condição da evidência:</label>
-            <select id="condicaoEvidencia" onChange={(e) => setCondicaoDaEvidencia(e.target.value)} required className={styles.input}>
+            <select
+              id="condicaoEvidencia"
+              onChange={(e) => setcondition(e.target.value)}
+              required
+              className={styles.input}
+            >
               <option value="">Selecione a condição</option>
-              <option>Íntegra</option>
-              <option>Alterada</option>
-              <option>Danificada</option>
-              <option>Corrompido</option>
-              <option>Apagada</option>
-              <option>Volátil</option>
-              <option>Inacessível</option>
+              <option value="INTEGRA">Íntegra</option>
+              <option value="ALTERADA">Alterada</option>
+              <option value="DANIFICADA">Danificada</option>
+              <option value="CORROMPIDO">Corrompido</option>
+              <option value="APAGADA">Apagada</option>
+              <option value="VOLATIL">Volátil</option>
+              <option value="INACESSIVEL">Inacessível</option>
             </select>
             <label htmlFor="latitude">Latitude:</label>
             <input
@@ -111,22 +176,22 @@ const EvidenceRegistrationPage = () => {
               value={longitude}
               onChange={(e) => setLongitude(e.target.value)}
             />
-            <label htmlFor="observacao">Observação:</label>
+            <label htmlFor="obs">Observação:</label>
             <textarea
-              id="observacao"
+              id="obs"
               placeholder="Insira a observação"
               className={styles.input}
-              value={observacao}
-              onChange={(e) => setObservacao(e.target.value)}
+              value={obs}
+              onChange={(e) => setobs(e.target.value)}
             />
-            <label htmlFor="categoria">Categoria:</label>
+            <label htmlFor="category">category:</label>
             <select
-              id="categoria"
+              id="category"
               className={styles.input}
-              value={categoria}
-              onChange={(e) => setCategoria(e.target.value)}
+              value={category}
+              onChange={(e) => setcategory(e.target.value)}
             >
-              <option value="">Selecione a categoria</option>
+              <option value="">Selecione a category</option>
               <option value="DENTAL">Dental</option>
               <option value="RADIOGRAFICA">Radiográfica</option>
               <option value="FOTOGRAFICA">Fotográfica</option>
