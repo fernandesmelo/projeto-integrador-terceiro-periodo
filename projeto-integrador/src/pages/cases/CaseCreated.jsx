@@ -102,9 +102,17 @@ const CaseCreated = () => {
       involved: envolved,
     };
 
-    console.log("Payload enviado pro back:", data); // 👈 debug
+    console.log("Payload enviado pro back:", data);
 
     try {
+      Swal.fire({
+        title: "Enviando...",
+        text: "Por favor, aguarde enquanto o caso é cadastrado.",
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
       const res = await axios.post(
         "https://sistema-odonto-legal.onrender.com/api/cases/create",
         data,
@@ -115,6 +123,8 @@ const CaseCreated = () => {
           },
         }
       );
+
+      Swal.close();
 
       if (res.status === 201) {
         Swal.fire({
