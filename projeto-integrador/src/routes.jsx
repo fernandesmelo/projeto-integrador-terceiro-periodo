@@ -21,6 +21,7 @@ const AppRoutes = () => {
         <Route path="/casos" element={<Cases />}/>
         <Route path="/casos/cadastrar" element={<CaseCreated />}/>
         <Route path="/casos/cadastrar-evidencias" element={<EvidenceRegistrationPage />}/>
+        <Route path="/casos/cadastrar-evidencias/:protocol" element={<EvidenceRegistrationPage />} />
       </Routes>
     </Router>
   );
