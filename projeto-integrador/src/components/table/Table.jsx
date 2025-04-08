@@ -32,7 +32,7 @@ const Table = ({cases}) => {
               <td>{item.status}</td>
               <td>{item.openedAt}</td>
               <td>{item.evidence?.length || 0}</td>
-              <td><BiSearch /><BiPencil /><Button onClick={() => navigate("/casos/cadastrar-evidencias")}>Adicionar evidencia</Button></td>
+              <td><BiSearch /><BiPencil /><Button onClick={() => navigate(`/casos/cadastrar-evidencias/${item.protocol}`)}>Adicionar evidencia</Button></td>
             </tr>
           ))}
            
