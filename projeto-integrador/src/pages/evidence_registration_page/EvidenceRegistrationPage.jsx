@@ -20,6 +20,8 @@ const EvidenceRegistrationPage = () => {
   const sendEvidence = async (e) => {
     e.preventDefault();
 
+    console.log("Protocolo recebido:", protocol);
+
     if (!title || !descriptionTechnical || !condition) {
       alert(
         "Título, descrição técnica e condição da evidência são campos obrigatórios!"
@@ -31,7 +33,6 @@ const EvidenceRegistrationPage = () => {
       "https://sistema-odonto-legal.onrender.com/api/evidence/create";
 
     const dados = {
-      protocol,
       title,
       testimony,
       descriptionTechnical,
@@ -49,6 +50,7 @@ const EvidenceRegistrationPage = () => {
           authorization: `Bearer ${localStorage.getItem("token")}`,
           "Content-Type": "application/json",
         },
+        params: { protocol },
       });
       alert("Evidência cadastrada com sucesso!");
     } catch (error) {
