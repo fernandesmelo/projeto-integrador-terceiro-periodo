@@ -40,7 +40,7 @@ const EvidenceRegistrationPage = () => {
       latitude,
       longitude,
       obs,
-      category
+      category,
     };
 
     try {
@@ -52,8 +52,14 @@ const EvidenceRegistrationPage = () => {
       });
       alert("Evidência cadastrada com sucesso!");
     } catch (error) {
-      console.error("Erro ao enviar os dados:", error);
-      alert("Erro ao enviar os dados. Tente novamente mais tarde.");
+      console.error("Erro ao enviar os dados:", error.response?.data || error);
+      console.log("Detalhes dos erros:", error.response?.data?.errors);
+
+      alert(
+        `Erro ao enviar os dados: ${
+          error.response?.data?.message || "Tente novamente mais tarde."
+        }`
+      );
     }
   };
 
@@ -145,21 +151,21 @@ const EvidenceRegistrationPage = () => {
             </select>
             <label htmlFor="latitude">Latitude:</label>
             <input
-              type="text"
+              type="number"
               id="latitude"
               placeholder="Insira a latitude"
               className={styles.input}
               value={latitude}
-              onChange={(e) => setLatitude(e.target.value)}
+              onChange={(e) => setLatitude(Number(e.target.value))} // Converte para número
             />
             <label htmlFor="longitude">Longitude:</label>
             <input
-              type="text"
+              type="number"
               id="longitude"
               placeholder="Insira a longitude"
               className={styles.input}
               value={longitude}
-              onChange={(e) => setLongitude(e.target.value)}
+              onChange={(e) => setLongitude(Number(e.target.value))} // Converte para número
             />
             <label htmlFor="obs">Observação:</label>
             <textarea
