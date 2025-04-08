@@ -33,28 +33,11 @@ const EvidenceRegistrationPage = () => {
       testimony,
       descriptionTechnical,
       photo,
-      condition: {
-        INTEGRA,
-        ALTERADA,
-        DANIFICADA,
-        CORROMPIDO,
-        CONTAMINADA,
-        APAGADA,
-        VOLATIL,
-        INACESSIVEL,
-      },
+      condition,
       latitude,
       longitude,
       obs,
-      category: {
-        DENTAL,
-        RADIOGRAFICA,
-        FOTOGRAFICA,
-        DOCUMENTAL,
-        BIOLOGICA,
-        LESIONAL,
-        DIGITAL,
-      },
+      category
     };
 
     try {
