@@ -119,7 +119,7 @@ const EvidenceRegistrationPage = () => {
             {photo && (
               <div>
                 <img
-                  src={URL.createObjectURL(photo)}
+                  src={photo}
                   alt="Imagem selecionada"
                   style={{ maxWidth: "200px" }}
                   value={photo}
