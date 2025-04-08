@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 import axios from "axios";
+import Swal from "sweetalert2";
+import logo from "../../assets/logo.png"
 
 const API_URL = "https://sistema-odonto-legal.onrender.com/api/login";
 
@@ -14,7 +16,7 @@ const Login = () => {
 
   async function handleLogin() {
     if (!role || !cpf || !password) {
-      alert("Preencha todos os campos!");
+      Swal.fire('Erro!', 'Preencha todos os campos!', 'error')
       return;
     }
 
@@ -28,18 +30,17 @@ const Login = () => {
       const token = response.data.token;
       localStorage.setItem("token", token);
       localStorage.setItem("role", role.toUpperCase());
-      alert("Login bem-sucedido!");
-
+      Swal.fire("Sucesso!", "Login bem-sucedido!", 'success')
       navigate("/inicio");
     } catch (error) {
       console.error("Erro no login", error.response?.data || error);
-      alert("Erro ao fazer login. Verifique suas credenciais.");
+      Swal.fire("Erro!","Erro ao fazer login. Verifique suas credenciais.", 'error');
     }
   }
   return (
     <div className={styles.container}>
       <div className={styles.card}> 
-        <img src="#" alt="Logo" />
+        <img src={logo} alt="Logo" />
         <h3>Nome do sistema</h3>
        
         <p>Faça login</p>
