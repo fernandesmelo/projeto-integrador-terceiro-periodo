@@ -213,7 +213,7 @@ const CaseDetails = () => {
                               <strong>Foto:</strong>
                             </p>
                             <img
-                              src={`data:image/jpeg;base64,${evid.photo}`}
+                              src={evid.photo}
                               alt="Foto da evidência"
                               className={styles.imagePreview}
                             />
