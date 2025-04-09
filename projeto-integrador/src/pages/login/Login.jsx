@@ -53,7 +53,7 @@ const Login = () => {
     <div className={styles.container}>
       <div className={styles.card}>
         <img src={logo} alt="Logo" />
-        <h3>Nome do sistema</h3>
+        <h3>Dentalysis</h3>
 
         <p>Faça login</p>
         <select
@@ -62,14 +62,14 @@ const Login = () => {
           onChange={(e) => setRole(e.target.value)}
         >
           <option value="">Selecione o tipo de usuário</option>
-          <option value="perito">PERITO</option>
-          <option value="admin">ADMIN</option>
-          <option value="assistente">ASSISTENTE</option>
+          <option value="perito">Admin</option>
+          <option value="admin">Perito</option>
+          <option value="assistente">Assistente</option>
         </select>
 
         <input
           type="number"
-          placeholder="cpf"
+          placeholder="CPF"
           value={cpf}
           onChange={(e) => setCpf(e.target.value)}
           className={styles.input}
