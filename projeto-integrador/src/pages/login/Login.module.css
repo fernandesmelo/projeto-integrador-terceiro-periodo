@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #000072;
+    background-color: #012130;
   }
   
   .card {
@@ -33,7 +33,7 @@
   .button {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #012130;
     color: white;
     border: none;
     border-radius: 5px;
