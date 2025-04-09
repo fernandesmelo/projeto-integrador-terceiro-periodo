@@ -17,7 +17,7 @@
   }
 
   .card img {
-    width: 170px;
+    width: 10rem;
   }
 
   .card p {
@@ -27,8 +27,8 @@
   
   .input, .select {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 0.625rem;
+    margin: 0.625rem 0;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
@@ -37,7 +37,7 @@
     width: 100%;
     padding: 10px;
     background-color: #012130;
-    color: white;
+    color: #FFFFFF;
     border: none;
     border-radius: 5px;
     cursor: pointer;
