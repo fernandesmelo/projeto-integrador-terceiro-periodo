@@ -4,6 +4,7 @@ import Header from "../../components/header/Header";
 import Nav from "../../components/nav/Nav";
 import styles from "./EvidenceRegistrationPage.module.css";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const EvidenceRegistrationPage = () => {
   const { protocol } = useParams();
@@ -17,15 +18,29 @@ const EvidenceRegistrationPage = () => {
   const [obs, setobs] = useState("");
   const [category, setcategory] = useState("");
 
+  const resetForm = () => {
+    settitle("");
+    settestimony("");
+    setdescriptionTechnical("");
+    setphoto(null);
+    setcondition("");
+    setLatitude("");
+    setLongitude("");
+    setobs("");
+    setcategory("");
+  };
+
   const sendEvidence = async (e) => {
     e.preventDefault();
 
     console.log("Protocolo recebido:", protocol);
 
     if (!title || !descriptionTechnical || !condition) {
-      alert(
-        "Título, descrição técnica e condição da evidência são campos obrigatórios!"
-      );
+      Swal.fire({
+        icon: "warning",
+        title: "Campos obrigatórios",
+        text: "Título, descrição técnica e condição da evidência são obrigatórios!",
+      });
       return;
     }
 
@@ -45,34 +60,77 @@ const EvidenceRegistrationPage = () => {
     };
 
     try {
-      const response = await axios.post(apiURL, dados, {
+      Swal.fire({
+        title: "Enviando evidência...",
+        text: "Por favor, aguarde",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
+      await axios.post(apiURL, dados, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("token")}`,
           "Content-Type": "application/json",
         },
         params: { protocol },
       });
-      alert("Evidência cadastrada com sucesso!");
+
+      Swal.fire({
+        icon: "success",
+        title: "Evidência cadastrada!",
+        text: "Os dados foram enviados com sucesso.",
+      }).then(() => {
+        resetForm();
+      });
     } catch (error) {
       console.error("Erro ao enviar os dados:", error.response?.data || error);
       console.log("Detalhes dos erros:", error.response?.data?.errors);
 
-      alert(
-        `Erro ao enviar os dados: ${
-          error.response?.data?.message || "Tente novamente mais tarde."
-        }`
-      );
+      Swal.fire({
+        icon: "error",
+        title: "Erro ao enviar evidência",
+        text: error.response?.data?.message || "Tente novamente mais tarde.",
+      });
     }
   };
 
+  // Função para comprimir a imagem
+  const compressImage = (file, quality = 0.7) => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const img = new Image();
+        img.onload = function () {
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+
+          // redimensiona exemplo para reduzir um pouco)
+          const MAX_WIDTH = 800;
+          const scaleSize = MAX_WIDTH / img.width;
+          canvas.width = MAX_WIDTH;
+          canvas.height = img.height * scaleSize;
+
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+          // Convertendo para Base64 com qualidade
+          const compressedBase64 = canvas.toDataURL("image/jpeg", quality);
+          resolve(compressedBase64);
+        };
+        img.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
+  // Função de mudança da imagem
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setphoto(reader.result); // Armazena a imagem em base64 no estado `photo`
-      };
-      reader.readAsDataURL(file); // Converte o arquivo para base64
+      compressImage(file, 0.7).then((compressedImage) => {
+        setphoto(compressedImage);
+      });
     }
   };
 
@@ -102,7 +160,7 @@ const EvidenceRegistrationPage = () => {
               className={styles.input}
               value={descriptionTechnical}
               onChange={(e) => setdescriptionTechnical(e.target.value)}
-              required // Campo obrigatório
+              required
             />
             <label htmlFor="testimony">testimony:</label>
             <input
@@ -122,7 +180,7 @@ const EvidenceRegistrationPage = () => {
               className={styles.input}
               onChange={handleImageChange}
               accept="image/*"
-              required // Campo obrigatório
+              required
             />
             {photo && (
               <div>
@@ -130,8 +188,6 @@ const EvidenceRegistrationPage = () => {
                   src={photo}
                   alt="Imagem selecionada"
                   style={{ maxWidth: "200px" }}
-                  value={photo}
-                  onChange={(e) => setphoto(e.target.value)}
                 />
               </div>
             )}
@@ -158,7 +214,7 @@ const EvidenceRegistrationPage = () => {
               placeholder="Insira a latitude"
               className={styles.input}
               value={latitude}
-              onChange={(e) => setLatitude(Number(e.target.value))} // Converte para número
+              onChange={(e) => setLatitude(Number(e.target.value))}
             />
             <label htmlFor="longitude">Longitude:</label>
             <input
@@ -167,7 +223,7 @@ const EvidenceRegistrationPage = () => {
               placeholder="Insira a longitude"
               className={styles.input}
               value={longitude}
-              onChange={(e) => setLongitude(Number(e.target.value))} // Converte para número
+              onChange={(e) => setLongitude(Number(e.target.value))}
             />
             <label htmlFor="obs">Observação:</label>
             <textarea

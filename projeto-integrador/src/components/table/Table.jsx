@@ -11,6 +11,10 @@ const Table = ({ cases }) => {
     navigate(`/casos/detalhes/${protocol}`);
   };
 
+  const addEvidence = (protocol) => {
+    navigate(`/casos/evidencia/${protocol}`);
+  };
+
   return (
     <div className={styles.container}>
       <table className={styles.tabela}>
@@ -44,7 +48,9 @@ const Table = ({ cases }) => {
                   onClick={() => verDetalhes(item.protocol)}
                 />
                 <BiPencil className={styles.icon} title="Editar" />
-                <Button>Adicionar evidencia</Button>
+                <Button onClick={() => addEvidence(item.protocol)}>
+                  Adicionar evidencia
+                </Button>
               </td>
             </tr>
           ))}
