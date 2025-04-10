@@ -5,6 +5,7 @@ import Nav from "../../components/nav/Nav";
 import Swal from "sweetalert2";
 import styles from "./CaseDetails.module.css";
 import axios from "axios";
+import Button from "../../components/button/Button";
 
 const formatDate = (dateString) => {
   if (!dateString) return "N/A";
@@ -48,7 +49,7 @@ const CaseDetails = () => {
           confirmButtonColor: "#d33",
         });
       } finally {
-        Swal.close(); 
+        Swal.close();
       }
     };
 
@@ -217,6 +218,9 @@ const CaseDetails = () => {
                               alt="Foto da evidência"
                               className={styles.imagePreview}
                             />
+                          <Button
+                            variant='gerarLaudo'
+                          >Gerar laudo</Button>
                           </div>
                         ) : (
                           <p>

@@ -3,6 +3,8 @@ import styles from "./Table.module.css";
 import { BiPencil, BiSearch } from "react-icons/bi";
 import Button from "../button/Button";
 import { useNavigate } from "react-router-dom";
+import { HiOutlineExclamation } from "react-icons/hi";
+import { TbFileReport } from "react-icons/tb";
 
 const Table = ({ cases }) => {
   const navigate = useNavigate();
@@ -41,16 +43,25 @@ const Table = ({ cases }) => {
               <td>{item.openedAt}</td>
               <td>{item.evidence?.length || 0}</td>
               <td>
-                <BiSearch
-                  className={styles.icon}
-                  title="Ver detalhes"
-                  style={{ cursor: "pointer", marginRight: 10 }}
-                  onClick={() => verDetalhes(item.protocol)}
-                />
-                <BiPencil className={styles.icon} title="Editar" />
-                <Button onClick={() => addEvidence(item.protocol)}>
-                  Adicionar evidencia
-                </Button>
+                <div style={{ cursor: 'pointer', display: 'flex', gap: 5 }}>
+                  <BiSearch
+                    className={styles.icon}
+                    title="Ver detalhes"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => verDetalhes(item.protocol)}
+                  />
+                  <BiPencil 
+                    className={styles.icon} 
+                    title="Editar" />
+                  <HiOutlineExclamation
+                    onClick={() => addEvidence(item.protocol)}
+                    className={styles.icon}
+                    title="Adicionar Evidencia" />
+                  <TbFileReport
+                    title="relatorio"
+                  />
+                </div>
+
               </td>
             </tr>
           ))}

@@ -22,6 +22,16 @@
     background-color: #6c757d;
     color: white;
   }
+
+  .gerarLaudo {
+    background-color: #6c757d;
+    color: white;
+    margin-top: 30px;
+    position: absolute;
+    left: 50%;
+    bottom: 5px;
+    transform: translate(-50%);
+  }
   
   .secondary:hover {
     background-color: #565e64;
