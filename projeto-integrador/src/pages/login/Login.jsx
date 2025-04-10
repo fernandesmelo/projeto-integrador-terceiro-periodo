@@ -29,7 +29,6 @@ const Login = () => {
     });
 
     try {
-      console.log(cpf, role, password);
       const response = await axios.post(API_URL, {
         cpf,
         password,
@@ -54,21 +53,23 @@ const Login = () => {
     <div className={styles.container}>
       <div className={styles.card}>
         <img src={logo} alt="Logo" />
-        <p>Entre para iniciar a sessão</p>
+        <h3>Nome do sistema</h3>
+
+        <p>Faça login</p>
         <select
           className={styles.select}
           value={role}
           onChange={(e) => setRole(e.target.value)}
         >
           <option value="">Selecione o tipo de usuário</option>
-          <option value="admin">Admin</option>
-          <option value="perito">Perito</option>
-          <option value="assistente">Assistente</option>
+          <option value="perito">PERITO</option>
+          <option value="admin">ADMIN</option>
+          <option value="assistente">ASSISTENTE</option>
         </select>
 
         <input
           type="number"
-          placeholder="CPF"
+          placeholder="cpf"
           value={cpf}
           onChange={(e) => setCpf(e.target.value)}
           className={styles.input}
