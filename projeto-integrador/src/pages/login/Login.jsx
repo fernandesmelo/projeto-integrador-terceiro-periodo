@@ -53,7 +53,6 @@ const Login = () => {
     <div className={styles.container}>
       <div className={styles.card}>
         <img src={logo} alt="Logo" />
-        <h3>Nome do sistema</h3>
 
         <p>Faça login</p>
         <select
