@@ -8,6 +8,16 @@
 }
 
 :root {
+    --brand-colors-primary: #012130;
+    --brand-colors-secondary: #EDBF5F;
+    --accent-info: #1E88E5;
+    --accent-success: #27AE60;
+    --accent-warning: #E2B93B;
+    --accent-error: #EB5757;
+    --light-background: #F2F2F2;
+    --hover-effect: #023A4A;
+    --extra-highlight: #2A9D8F;
+
     --blue-900: #000E31;
     --blue-800: #000541;
     --icons: #778D9C;
