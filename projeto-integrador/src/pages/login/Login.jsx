@@ -29,6 +29,7 @@ const Login = () => {
     });
 
     try {
+      console.log(cpf, role, password);
       const response = await axios.post(API_URL, {
         cpf,
         password,
@@ -60,8 +61,8 @@ const Login = () => {
           onChange={(e) => setRole(e.target.value)}
         >
           <option value="">Selecione o tipo de usuário</option>
-          <option value="perito">Admin</option>
-          <option value="admin">Perito</option>
+          <option value="admin">Admin</option>
+          <option value="perito">Perito</option>
           <option value="assistente">Assistente</option>
         </select>
 
