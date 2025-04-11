@@ -4,9 +4,9 @@
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: var(--blue-900);
+    background-color: var(--hover-effect);
     height: 4.563rem;
-    color: white;
+    color: var(--white);
     display: flex;
     align-items: center;
     padding: 1.875rem;
@@ -29,11 +29,4 @@
 .name {
     font-size: 18px;
     font-weight: 500;
-}
-
-.photo {
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    background-color: aliceblue;
 }
