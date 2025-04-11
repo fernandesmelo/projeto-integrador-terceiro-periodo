@@ -11,22 +11,22 @@
     align-items: center;
     padding: 1.875rem;
     justify-content: space-between;
-    font-size: 1.3rem;   
+    font-size: 1.25rem;   
     font-weight: 700;
 }
 
 .info {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 1.25rem;
 }
 
 .role {
-    font-size: 18px;
+    font-size: 1.25rem;
     font-weight: 600;
 }
 
 .name {
-    font-size: 18px;
+    font-size: 1.25rem;;
     font-weight: 500;
 }
