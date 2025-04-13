@@ -162,7 +162,7 @@ const EvidenceRegistrationPage = () => {
               onChange={(e) => setdescriptionTechnical(e.target.value)}
               required
             />
-            <label htmlFor="testimony">testimony:</label>
+            <label htmlFor="testimony">Relatos/Depoimentos das Testemunhas:</label>
             <input
               type="text"
               id="testimony"
