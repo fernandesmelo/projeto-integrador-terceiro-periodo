@@ -48,7 +48,7 @@ const CaseDetails = () => {
           confirmButtonColor: "#d33",
         });
       } finally {
-        Swal.close(); 
+        Swal.close();
       }
     };
 
@@ -150,12 +150,12 @@ const CaseDetails = () => {
                 </p>
               </div>
 
-              {/* Envolvidos */}
+              {/* Profissionais */}
               <div className={styles.caseSection}>
-                <h2>Envolvidos</h2>
+                <h2>Profissionais </h2>
                 <div className={styles.cardList}>
-                  {caseDetails.involved.length > 0 ? (
-                    caseDetails.involved.map((pessoa) => (
+                  {caseDetails.professional.length > 0 ? (
+                    caseDetails.professional.map((pessoa) => (
                       <div key={pessoa._id} className={styles.card}>
                         <p>
                           <strong>Nome:</strong> {getOrNA(pessoa.name)}
@@ -166,7 +166,7 @@ const CaseDetails = () => {
                       </div>
                     ))
                   ) : (
-                    <p>Nenhum envolvido registrado.</p>
+                    <p>Nenhum profissional registrado.</p>
                   )}
                 </div>
               </div>

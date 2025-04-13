@@ -161,7 +161,7 @@ const Cases = () => {
             <Button
               type="button"
               variant="primary"
-              onClick={() => navigate("/casos/cadastrar")}
+              onClick={() => navigate("/casos/cadastrarVitima")}
               disabled={false}
             >
               Adicionar caso
