@@ -34,7 +34,16 @@ input {
     background-color: var(--light-background);
 }
 
-.button {
+textarea {
+    width: 40rem;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--light-background);
+}
+
+button {
     width: 40%;
     padding: 0.625rem;
     background-color: var(--brand-colors-primary);
@@ -46,6 +55,6 @@ input {
     margin-bottom: 1.5rem;
   }
   
-  .button:hover {
+  button:hover {
     background-color: var(--hover-effect);
   }
