@@ -1,0 +1,128 @@
+/* LaudoEvidenciaPage.module.css */
+
+.laudo-container {
+    font-family: Arial, sans-serif;
+    padding: 40px;
+    /* Aumenta o padding para dar mais espaço */
+    font-size: 18px;
+    /* Aumenta o tamanho da fonte de todo o laudo */
+    line-height: 2;
+    /* Aumenta o espaçamento entre as linhas */
+}
+
+.laudo-header {
+    text-align: center;
+    margin-bottom: 30px;
+    /* Aumenta a margem inferior */
+}
+
+.laudo-logo {
+    max-width: 200px;
+    /* Aumenta o tamanho da logo */
+    margin-bottom: 15px;
+    /* Aumenta o espaçamento entre a logo e os títulos */
+}
+
+.laudo-header h1 {
+    font-size: 80px;
+    /* Aumenta o tamanho do título principal */
+    margin-bottom: 10px;
+}
+
+.laudo-header h2 {
+    font-size: 40px;
+    /* Aumenta o tamanho do subtítulo */
+    color: gray;
+}
+
+.laudo-section {
+    margin-bottom: 30px;
+    /* Aumenta a margem inferior para dar mais espaçamento */
+}
+
+.laudo-section h3 {
+    font-size: 50px;
+    /* Aumenta o tamanho do subtítulo da seção */
+    margin-bottom: 15px;
+}
+
+.laudo-section p {
+    font-size: 35px;
+    /* Aumenta o tamanho da fonte dos parágrafos */
+    margin: 10px 0;
+    /* Aumenta o espaçamento entre os parágrafos */
+}
+
+.laudo-foto {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.laudo-foto img {
+    max-width: 80%;
+    /* Ajusta o tamanho da imagem para 80% da largura disponível */
+    height: auto;
+    border-radius: 8px;
+    margin-top: 20px;
+    /* Adiciona um pouco de margem no topo da imagem */
+}
+
+.laudo-footer {
+    text-align: center;
+    margin-top: 40px;
+    /* Aumenta a margem superior do rodapé */
+}
+
+.laudo-footer p {
+    font-size: 26px;
+    /* Aumenta o tamanho da fonte no rodapé */
+    color: gray;
+    margin-top: 10px;
+}
+
+.buttonDownload {
+    margin-top: 10px;
+    padding: 15px 30px;
+    /* Aumenta o padding do botão */
+    font-size: 18px;
+    /* Aumenta o tamanho da fonte do botão */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    /* Torna os cantos do botão mais arredondados */
+    cursor: pointer;
+}
+
+.buttonDownload:hover {
+    background-color: #45a049;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    /* Centraliza os botões horizontalmente */
+    margin-top: 40px;
+    /* Adiciona um pouco de margem no topo */
+
+    gap: 20px;
+    /* Espaçamento entre os botões */
+}
+
+.buttonToBack {
+    margin-top: 10px;
+    padding: 15px 30px;
+    /* Aumenta o padding do botão */
+    font-size: 18px;
+    /* Aumenta o tamanho da fonte do botão */
+    background-color: #adaf4c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    /* Torna os cantos do botão mais arredondados */
+    cursor: pointer;
+}
+
+.buttonToBack:hover {
+    background-color: #5e5e1a;
+}

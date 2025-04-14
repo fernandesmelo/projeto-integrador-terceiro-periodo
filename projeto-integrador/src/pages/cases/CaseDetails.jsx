@@ -5,6 +5,7 @@ import Nav from "../../components/nav/Nav";
 import Swal from "sweetalert2";
 import styles from "./CaseDetails.module.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const formatDate = (dateString) => {
   if (!dateString) return "N/A";
@@ -13,6 +14,7 @@ const formatDate = (dateString) => {
 };
 
 const CaseDetails = () => {
+  const navigate = useNavigate();
   const { protocol } = useParams();
   const [caseDetails, setCaseDetails] = useState(null);
 
@@ -38,6 +40,7 @@ const CaseDetails = () => {
             },
           }
         );
+        console.log("dados", response.data);
 
         setCaseDetails(response.data);
       } catch (err) {
@@ -95,8 +98,26 @@ const CaseDetails = () => {
                   {getOrNA(caseDetails.inquiryNumber)}
                 </p>
                 <p>
-                  <strong>BO:</strong> {getOrNA(caseDetails.BO)}
+                  <strong>Autoridade requisitante:</strong>{" "}
+                  {getOrNA(caseDetails.requestingAuthority)}
                 </p>
+                <p>
+                  <strong>Instituição requisitante:</strong>{" "}
+                  {getOrNA(caseDetails.requestingInstitution)}
+                </p>
+              </div>
+
+              <div className={styles.caseSection}>
+                {caseDetails.questions && caseDetails.questions.length > 0 && (
+                  <div>
+                    <h2>Perguntas</h2>
+                    <ul>
+                      {caseDetails.questions.map((item, index) => (
+                        <li key={index}>{item.question}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
 
               {/* Paciente */}
@@ -119,7 +140,7 @@ const CaseDetails = () => {
 
               {/* Localização */}
               <div className={styles.caseSection}>
-                <h2>Localização</h2>
+                <h2>Localização do ocorrido</h2>
                 <p>
                   <strong>Rua:</strong> {getOrNA(caseDetails.location?.street)}
                 </p>
@@ -223,12 +244,73 @@ const CaseDetails = () => {
                             <strong>Foto:</strong> Não disponível
                           </p>
                         )}
+                        {evid.reportEvidence ? (
+                          <div>
+                            <h3>Laudo Gerado</h3>
+                            <p>
+                              <strong>Conclusão do Laudo:</strong>{" "}
+                              {getOrNA(evid.reportEvidence.note)}
+                            </p>
+                            <p>
+                              <strong>Análise Técnica:</strong>{" "}
+                              {getOrNA(
+                                evid.reportEvidence.descriptionTechnical
+                              )}
+                            </p>
+                            <p>
+                              <strong>Concluído por:</strong>{" "}
+                              {getOrNA(evid.reportEvidence.responsible.name)}
+                            </p>
+                            <p>
+                              <strong>Data do Laudo:</strong>{" "}
+                              {formatDate(evid.reportEvidence.createdAt)}
+                            </p>
+                            <button
+                              className={styles.button}
+                              onClick={() =>
+                                navigate(`/casos/laudo/${evid._id}`, {
+                                  state: { evidenceId: evid._id },
+                                })
+                              }
+                            >
+                              Imprimir Laudo
+                            </button>
+                          </div>
+                        ) : (
+                          <button
+                            className={styles.button}
+                            onClick={() =>
+                              navigate("/casos/laudo/evidencia", {
+                                state: { evidence: evid, protocol },
+                              })
+                            }
+                          >
+                            Gerar Laudo
+                          </button>
+                        )}
                       </div>
                     ))
                   ) : (
                     <p>Nenhuma evidência registrada.</p>
                   )}
                 </div>
+                {caseDetails.evidence.length > 0 &&
+                  caseDetails.evidence.every((ev) => ev.reportEvidence) && (
+                    <div className={styles.generateReportContainer}>
+                      <button
+                        className={styles.button}
+                        onClick={() =>
+                          navigate("/casos/relatorio/final", {
+                            state: {
+                              caseDetails,
+                            },
+                          })
+                        }
+                      >
+                        Gerar Relatório do Caso
+                      </button>
+                    </div>
+                  )}
               </div>
             </div>
           ) : (

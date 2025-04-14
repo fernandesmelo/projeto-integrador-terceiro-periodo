@@ -142,7 +142,7 @@ const CreateVictim = () => {
             <input
               type="number"
               name="age"
-              value={parseInt(formData.age)}
+              value={formData.age === "" ? "" : Number(formData.age)}
               onChange={handleChange}
             />
 
@@ -163,7 +163,11 @@ const CreateVictim = () => {
               <input
                 type="number"
                 name="location.houseNumber"
-                value={formData.location.houseNumber}
+                value={
+                  formData.location.houseNumber === ""
+                    ? ""
+                    : Number(formData.location.houseNumber)
+                }
                 onChange={handleChange}
               />
 

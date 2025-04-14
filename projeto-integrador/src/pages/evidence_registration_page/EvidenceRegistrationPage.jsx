@@ -5,8 +5,10 @@ import Nav from "../../components/nav/Nav";
 import styles from "./EvidenceRegistrationPage.module.css";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const EvidenceRegistrationPage = () => {
+  const navigate = useNavigate();
   const { protocol } = useParams();
   const [title, settitle] = useState("");
   const [testimony, settestimony] = useState("");
@@ -83,6 +85,7 @@ const EvidenceRegistrationPage = () => {
         text: "Os dados foram enviados com sucesso.",
       }).then(() => {
         resetForm();
+        navigate("/casos");
       });
     } catch (error) {
       console.error("Erro ao enviar os dados:", error.response?.data || error);
@@ -162,7 +165,7 @@ const EvidenceRegistrationPage = () => {
               onChange={(e) => setdescriptionTechnical(e.target.value)}
               required
             />
-            <label htmlFor="testimony">testimony:</label>
+            <label htmlFor="testimony">Relatos testemunhais:</label>
             <input
               type="text"
               id="testimony"
@@ -225,6 +228,37 @@ const EvidenceRegistrationPage = () => {
               value={longitude}
               onChange={(e) => setLongitude(Number(e.target.value))}
             />
+
+            <button
+              type="button"
+              onClick={() => {
+                if (navigator.geolocation) {
+                  navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                      setLatitude(position.coords.latitude);
+                      setLongitude(position.coords.longitude);
+                    },
+                    (error) => {
+                      console.error(error);
+                      Swal.fire({
+                        icon: "error",
+                        title: "Erro ao obter localização",
+                        text: "Não foi possível obter sua localização. Verifique se você concedeu permissão.",
+                      });
+                    }
+                  );
+                } else {
+                  Swal.fire({
+                    icon: "warning",
+                    title: "Geolocalização não suportada",
+                    text: "Seu navegador não suporta essa funcionalidade.",
+                  });
+                }
+              }}
+              className={styles.button}
+            >
+              Usar minha localização
+            </button>
             <label htmlFor="obs">Observação:</label>
             <textarea
               id="obs"
@@ -241,13 +275,11 @@ const EvidenceRegistrationPage = () => {
               onChange={(e) => setcategory(e.target.value)}
             >
               <option value="">Selecione a category</option>
-              <option value="DENTAL">Dental</option>
               <option value="RADIOGRAFICA">Radiográfica</option>
               <option value="FOTOGRAFICA">Fotográfica</option>
               <option value="DOCUMENTAL">Documental</option>
               <option value="BIOLOGICA">BIOLOGICA</option>
               <option value="LESIONAL">Lesional</option>
-              <option value="DIGITAL">Digital</option>
             </select>
             <button type="submit" className={styles.button}>
               Cadastrar

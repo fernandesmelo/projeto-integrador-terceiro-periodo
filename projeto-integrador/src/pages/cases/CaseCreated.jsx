@@ -47,6 +47,8 @@ const CaseCreated = () => {
     setQuestions(updatedQuestions);
   };
 
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
   const limparCampos = () => {
     setNic("");
     setTitle("");
@@ -71,7 +73,7 @@ const CaseCreated = () => {
     const fetchUsers = async () => {
       try {
         const res = await axios.get(
-          "https://sistema-odonto-legal.onrender.com/api/search/all",
+          "https://sistema-odonto-legal.onrender.com/api/search/button",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -141,6 +143,8 @@ const CaseCreated = () => {
         },
       });
 
+      await delay(1500);
+
       const patientResponse = await axios.post(
         "https://sistema-odonto-legal.onrender.com/api/patient/create",
         victimFormData,
@@ -151,7 +155,7 @@ const CaseCreated = () => {
           },
         }
       );
-
+      localStorage.removeItem("victimFormData");
       Swal.close();
 
       if (patientResponse.status === 201) {
@@ -170,8 +174,15 @@ const CaseCreated = () => {
           professional: envolved,
         };
 
-        console.log("Payload enviado pro back (caso):", data);
-
+        Swal.fire({
+          title: "Cadastrando...",
+          text: "Por favor, aguarde enquanto o caso é cadastrado.",
+          allowOutsideClick: false,
+          didOpen: () => {
+            Swal.showLoading();
+          },
+        });
+        await delay(1500);
         // Passo 2: Cadastrar o caso
         const caseResponse = await axios.post(
           "https://sistema-odonto-legal.onrender.com/api/cases/create",
@@ -242,6 +253,7 @@ const CaseCreated = () => {
                 value={nic}
                 onChange={(e) => setNic(e.target.value)}
                 required
+                readOnly
               />
             </div>
             <div>
@@ -254,7 +266,7 @@ const CaseCreated = () => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
-              <label htmlFor="Número do Inquérito">Número do Inquérito:</label>
+              <label htmlFor="Número do Inquérito">Número do Inquérito*:</label>
               <input
                 className={styles.input}
                 id="Número do Inquérito"
@@ -264,7 +276,7 @@ const CaseCreated = () => {
                 onChange={(e) => setInquiryNumber(e.target.value)}
               />
               <label htmlFor="Instituição requisitante">
-                Instituição requisitante:
+                Instituição requisitante*:
               </label>
               <input
                 className={styles.input}
@@ -275,7 +287,7 @@ const CaseCreated = () => {
                 onChange={(e) => setRequestingInstitution(e.target.value)}
               />
               <label htmlFor="Autoridade requisitante">
-                Autoridade requisitante:
+                Autoridade requisitante*:
               </label>
               <input
                 className={styles.input}
@@ -300,7 +312,7 @@ const CaseCreated = () => {
                 <option value="IDENTIFICAÇÃO DE VÍTIMA">
                   IDENTIFICAÇÃO DE VÍTIMA
                 </option>
-                <option value="LESÕES CORPORAIS">LESÕES CORPORAIS</option>
+                <option value="LESÕES CORPORAIS">EXAME CADAVÉRICO</option>
               </select>
               <label htmlFor="Observações">Observações:</label>
               <textarea
@@ -311,7 +323,7 @@ const CaseCreated = () => {
                 onChange={(e) => setObservations(e.target.value)}
               />
 
-              <h3>Perguntas</h3>
+              <h3>Perguntas do requisitante*:</h3>
               {questions.map((q, index) => (
                 <div key={index} className={styles.questionContainer}>
                   <input
@@ -343,7 +355,7 @@ const CaseCreated = () => {
                 Adicionar nova pergunta
               </button>
 
-              <h3>Endereço</h3>
+              <h3>Local do ocorrido:</h3>
               <label htmlFor="Rua">Rua</label>
               <input
                 className={styles.input}
@@ -434,12 +446,12 @@ const CaseCreated = () => {
               {dropdownOpen && (
                 <ul className={styles.input}>
                   {users.map((user) => (
-                    <li key={user.id}>
+                    <li key={user._id}>
                       <label>
                         <input
                           type="checkbox"
-                          checked={envolved.includes(user.id)}
-                          onChange={() => toggleUser(user.id)}
+                          checked={envolved.includes(user._id)}
+                          onChange={() => toggleUser(user._id)}
                         />
                         {user.name} ({user.role})
                       </label>
@@ -453,9 +465,9 @@ const CaseCreated = () => {
               <strong>Profissionais selecionados:</strong>
               <ul>
                 {users
-                  .filter((u) => envolved.includes(u.id))
+                  .filter((u) => envolved.includes(u._id))
                   .map((u) => (
-                    <li key={u.id}>
+                    <li key={u._id}>
                       {u.name} ({u.role})
                     </li>
                   ))}
