@@ -42,7 +42,7 @@ select {
     background-color: var(--light-background);
 }
 
-.button {
+button {
     width: 40%;
     padding: 0.625rem;
     background-color: var(--brand-colors-primary);
@@ -54,6 +54,6 @@ select {
     margin-bottom: 1.5rem;
   }
   
-  .button:hover {
+button:hover {
     background-color: var(--hover-effect);
-  }
+}
