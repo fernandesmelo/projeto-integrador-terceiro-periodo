@@ -1,5 +1,5 @@
 import Header from '../../components/header/Header'
-import NavAdmin from '../../components/nav_admin/NavAdmin'
+import Nav from '../../components/nav/Nav'
 import styles from './AdminRequest.module.css'
 import Request from '../../components/card_request/Request';
 import InputSearch from '../../components/input_search/InputSearch';
@@ -32,7 +32,7 @@ const AdminRequest = () => {
         <div className={styles.container}>
             <Header />
             <div style={{ display: 'flex' }}>
-                <NavAdmin />
+                <Nav />
                 <div>
                     <div className={styles.card}>
                         <div className={styles.content}>
