@@ -156,7 +156,6 @@ const Cases = () => {
         <Nav />
         <div className={styles.caseContent}>
           <h1 className={styles.title}>Casos periciais</h1>
-          <NavCase />
           <div className={styles.buttons}>
             <Button
               type="button"
