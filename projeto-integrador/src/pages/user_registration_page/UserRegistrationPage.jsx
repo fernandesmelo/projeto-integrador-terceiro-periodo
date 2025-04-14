@@ -6,7 +6,6 @@ import styles from "./UserRegistrationPage.module.css";
 const UserRegistrationPage = () => {
 
     const [name, setName] = useState('')
-    const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [dateOfBirth, setDateOfBirth] = useState('')
     const [cpf, setCpf] = useState('')
@@ -89,16 +88,6 @@ const UserRegistrationPage = () => {
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 placeholder="Insira o nome completo"
-                                className={styles.input}
-                            />
-                        </div>
-                        <label htmlFor="lastName">Sobrenome:</label>
-                        <div>
-                            <input
-                                type="text"
-                                placeholder="Sobrenome"
-                                value={lastName}
-                                onChange={(e) => setLastName(e.target.value)}
                                 className={styles.input}
                             />
                         </div>
