@@ -33,6 +33,15 @@ input {
     background-color: var(--light-background);
 }
 
+select {
+    width: 40rem;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--light-background);
+}
+
 .button {
     width: 40%;
     padding: 10px;
