@@ -66,3 +66,5 @@ A solução conta com um Web App, para gestão e análise detalhada dos casos.
 |:-------------------------------------------------------:|:-------------------------------------------------------:|:-------------------------------------------------------:|:-------------------------------------------------------:|
 | [Laércio Fernandes](https://www.linkedin.com/in/laercio-fernandes/) | [Natália Santos](https://www.linkedin.com/in/natalia-bento-364b2b235/) | [Everton Freitas](https://www.linkedin.com/in/everton-freitas-a54a45300/) | [Matheus Bezerra](https://www.linkedin.com/in/matheus-bzrr/) | 
 
+## 🚀 Guia de Como Baixar e Rodar o Projeto
+
