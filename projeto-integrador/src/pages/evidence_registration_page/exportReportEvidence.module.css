@@ -1,128 +1,183 @@
-/* LaudoEvidenciaPage.module.css */
+/* exportReportEvidence.module.css */
 
+/* Estilos gerais */
 .laudo-container {
-    font-family: Arial, sans-serif;
-    padding: 40px;
-    /* Aumenta o padding para dar mais espaço */
-    font-size: 18px;
-    /* Aumenta o tamanho da fonte de todo o laudo */
-    line-height: 2;
-    /* Aumenta o espaçamento entre as linhas */
+    font-family: 'Arial', sans-serif;
+    max-width: 210mm;
+    /* Tamanho A4 */
+    margin: 0 auto;
+    padding: 10mm;
+    color: #333;
+    background-color: #f8f9fa !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Cabeçalho */
 .laudo-header {
     text-align: center;
-    margin-bottom: 30px;
-    /* Aumenta a margem inferior */
+    border-bottom: 2px solid #2c3e50;
+    padding-bottom: 15px;
 }
 
-.laudo-logo {
-    max-width: 200px;
-    /* Aumenta o tamanho da logo */
-    margin-bottom: 15px;
-    /* Aumenta o espaçamento entre a logo e os títulos */
+.laudo-container,
+.laudo-section,
+.laudo-foto img {
+    box-shadow: none !important;
+    border: none !important;
 }
 
 .laudo-header h1 {
-    font-size: 80px;
-    /* Aumenta o tamanho do título principal */
-    margin-bottom: 10px;
+    color: #2c3e50;
+    margin: 5px 0;
+    font-size: 14px;
 }
 
 .laudo-header h2 {
-    font-size: 40px;
-    /* Aumenta o tamanho do subtítulo */
-    color: gray;
+    color: #0d334d;
+    margin: 2px 0;
+    font-size: 12px;
 }
 
+.laudo-logo {
+    height: 50px;
+}
+
+/* Seções do laudo */
 .laudo-section {
-    margin-bottom: 30px;
-    /* Aumenta a margem inferior para dar mais espaçamento */
+    
+    page-break-inside: avoid;
+    /* Evita quebrar seções entre páginas */
 }
 
 .laudo-section h3 {
-    font-size: 50px;
-    /* Aumenta o tamanho do subtítulo da seção */
-    margin-bottom: 15px;
+    background-color: #EDBF5F;
+    padding: 5px 10px;
+    border-left: 4px solid #012130;
+    color: #2c3e50;
+    margin: 15px 0 10px;
+    font-size: 14px;
 }
 
+/* Layout de duas colunas para algumas seções */
+.section-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.section-column {
+    flex: 1;
+    min-width: 250px;
+}
+
+/* Estilos para parágrafos e dados */
 .laudo-section p {
-    font-size: 35px;
-    /* Aumenta o tamanho da fonte dos parágrafos */
-    margin: 10px 0;
-    /* Aumenta o espaçamento entre os parágrafos */
+    margin: 4px 0;
+    line-height: 1.3;
+    font-size: 12px;
 }
 
+.laudo-section strong {
+    color: #2c3e50;
+    margin-right: 5px;
+}
+
+/* Seção de fotos */
 .laudo-foto {
+    margin-top: 15px;
     text-align: center;
-    margin-top: 20px;
 }
 
 .laudo-foto img {
-    max-width: 80%;
-    /* Ajusta o tamanho da imagem para 80% da largura disponível */
-    height: auto;
-    border-radius: 8px;
-    margin-top: 20px;
-    /* Adiciona um pouco de margem no topo da imagem */
+    max-width: 100%;
+    max-height: 200px;
+    border: 1px solid #ddd;
+    padding: 5px;
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Rodapé */
 .laudo-footer {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 2px solid #2c3e50;
     text-align: center;
-    margin-top: 40px;
-    /* Aumenta a margem superior do rodapé */
 }
 
 .laudo-footer p {
-    font-size: 35px;
-    /* Aumenta o tamanho da fonte no rodapé */
-    color: gray;
-    margin-top: 10px;
+    margin: 10px 0;
 }
 
-.buttonDownload {
-    margin-top: 10px;
-    padding: 15px 30px;
-    /* Aumenta o padding do botão */
-    font-size: 18px;
-    /* Aumenta o tamanho da fonte do botão */
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    /* Torna os cantos do botão mais arredondados */
-    cursor: pointer;
-}
-
-.buttonDownload:hover {
-    background-color: #45a049;
-}
-
+/* Botões */
 .buttonContainer {
     display: flex;
     justify-content: center;
-    /* Centraliza os botões horizontalmente */
-    margin-top: 40px;
-    /* Adiciona um pouco de margem no topo */
-
     gap: 20px;
-    /* Espaçamento entre os botões */
+    margin: 30px auto;
+    max-width: 210mm;
+    padding: 0 15mm;
 }
 
-.buttonToBack {
-    margin-top: 10px;
-    padding: 15px 30px;
-    /* Aumenta o padding do botão */
-    font-size: 18px;
-    /* Aumenta o tamanho da fonte do botão */
-    background-color: #adaf4c;
-    color: white;
+.buttonToBack,
+.buttonDownload {
+    padding: 10px 25px;
     border: none;
-    border-radius: 8px;
-    /* Torna os cantos do botão mais arredondados */
+    border-radius: 4px;
+    font-size: 16px;
     cursor: pointer;
+    transition: all 0.3s;
 }
+
+
 
 .buttonToBack:hover {
-    background-color: #5e5e1a;
+    background-color: #e9ecef;
+}
+
+.buttonDownload {
+    background-color: #3498db;
+    color: white;
+}
+
+.buttonDownload:hover {
+    background-color: #2980b9;
+}
+
+.paragraph-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 8px;
+}
+
+.paragraph-row p {
+    margin: 0;
+    flex: 1;
+    min-width: calc(50% - 15px);
+    /* Dois itens por linha com gap */
+}
+
+/* Ajustes específicos para a seção de evidência */
+.evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 10px 20px;
+}
+
+.evidence-item {
+    margin-bottom: 5px;
+    break-inside: avoid;
+}
+
+/* Para grupos específicos de 2 itens */
+.two-column-group {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 8px;
+}
+
+.two-column-group>div {
+    flex: 1;
 }

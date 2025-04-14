@@ -269,7 +269,7 @@ const CaseDetails = () => {
                               className={styles.button}
                               onClick={() =>
                                 navigate(`/casos/laudo/${evid._id}`, {
-                                  state: { evidenceId: evid._id },
+                                  state: { caseDetails, evidence: evid },
                                 })
                               }
                             >
