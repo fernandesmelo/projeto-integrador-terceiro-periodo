@@ -56,9 +56,11 @@ A solução conta com um Web App, para gestão e análise detalhada dos casos.
 * Node.js 22.12.0
 
 ## ✅ Tomadas de Decisões
-* 
-* 
-* 
+* Utilização do React visando maior produtividade e reaproveitamento de componentes.
+* CLSx foi utilizado para aplicar estilos de forma mais inteligente, dinâmica e prática nos componentes.
+* React Router empregado para a definição e gerenciamento das rotas da aplicação.
+* SweetAlert integrado para tornar os alertas de erro mais interativos e com uma melhor experiência para o usuário.
+* Sass adotado para organização e aninhamento de regras no CSS, contribuindo para um código mais limpo e otimizado.
 
 ## ✒️ Autores
 
