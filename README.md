@@ -42,6 +42,7 @@ A solução conta com um Web App, para gestão e análise detalhada dos casos.
 <div style="display: inline-block"><br/>
   <img align="center" alt="html5" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" /> 
   <img align="center" alt="html5" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+  <img align="center" alt="html5" src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=whitee" />
   <img align="center" alt="html5" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
   <img align="center" alt="html5" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
   <img align="center" alt="html5" src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" />
@@ -51,6 +52,7 @@ A solução conta com um Web App, para gestão e análise detalhada dos casos.
 
 * HTML5
 * CSS3
+* Sass 1.86.1
 * JavaScript ECMAScript 6 (ES6)
 * React 19.0.0
 * Node.js 22.12.0
