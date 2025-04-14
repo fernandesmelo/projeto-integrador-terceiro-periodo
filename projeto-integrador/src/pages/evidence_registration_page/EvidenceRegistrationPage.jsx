@@ -166,18 +166,18 @@ const EvidenceRegistrationPage = () => {
                 required
               />
             </div>
-            <label htmlFor="testimony">Relatos/Depoimentos das Testemunhas:</label>
+            <label htmlFor="testimony">Testemunhas (Relatos/Depoimentos):</label>
             <div>
               <input
                 type="text"
                 id="testimony"
-                placeholder="Insira a testimony"
+                placeholder="Insira os relatos/depoimentos das testimunhas"
                 className={styles.input}
                 value={testimony}
                 onChange={(e) => settestimony(e.target.value)}
               />
             </div>
-            <label htmlFor="imagem">Imagem (radiografias, fotografias intraorais):</label>
+            <label htmlFor="imagem">Imagem (Radiografias/Fotografias Intraorais):</label>
             <div>
               <input
                 type="file"
@@ -197,7 +197,7 @@ const EvidenceRegistrationPage = () => {
                 </div>
               )}
             </div>
-            <label htmlFor="condicaoEvidencia">Condição da evidência:</label>
+            <label htmlFor="condicaoEvidencia">Condição da Evidência:</label>
             <div>
               <select
                 id="condicaoEvidencia"
@@ -241,13 +241,13 @@ const EvidenceRegistrationPage = () => {
             <div>
               <textarea
                 id="obs"
-                placeholder="Insira a observação"
+                placeholder="Insira uma observação"
                 className={styles.input}
                 value={obs}
                 onChange={(e) => setobs(e.target.value)}
               />
             </div>
-            <label htmlFor="category">category:</label>
+            <label htmlFor="category">Categoria:</label>
             <div>
               <select
                 id="category"
@@ -255,12 +255,12 @@ const EvidenceRegistrationPage = () => {
                 value={category}
                 onChange={(e) => setcategory(e.target.value)}
               >
-                <option value="">Selecione a category</option>
+                <option value="">Selecione a categoria</option>
                 <option value="DENTAL">Dental</option>
                 <option value="RADIOGRAFICA">Radiográfica</option>
                 <option value="FOTOGRAFICA">Fotográfica</option>
                 <option value="DOCUMENTAL">Documental</option>
-                <option value="BIOLOGICA">BIOLOGICA</option>
+                <option value="BIOLOGICA">Biológica</option>
                 <option value="LESIONAL">Lesional</option>
                 <option value="DIGITAL">Digital</option>
               </select>
