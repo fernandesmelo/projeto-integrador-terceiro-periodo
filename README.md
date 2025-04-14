@@ -1,12 +1,33 @@
 # Dentalysis - Odonto Legal
 A plataforma tem como objetivo modernizar e centralizar a gestão de laudos periciais odontológicos, facilitando o
-registro, análise e identificação forense por meio de um sistema seguro, eficiente e acessível via Web e Mobile.
+registro, análise e identificação forense por meio de um sistema seguro, eficiente e acessível via Web.
 
 Ela permitirá que peritos odontolegais, dentistas forenses e órgãos competentes possam cadastrar casos, anexar
 evidências, gerar laudos e cruzar informações para identificação de indivíduos.
 
-A solução conta com um Web App, para gestão e análise detalhada dos casos, e um Mobile App, para coleta de
-dados em campo e consulta rápida de informações.
+A solução conta com um Web App, para gestão e análise detalhada dos casos.
+
+## Funcionalidades 
+1️⃣Autenticação e Gestão de Usuários
+* Login e logout com autenticação segura
+* Cadastro de novos usuários com diferentes perfis (Admin, Perito, Assistente)
+* Gerenciamento de permissões (definir quem pode visualizar, editar ou excluir casos)
+2️⃣Gerenciamento de Casos Periciais
+* Cadastro de novos casos periciais, incluindo título, descrição e status
+* Atualização do status do caso (Em andamento, Finalizado, Arquivado)
+* Listagem e pesquisa de casos com filtros por data, status e responsável
+* Visualização detalhada dos casos com informações completas
+3️⃣Upload e Gestão de Evidências
+* Upload de imagens odontológicas (radiografias, fotografias intraorais)
+* Cadastro de evidências em texto (relatos, depoimentos, descrições técnicas)
+* Organização das evidências por categoria e vinculação ao caso correspondente
+4️⃣Geração de Laudos Periciais
+* Criação de laudos periciais estruturados
+* Inserção de informações detalhadas e anexos ao laudo
+* Exportação do laudo em PDF com formatação profissional
+5️⃣Banco de Dados Odonto-Legal
+* Registro de pacientes identificados e não identificados
+* Busca e comparação de registros dentários para identificação forense
 
 ## 📂 Outros Arquivos 
 
