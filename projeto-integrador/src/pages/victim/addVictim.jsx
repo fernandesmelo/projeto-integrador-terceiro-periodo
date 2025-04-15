@@ -16,6 +16,7 @@ const CreateVictim = () => {
       name: "N/A",
       age: Number,
       cpf: "",
+      gender: "",
       location: {
         street: "",
         city: "",
@@ -148,6 +149,19 @@ const CreateVictim = () => {
 
             <label>CPF:</label>
             <input name="cpf" value={formData.cpf} onChange={handleChange} />
+
+            <label>Genero:</label>
+            <select
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+            >
+              <option value="">Selecione...</option>
+              <option value="MASCULINO">Masculino</option>
+              <option value="FEMININO"> Feminino</option>
+              <option value="NAO-BINARIO">Não-Binario</option>
+              <option value="OUTRO">Outro</option>
+            </select>
 
             <fieldset>
               <legend>Endereço da vítima (opcional)</legend>

@@ -110,7 +110,7 @@ const CaseDetails = () => {
               <div className={styles.caseSection}>
                 {caseDetails.questions && caseDetails.questions.length > 0 && (
                   <div>
-                    <h2>Perguntas</h2>
+                    <h2>Perguntas do caso</h2>
                     <ul>
                       {caseDetails.questions.map((item, index) => (
                         <li key={index}>{item.question}</li>
@@ -119,10 +119,48 @@ const CaseDetails = () => {
                   </div>
                 )}
               </div>
+              {caseDetails.caseReport && (
+                <div className={styles.caseSection}>
+                  <h2>Relatório final do Caso</h2>
+
+                  <p>
+                    <strong>Descrição:</strong>{" "}
+                    {getOrNA(caseDetails.caseReport.description)}
+                  </p>
+
+                  <p>
+                    <strong>Conclusão:</strong>{" "}
+                    {getOrNA(caseDetails.caseReport.conclusion)}
+                  </p>
+
+                  <p>
+                    <strong>Data de Conclusão:</strong>{" "}
+                    {formatDate(caseDetails.caseReport.createdAt)}
+                  </p>
+
+                  <p>
+                    <strong>Responsável:</strong>{" "}
+                    {getOrNA(caseDetails.caseReport.responsible?.name)}
+                  </p>
+
+                  {caseDetails.caseReport.answers?.length > 0 && (
+                    <div>
+                      <strong>Respostas:</strong>
+                      <ul>
+                        {caseDetails.caseReport.answers.map((item, index) => (
+                          <li key={item._id || index}>
+                            Resposta {index + 1}: {getOrNA(item.answer)}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              )}
 
               {/* Paciente */}
               <div className={styles.caseSection}>
-                <h2>Paciente</h2>
+                <h2>Dados da vítima</h2>
                 <p>
                   <strong>Nome:</strong> {getOrNA(caseDetails.patient?.name)}
                 </p>
@@ -131,6 +169,10 @@ const CaseDetails = () => {
                 </p>
                 <p>
                   <strong>Idade:</strong> {getOrNA(caseDetails.patient?.age)}
+                </p>
+                <p>
+                  <strong>Genero:</strong>{" "}
+                  {getOrNA(caseDetails.patient?.gender || "N/A")}
                 </p>
                 <p>
                   <strong>Status de Identificação:</strong>{" "}
@@ -193,129 +235,161 @@ const CaseDetails = () => {
               </div>
 
               {/* Evidências */}
-              <div className={styles.caseSection}>
-                <h2>Evidências</h2>
-                <div className={styles.cardList}>
-                  {caseDetails.evidence.length > 0 ? (
-                    caseDetails.evidence.map((evid) => (
-                      <div key={evid._id} className={styles.card}>
-                        <p>
-                          <strong>Título:</strong> {getOrNA(evid.title)}
-                        </p>
-                        <p>
-                          <strong>Depoimento:</strong> {getOrNA(evid.testimony)}
-                        </p>
-                        <p>
-                          <strong>Descrição Técnica:</strong>{" "}
-                          {getOrNA(evid.descriptionTechnical)}
-                        </p>
-                        <p>
-                          <strong>Condição:</strong> {getOrNA(evid.condition)}
-                        </p>
-                        <p>
-                          <strong>Coletor:</strong>{" "}
-                          {getOrNA(evid.collector?.name)}
-                        </p>
-                        <p>
-                          <strong>Categoria:</strong> {getOrNA(evid.category)}
-                        </p>
-                        <p>
-                          <strong>Observações:</strong> {getOrNA(evid.obs)}
-                        </p>
-                        <p>
-                          <strong>Latitude:</strong> {getOrNA(evid.latitude)}
-                        </p>
-                        <p>
-                          <strong>Longitude:</strong> {getOrNA(evid.longitude)}
-                        </p>
-                        {evid.photo ? (
-                          <div className={styles.imageWrapper}>
-                            <p>
-                              <strong>Foto:</strong>
-                            </p>
-                            <img
-                              src={evid.photo}
-                              alt="Foto da evidência"
-                              className={styles.imagePreview}
-                            />
-                          </div>
-                        ) : (
+              {caseDetails ? (
+                <div className={styles.caseSection}>
+                  <h2>Evidências</h2>
+                  <div className={styles.cardList}>
+                    {caseDetails.evidence.length > 0 ? (
+                      caseDetails.evidence.map((evid) => (
+                        <div key={evid._id} className={styles.card}>
                           <p>
-                            <strong>Foto:</strong> Não disponível
+                            <strong>Título:</strong> {getOrNA(evid.title)}
                           </p>
-                        )}
-                        {evid.reportEvidence ? (
-                          <div>
-                            <h3>Laudo Gerado</h3>
+                          <p>
+                            <strong>Depoimento:</strong>{" "}
+                            {getOrNA(evid.testimony)}
+                          </p>
+                          <p>
+                            <strong>Descrição Técnica:</strong>{" "}
+                            {getOrNA(evid.descriptionTechnical)}
+                          </p>
+                          <p>
+                            <strong>Condição:</strong> {getOrNA(evid.condition)}
+                          </p>
+                          <p>
+                            <strong>Coletor:</strong>{" "}
+                            {getOrNA(evid.collector?.name)}
+                          </p>
+                          <p>
+                            <strong>Categoria:</strong> {getOrNA(evid.category)}
+                          </p>
+                          <p>
+                            <strong>Observações:</strong> {getOrNA(evid.obs)}
+                          </p>
+                          <p>
+                            <strong>Latitude:</strong> {getOrNA(evid.latitude)}
+                          </p>
+                          <p>
+                            <strong>Longitude:</strong>{" "}
+                            {getOrNA(evid.longitude)}
+                          </p>
+
+                          {evid.photo ? (
+                            <div className={styles.imageWrapper}>
+                              <p>
+                                <strong>Foto:</strong>
+                              </p>
+                              <img
+                                src={evid.photo}
+                                alt="Foto da evidência"
+                                className={styles.imagePreview}
+                              />
+                            </div>
+                          ) : (
                             <p>
-                              <strong>Conclusão do Laudo:</strong>{" "}
-                              {getOrNA(evid.reportEvidence.note)}
+                              <strong>Foto:</strong> Não disponível
                             </p>
-                            <p>
-                              <strong>Análise Técnica:</strong>{" "}
-                              {getOrNA(
-                                evid.reportEvidence.descriptionTechnical
-                              )}
-                            </p>
-                            <p>
-                              <strong>Concluído por:</strong>{" "}
-                              {getOrNA(evid.reportEvidence.responsible.name)}
-                            </p>
-                            <p>
-                              <strong>Data do Laudo:</strong>{" "}
-                              {formatDate(evid.reportEvidence.createdAt)}
-                            </p>
+                          )}
+
+                          {evid.reportEvidence ? (
+                            <div>
+                              <h3>Laudo Gerado</h3>
+                              <p>
+                                <strong>Conclusão do Laudo:</strong>{" "}
+                                {getOrNA(evid.reportEvidence.note)}
+                              </p>
+                              <p>
+                                <strong>Análise Técnica:</strong>{" "}
+                                {getOrNA(
+                                  evid.reportEvidence.descriptionTechnical
+                                )}
+                              </p>
+                              <p>
+                                <strong>Concluído por:</strong>{" "}
+                                {getOrNA(evid.reportEvidence.responsible?.name)}
+                              </p>
+                              <p>
+                                <strong>Data do Laudo:</strong>{" "}
+                                {formatDate(evid.reportEvidence.createdAt)}
+                              </p>
+                              <button
+                                className={styles.button}
+                                onClick={() =>
+                                  navigate(`/casos/laudo/${evid._id}`, {
+                                    state: { caseDetails, evidence: evid },
+                                  })
+                                }
+                              >
+                                Imprimir Laudo
+                              </button>
+                            </div>
+                          ) : (
                             <button
                               className={styles.button}
                               onClick={() =>
-                                navigate(`/casos/laudo/${evid._id}`, {
-                                  state: { caseDetails, evidence: evid },
+                                navigate("/casos/laudo/evidencia", {
+                                  state: { evidence: evid, protocol },
                                 })
                               }
                             >
-                              Imprimir Laudo
+                              Gerar Laudo
                             </button>
-                          </div>
+                          )}
+                        </div>
+                      ))
+                    ) : (
+                      <p>Nenhuma evidência registrada.</p>
+                    )}
+                  </div>
+
+                  {/* Botão de gerar ou imprimir relatório do caso */}
+                  {caseDetails.evidence.length > 0 &&
+                    caseDetails.evidence.every(
+                      (ev) =>
+                        ev.reportEvidence &&
+                        ev.reportEvidence.note?.trim() &&
+                        ev.reportEvidence.descriptionTechnical?.trim() &&
+                        ev.reportEvidence.responsible?.name?.trim() &&
+                        ev.reportEvidence.createdAt
+                    ) && (
+                      <div className={styles.generateReportContainer}>
+                        {caseDetails.caseReport ? (
+                          <button
+                            className={styles.button}
+                            onClick={() =>
+                              navigate("/casos/relatorio/imprimir", {
+                                state: { caseDetails },
+                              })
+                            }
+                          >
+                            Imprimir Relatório do Caso
+                          </button>
                         ) : (
                           <button
                             className={styles.button}
                             onClick={() =>
-                              navigate("/casos/laudo/evidencia", {
-                                state: { evidence: evid, protocol },
+                              navigate("/casos/relatorio/final", {
+                                state: { caseDetails },
                               })
                             }
                           >
-                            Gerar Laudo
+                            Gerar Relatório do Caso
                           </button>
                         )}
                       </div>
-                    ))
-                  ) : (
-                    <p>Nenhuma evidência registrada.</p>
-                  )}
+                    )}
                 </div>
-                {caseDetails.evidence.length > 0 &&
-                  caseDetails.evidence.every((ev) => ev.reportEvidence) && (
-                    <div className={styles.generateReportContainer}>
-                      <button
-                        className={styles.button}
-                        onClick={() =>
-                          navigate("/casos/relatorio/final", {
-                            state: {
-                              caseDetails,
-                            },
-                          })
-                        }
-                      >
-                        Gerar Relatório do Caso
-                      </button>
-                    </div>
-                  )}
-              </div>
+              ) : (
+                <p>Carregando detalhes do caso...</p>
+              )}
             </div>
           ) : (
             <p>Carregando detalhes do caso...</p>
           )}
+
+          <button className={styles.buttonToBack} onClick={() => navigate(-1)}>
+            Voltar
+          </button>
         </div>
       </div>
     </div>

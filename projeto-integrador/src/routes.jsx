@@ -12,6 +12,8 @@ import EvidenceRegistrationPage from "./pages/evidence_registration_page/Evidenc
 import CreateVictim from "./pages/victim/addVictim";
 import ReportEvidence from "./pages/evidence_registration_page/reportEvidence";
 import ExportReportEvidence from "./pages/evidence_registration_page/exportReportEvidence";
+import ReportCase from "./pages/cases/CaseReport";
+import RelatorioPage from "./pages/cases/exportReportCase";
 
 const AppRoutes = () => {
   return (
@@ -34,6 +36,14 @@ const AppRoutes = () => {
         <Route
           path="/casos/laudo/:evidenceId"
           element={<ExportReportEvidence />}
+        />
+        <Route
+          path="/casos/relatorio/final"
+          element={<ReportCase/>}
+        />
+        <Route
+          path="/casos/relatorio/imprimir"
+          element={<RelatorioPage />}
         />
       </Routes>
     </Router>
