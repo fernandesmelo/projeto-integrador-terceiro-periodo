@@ -12,7 +12,15 @@
 .user_registration {
     display: flex;
     flex-direction: column;
-    margin: 6rem 0 0 24rem;
+    margin: 6rem 0 0 20rem;
+    width: 100%;
+}
+
+.registration {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .user_registration h3 {
@@ -56,4 +64,31 @@ button {
   
 button:hover {
     background-color: var(--hover-effect);
+}
+
+@media screen and (max-width: 978px) {
+    .nav_container {
+        flex-direction: column;
+
+    } 
+
+    .user_registration {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 1rem;
+        width: 100%;
+
+        input {
+            width: 100%;
+        }
+
+        select {
+            width: 100%;
+        }
+    }
+
+    .registration {
+        display: block;
+    }
 }
