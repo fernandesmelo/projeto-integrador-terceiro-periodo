@@ -254,7 +254,7 @@ const EvidenceRegistrationPage = () => {
                   });
                 }
               }}
-              className={styles.button}
+              className={styles.button_location}
             >
               Usar minha localização
             </button>
