@@ -236,6 +236,36 @@ const EvidenceRegistrationPage = () => {
                 value={longitude}
                 onChange={(e) => setLongitude(Number(e.target.value))}
               />
+                <button
+                type="button"
+                onClick={() => {
+                  if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                      (position) => {
+                        setLatitude(position.coords.latitude);
+                        setLongitude(position.coords.longitude);
+                      },
+                      (error) => {
+                        console.error(error);
+                        Swal.fire({
+                          icon: "error",
+                          title: "Erro ao obter localização",
+                          text: "Não foi possível obter sua localização. Verifique se você concedeu permissão.",
+                        });
+                      }
+                    );
+                  } else {
+                    Swal.fire({
+                      icon: "warning",
+                      title: "Geolocalização não suportada",
+                      text: "Seu navegador não suporta essa funcionalidade.",
+                    });
+                  }
+                }}
+                className={styles.button}
+              >
+                Usar minha localização
+              </button>
             </div>
             <label htmlFor="obs">Observação:</label>
             <div>
