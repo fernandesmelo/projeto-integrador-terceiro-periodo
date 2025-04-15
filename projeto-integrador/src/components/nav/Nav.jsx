@@ -9,7 +9,7 @@ const Nav = () => {
     const navigate = useNavigate();
 
     function handleAdmin() {
-        navigate('/administrador-do-sistema')
+        navigate('/cadastrar-usuario')
     }
 
     return (
