@@ -53,23 +53,21 @@ const Login = () => {
     <div className={styles.container}>
       <div className={styles.card}>
         <img src={logo} alt="Logo" />
-        <h3>Nome do sistema</h3>
-
-        <p>Faça login</p>
+        <p>Entre para iniciar sua sessão</p>
         <select
           className={styles.select}
           value={role}
           onChange={(e) => setRole(e.target.value)}
         >
-          <option value="">Selecione o tipo de usuário</option>
-          <option value="perito">PERITO</option>
-          <option value="admin">ADMIN</option>
-          <option value="assistente">ASSISTENTE</option>
+          <option value="">Selecione o usuário</option>
+          <option value="admin">Admin</option>
+          <option value="perito">Perito</option>
+          <option value="assistente">Assistente</option>
         </select>
 
         <input
-          type="number"
-          placeholder="cpf"
+          type="text"
+          placeholder="CPF"
           value={cpf}
           onChange={(e) => setCpf(e.target.value)}
           className={styles.input}
@@ -84,7 +82,7 @@ const Login = () => {
         <button className={styles.button} onClick={handleLogin}>
           Entrar
         </button>
-        <Link to="/about" className={styles.link}>
+        <Link to="/nova-senha" className={styles.link}>
           Esqueceu a senha?
         </Link>
       </div>
