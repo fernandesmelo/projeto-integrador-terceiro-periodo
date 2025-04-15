@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Header from "../../components/header/Header";
-import NavAdmin from "../../components/nav_admin/NavAdmin";
+import Nav from "../../components/nav/Nav";
 import styles from "./UserRegistrationPage.module.css";
 
 const UserRegistrationPage = () => {
@@ -77,7 +77,7 @@ const UserRegistrationPage = () => {
         <div className={styles.container}>
             <Header />
             <div className={styles.nav_container}>
-                <NavAdmin />
+                <Nav />
                 <div className={styles.user_registration}>
                     <h3>Insira as informações do usuário</h3>
                     <form onSubmit={handleSubmit}>
