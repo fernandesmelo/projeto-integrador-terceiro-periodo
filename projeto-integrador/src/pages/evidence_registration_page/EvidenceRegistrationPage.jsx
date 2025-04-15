@@ -149,7 +149,7 @@ const EvidenceRegistrationPage = () => {
             <input
               type="text"
               id="title"
-              placeholder="Insira o título"
+              placeholder="Insira um título"
               className={styles.input}
               value={title}
               onChange={(e) => settitle(e.target.value)}
@@ -165,17 +165,17 @@ const EvidenceRegistrationPage = () => {
               onChange={(e) => setdescriptionTechnical(e.target.value)}
               required
             />
-            <label htmlFor="testimony">Relatos testemunhais:</label>
+            <label htmlFor="testimony">Testemunhas (Relatos/Depoimentos):</label>
             <input
               type="text"
               id="testimony"
-              placeholder="Insira a testimony"
+              placeholder="Insira os relatos/depoimentos das testemunhas"
               className={styles.input}
               value={testimony}
               onChange={(e) => settestimony(e.target.value)}
             />
             <label htmlFor="imagem">
-              Imagem (radiografias, fotografias intraorais):
+              Imagens (Radiografias/Fotografias Intraorais):
             </label>
             <input
               type="file"
@@ -194,7 +194,7 @@ const EvidenceRegistrationPage = () => {
                 />
               </div>
             )}
-            <label htmlFor="condicaoEvidencia">Condição da evidência:</label>
+            <label htmlFor="condicaoEvidencia">Condição da Evidência:</label>
             <select
               id="condicaoEvidencia"
               onChange={(e) => setcondition(e.target.value)}
@@ -205,7 +205,7 @@ const EvidenceRegistrationPage = () => {
               <option value="INTEGRA">Íntegra</option>
               <option value="ALTERADA">Alterada</option>
               <option value="DANIFICADA">Danificada</option>
-              <option value="CORROMPIDO">Corrompido</option>
+              <option value="CORROMPIDO">Corrompida</option>
               <option value="APAGADA">Apagada</option>
               <option value="VOLATIL">Volátil</option>
               <option value="INACESSIVEL">Inacessível</option>
@@ -228,7 +228,6 @@ const EvidenceRegistrationPage = () => {
               value={longitude}
               onChange={(e) => setLongitude(Number(e.target.value))}
             />
-
             <button
               type="button"
               onClick={() => {
@@ -262,23 +261,23 @@ const EvidenceRegistrationPage = () => {
             <label htmlFor="obs">Observação:</label>
             <textarea
               id="obs"
-              placeholder="Insira a observação"
+              placeholder="Insira uma observação"
               className={styles.input}
               value={obs}
               onChange={(e) => setobs(e.target.value)}
             />
-            <label htmlFor="category">category:</label>
+            <label htmlFor="category">Categoria:</label>
             <select
               id="category"
               className={styles.input}
               value={category}
               onChange={(e) => setcategory(e.target.value)}
             >
-              <option value="">Selecione a category</option>
+              <option value="">Selecione a categoria</option>
               <option value="RADIOGRAFICA">Radiográfica</option>
               <option value="FOTOGRAFICA">Fotográfica</option>
               <option value="DOCUMENTAL">Documental</option>
-              <option value="BIOLOGICA">BIOLOGICA</option>
+              <option value="BIOLOGICA">Biológica</option>
               <option value="LESIONAL">Lesional</option>
             </select>
             <button type="submit" className={styles.button}>
