@@ -2,7 +2,6 @@ import Button from "../../components/button/Button";
 import Header from "../../components/header/Header";
 import InputSearch from "../../components/input_search/InputSearch";
 import Nav from "../../components/nav/Nav";
-import NavCase from "../../components/nav_case/navCase";
 import Table from "../../components/table/Table";
 import styles from "./Cases.module.css";
 import { useState, useEffect } from "react";
@@ -156,12 +155,11 @@ const Cases = () => {
         <Nav />
         <div className={styles.caseContent}>
           <h1 className={styles.title}>Casos periciais</h1>
-          <NavCase />
           <div className={styles.buttons}>
             <Button
               type="button"
               variant="primary"
-              onClick={() => navigate("/casos/cadastrar")}
+              onClick={() => navigate("/casos/cadastrarVitima")}
               disabled={false}
             >
               Adicionar caso

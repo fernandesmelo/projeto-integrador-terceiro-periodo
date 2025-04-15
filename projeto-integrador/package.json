@@ -13,6 +13,8 @@
     "axios": "^1.8.4",
     "clsx": "^2.1.1",
     "dentalysis": "file:",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.1",
     "nome-do-projeto": "file:",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
