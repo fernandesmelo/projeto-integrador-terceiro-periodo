@@ -2,7 +2,7 @@ import Button from "../../components/button/Button";
 import Header from "../../components/header/Header";
 import InputSearch from "../../components/input_search/InputSearch";
 import Nav from "../../components/nav/Nav";
-import NavCase from "../../components/nav_case/navCase";
+import Nav2 from "../../components/nav2/Nav2";
 import Table from "../../components/table/Table";
 import styles from "./Cases.module.css";
 import { useState, useEffect } from "react";
@@ -156,7 +156,7 @@ const Cases = () => {
         <Nav />
         <div className={styles.caseContent}>
           <h1 className={styles.title}>Casos periciais</h1>
-          <NavCase />
+          <Nav2 />
           <div className={styles.buttons}>
             <Button
               type="button"

@@ -5,6 +5,7 @@ import Nav from "../../components/nav/Nav";
 import styles from "./CaseCreated.module.css";
 import Swal from "sweetalert2";
 import axios from "axios";
+import Nav2 from "../../components/nav2/Nav2";
 
 const CaseCreated = () => {
   const navigate = useNavigate();
@@ -162,6 +163,7 @@ const CaseCreated = () => {
         <Nav />
         <div className={styles.marginContent}>
           <h1>Cadastre um novo caso</h1>
+          <Nav2 content='voltar' onClick={() => navigate('/casos')} />
           <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="Título">TÍtulo*:</label>
