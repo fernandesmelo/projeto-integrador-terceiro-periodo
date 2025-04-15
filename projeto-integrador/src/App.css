@@ -15,7 +15,8 @@
     --accent-warning: #E2B93B;
     --accent-error: #EB5757;
     --light-background: #F2F2F2;
-    --hover-effect: #023A4A;
+    --hover-effect-primary: #023A4A;
+    --hover-effect-secondary: #F3D48A;
     --extra-highlight: #2A9D8F;
     --soft-contrast-text: #333333;
     --black: #000000;

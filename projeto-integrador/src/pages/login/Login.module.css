@@ -47,7 +47,7 @@
 }
 
 .button:hover {
-  background-color: var(--hover-effect);
+  background-color: var(--hover-effect-primary);
 }
 
 .link {
