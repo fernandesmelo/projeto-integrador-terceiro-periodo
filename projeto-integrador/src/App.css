@@ -1,12 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Open Sans", sans-serif;
+    font-family: "inter";
 }
 
 :root {
-    --blue-900: #000E31;
-    --blue-800: #000541;
+    --brand-colors-primary: #012130;
+    --brand-colors-secondary: #EDBF5F;
+    --accent-info: #1E88E5;
+    --accent-success: #27AE60;
+    --accent-warning: #E2B93B;
+    --accent-error: #EB5757;
+    --light-background: #F2F2F2;
+    --hover-effect: #023A4A;
+    --extra-highlight: #2A9D8F;
+    --soft-contrast-text: #333333;
+    --black: #000000;
+    --white: #FFFFFF;
+    
     --icons: #778D9C;
 }
