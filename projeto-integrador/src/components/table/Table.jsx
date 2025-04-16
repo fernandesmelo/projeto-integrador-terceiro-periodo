@@ -27,8 +27,8 @@ const Table = ({ cases }) => {
       text: "Essa ação não pode ser desfeita.",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
+      confirmButtonColor: "#EB5757",
+      cancelButtonColor: "#1E88E5",
       confirmButtonText: "Sim, excluir!",
     });
 
@@ -47,7 +47,6 @@ const Table = ({ cases }) => {
           }
         );
         Swal.fire("Excluído!", "O caso foi excluído com sucesso.", "success");
-        // Aqui você pode chamar uma função para atualizar a lista de casos
       } catch (error) {
         console.log("Erro ao excluir caso:", error);
         Swal.fire(
@@ -64,14 +63,14 @@ const Table = ({ cases }) => {
       <table className={styles.tabela}>
         <thead>
           <tr>
-            <th>protocolo</th>
-            <th>titulo do caso</th>
-            <th>tipo de caso</th>
-            <th>nick paciente</th>
-            <th>status caso</th>
+            <th>Protocolo</th>
+            <th>Título do Caso</th>
+            <th>Tipo de Caso</th>
+            <th>Nick Paciente</th>
+            <th>Status</th>
             <th>Data</th>
-            <th>Evidencia</th>
-            <th>ações</th>
+            <th>Evidências</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -83,41 +82,42 @@ const Table = ({ cases }) => {
               <td>{item.patient.nic}</td>
               <td>{item.status}</td>
               <td>{new Date(item.openedAt).toLocaleDateString("pt-BR")}</td>
-              <td>{item.evidence?.length || 0}</td>
+              <td>
+                {item.evidence?.length || 0}
+                <Button
+                  type="button"
+                  variant="small-primary"
+                  onClick={() => addEvidence(item.protocol)}
+                >
+                  Adicionar evidência
+                </Button>
+              </td>
               <td>
                 <BiSearch
                   className={styles.icon}
                   title="Ver detalhes"
-                  style={{ cursor: "pointer", marginRight: 10 }}
+                  style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
                   onClick={() => verDetalhes(item.protocol)}
                 />
                 <BiPencil
                   className={styles.icon}
                   title="Editar"
-                  style={{ marginRight: 10 }}
+                  style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
                 />
-
-                {/* Botão de gerar relatório */}
                 <BiFile
                   className={styles.icon}
-                  title="Gerar Relatório"
-                  style={{ cursor: "pointer", marginRight: 10 }}
+                  title="Gerar relatório"
+                  style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
                   onClick={() => gerarRelatorio(item.protocol)}
                 />
-
-                {/* Botão de excluir caso - só aparece se não houver evidências */}
                 {item.evidence?.length === 0 && (
                   <BiTrash
                     className={styles.icon}
                     title="Excluir caso"
-                    style={{ cursor: "pointer", color: "red", marginRight: 10 }}
+                    style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
                     onClick={() => excluirCaso(item.protocol)}
                   />
                 )}
-
-                <Button onClick={() => addEvidence(item.protocol)}>
-                  Adicionar evidencia
-                </Button>
               </td>
             </tr>
           ))}
