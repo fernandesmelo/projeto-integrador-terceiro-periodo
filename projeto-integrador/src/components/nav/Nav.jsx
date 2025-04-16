@@ -1,10 +1,9 @@
 import styles from './Nav.module.css';
 import { CgScreen } from "react-icons/cg";
-import { MdAdminPanelSettings } from "react-icons/md";
-import { TbAlertHexagonFilled } from "react-icons/tb";
+import { MdAdminPanelSettings, MdMenu } from "react-icons/md";
 import { RiToothFill, RiFileShield2Fill } from "react-icons/ri";
-import { PiFilesFill } from "react-icons/pi";
 import { useNavigate } from 'react-router-dom';
+import logo from '../../assets/logo.png';
 
 const Nav = () => {
     const navigate = useNavigate();
@@ -16,6 +15,9 @@ const Nav = () => {
     return (
         <div>
             <div className={styles.nav}>
+                <div className={styles.image}>
+                    <img src={logo} alt="Logo" />
+                </div>
                 <p className={styles.item} tabIndex={0} role="button" onClick={() => navigate('/')}>
                     <CgScreen size={31} strokeWidth={1} style={{ color: "var(--icons)" }} /> Início
                 </p>
@@ -23,16 +25,13 @@ const Nav = () => {
                     <RiFileShield2Fill size={32} style={{ color: "var(--icons)" }} /> Casos Periciais
                 </p>
                 <p className={styles.item} tabIndex={0} role="button">
-                    <TbAlertHexagonFilled size={32} style={{ color: "var(--icons)" }} /> Evidências
-                </p>
-                <p className={styles.item} tabIndex={0} role="button">
-                    <PiFilesFill size={32} style={{ color: "var(--icons)" }} /> Laudos
-                </p>
-                <p className={styles.item} tabIndex={0} role="button">
                     <RiToothFill size={32} style={{ color: "var(--icons)" }} /> Banco Odonto-Legal
                 </p>
                 <p className={styles.item} tabIndex={0} role="button" onClick={handleAdmin}>
                     <MdAdminPanelSettings size={32} style={{ color: "var(--icons)" }} /> Admin
+                </p>
+                <p className={styles.itemMenu} tabIndex={0} role="button" onClick={handleAdmin}>
+                    <MdMenu className={styles.menu} size={32} style={{ color: "var(--icons)" }} />
                 </p>
             </div>
         </div>

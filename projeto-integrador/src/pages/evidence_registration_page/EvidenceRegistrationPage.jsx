@@ -143,112 +143,158 @@ const EvidenceRegistrationPage = () => {
           <h3>Insira as informações das evidências</h3>
           <form onSubmit={sendEvidence}>
             <label htmlFor="title">Título:</label>
-            <input
-              type="text"
-              id="title"
-              placeholder="Insira o título"
-              className={styles.input}
-              value={title}
-              onChange={(e) => settitle(e.target.value)}
-              required
-            />
+            <div>
+              <input
+                type="text"
+                id="title"
+                placeholder="Insira o título"
+                className={styles.input}
+                value={title}
+                onChange={(e) => settitle(e.target.value)}
+                required
+              />
+            </div>
             <label htmlFor="descriptionTechnical">Descrição Técnica:</label>
-            <input
-              type="text"
-              id="descriptionTechnical"
-              placeholder="Insira a descrição técnica"
-              className={styles.input}
-              value={descriptionTechnical}
-              onChange={(e) => setdescriptionTechnical(e.target.value)}
-              required
-            />
-            <label htmlFor="testimony">testimony:</label>
-            <input
-              type="text"
-              id="testimony"
-              placeholder="Insira a testimony"
-              className={styles.input}
-              value={testimony}
-              onChange={(e) => settestimony(e.target.value)}
-            />
-            <label htmlFor="imagem">
-              Imagem (radiografias, fotografias intraorais):
-            </label>
-            <input
-              type="file"
-              id="imagem"
-              className={styles.input}
-              onChange={handleImageChange}
-              accept="image/*"
-              required
-            />
-            {photo && (
-              <div>
-                <img
-                  src={photo}
-                  alt="Imagem selecionada"
-                  style={{ maxWidth: "200px" }}
-                />
-              </div>
-            )}
-            <label htmlFor="condicaoEvidencia">Condição da evidência:</label>
-            <select
-              id="condicaoEvidencia"
-              onChange={(e) => setcondition(e.target.value)}
-              required
-              className={styles.input}
-            >
-              <option value="">Selecione a condição</option>
-              <option value="INTEGRA">Íntegra</option>
-              <option value="ALTERADA">Alterada</option>
-              <option value="DANIFICADA">Danificada</option>
-              <option value="CORROMPIDO">Corrompido</option>
-              <option value="APAGADA">Apagada</option>
-              <option value="VOLATIL">Volátil</option>
-              <option value="INACESSIVEL">Inacessível</option>
-            </select>
+            <div>
+              <input
+                type="text"
+                id="descriptionTechnical"
+                placeholder="Insira a descrição técnica"
+                className={styles.input}
+                value={descriptionTechnical}
+                onChange={(e) => setdescriptionTechnical(e.target.value)}
+                required
+              />
+            </div>
+            <label htmlFor="testimony">Testemunhas (Relatos/Depoimentos):</label>
+            <div>
+              <input
+                type="text"
+                id="testimony"
+                placeholder="Insira os relatos/depoimentos das testimunhas"
+                className={styles.input}
+                value={testimony}
+                onChange={(e) => settestimony(e.target.value)}
+              />
+            </div>
+            <label htmlFor="imagem">Imagem (Radiografias/Fotografias Intraorais):</label>
+            <div>
+              <input
+                type="file"
+                id="imagem"
+                className={styles.input}
+                onChange={handleImageChange}
+                accept="image/*"
+                required
+              />
+              {photo && (
+                <div>
+                  <img
+                    src={photo}
+                    alt="Imagem selecionada"
+                    style={{ maxWidth: "200px" }}
+                  />
+                </div>
+              )}
+            </div>
+            <label htmlFor="condicaoEvidencia">Condição da Evidência:</label>
+            <div>
+              <select
+                id="condicaoEvidencia"
+                onChange={(e) => setcondition(e.target.value)}
+                required
+                className={styles.input}
+              >
+                <option value="">Selecione a condição</option>
+                <option value="INTEGRA">Íntegra</option>
+                <option value="ALTERADA">Alterada</option>
+                <option value="DANIFICADA">Danificada</option>
+                <option value="CORROMPIDO">Corrompido</option>
+                <option value="APAGADA">Apagada</option>
+                <option value="VOLATIL">Volátil</option>
+                <option value="INACESSIVEL">Inacessível</option>
+              </select>
+            </div>
             <label htmlFor="latitude">Latitude:</label>
-            <input
-              type="number"
-              id="latitude"
-              placeholder="Insira a latitude"
-              className={styles.input}
-              value={latitude}
-              onChange={(e) => setLatitude(Number(e.target.value))}
-            />
+            <div>
+              <input
+                type="number"
+                id="latitude"
+                placeholder="Insira a latitude"
+                className={styles.input}
+                value={latitude}
+                onChange={(e) => setLatitude(Number(e.target.value))}
+              />
+            </div>
             <label htmlFor="longitude">Longitude:</label>
-            <input
-              type="number"
-              id="longitude"
-              placeholder="Insira a longitude"
-              className={styles.input}
-              value={longitude}
-              onChange={(e) => setLongitude(Number(e.target.value))}
-            />
+            <div>
+              <input
+                type="number"
+                id="longitude"
+                placeholder="Insira a longitude"
+                className={styles.input}
+                value={longitude}
+                onChange={(e) => setLongitude(Number(e.target.value))}
+              />
+                <button
+                type="button"
+                onClick={() => {
+                  if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                      (position) => {
+                        setLatitude(position.coords.latitude);
+                        setLongitude(position.coords.longitude);
+                      },
+                      (error) => {
+                        console.error(error);
+                        Swal.fire({
+                          icon: "error",
+                          title: "Erro ao obter localização",
+                          text: "Não foi possível obter sua localização. Verifique se você concedeu permissão.",
+                        });
+                      }
+                    );
+                  } else {
+                    Swal.fire({
+                      icon: "warning",
+                      title: "Geolocalização não suportada",
+                      text: "Seu navegador não suporta essa funcionalidade.",
+                    });
+                  }
+                }}
+                className={styles.button}
+              >
+                Usar minha localização
+              </button>
+            </div>
             <label htmlFor="obs">Observação:</label>
-            <textarea
-              id="obs"
-              placeholder="Insira a observação"
-              className={styles.input}
-              value={obs}
-              onChange={(e) => setobs(e.target.value)}
-            />
-            <label htmlFor="category">category:</label>
-            <select
-              id="category"
-              className={styles.input}
-              value={category}
-              onChange={(e) => setcategory(e.target.value)}
-            >
-              <option value="">Selecione a category</option>
-              <option value="DENTAL">Dental</option>
-              <option value="RADIOGRAFICA">Radiográfica</option>
-              <option value="FOTOGRAFICA">Fotográfica</option>
-              <option value="DOCUMENTAL">Documental</option>
-              <option value="BIOLOGICA">BIOLOGICA</option>
-              <option value="LESIONAL">Lesional</option>
-              <option value="DIGITAL">Digital</option>
-            </select>
+            <div>
+              <textarea
+                id="obs"
+                placeholder="Insira uma observação"
+                className={styles.input}
+                value={obs}
+                onChange={(e) => setobs(e.target.value)}
+              />
+            </div>
+            <label htmlFor="category">Categoria:</label>
+            <div>
+              <select
+                id="category"
+                className={styles.input}
+                value={category}
+                onChange={(e) => setcategory(e.target.value)}
+              >
+                <option value="">Selecione a categoria</option>
+                <option value="DENTAL">Dental</option>
+                <option value="RADIOGRAFICA">Radiográfica</option>
+                <option value="FOTOGRAFICA">Fotográfica</option>
+                <option value="DOCUMENTAL">Documental</option>
+                <option value="BIOLOGICA">Biológica</option>
+                <option value="LESIONAL">Lesional</option>
+                <option value="DIGITAL">Digital</option>
+              </select>
+            </div>
             <button type="submit" className={styles.button}>
               Cadastrar
             </button>

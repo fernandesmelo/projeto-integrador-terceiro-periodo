@@ -82,7 +82,7 @@ const Login = () => {
         <button className={styles.button} onClick={handleLogin}>
           Entrar
         </button>
-        <Link to="/about" className={styles.link}>
+        <Link to="/nova-senha" className={styles.link}>
           Esqueceu a senha?
         </Link>
       </div>
