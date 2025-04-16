@@ -1,7 +1,7 @@
 .nav {
     position: fixed;
-    margin-top: 4.563rem;
-    height: calc(100vh - 4.563rem);
+    margin-top: 4rem;
+    height: calc(100vh - 4rem);
     background-color: var(--brand-colors-primary);
     width: 20rem;
     color: var(--white);
@@ -12,15 +12,11 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 3rem;
-}
+    margin-bottom: 1rem;
 
-.menu {
-    display: none;
-}
-
-img {
-    width: 9rem
+    img {
+        width: 9rem;
+    }
 }
 
 .item {
@@ -30,20 +26,11 @@ img {
     font-weight: 400;
     font-size: 1.2rem;
     margin-bottom: 2.5rem;
-}
 
-.itemMenu {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    font-weight: 400;
-    font-size: 1.2rem;
-    margin-bottom: 2.5rem;
-}
-
-.item:hover {
-    color: var(--icons);
-    cursor: pointer;
+    &:hover {
+        color: var(--icons);
+        cursor: pointer;
+    }
 }
 
 @media screen and (max-width: 978px) {
@@ -68,12 +55,6 @@ img {
     .item {
         height: 4.6875rem;
         width: 4.6875rem;
-    }
-
-    .menu {
-        display: block;
-        position: absolute;
-        right: 1.25rem;
     }
 
 }
