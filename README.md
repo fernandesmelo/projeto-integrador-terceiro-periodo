@@ -89,10 +89,10 @@ Siga os passos abaixo para clonar o repositório e iniciar a aplicação localme
 
 ```bash
 # 1. Clone o repositório
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/fernandesmelo/projeto-integrador-terceiro-periodo.git
 
 # 2. Acesse a pasta do projeto
-cd nome-da-pasta-do-projeto
+cd projeto-integrador
 
 # 3. Instale as dependências
 npm install
