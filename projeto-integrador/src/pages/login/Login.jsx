@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Button from "../../components/button/Button";
 import styles from "./Login.module.css";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -79,9 +80,13 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           className={styles.input}
         />
-        <button className={styles.button} onClick={handleLogin}>
+        <Button
+          type="button"
+          variant="primary"
+          onClick={handleLogin}
+        >
           Entrar
-        </button>
+        </Button>
         <Link to="/nova-senha" className={styles.link}>
           Esqueceu a senha?
         </Link>
