@@ -28,8 +28,8 @@
   }
   
   .disabled {
-    background-color: #ccc;
-    color: #666;
+    background-color: var(--soft-contrast-text);
+    color: var(--light-background);
     cursor: not-allowed;
     pointer-events: none;
   }
