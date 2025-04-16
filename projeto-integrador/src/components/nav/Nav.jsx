@@ -9,10 +9,6 @@ import logo from "../../assets/logo.png";
 const Nav = ({ onBack }) => {
   const navigate = useNavigate();
 
-  function handleAdmin() {
-    navigate("/cadastrar-usuario");
-  }
-
   return (
     <div>
       <div className={styles.nav}>
@@ -22,13 +18,13 @@ const Nav = ({ onBack }) => {
         <p className={styles.item} tabIndex={0} role="button" onClick={() => navigate("/inicio")}>
             <CgScreen size={31} strokeWidth={1} style={{ color: "var(--icons)" }}/>Início
         </p>
-        <p onClick={() => navigate("/casos")} className={styles.item} tabIndex={0} role="button">
+        <p className={styles.item} tabIndex={0} role="button" onClick={() => navigate("/casos")}>
             <RiFileShield2Fill size={32} style={{ color: "var(--icons)" }} />Casos Periciais
         </p>
         <p className={styles.item} tabIndex={0} role="button">
             <RiToothFill size={32} style={{ color: "var(--icons)" }} />Banco Odonto-Legal
         </p>
-        <p className={styles.item} tabIndex={0} role="button" onClick={handleAdmin}>
+        <p className={styles.item} tabIndex={0} role="button" onClick={() => navigate("/cadastrar-usuario")}>
             <MdAdminPanelSettings size={32} style={{ color: "var(--icons)" }} />Admin
         </p>
         <p className={styles.back} tabIndex={0} role="button" onClick={onBack}>
