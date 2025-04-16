@@ -77,8 +77,7 @@ A solução conta com um Web App, para gestão e análise detalhada dos casos.
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 
 - [Git](https://git-scm.com)
-- [Node.js](https://nodejs.org) (recomendado: versão LTS)
-- [NPM](https://www.npmjs.com/) (já vem com o Node)
+- [Node.js](https://nodejs.org)
 
 Além disso, é bom ter um editor como o [VSCode](https://code.visualstudio.com/) para trabalhar com o código.
 
