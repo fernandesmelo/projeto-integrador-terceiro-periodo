@@ -14,12 +14,11 @@
     flex-direction: column;
     margin: 6rem 0 0 24rem;
     width: 50%;
-}
 
-.evidence_registration h3 {
-    margin-bottom: 2rem;
-    font-size: 1.75rem;
-
+    h3 {
+        margin-bottom: 2rem;
+        font-size: 1.75rem;
+    }
 }
 
 label {
@@ -74,8 +73,9 @@ button {
     cursor: pointer;
     margin-top: 0.5rem;
     margin-bottom: 1.5rem;
+
+    &:hover {
+        background-color: var(--hover-effect-primary);
+      }
   }
   
-  button:hover {
-    background-color: var(--hover-effect-primary);
-  }
