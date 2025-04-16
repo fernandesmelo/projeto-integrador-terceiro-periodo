@@ -4,7 +4,7 @@
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: var(--hover-effect);
+    background-color: var(--hover-effect-primary);
     height: 4.563rem;
     color: var(--white);
     display: flex;

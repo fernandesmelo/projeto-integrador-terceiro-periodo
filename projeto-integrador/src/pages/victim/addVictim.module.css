@@ -1,0 +1,13 @@
+.content {
+    display: flex;
+}
+
+.marginContent {
+    margin: 6rem 0 0 26rem;
+}
+
+.marginContent {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+}
