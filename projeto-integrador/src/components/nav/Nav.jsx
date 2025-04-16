@@ -9,7 +9,7 @@ const Nav = () => {
     const navigate = useNavigate();
 
     function handleAdmin() {
-        navigate('/cadastrar-usuario')
+        navigate('/admin/usuarios')
     }
 
     return (
@@ -18,7 +18,7 @@ const Nav = () => {
                 <div className={styles.image}>
                     <img src={logo} alt="Logo" />
                 </div>
-                <p className={styles.item} tabIndex={0} role="button" onClick={() => navigate('/')}>
+                <p className={styles.item} tabIndex={0} role="button" >
                     <CgScreen size={31} strokeWidth={1} style={{ color: "var(--icons)" }} /> Início
                 </p>
                 <p onClick={() => navigate('/casos')} className={styles.item} tabIndex={0} role="button">

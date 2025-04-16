@@ -3,12 +3,15 @@ import styles from './Header.module.css'
 import { FaBell } from "react-icons/fa";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const API_URL = "https://sistema-odonto-legal.onrender.com/api/profile";
 
 const Header = () => {
     const [userData, setUserData] = useState(null);  // Estado para armazenar os dados do usuário
     const [loading, setLoading] = useState(true);  // Para controlar o carregamento
+    const [openMenu, SetOpenMenu] = useState(false)
+    const navigate = useNavigate()
   
     useEffect(() => {
       const fetchData = async () => {
@@ -32,6 +35,10 @@ const Header = () => {
       fetchData();
     }, []);
 
+    const toggleMenu = () => {
+      SetOpenMenu(!openMenu)
+    }
+
   
     if (loading) {
       return <div>Carregando...</div>;
@@ -47,8 +54,17 @@ const Header = () => {
                         <p className={styles.name}>{userData.name}</p>
                     </div>
                     <MdOutlineKeyboardArrowDown 
+                    onClick={toggleMenu}
+                    style={{cursor: 'pointer'}}
                     size={30}
                     />
+                    <div  
+                    className={`${styles.menu} ${openMenu ? styles.open : ''}`}
+                    >
+                       <p>Perfil</p>
+  <p>Configurações</p>
+  <p onClick={() => navigate('/')}>Sair</p>
+                    </div>
                 </div>
             </div>
     )
