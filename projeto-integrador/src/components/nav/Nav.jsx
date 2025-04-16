@@ -1,6 +1,6 @@
 import styles from './Nav.module.css';
 import { CgScreen } from "react-icons/cg";
-import { MdAdminPanelSettings } from "react-icons/md";
+import { MdAdminPanelSettings, MdMenu } from "react-icons/md";
 import { RiToothFill, RiFileShield2Fill } from "react-icons/ri";
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png';
@@ -29,6 +29,9 @@ const Nav = () => {
                 </p>
                 <p className={styles.item} tabIndex={0} role="button" onClick={handleAdmin}>
                     <MdAdminPanelSettings size={32} style={{ color: "var(--icons)" }} /> Admin
+                </p>
+                <p className={styles.itemMenu} tabIndex={0} role="button" onClick={handleAdmin}>
+                    <MdMenu className={styles.menu} size={32} style={{ color: "var(--icons)" }} />
                 </p>
             </div>
         </div>
