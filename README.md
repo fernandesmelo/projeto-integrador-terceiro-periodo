@@ -72,3 +72,33 @@ A solução conta com um Web App, para gestão e análise detalhada dos casos.
 
 ## 🚀 Guia de Como Baixar e Rodar o Projeto
 
+## 📦 Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+
+- [Git](https://git-scm.com)
+- [Node.js](https://nodejs.org) (recomendado: versão LTS)
+- [NPM](https://www.npmjs.com/) (já vem com o Node)
+
+Além disso, é bom ter um editor como o [VSCode](https://code.visualstudio.com/) para trabalhar com o código.
+
+---
+
+## 🛠️ Como rodar o projeto
+
+Siga os passos abaixo para clonar o repositório e iniciar a aplicação localmente:
+
+```bash
+# 1. Clone o repositório
+git clone https://github.com/seu-usuario/seu-repositorio.git
+
+# 2. Acesse a pasta do projeto
+cd nome-da-pasta-do-projeto
+
+# 3. Instale as dependências
+npm install
+
+# 4. Rode o projeto
+npm run dev
+
+
