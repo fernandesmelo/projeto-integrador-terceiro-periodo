@@ -80,11 +80,7 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           className={styles.input}
         />
-        <Button
-          type="button"
-          variant="primary"
-          onClick={handleLogin}
-        >
+        <Button type="button" variant="primary" onClick={handleLogin}>
           Entrar
         </Button>
         <Link to="/nova-senha" className={styles.link}>
