@@ -72,7 +72,7 @@ A solução conta com um Web App, para gestão e análise detalhada dos casos.
 
 ## 🚀 Guia de Como Baixar e Rodar o Projeto
 
-## 📦 Pré-requisitos
+### 📦 Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 
@@ -83,7 +83,7 @@ Além disso, é bom ter um editor como o [VSCode](https://code.visualstudio.com/
 
 ---
 
-## 🛠️ Como rodar o projeto
+### 🛠️ Como rodar o projeto
 
 Siga os passos abaixo para clonar o repositório e iniciar a aplicação localmente:
 
