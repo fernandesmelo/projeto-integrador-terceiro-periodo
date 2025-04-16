@@ -22,19 +22,17 @@ const LaudoEvidenciaPage = () => {
 
   const gerarPDF = () => {
     const input = document.getElementById("laudo-pdf");
-    html2canvas(input, { scale: 1}).then(
-      (canvas) => {
-        const imgData = canvas.toDataURL("image/png");
-        const pdf = new jsPDF("p", "mm", "a4");
+    html2canvas(input, { scale: 1 }).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "mm", "a4");
 
-        const imgProps = pdf.getImageProperties(imgData);
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      const imgProps = pdf.getImageProperties(imgData);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 
-        pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-        pdf.save(`laudo-${protocol}.pdf`);
-      }
-    );
+      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+      pdf.save(`laudo-${protocol}.pdf`);
+    });
   };
 
   return (
@@ -86,6 +84,9 @@ const LaudoEvidenciaPage = () => {
                 </p>
                 <p>
                   <strong>Idade:</strong> {patient.age || "N/A"}
+                </p>
+                <p>
+                  <strong>Genero:</strong> {patient.gender || "N/A"}
                 </p>
               </div>
 
