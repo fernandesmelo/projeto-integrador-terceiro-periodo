@@ -33,6 +33,22 @@
     }
 }
 
+.back {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: var(--brand-colors-secondary);
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: var(--hover-effect-secondary);
+    }
+}
+
 @media screen and (max-width: 978px) {
     .nav {
         top: -4.6875rem;

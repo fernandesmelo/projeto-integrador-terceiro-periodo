@@ -31,7 +31,7 @@ const Nav = ({ onBack }) => {
         <p className={styles.item} tabIndex={0} role="button" onClick={handleAdmin}>
             <MdAdminPanelSettings size={32} style={{ color: "var(--icons)" }} />Admin
         </p>
-        <p className={styles.item} tabIndex={0} role="button" onClick={onBack}>
+        <p className={styles.back} tabIndex={0} role="button" onClick={onBack}>
             <IoArrowBack size={32} style={{ color: "var(--icons)" }} /> Voltar
         </p>
       </div>
