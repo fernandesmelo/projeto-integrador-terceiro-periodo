@@ -33,7 +33,7 @@ const Login = () => {
       const response = await axios.post(API_URL, {
         cpf,
         password,
-        role: role.toUpperCase(), // 🔥 Corrigindo o problema
+        role: role.toUpperCase(),
       });
       console.log(response);
       const token = response.data.token;
@@ -50,6 +50,7 @@ const Login = () => {
       );
     }
   }
+  
   return (
     <div className={styles.container}>
       <div className={styles.card}>
@@ -65,7 +66,6 @@ const Login = () => {
           <option value="perito">Perito</option>
           <option value="assistente">Assistente</option>
         </select>
-
         <input
           type="text"
           placeholder="CPF"
