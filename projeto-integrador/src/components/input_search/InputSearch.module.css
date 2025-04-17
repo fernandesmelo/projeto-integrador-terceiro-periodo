@@ -5,7 +5,7 @@
     border: 1px solid #808080;
     height: 66%;
     padding: 0.1875rem 2.5rem 0.1875rem 0.625rem;
-    background-color: var(--light-background);
+    background: var(--light-background);
 
     &:focus {
         outline: none;
