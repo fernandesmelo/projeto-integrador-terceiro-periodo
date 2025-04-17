@@ -2,7 +2,6 @@ import styles from "./Nav.module.css";
 import { CgScreen } from "react-icons/cg";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { RiToothFill, RiFileShield2Fill } from "react-icons/ri";
-import { IoArrowBack } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
@@ -26,9 +25,6 @@ const Nav = ({ onBack }) => {
         </p>
         <p className={styles.item} tabIndex={0} role="button" onClick={() => navigate("/cadastrar-usuario")}>
             <MdAdminPanelSettings size={32} style={{ color: "var(--icons)" }} />Admin
-        </p>
-        <p className={styles.back} tabIndex={0} role="button" onClick={onBack}>
-            <IoArrowBack size={32} style={{ color: "var(--icons)" }} /> Voltar
         </p>
       </div>
     </div>
