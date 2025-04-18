@@ -33,7 +33,7 @@ const CreateVictim = () => {
 
     if (savedData) {
       const parsed = JSON.parse(savedData);
-  
+
       return {
         ...defaultData,
         ...parsed,
@@ -209,16 +209,20 @@ const CreateVictim = () => {
               />
             </fieldset>
             <label>Status de Identificação:</label>
-            <select
+            <select className={styles.status}
               name="identificationStatus"
               value={formData.identificationStatus}
               onChange={handleChange}
               required
             >
-              <option value="">Selecione o status de identificação da vítma</option>
+              <option value="">
+                Selecione o status de identificação da vítma
+              </option>
               <option value="IDENTIFICADO">Identificado</option>
               <option value="NÃO IDENTIFICADO">Não identificado</option>
-              <option value="PARCIALMENTE IDENTIFICADO">Parcialmente identificado</option>
+              <option value="PARCIALMENTE IDENTIFICADO">
+                Parcialmente identificado
+              </option>
             </select>
             <Button type="button" variant="generic" disabled={isSubmitting}>
               {isSubmitting ? "Aguarde..." : "Avançar para criar caso"}

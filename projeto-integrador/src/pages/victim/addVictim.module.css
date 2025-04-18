@@ -1,18 +1,60 @@
 .content {
     display: flex;
     background: var(--light-background);
+
 }
 
 .marginContent {
-    margin: 6rem 0 0 26rem;
-}
-
-.marginContent {
-    flex: 1;
+    width: 60%; 
+    max-width: 800px; 
+    margin: 6rem 0 2rem 27rem;
     padding: 2rem;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
-
-    h1 {
-        color: var(--brand-colors-primary);
-    }
 }
+
+.marginContent h1 {
+    color: var(--brand-colors-primary);
+    margin-bottom: 1rem;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap; 
+    color: var(--brand-colors-primary);
+}
+
+form label {
+    width: 100%;
+    font-weight: bold;
+
+}
+
+form input,
+form select {
+    flex: 1 1 calc(50% - 1rem); 
+    padding: 0.625rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+}
+
+fieldset {
+    width: 100%; 
+    margin: 1rem 0 1rem 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+.status {
+    margin-right: 1.5rem;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 0.5rem;
+}
+
