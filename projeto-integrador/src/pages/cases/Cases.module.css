@@ -1,5 +1,7 @@
 .content {
     display: flex;
+    background: var(--light-background);
+    height: 100vh;
 }
 
 .caseContent {

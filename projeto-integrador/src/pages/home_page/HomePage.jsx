@@ -6,7 +6,7 @@ const Inicio = () => {
   return (
     <div className={styles.container}>
       <Header />
-      <div>
+      <div className={styles.content}>
         <Nav />
       </div>
     </div>
