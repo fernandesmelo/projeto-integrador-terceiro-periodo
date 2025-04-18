@@ -32,7 +32,6 @@ const UserRegistrationPage = () => {
 
         const dados = {
             name,
-            lastName,
             email,
             dateOfBirth : formattedDate,
             cpf,
