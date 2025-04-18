@@ -20,6 +20,7 @@
   padding: 12px;
   text-align: left;
   border-bottom: 1px solid #E0E0E0;
+  color: var(--brand-colors-primary);
 }
 
 .ativo {
