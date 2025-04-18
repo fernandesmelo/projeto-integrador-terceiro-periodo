@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Table.module.css";
 import { BiPencil, BiSearch, BiTrash, BiFile } from "react-icons/bi";
 import Button from "../button/Button";
@@ -8,6 +8,14 @@ import axios from "axios";
 
 const Table = ({ cases }) => {
   const navigate = useNavigate();
+
+  // Estado local para reagir à exclusão sem precisar de refresh externo
+  const [localCases, setLocalCases] = useState([]);
+
+  // Sincroniza sempre que a prop `cases` mudar
+  useEffect(() => {
+    setLocalCases(cases);
+  }, [cases]);
 
   const verDetalhes = (protocol) => {
     navigate(`/casos/detalhes/${protocol}`);
@@ -32,29 +40,32 @@ const Table = ({ cases }) => {
       confirmButtonText: "Sim, excluir!",
     });
 
-    if (confirm.isConfirmed) {
-      try {
-        console.log("Excluindo caso com protocolo:", protocol);
-        await axios.delete(
-          `https://sistema-odonto-legal.onrender.com/api/cases/search/protocol`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-            params: {
-              protocol,
-            },
-          }
-        );
-        Swal.fire("Excluído!", "O caso foi excluído com sucesso.", "success");
-      } catch (error) {
-        console.log("Erro ao excluir caso:", error);
-        Swal.fire(
-          "Erro!",
-          error.response?.data?.message || "Erro ao excluir o caso.",
-          "error"
-        );
-      }
+    if (!confirm.isConfirmed) return;
+
+    try {
+      await axios.delete(
+        "https://sistema-odonto-legal.onrender.com/api/cases/delete/protocol",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          params: { protocol },
+        }
+      );
+
+      Swal.fire("Excluído!", "O caso foi excluído com sucesso.", "success");
+
+      // Atualiza o estado local removendo o caso excluído
+      setLocalCases((prev) =>
+        prev.filter((item) => item.protocol !== protocol)
+      );
+    } catch (error) {
+      console.error("Erro ao excluir caso:", error);
+      Swal.fire(
+        "Erro!",
+        error.response?.data?.message || "Erro ao excluir o caso.",
+        "error"
+      );
     }
   };
 
@@ -74,14 +85,16 @@ const Table = ({ cases }) => {
           </tr>
         </thead>
         <tbody>
-          {cases.map((item, index) => (
+          {localCases.map((item, index) => (
             <tr key={index}>
               <td>{item.protocol}</td>
               <td>{item.title}</td>
               <td>{item.caseType}</td>
               <td>{item.patient.nic}</td>
               <td>{item.status}</td>
-              <td>{new Date(item.openedAt).toLocaleDateString("pt-BR")}</td>
+              <td>
+                {new Date(item.openedAt).toLocaleDateString("pt-BR")}
+              </td>
               <td>
                 {item.evidence?.length || 0}
                 <Button
@@ -96,25 +109,25 @@ const Table = ({ cases }) => {
                 <BiSearch
                   className={styles.icon}
                   title="Ver detalhes"
-                  style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
+                  style={{ cursor: "pointer", marginRight: 10 }}
                   onClick={() => verDetalhes(item.protocol)}
                 />
                 <BiPencil
                   className={styles.icon}
                   title="Editar"
-                  style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
+                  style={{ cursor: "pointer", marginRight: 10 }}
                 />
                 <BiFile
                   className={styles.icon}
                   title="Gerar relatório"
-                  style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
+                  style={{ cursor: "pointer", marginRight: 10 }}
                   onClick={() => gerarRelatorio(item.protocol)}
                 />
                 {item.evidence?.length === 0 && (
                   <BiTrash
                     className={styles.icon}
                     title="Excluir caso"
-                    style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
+                    style={{ cursor: "pointer", marginRight: 10 }}
                     onClick={() => excluirCaso(item.protocol)}
                   />
                 )}

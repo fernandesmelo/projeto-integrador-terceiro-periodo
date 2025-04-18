@@ -98,6 +98,14 @@ const CaseCreated = () => {
       // Exemplo: setTitle(parsedData.title || "");
     }
   }, []);
+  // no topo do seu arquivo
+const normalize = (str) =>
+  str
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+
 
   const toggleUser = (userId) => {
     setEnvolved((prev) =>
@@ -108,12 +116,16 @@ const CaseCreated = () => {
   };
 
   const handleLocationChange = (field, value) => {
-    setLocation((prev) => ({
-      ...prev,
-      [field]: field === "houseNumber" ? Number(value) || 0 : value,
-    }));
-  };
-
+  setLocation((prev) => ({
+    ...prev,
+    [field]:
+      field === "district"
+        ? normalize(value)        // já guarda em lowercase e sem acento
+        : field === "houseNumber"
+        ? Number(value) || 0
+        : value,
+  }));
+};
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");

@@ -35,7 +35,6 @@ const Login = () => {
         password,
         role: role.toUpperCase(), // 🔥 Corrigindo o problema
       });
-      console.log(response);
       const token = response.data.token;
       localStorage.setItem("token", token);
       localStorage.setItem("role", role.toUpperCase());
