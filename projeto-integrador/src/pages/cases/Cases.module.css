@@ -27,4 +27,6 @@
     position: relative;
     left: 50%;
     transform: translate(-50%);
+    background: var(--brand-colors-secondary);
+    color: var(--black);
 }
