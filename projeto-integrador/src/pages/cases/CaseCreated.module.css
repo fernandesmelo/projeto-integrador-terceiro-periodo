@@ -1,63 +1,96 @@
 .content {
     display: flex;
+    background: var(--light-background);
 }
 
 .marginContent {
-    margin: 6rem 0 0 26rem;
+    width: 60%;
+    max-width: 800px;
+    margin: 6rem 0 2rem 27rem;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
 }
 
-.input {
-    width: 40rem;
-    padding: 10px;
-    margin: 10px;
+h1 {
+    color: var(--brand-colors-primary);
+    margin-bottom: 1rem;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    color: var(--brand-colors-primary);
+    gap: 1rem; /* Espaçamento entre os inputs */
+}
+
+form label {
+    width: 100%;
+    font-weight: bold;
+}
+
+form input,
+form select,
+form textarea {
+    flex: 1 1 calc(50% - 1rem); /* Inputs ocupam 50% da largura */
+    padding: 0.625rem;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin-top: 0.5rem;
 }
 
-.removeButton {
-    margin-left: 10px;
-    background: transparent;
-    color: #d33;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
+fieldset {
+    width: 100%;
+    margin: 1rem 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 0.5rem;
+}
+
+.status {
+    margin-right: 1.5rem;
 }
 
 .button {
-    background-color: #3085d6;
-    color: white;
-    padding: 10px 20px;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--brand-colors-primary);
+    color: var(--white);
     border: none;
-    border-radius: 8px;
-    font-size: 1rem;
+    border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
+    margin-top: 1rem;
 }
 
-.button:hover {
-    background-color: #2564a0;
+.button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
 
 .questionContainer {
     display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
+    align-items: center;
+    gap: 1rem;
 }
 
+.addBtn,
 .removeBtn {
-    background-color: #e74c3c;
-    color: white;
+    padding: 0.5rem 1rem;
+    background-color: var(--brand-colors-secondary);
+    color: var(--white);
     border: none;
-    padding: 5px 10px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-.addBtn {
-    background-color: #2ecc71;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    margin-top: 10px;
-    cursor: pointer;
+.addBtn:hover,
+.removeBtn:hover {
+    background-color: var(--hover-effect-secondary);
 }

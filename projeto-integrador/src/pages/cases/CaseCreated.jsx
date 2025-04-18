@@ -243,7 +243,7 @@ const CaseCreated = () => {
       <div className={styles.content}>
         <Nav />
         <div className={styles.marginContent}>
-          <h1>Cadastre um novo caso</h1>
+          <h1>Cadastrar um Novo Caso</h1>
           <form onSubmit={handleSubmit}>
             <div>
               <label>NIC*:</label>
