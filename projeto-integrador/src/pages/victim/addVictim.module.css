@@ -13,23 +13,23 @@
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
-}
 
-.marginContent h1 {
-    color: var(--brand-colors-primary);
-    margin-bottom: 1rem;
+    h1 {
+        color: var(--brand-colors-primary);
+        margin-bottom: 1rem;
+    }
 }
 
 form {
     display: flex;
     flex-wrap: wrap; 
     color: var(--brand-colors-primary);
-}
 
-form label {
-    width: 100%;
-    font-weight: bold;
-
+    label {
+        width: 100%;
+        font-weight: bold;
+    
+    }
 }
 
 form input,
