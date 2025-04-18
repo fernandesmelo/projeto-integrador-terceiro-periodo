@@ -1,0 +1,81 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav_container {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--light-background);
+}
+
+.evidence_registration {
+    display: flex;
+    flex-direction: column;
+    margin: 6rem 0 0 24rem;
+    width: 50%;
+
+    h3 {
+        margin-bottom: 2rem;
+        font-size: 1.75rem;
+    }
+}
+
+label {
+    font-size: 1rem;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--light-background);
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--light-background);
+}
+
+select {
+    width: 100%;
+}
+
+.button_location {
+    width: 25%;
+    padding: 0.625rem;
+    background-color: var(--brand-colors-secondary);
+    color: var(--black);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.button_location:hover {
+    background-color: var(--hover-effect-secondary);
+}
+
+button {
+    width: 40%;
+    padding: 0.625rem;
+    background-color: var(--brand-colors-primary);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+
+    &:hover {
+        background-color: var(--hover-effect-primary);
+      }
+  }
+  

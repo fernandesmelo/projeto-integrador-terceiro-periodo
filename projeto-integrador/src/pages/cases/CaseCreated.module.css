@@ -1,0 +1,63 @@
+.content {
+    display: flex;
+}
+
+.marginContent {
+    margin: 6rem 0 0 26rem;
+}
+
+.input {
+    width: 40rem;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.removeButton {
+    margin-left: 10px;
+    background: transparent;
+    color: #d33;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.button {
+    background-color: #3085d6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #2564a0;
+}
+
+.questionContainer {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.removeBtn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.addBtn {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-top: 10px;
+    cursor: pointer;
+}

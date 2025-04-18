@@ -1,0 +1,39 @@
+.content {
+    display: flex;
+}
+
+.marginContent {
+    margin: 6rem 0 0 26rem;
+}
+
+.marginContent {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+
+
+.section {
+    margin-bottom: 20px;
+}
+
+.label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.textarea {
+    width: 100%;
+    height: 100px;
+    resize: vertical;
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: #3085d6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
