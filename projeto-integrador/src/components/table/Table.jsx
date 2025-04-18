@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./Table.module.css";
-import { BiPencil, BiSearch } from "react-icons/bi";
+import { BiPencil, BiSearch, BiTrash, BiFile } from "react-icons/bi";
 import Button from "../button/Button";
 import { useNavigate } from "react-router-dom";
-import { HiOutlineExclamation } from "react-icons/hi";
-import { TbFileReport } from "react-icons/tb";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 const Table = ({ cases }) => {
   const navigate = useNavigate();
@@ -17,19 +17,60 @@ const Table = ({ cases }) => {
     navigate(`/casos/evidencia/${protocol}`);
   };
 
+  const gerarRelatorio = (protocol) => {
+    navigate(`/casos/laudo/evidencia/${protocol}`);
+  };
+
+  const excluirCaso = async (protocol) => {
+    const confirm = await Swal.fire({
+      title: "Deseja excluir este caso?",
+      text: "Essa ação não pode ser desfeita.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#EB5757",
+      cancelButtonColor: "#1E88E5",
+      confirmButtonText: "Sim, excluir!",
+    });
+
+    if (confirm.isConfirmed) {
+      try {
+        console.log("Excluindo caso com protocolo:", protocol);
+        await axios.delete(
+          `https://sistema-odonto-legal.onrender.com/api/cases/search/protocol`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+            params: {
+              protocol,
+            },
+          }
+        );
+        Swal.fire("Excluído!", "O caso foi excluído com sucesso.", "success");
+      } catch (error) {
+        console.log("Erro ao excluir caso:", error);
+        Swal.fire(
+          "Erro!",
+          error.response?.data?.message || "Erro ao excluir o caso.",
+          "error"
+        );
+      }
+    }
+  };
+
   return (
     <div className={styles.container}>
       <table className={styles.tabela}>
         <thead>
           <tr>
-            <th>protocolo</th>
-            <th>titulo do caso</th>
-            <th>tipo de caso</th>
-            <th>nick paciente</th>
-            <th>status caso</th>
+            <th>Protocolo</th>
+            <th>Título do Caso</th>
+            <th>Tipo de Caso</th>
+            <th>Nick Paciente</th>
+            <th>Status</th>
             <th>Data</th>
-            <th>Evidencia</th>
-            <th>açoes</th>
+            <th>Evidências</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -40,28 +81,43 @@ const Table = ({ cases }) => {
               <td>{item.caseType}</td>
               <td>{item.patient.nic}</td>
               <td>{item.status}</td>
-              <td>{item.openedAt}</td>
-              <td>{item.evidence?.length || 0}</td>
+              <td>{new Date(item.openedAt).toLocaleDateString("pt-BR")}</td>
               <td>
-                <div style={{ cursor: 'pointer', display: 'flex', gap: 5 }}>
-                  <BiSearch
+                {item.evidence?.length || 0}
+                <Button
+                  type="button"
+                  variant="small-primary"
+                  onClick={() => addEvidence(item.protocol)}
+                >
+                  Adicionar evidência
+                </Button>
+              </td>
+              <td>
+                <BiSearch
+                  className={styles.icon}
+                  title="Ver detalhes"
+                  style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
+                  onClick={() => verDetalhes(item.protocol)}
+                />
+                <BiPencil
+                  className={styles.icon}
+                  title="Editar"
+                  style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
+                />
+                <BiFile
+                  className={styles.icon}
+                  title="Gerar relatório"
+                  style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
+                  onClick={() => gerarRelatorio(item.protocol)}
+                />
+                {item.evidence?.length === 0 && (
+                  <BiTrash
                     className={styles.icon}
-                    title="Ver detalhes"
-                    style={{ cursor: "pointer" }}
-                    onClick={() => verDetalhes(item.protocol)}
+                    title="Excluir caso"
+                    style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
+                    onClick={() => excluirCaso(item.protocol)}
                   />
-                  <BiPencil 
-                    className={styles.icon} 
-                    title="Editar" />
-                  <HiOutlineExclamation
-                    onClick={() => addEvidence(item.protocol)}
-                    className={styles.icon}
-                    title="Adicionar Evidencia" />
-                  <TbFileReport
-                    title="relatorio"
-                  />
-                </div>
-
+                )}
               </td>
             </tr>
           ))}

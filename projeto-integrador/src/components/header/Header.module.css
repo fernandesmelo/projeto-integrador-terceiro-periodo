@@ -4,14 +4,14 @@
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: var(--hover-effect);
+    background-color: var(--hover-effect-primary);
     height: 4.563rem;
     color: var(--white);
     display: flex;
     align-items: center;
     padding: 1.875rem;
     justify-content: space-between;
-    font-size: 1.25rem;   
+    font-size: 1.25rem;
     font-weight: 700;
 }
 
@@ -27,7 +27,7 @@
 }
 
 .name {
-    font-size: 1.25rem;;
+    font-size: 1.25rem;
     font-weight: 500;
 }
 

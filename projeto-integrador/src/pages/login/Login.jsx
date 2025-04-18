@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Button from "../../components/button/Button";
 import styles from "./Login.module.css";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -32,7 +33,7 @@ const Login = () => {
       const response = await axios.post(API_URL, {
         cpf,
         password,
-        role: role.toUpperCase(), // 🔥 Corrigindo o problema
+        role: role.toUpperCase(),
       });
       console.log(response);
       const token = response.data.token;
@@ -49,6 +50,7 @@ const Login = () => {
       );
     }
   }
+  
   return (
     <div className={styles.container}>
       <div className={styles.card}>
@@ -64,7 +66,6 @@ const Login = () => {
           <option value="perito">Perito</option>
           <option value="assistente">Assistente</option>
         </select>
-
         <input
           type="text"
           placeholder="CPF"
@@ -79,9 +80,9 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           className={styles.input}
         />
-        <button className={styles.button} onClick={handleLogin}>
+        <Button type="button" variant="primary" onClick={handleLogin}>
           Entrar
-        </button>
+        </Button>
         <Link to="/nova-senha" className={styles.link}>
           Esqueceu a senha?
         </Link>

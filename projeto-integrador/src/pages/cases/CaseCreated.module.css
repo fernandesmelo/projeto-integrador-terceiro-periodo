@@ -38,3 +38,26 @@
 .button:hover {
     background-color: #2564a0;
 }
+
+.questionContainer {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.removeBtn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.addBtn {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-top: 10px;
+    cursor: pointer;
+}
