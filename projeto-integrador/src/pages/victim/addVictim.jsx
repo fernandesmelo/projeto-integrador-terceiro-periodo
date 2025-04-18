@@ -220,8 +220,8 @@ const CreateVictim = () => {
               <option value="NÃO IDENTIFICADO">Não identificado</option>
               <option value="PARCIALMENTE IDENTIFICADO">Parcialmente identificado</option>
             </select>
-            <Button type="button" variant="primary" disabled={isSubmitting}>
-              {isSubmitting ? "Aguarde..." : "Avançar para criar um caso"}
+            <Button type="button" variant="generic" disabled={isSubmitting}>
+              {isSubmitting ? "Aguarde..." : "Avançar para criar caso"}
             </Button>
           </form>
         </div>

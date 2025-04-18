@@ -1,5 +1,6 @@
 .content {
     display: flex;
+    background: var(--light-background);
 }
 
 .marginContent {
@@ -10,4 +11,8 @@
     flex: 1;
     padding: 2rem;
     overflow-y: auto;
+
+    h1 {
+        color: var(--brand-colors-primary);
+    }
 }
