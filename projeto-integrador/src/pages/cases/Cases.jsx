@@ -178,7 +178,7 @@ const Cases = () => {
           </div>
           <div style={{ display: "flex", gap: 5 }}>
             <InputSearch
-              placeholder="pesquisar protocolo"
+              placeholder="Pesquisar protocolo"
               variant="secondary"
               value={protocoloFilter}
               onChange={(e) => {
@@ -199,11 +199,10 @@ const Cases = () => {
                 setPage(1);
               }} 
             >
-              <option value="">FILTRAR POR: </option>
-              <option value="">MEUS CASOS: </option>
-              <option value="ABERTO">ABERTO</option>
-              <option value="FINALIZADO">FINALIZADO</option>
-              <option value="ARQUIVADO">ARQUIVADO</option>
+              <option value="">Filtrar por: </option>
+              <option value="ABERTO">Aberto</option>
+              <option value="FINALIZADO">Finalizado</option>
+              <option value="ARQUIVADO">Arquivo</option>
             </select>
             <input
               type="date"
