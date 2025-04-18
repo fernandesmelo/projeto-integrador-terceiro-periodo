@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Header from "../../components/header/Header";
 import Nav from "../../components/nav/Nav";
+import Button from "../../components/button/Button";
 import styles from "./addVictim.module.css";
 import Swal from "sweetalert2";
 
@@ -9,7 +10,6 @@ const CreateVictim = () => {
   const navigate = useNavigate();
   const [isSubmitting] = useState(false);
 
-  // Recupera dados do localStorage se existirem
   const [formData, setFormData] = useState(() => {
     const defaultData = {
       nic: "",
@@ -33,7 +33,7 @@ const CreateVictim = () => {
 
     if (savedData) {
       const parsed = JSON.parse(savedData);
-      // Faz merge com os dados padrão, garantindo que location e outros campos existam
+  
       return {
         ...defaultData,
         ...parsed,
@@ -74,7 +74,6 @@ const CreateVictim = () => {
     const { name, value } = e.target;
     let newValue = value;
 
-    // Converte para número se o campo for 'age' ou algum campo numérico
     if (name === "age" || name === "location.houseNumber") {
       newValue = value === "" ? "" : parseInt(value);
     }
@@ -126,19 +125,17 @@ const CreateVictim = () => {
       <div className={styles.content}>
         <Nav />
         <div className={styles.marginContent}>
-          <h1>Cadastro da vítima</h1>
+          <h1>Cadastro de Vítimas</h1>
           <form onSubmit={handleSubmit}>
-            <label>NIC*:</label>
+            <label>NIC:</label>
             <input
               name="nic"
               value={formData.nic}
               onChange={handleChange}
               required
             />
-
             <label>Nome:</label>
             <input name="name" value={formData.name} onChange={handleChange} />
-
             <label>Idade:</label>
             <input
               type="number"
@@ -146,33 +143,28 @@ const CreateVictim = () => {
               value={formData.age === "" ? "" : Number(formData.age)}
               onChange={handleChange}
             />
-
             <label>CPF:</label>
             <input name="cpf" value={formData.cpf} onChange={handleChange} />
-
-            <label>Genero:</label>
+            <label>Gênero:</label>
             <select
               name="gender"
               value={formData.gender}
               onChange={handleChange}
             >
-              <option value="">Selecione...</option>
+              <option value="">Selecione a identidade de gênero: </option>
               <option value="MASCULINO">Masculino</option>
               <option value="FEMININO"> Feminino</option>
-              <option value="NAO-BINARIO">Não-Binario</option>
+              <option value="NAO-BINARIO">Não-Binário</option>
               <option value="OUTRO">Outro</option>
             </select>
-
             <fieldset>
-              <legend>Endereço da vítima (opcional)</legend>
-
+              <legend>Endereço da vítima</legend>
               <label>Rua:</label>
               <input
                 name="location.street"
                 value={formData.location.street}
                 onChange={handleChange}
               />
-
               <label>Número:</label>
               <input
                 type="number"
@@ -184,14 +176,12 @@ const CreateVictim = () => {
                 }
                 onChange={handleChange}
               />
-
               <label>Bairro:</label>
               <input
                 name="location.district"
                 value={formData.location.district}
                 onChange={handleChange}
               />
-
               <label>Cidade:</label>
               <input
                 name="location.city"
@@ -205,14 +195,12 @@ const CreateVictim = () => {
                 value={formData.location.state}
                 onChange={handleChange}
               />
-
               <label>CEP:</label>
               <input
                 name="location.zip"
                 value={formData.location.zip}
                 onChange={handleChange}
               />
-
               <label>Complemento:</label>
               <input
                 name="location.complement"
@@ -220,29 +208,21 @@ const CreateVictim = () => {
                 onChange={handleChange}
               />
             </fieldset>
-
-            <label>Status de Identificação*:</label>
+            <label>Status de Identificação:</label>
             <select
               name="identificationStatus"
               value={formData.identificationStatus}
               onChange={handleChange}
               required
             >
-              <option value="">Selecione...</option>
-              <option value="IDENTIFICADO">IDENTIFICADO</option>
-              <option value="NÃO IDENTIFICADO">NÃO IDENTIFICADO</option>
-              <option value="PARCIALMENTE IDENTIFICADO">
-                PARCIALMENTE IDENTIFICADO
-              </option>
+              <option value="">Selecione o status de identificação da vítma</option>
+              <option value="IDENTIFICADO">Identificado</option>
+              <option value="NÃO IDENTIFICADO">Não identificado</option>
+              <option value="PARCIALMENTE IDENTIFICADO">Parcialmente identificado</option>
             </select>
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              style={{ marginTop: 20 }}
-            >
-              {isSubmitting ? "Aguarde..." : "Avançar para criar caso"}
-            </button>
+            <Button type="button" variant="primary" disabled={isSubmitting}>
+              {isSubmitting ? "Aguarde..." : "Avançar para criar um caso"}
+            </Button>
           </form>
         </div>
       </div>
