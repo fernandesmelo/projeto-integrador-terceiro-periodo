@@ -5,6 +5,7 @@ import Nav from "../../components/nav/Nav";
 import styles from "./CaseReport.module.css";
 import Swal from "sweetalert2";
 import axios from "axios";
+import Nav2 from "../../components/nav2/Nav2";
 
 const CaseReportForm = () => {
   const location = useLocation();
@@ -193,6 +194,7 @@ const CaseReportForm = () => {
           <section>
             <div className={styles.caseSection}>
               <h2>Informações Gerais</h2>
+              <Nav2 onClick={() => navigate(-1)} content='voltar'/>
               <p>
                 <strong>Protocolo:</strong> {getOrNA(caseData.protocol)}
               </p>

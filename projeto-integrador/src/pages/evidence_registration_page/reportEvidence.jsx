@@ -5,6 +5,7 @@ import Nav from "../../components/nav/Nav";
 import styles from "./reportEvidence.module.css";
 import Swal from "sweetalert2";
 import axios from "axios";
+import Nav2 from "../../components/nav2/Nav2";
 
 const LaudoForm = () => {
   const { state } = useLocation();
@@ -80,6 +81,7 @@ const LaudoForm = () => {
         <Nav />
         <div className={styles.formContainer}>
           <h1>Gerar Laudo da Evidência</h1>
+          <Nav2 onClick={() => navigate(-1)} content='voltar'/>
 
           <div className={styles.evidenceInfo}>
             {evidence?.photo && (

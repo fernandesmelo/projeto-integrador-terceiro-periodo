@@ -6,6 +6,7 @@ import styles from "./EvidenceRegistrationPage.module.css";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import Nav2 from "../../components/nav2/Nav2";
 
 const EvidenceRegistrationPage = () => {
   const navigate = useNavigate();
@@ -144,6 +145,7 @@ const EvidenceRegistrationPage = () => {
         <Nav />
         <div className={styles.evidence_registration}>
           <h3>Insira as informações das evidências</h3>
+          <Nav2 onClick={() => navigate(-1)} content='voltar'/>
           <form onSubmit={sendEvidence}>
             <label htmlFor="title">Título:</label>
             <input

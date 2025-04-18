@@ -4,6 +4,7 @@ import Nav from "../../components/nav/Nav";
 import styles from "./UserRegistrationPage.module.css";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import Nav2 from "../../components/nav2/Nav2";
 
 
 const UserRegistrationPage = () => {
@@ -71,9 +72,14 @@ const UserRegistrationPage = () => {
                     title: 'Sucesso!'
                 })
                 console.log('✅ Cadastro realizado com sucesso!', result);
-                navigate('/admin/usuarios')
+                navigate('/admin/usuarios-cadastrados')
             } else {
                 console.error('❌ Erro no cadastro. Resposta do back:', result);
+                Swal.fire({
+                    text: 'erro no cadastro!',
+                    icon: 'error',
+                    title: 'Erro!'
+                })
             }
 
         } catch (err) {
@@ -89,6 +95,8 @@ const UserRegistrationPage = () => {
                 <div className={styles.user_registration}>
                     <div className={styles.registration}>
                         <h3>Insira as informações do usuário</h3>
+                        <Nav2 onClick={() => navigate(-1)} content='voltar'/>
+
                         <form onSubmit={handleSubmit}>
                             <label htmlFor="name">Nome:</label>
                             <div>

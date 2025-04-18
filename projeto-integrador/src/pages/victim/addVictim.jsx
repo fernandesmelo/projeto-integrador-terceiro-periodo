@@ -4,6 +4,7 @@ import Header from "../../components/header/Header";
 import Nav from "../../components/nav/Nav";
 import styles from "./addVictim.module.css";
 import Swal from "sweetalert2";
+import Nav2 from "../../components/nav2/Nav2";
 
 const CreateVictim = () => {
   const navigate = useNavigate();
@@ -127,6 +128,9 @@ const CreateVictim = () => {
         <Nav />
         <div className={styles.marginContent}>
           <h1>Cadastro da vítima</h1>
+          <Nav2 onClick={() => navigate(-1)} content='voltar'/>
+
+
           <form onSubmit={handleSubmit}>
             <label>NIC*:</label>
             <input

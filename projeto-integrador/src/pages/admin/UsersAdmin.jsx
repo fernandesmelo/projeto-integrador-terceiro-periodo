@@ -47,6 +47,7 @@ const UsersAdmin = () => {
                 <Nav />
                 <div className={styles.contentDiv}>
                     <h1 className={styles.title}>Usuarios cadastrados</h1>
+
                     <Button onClick={() => navigate('/admin/cadastrar-usuario')}>Cadastrar usuario</Button>
                     <TableUsers users={currentUsers} />
                     <div className={styles.pagination}>
