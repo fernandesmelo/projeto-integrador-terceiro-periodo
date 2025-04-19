@@ -36,7 +36,7 @@ const Table = ({ cases }) => {
       try {
         console.log("Excluindo caso com protocolo:", protocol);
         await axios.delete(
-          `https://sistema-odonto-legal.onrender.com/api/cases/search/protocol`,
+          `https://sistema-odonto-legal.onrender.com/api/cases/delete/protocol`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
