@@ -468,8 +468,7 @@ const CaseCreated = () => {
                   ))}
               </ul>
             </div>
-
-            <button type="submit" className={styles.button}>
+            <Button type="submit" className={styles.button}>
               Cadastrar
             </Button>
           </form>
