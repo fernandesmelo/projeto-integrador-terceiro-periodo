@@ -254,13 +254,14 @@ const CaseCreated = () => {
                 onChange={(e) => setNic(e.target.value)}
                 required
                 readOnly
+                placeholder="Número de identificação civil"
               />
               <label htmlFor="Título">TÍtulo:</label>
               <input
                 className={styles.input}
                 id="Título"
                 type="text"
-                placeholder="Título"
+                placeholder="Título do caso"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
@@ -269,13 +270,11 @@ const CaseCreated = () => {
                 className={styles.input}
                 id="Número do Inquérito"
                 type="text"
-                placeholder="Número do Inquérito"
+                placeholder="Número do inquérito"
                 value={inquiryNumber}
                 onChange={(e) => setInquiryNumber(e.target.value)}
               />
-              <label htmlFor="Instituição requisitante">
-                Instituição requisitante*:
-              </label>
+              <label htmlFor="Instituição requisitante">Instituição   Requisitante:</label>
               <input
                 className={styles.input}
                 id="Instituição requisitante"
@@ -284,9 +283,7 @@ const CaseCreated = () => {
                 value={requestingInstitution}
                 onChange={(e) => setRequestingInstitution(e.target.value)}
               />
-              <label htmlFor="Autoridade requisitante">
-                Autoridade requisitante*:
-              </label>
+              <label htmlFor="Autoridade requisitante">Autoridade Requisitante:</label>
               <input
                 className={styles.input}
                 id="Autoridade requisitante"
@@ -295,7 +292,7 @@ const CaseCreated = () => {
                 value={requestingAuthority}
                 onChange={(e) => setRequestingAuthority(e.target.value)}
               />
-              <label htmlFor="Tipo de caso">Tipo de caso*:</label>
+              <label htmlFor="Tipo de caso">Tipo de Caso:</label>
               <select
                 className={styles.input}
                 id="Tipo de caso"
@@ -303,25 +300,20 @@ const CaseCreated = () => {
                 onChange={(e) => setCaseType(e.target.value)}
               >
                 <option value="">Selecione o tipo de caso</option>
-                <option value="COLETA DNA">COLETA DNA</option>
-                <option value="EXAME MARCA DE MORDIDA">
-                  EXAME MARCA DE MORDIDA
-                </option>
-                <option value="IDENTIFICAÇÃO DE VÍTIMA">
-                  IDENTIFICAÇÃO DE VÍTIMA
-                </option>
-                <option value="LESÕES CORPORAIS">EXAME CADAVÉRICO</option>
+                <option value="COLETA DNA">Coleta DNA</option>
+                <option value="EXAME MARCA DE MORDIDA">Exame marca de mordida</option>
+                <option value="IDENTIFICAÇÃO DE VÍTIMA">Identificação de vítma</option>
+                <option value="LESÕES CORPORAIS">Exame cadavérico</option>
               </select>
               <label htmlFor="Observações">Observações:</label>
               <textarea
                 className={styles.input}
                 id="Observações"
-                placeholder="Observações"
+                placeholder="Observações sobre o caso"
                 value={observations}
                 onChange={(e) => setObservations(e.target.value)}
               />
-
-              <h3>Perguntas do requisitante*:</h3>
+              <h3>Perguntas do Requisitante:</h3>
               {questions.map((q, index) => (
                 <div key={index} className={styles.questionContainer}>
                   <input
@@ -352,9 +344,8 @@ const CaseCreated = () => {
               >
                 Adicionar nova pergunta
               </button>
-
-              <h3>Local do ocorrido:</h3>
-              <label htmlFor="Rua">Rua</label>
+              <h3>Local do Ocorrido</h3>
+              <label htmlFor="Rua">Rua:</label>
               <input
                 className={styles.input}
                 id="Rua"
@@ -363,8 +354,7 @@ const CaseCreated = () => {
                 value={location.street}
                 onChange={(e) => handleLocationChange("street", e.target.value)}
               />
-
-              <label htmlFor="Número">Número</label>
+              <label htmlFor="Número">Número:</label>
               <input
                 className={styles.input}
                 id="Número"
@@ -375,8 +365,7 @@ const CaseCreated = () => {
                   handleLocationChange("houseNumber", e.target.value)
                 }
               />
-
-              <label htmlFor="Bairro">Bairro</label>
+              <label htmlFor="Bairro">Bairro:</label>
               <input
                 className={styles.input}
                 id="Bairro"
@@ -387,8 +376,7 @@ const CaseCreated = () => {
                   handleLocationChange("district", e.target.value)
                 }
               />
-
-              <label htmlFor="Cidade">Cidade</label>
+              <label htmlFor="Cidade">Cidade:</label>
               <input
                 className={styles.input}
                 id="Cidade"
@@ -397,8 +385,7 @@ const CaseCreated = () => {
                 value={location.city}
                 onChange={(e) => handleLocationChange("city", e.target.value)}
               />
-
-              <label htmlFor="Estado">Estado</label>
+              <label htmlFor="Estado">Estado:</label>
               <input
                 className={styles.input}
                 id="Estado"
@@ -407,8 +394,7 @@ const CaseCreated = () => {
                 value={location.state}
                 onChange={(e) => handleLocationChange("state", e.target.value)}
               />
-
-              <label htmlFor="CEP">CEP</label>
+              <label htmlFor="CEP">CEP:</label>
               <input
                 className={styles.input}
                 id="CEP"
@@ -419,20 +405,18 @@ const CaseCreated = () => {
                   handleLocationChange("zipCode", e.target.value)
                 }
               />
-
               <label htmlFor="Complemento">Complemento</label>
               <input
                 className={styles.input}
                 id="Complemento"
                 type="text"
-                placeholder="Digite o complemento (opcional)"
+                placeholder="Digite o complemento"
                 value={location.complement}
                 onChange={(e) =>
                   handleLocationChange("complement", e.target.value)
                 }
               />
             </div>
-
             <div>
               <button
                 className={styles.button}
@@ -458,7 +442,6 @@ const CaseCreated = () => {
                 </ul>
               )}
             </div>
-
             <div>
               <strong>Profissionais selecionados:</strong>
               <ul>
@@ -471,7 +454,6 @@ const CaseCreated = () => {
                   ))}
               </ul>
             </div>
-
             <button type="submit" className={styles.button}>
               Cadastrar
             </button>
