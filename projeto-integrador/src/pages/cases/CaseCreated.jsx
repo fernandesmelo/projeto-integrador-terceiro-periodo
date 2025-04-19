@@ -435,6 +435,7 @@ const CaseCreated = () => {
             <fieldset>
               <legend>Profissionais Envolvidos</legend>
               <div className={styles.professionalsList}>
+                <strong>Selecione os profissionais envolvidos no caso:</strong>
                 {users.map((user) => (
                   <div key={user._id} className={styles.professionalOption}>
                     <label>

@@ -67,14 +67,6 @@ legend {
     padding: 0;
 }
 
-.professionalsList {
-    display: flex;
-    flex-direction: column;
-    margin: 1rem 0 1.5rem 0;
-    list-style: none;
-    padding: 0;
-}
-
 .professionalOption {
     display: flex;
     align-items: center;
