@@ -127,7 +127,7 @@ const CreateVictim = () => {
         <div className={styles.marginContent}>
           <h1>Cadastro de Vítimas</h1>
           <form onSubmit={handleSubmit}>
-            <label>NIC:</label>
+            <label>NIC:*</label>
             <input
               name="nic"
               value={formData.nic}
@@ -208,7 +208,7 @@ const CreateVictim = () => {
                 onChange={handleChange}
               />
             </fieldset>
-            <label>Status de Identificação:</label>
+            <label>Status de Identificação:*</label>
             <select className={styles.status}
               name="identificationStatus"
               value={formData.identificationStatus}
