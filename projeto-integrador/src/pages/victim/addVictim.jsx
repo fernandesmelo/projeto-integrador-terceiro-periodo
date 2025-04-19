@@ -247,6 +247,7 @@ const CreateVictim = () => {
               type="button"
               variant="generic-primary"
               disabled={isSubmitting}
+              onClick={handleSubmit}
             >
               {isSubmitting ? "Aguarde..." : "Avançar para criar caso"}
             </Button>
