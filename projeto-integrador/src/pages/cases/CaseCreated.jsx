@@ -257,8 +257,6 @@ const CaseCreated = () => {
                 required
                 readOnly
               />
-            </div>
-            <div>
               <label htmlFor="Título">TÍtulo*:</label>
               <input
                 className={styles.input}
@@ -434,47 +432,47 @@ const CaseCreated = () => {
                 onChange={(e) =>
                   handleLocationChange("complement", e.target.value)
                 }
-              />
-            </div>
+              /> <div>
+                <button
+                  className={styles.button}
+                  type="button"
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                >
+                  Selecionar profissionais ▼
+                </button>
+                {dropdownOpen && (
+                  <ul className={styles.input}>
+                    {users.map((user) => (
+                      <li key={user._id}>
+                        <label>
+                          <input
+                            type="checkbox"
+                            checked={envolved.includes(user._id)}
+                            onChange={() => toggleUser(user._id)}
+                          />
+                          {user.name} ({user.role})
+                        </label>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
 
-            <div>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-              >
-                Selecionar profissionais ▼
-              </button>
-              {dropdownOpen && (
-                <ul className={styles.input}>
-                  {users.map((user) => (
-                    <li key={user._id}>
-                      <label>
-                        <input
-                          type="checkbox"
-                          checked={envolved.includes(user._id)}
-                          onChange={() => toggleUser(user._id)}
-                        />
-                        {user.name} ({user.role})
-                      </label>
-                    </li>
-                  ))}
+              <div>
+                <strong>Profissionais selecionados:</strong>
+                <ul>
+                  {users
+                    .filter((u) => envolved.includes(u._id))
+                    .map((u) => (
+                      <li key={u._id}>
+                        {u.name} ({u.role})
+                      </li>
+                    ))}
                 </ul>
-              )}
+              </div>
             </div>
 
-            <div>
-              <strong>Profissionais selecionados:</strong>
-              <ul>
-                {users
-                  .filter((u) => envolved.includes(u._id))
-                  .map((u) => (
-                    <li key={u._id}>
-                      {u.name} ({u.role})
-                    </li>
-                  ))}
-              </ul>
-            </div>
+
 
             <button type="submit" className={styles.button}>
               Cadastrar

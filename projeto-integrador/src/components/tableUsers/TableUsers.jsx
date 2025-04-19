@@ -75,7 +75,7 @@ const TableUsers = () => {
       }
     }
   }
-
+  console.log('dados recebidos: ', editingUser)
 
 
 
@@ -268,13 +268,12 @@ const TableUsers = () => {
                 }
 
                 try {
-                  const formattedDateOfBirth = new Date(editingUser.dateOfBirth).toISOString().split('T')[0];
                   const updatedUser = {
-                    ...editingUser,
-                    dateOfBirth: formattedDateOfBirth,
+                    ...editingUser
                   };
 
                   console.log("Editando usuário com ID:", editingUser.id);
+                  
 
                   await axios.put(urlEdit, updatedUser, {
                     headers: {
