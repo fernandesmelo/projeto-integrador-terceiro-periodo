@@ -243,10 +243,10 @@ const CaseCreated = () => {
       <div className={styles.content}>
         <Nav />
         <div className={styles.marginContent}>
-          <h1>Cadastrar um Novo Caso</h1>
+          <h1>Cadastrar Novo Caso</h1>
           <form onSubmit={handleSubmit}>
             <div>
-              <label>NIC*:</label>
+            <label>NIC:</label>
               <input
                 className={styles.input}
                 name="nic"
@@ -255,9 +255,7 @@ const CaseCreated = () => {
                 required
                 readOnly
               />
-            </div>
-            <div>
-              <label htmlFor="Título">TÍtulo*:</label>
+              <label htmlFor="Título">TÍtulo:</label>
               <input
                 className={styles.input}
                 id="Título"
@@ -266,7 +264,7 @@ const CaseCreated = () => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
-              <label htmlFor="Número do Inquérito">Número do Inquérito*:</label>
+              <label htmlFor="Número do Inquérito">Número do Inquérito:</label>
               <input
                 className={styles.input}
                 id="Número do Inquérito"

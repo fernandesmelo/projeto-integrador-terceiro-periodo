@@ -12,29 +12,28 @@
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
-}
 
-h1 {
-    color: var(--brand-colors-primary);
-    margin-bottom: 1rem;
+    h1 {
+        color: var(--brand-colors-primary);
+        margin-bottom: 1rem;
+    }
 }
 
 form {
     display: flex;
     flex-wrap: wrap;
     color: var(--brand-colors-primary);
-    gap: 1rem; /* Espaçamento entre os inputs */
-}
 
-form label {
-    width: 100%;
-    font-weight: bold;
+    label {
+        width: 100%;
+        font-weight: bold;
+    }
 }
 
 form input,
 form select,
 form textarea {
-    flex: 1 1 calc(50% - 1rem); /* Inputs ocupam 50% da largura */
+    flex: 1 1 calc(50% - 1rem); 
     padding: 0.625rem;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -58,21 +57,6 @@ legend {
     margin-right: 1.5rem;
 }
 
-.button {
-    width: 100%;
-    padding: 0.75rem;
-    background-color: var(--brand-colors-primary);
-    color: var(--white);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 1rem;
-}
-
-.button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
 
 .questionContainer {
     display: flex;
