@@ -83,13 +83,12 @@ legend {
 }
 
 .professionalOption label {
-    display: flex;
     align-items: center;
     justify-content: flex-start; 
     font-weight: normal;
 }
 
-.strong {
-    list-style: none;
+.check {
+    width: 14px;
+    margin-right: 10px;
 }
-

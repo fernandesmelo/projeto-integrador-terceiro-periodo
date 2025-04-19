@@ -440,6 +440,7 @@ const CaseCreated = () => {
                     <label>
                       <input
                         type="checkbox"
+                        className={styles.check}
                         checked={envolved.includes(user._id)}
                         onChange={() => toggleUser(user._id)}
                       />
