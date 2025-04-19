@@ -36,7 +36,7 @@ const Table = ({ cases }) => {
       try {
         console.log("Excluindo caso com protocolo:", protocol);
         await axios.delete(
-          `https://sistema-odonto-legal.onrender.com/api/cases/search/protocol`,
+          `https://sistema-odonto-legal.onrender.com/api/cases/delete/protocol`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -47,6 +47,7 @@ const Table = ({ cases }) => {
           }
         );
         Swal.fire("Excluído!", "O caso foi excluído com sucesso.", "success");
+        window.location.reload();
       } catch (error) {
         console.log("Erro ao excluir caso:", error);
         Swal.fire(

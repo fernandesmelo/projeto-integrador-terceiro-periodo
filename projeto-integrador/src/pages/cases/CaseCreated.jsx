@@ -248,7 +248,7 @@ const CaseCreated = () => {
             <div>
               <label>NIC*:</label>
               <input
-                className={styles.input}
+                className={styles.inputDisabled}
                 name="nic"
                 value={nic}
                 onChange={(e) => setNic(e.target.value)}
