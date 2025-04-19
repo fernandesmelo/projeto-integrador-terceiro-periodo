@@ -462,9 +462,9 @@ const CaseCreated = () => {
                 </ul>
               </div>
             </fieldset>
-            <button type="submit" className={styles.button}>
+            <Button type="button" variant="generic-primary" onClick={() => navigate("/casos")}>
               Cadastrar
-            </button>
+            </Button>
           </form>
         </div>
       </div>
