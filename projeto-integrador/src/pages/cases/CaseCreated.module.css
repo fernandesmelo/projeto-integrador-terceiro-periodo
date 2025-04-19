@@ -61,21 +61,30 @@ legend {
 .professionalsList {
     display: flex;
     flex-direction: column;
-    gap: 1rem; /* Espaçamento entre as opções */
-    margin-top: 1rem;
-  }
-  
-  .professionalOption {
-    flex: 1 1 calc(50% - 1rem); 
-  }
-  
-  .professionalOption label {
+    margin: 1rem 0 1.5rem 0;
+    list-style: none;
+    padding: 0;
+}
+
+.professionalsList {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0 1.5rem 0;
+    list-style: none;
+    padding: 0;
+}
+
+.professionalOption {
     display: flex;
     align-items: center;
-    
-    font-weight: bold;
-  }
-  
-  .professionalOption input[type="checkbox"] {
-    transform: scale(1.2); /* Aumenta o tamanho do checkbox */
-  }
+    gap: 0.5rem;
+    justify-content: flex-start; /* Alinha o conteúdo à esquerda */
+}
+
+.professionalOption label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Alinha o texto e o checkbox à esquerda */
+    font-weight: normal;
+}
+
