@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Nav from "../../components/nav/Nav";
+import Button from "../../components/button/Button";
 import styles from "./CaseCreated.module.css";
 import Swal from "sweetalert2";
 import axios from "axios";
@@ -337,13 +338,9 @@ const CaseCreated = () => {
                   )}
                 </div>
               ))}
-              <button
-                type="button"
-                onClick={addQuestion}
-                className={styles.addBtn}
-              >
+              <Button  type="button" variant="generic-secondary" onClick={addQuestion} >
                 Adicionar nova pergunta
-              </button>
+              </Button>
               <h3>Local do Ocorrido</h3>
               <label htmlFor="Rua">Rua:</label>
               <input
@@ -405,7 +402,7 @@ const CaseCreated = () => {
                   handleLocationChange("zipCode", e.target.value)
                 }
               />
-              <label htmlFor="Complemento">Complemento</label>
+              <label htmlFor="Complemento">Complemento:</label>
               <input
                 className={styles.input}
                 id="Complemento"

@@ -242,7 +242,7 @@ const CreateVictim = () => {
                 Parcialmente identificado
               </option>
             </select>
-            <Button type="button" variant="generic" onClick={()=> navigate("/casos/cadastrar")} disabled={isSubmitting}>
+            <Button type="button" variant="generic-primary" onClick={()=> navigate("/casos/cadastrar")} disabled={isSubmitting}>
               {isSubmitting ? "Aguarde..." : "Avançar para criar caso"}
             </Button>
           </form>
