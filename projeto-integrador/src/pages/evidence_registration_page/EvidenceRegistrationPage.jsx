@@ -145,7 +145,7 @@ const EvidenceRegistrationPage = () => {
         <div className={styles.evidence_registration}>
           <h3>Insira as informações das evidências</h3>
           <form onSubmit={sendEvidence}>
-            <label htmlFor="title">Título:</label>
+            <label htmlFor="title">Título:*</label>
             <input
               type="text"
               id="title"
@@ -155,7 +155,7 @@ const EvidenceRegistrationPage = () => {
               onChange={(e) => settitle(e.target.value)}
               required
             />
-            <label htmlFor="descriptionTechnical">Descrição Técnica:</label>
+            <label htmlFor="descriptionTechnical">Descrição Técnica:*</label>
             <input
               type="text"
               id="descriptionTechnical"
@@ -175,7 +175,7 @@ const EvidenceRegistrationPage = () => {
               onChange={(e) => settestimony(e.target.value)}
             />
             <label htmlFor="imagem">
-              Imagens (Radiografias/Fotografias Intraorais):
+              Imagens (Radiografias/Fotografias Intraorais):*
             </label>
             <input
               type="file"
@@ -194,7 +194,7 @@ const EvidenceRegistrationPage = () => {
                 />
               </div>
             )}
-            <label htmlFor="condicaoEvidencia">Condição da Evidência:</label>
+            <label htmlFor="condicaoEvidencia">Condição da Evidência:*</label>
             <select
               id="condicaoEvidencia"
               onChange={(e) => setcondition(e.target.value)}
@@ -268,8 +268,9 @@ const EvidenceRegistrationPage = () => {
               value={obs}
               onChange={(e) => setobs(e.target.value)}
             />
-            <label htmlFor="category">Categoria:</label>
+            <label htmlFor="category">Categoria:*</label>
             <select
+              required
               id="category"
               className={styles.input}
               value={category}

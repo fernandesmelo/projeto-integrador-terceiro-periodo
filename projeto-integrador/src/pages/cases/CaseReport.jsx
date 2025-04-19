@@ -6,6 +6,7 @@ import styles from "./CaseReport.module.css";
 import Swal from "sweetalert2";
 import axios from "axios";
 
+
 const CaseReportForm = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -116,7 +117,16 @@ const CaseReportForm = () => {
       updateData.address.houseNumber = Number(victimData.address.houseNumber);
     }
 
+    Swal.fire({
+      title: "Aguarde...",
+      text: "Gerando relatorio.",
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
     try {
+
       // Primeiro atualiza os dados da vítima se foram editados
       if (editVictim && caseData.patient?.nic) {
         await axios.put(
@@ -164,9 +174,18 @@ const CaseReportForm = () => {
           },
         }
       );
+      Swal.close()
+      Swal.fire({
+        icon: "success",
+        title: "Relatorio salvo com sucesso!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
 
-      Swal.fire("Sucesso!", "Relatório salvo com sucesso!", "success");
-      navigate(`/casos/detalhes/${caseData.protocol}`);
+      // redirecionar após um pequeno delay
+      setTimeout(() => {
+        navigate(`/casos/detalhes/${caseData.protocol}`);
+      }, 1500);
     } catch (error) {
       console.error("Erro ao salvar:", error);
       Swal.fire(
@@ -408,7 +427,7 @@ const CaseReportForm = () => {
                 <h3>Editar Dados da Vítima</h3>
 
                 <div className={styles.formGroup}>
-                  <label>Nome completo:</label>
+                  <label>Nome completo:*</label>
                   <input
                     value={victimData.name}
                     onChange={(e) =>
@@ -464,7 +483,7 @@ const CaseReportForm = () => {
                 </div>
 
                 <div className={styles.formGroup}>
-                  <label>Status de Identificação:</label>
+                  <label>Status de Identificação:*</label>
                   <select
                     value={victimData.identificationStatus}
                     onChange={(e) =>
@@ -607,9 +626,8 @@ const CaseReportForm = () => {
           <button
             type="button"
             onClick={confirmEdit}
-            className={`${styles.editButton} ${
-              editVictim ? styles.edited : ""
-            }`}
+            className={`${styles.editButton} ${editVictim ? styles.edited : ""
+              }`}
           >
             {editVictim
               ? "✓ Dados da Vítima Editados"
@@ -618,7 +636,7 @@ const CaseReportForm = () => {
 
           <h2 className={styles.title}>Relatório Final do Caso</h2>
           <form onSubmit={handleSubmit} className={styles.form}>
-            <label>Descrição do Caso:</label>
+            <label>Descrição do Caso:*</label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -626,7 +644,7 @@ const CaseReportForm = () => {
               className={styles.textarea}
             />
 
-            <label>Conclusão:</label>
+            <label>Conclusão:*</label>
             <textarea
               value={conclusion}
               onChange={(e) => setConclusion(e.target.value)}
@@ -636,7 +654,7 @@ const CaseReportForm = () => {
 
             {answers.map((ans, idx) => (
               <div key={idx}>
-                <label>Pergunta {idx + 1}:</label>
+                <label>Pergunta {idx + 1}:*</label>
                 <input
                   type="text"
                   value={ans}
@@ -647,7 +665,7 @@ const CaseReportForm = () => {
               </div>
             ))}
 
-            <label>Status do Caso:</label>
+            <label>Status do Caso:*</label>
             <select
               value={status}
               onChange={(e) => setStatus(e.target.value)}

@@ -387,7 +387,7 @@ const CaseDetails = () => {
             <p>Carregando detalhes do caso...</p>
           )}
 
-          <button className={styles.buttonToBack} onClick={() => navigate(-1)}>
+          <button className={styles.buttonToBack} onClick={() => navigate('/casos')}>
             Voltar
           </button>
         </div>
