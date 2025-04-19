@@ -78,13 +78,13 @@ legend {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    justify-content: flex-start; /* Alinha o conteúdo à esquerda */
+    justify-content: flex-start; 
 }
 
 .professionalOption label {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Alinha o texto e o checkbox à esquerda */
+    justify-content: flex-start; 
     font-weight: normal;
 }
 
