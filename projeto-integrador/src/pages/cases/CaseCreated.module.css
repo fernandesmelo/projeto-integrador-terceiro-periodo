@@ -62,18 +62,3 @@ legend {
     align-items: center;
     gap: 1rem;
 }
-
-.addBtn,
-.removeBtn {
-    padding: 0.5rem 1rem;
-    background-color: var(--brand-colors-secondary);
-    color: var(--white);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.addBtn:hover,
-.removeBtn:hover {
-    background-color: var(--hover-effect-secondary);
-}

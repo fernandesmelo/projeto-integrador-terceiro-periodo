@@ -83,7 +83,7 @@
   color: var(--black);
 
   &:hover {
-    background-color: var(--hover-effect-primary);
+    background-color: var(--hover-effect-secondary);
   }
 }
 

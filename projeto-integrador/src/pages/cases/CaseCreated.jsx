@@ -322,19 +322,13 @@ const CaseCreated = () => {
                     type="text"
                     placeholder={`Pergunta ${index + 1}`}
                     value={q.question}
-                    onChange={(e) =>
-                      handleQuestionChange(index, e.target.value)
-                    }
+                    onChange={(e) => handleQuestionChange(index, e.target.value)}
                     required
                   />
                   {questions.length > 1 && (
-                    <button
-                      type="button"
-                      className={styles.removeBtn}
-                      onClick={() => removeQuestion(index)}
-                    >
+                    <Button type="button" variant="small-secondary" onClick={() => removeQuestion(index)}>
                       Remover
-                    </button>
+                    </Button>
                   )}
                 </div>
               ))}
