@@ -110,7 +110,7 @@ const LaudoForm = () => {
           </div>
 
           <form onSubmit={handleSubmit}>
-            <label>Análise Técnica:</label>
+            <label>Análise Técnica:*</label>
             <textarea
               value={technicalAnalysis}
               onChange={(e) => setTechnicalAnalysis(e.target.value)}
@@ -118,7 +118,7 @@ const LaudoForm = () => {
               required
             />
 
-            <label>Conclusão do Laudo:</label>
+            <label>Conclusão do Laudo:*</label>
             <textarea
               value={conclusion}
               onChange={(e) => setConclusion(e.target.value)}

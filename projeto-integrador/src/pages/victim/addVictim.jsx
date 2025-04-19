@@ -127,7 +127,7 @@ const CreateVictim = () => {
         <div className={styles.marginContent}>
           <h1>Cadastro de Vítimas</h1>
           <form onSubmit={handleSubmit}>
-            <label>NIC:</label>
+            <label>NIC:*</label>
             <input
               name="nic"
               value={formData.nic}
@@ -226,7 +226,7 @@ const CreateVictim = () => {
                 placeholder="Complemento do endereço da vítima"
               />
             </fieldset>
-            <label>Status de Identificação:</label>
+            <label>Status de Identificação:*</label>
             <select className={styles.status}
               name="identificationStatus"
               value={formData.identificationStatus}
@@ -242,9 +242,10 @@ const CreateVictim = () => {
                 Parcialmente identificado
               </option>
             </select>
-            <Button type="button" variant="generic-primary" onClick={()=> navigate("/casos/cadastrar")} disabled={isSubmitting}>
+            <Button type="button" variant="generic" disabled={isSubmitting}>
               {isSubmitting ? "Aguarde..." : "Avançar para criar caso"}
-            </Button>
+            </button>
+
           </form>
         </div>
       </div>

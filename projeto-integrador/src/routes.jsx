@@ -12,7 +12,7 @@ import CreateVictim from "./pages/victim/addVictim";
 import ReportEvidence from "./pages/evidence_registration_page/reportEvidence";
 import ExportReportEvidence from "./pages/evidence_registration_page/exportReportEvidence";
 import ReportCase from "./pages/cases/CaseReport";
-import RelatorioPage from "./pages/cases/exportReportCase";
+import RelatorioPage from "./pages/cases/ExportReportCase";
 
 const AppRoutes = () => {
   return (
