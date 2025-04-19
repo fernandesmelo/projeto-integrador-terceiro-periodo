@@ -255,19 +255,19 @@ const CaseCreated = () => {
                 required
                 readOnly
               />
-            </div>
-            <div>
               <label htmlFor="Título">TÍtulo*:</label>
               <input
                 className={styles.input}
                 id="Título"
                 type="text"
                 placeholder="Título"
+                required
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
               <label htmlFor="Número do Inquérito">Número do Inquérito*:</label>
               <input
+                required
                 className={styles.input}
                 id="Número do Inquérito"
                 type="text"
@@ -279,6 +279,7 @@ const CaseCreated = () => {
                 Instituição requisitante*:
               </label>
               <input
+                required
                 className={styles.input}
                 id="Instituição requisitante"
                 type="text"
@@ -290,6 +291,7 @@ const CaseCreated = () => {
                 Autoridade requisitante*:
               </label>
               <input
+                required
                 className={styles.input}
                 id="Autoridade requisitante"
                 type="text"
@@ -299,6 +301,7 @@ const CaseCreated = () => {
               />
               <label htmlFor="Tipo de caso">Tipo de caso*:</label>
               <select
+                required
                 className={styles.input}
                 id="Tipo de caso"
                 value={caseType}
@@ -432,47 +435,47 @@ const CaseCreated = () => {
                 onChange={(e) =>
                   handleLocationChange("complement", e.target.value)
                 }
-              />
-            </div>
+              />            <div>
+                <button
+                  className={styles.button}
+                  type="button"
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                >
+                  Selecionar profissionais ▼
+                </button>
+                {dropdownOpen && (
+                  <ul className={styles.input}>
+                    {users.map((user) => (
+                      <li key={user._id}>
+                        <label>
+                          <input
+                            type="checkbox"
+                            checked={envolved.includes(user._id)}
+                            onChange={() => toggleUser(user._id)}
+                          />
+                          {user.name} ({user.role})
+                        </label>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
 
-            <div>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-              >
-                Selecionar profissionais ▼
-              </button>
-              {dropdownOpen && (
-                <ul className={styles.input}>
-                  {users.map((user) => (
-                    <li key={user._id}>
-                      <label>
-                        <input
-                          type="checkbox"
-                          checked={envolved.includes(user._id)}
-                          onChange={() => toggleUser(user._id)}
-                        />
-                        {user.name} ({user.role})
-                      </label>
-                    </li>
-                  ))}
+              <div>
+                <strong>Profissionais selecionados:</strong>
+                <ul>
+                  {users
+                    .filter((u) => envolved.includes(u._id))
+                    .map((u) => (
+                      <li key={u._id}>
+                        {u.name} ({u.role})
+                      </li>
+                    ))}
                 </ul>
-              )}
+              </div>
+
             </div>
 
-            <div>
-              <strong>Profissionais selecionados:</strong>
-              <ul>
-                {users
-                  .filter((u) => envolved.includes(u._id))
-                  .map((u) => (
-                    <li key={u._id}>
-                      {u.name} ({u.role})
-                    </li>
-                  ))}
-              </ul>
-            </div>
 
             <button type="submit" className={styles.button}>
               Cadastrar

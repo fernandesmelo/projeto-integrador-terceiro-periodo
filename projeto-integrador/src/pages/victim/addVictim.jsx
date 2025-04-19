@@ -224,9 +224,14 @@ const CreateVictim = () => {
                 Parcialmente identificado
               </option>
             </select>
-            <Button type="button" variant="generic" disabled={isSubmitting}>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              style={{ marginTop: 20 }}
+            >
               {isSubmitting ? "Aguarde..." : "Avançar para criar caso"}
-            </Button>
+            </button>
+
           </form>
         </div>
       </div>
