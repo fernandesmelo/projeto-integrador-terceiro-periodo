@@ -1,5 +1,5 @@
 .button {
-  width: 25%;
+  width: 100%;
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -54,6 +54,21 @@
 
   &:hover {
     background-color: var(--hover-effect-secondary);
+  }
+}
+
+.generic {
+  width: 25%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  background-color: var(--brand-colors-primary);
+  color: var(--white);
+
+  &:hover {
+    background-color: var(--hover-effect-primary);
   }
 }
 

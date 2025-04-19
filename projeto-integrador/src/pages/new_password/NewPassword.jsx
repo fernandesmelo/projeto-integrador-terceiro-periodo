@@ -21,7 +21,7 @@ const NewPassword = () => {
         <input type="email" placeholder="Email" className={styles.input} />
         <input type="password" placeholder="Senha" className={styles.input} />
         <input type="password" placeholder="Confirme sua senha" className={styles.input} />
-        <Button onClick={handleNewPassword} type="button" variant="primary">
+        <Button type="button" variant="primary" onClick={handleNewPassword} disabled={false}>
           Cadastrar nova senha
         </Button>
       </div>
