@@ -53,7 +53,6 @@ const Table = ({ cases }) => {
         );
 
         Swal.fire("Excluído!", "O caso foi excluído com sucesso.", "success");
-
         // Atualiza o estado interno: remove o caso excluído
         setTableCases((prev) =>
           prev.filter((item) => item.protocol !== protocol)
