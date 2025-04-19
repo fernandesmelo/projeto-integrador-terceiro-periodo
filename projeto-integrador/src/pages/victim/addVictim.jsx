@@ -136,12 +136,12 @@ const CreateVictim = () => {
               placeholder="Número de identificação criminal"
             />
             <label>Nome:</label>
-            <input 
-              name="name" 
-              value={formData.name} 
-              onChange={handleChange} 
+            <input
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
               placeholder="Nome da vítima"
-              />
+            />
             <label>Idade:</label>
             <input
               type="number"
@@ -151,12 +151,12 @@ const CreateVictim = () => {
               placeholder="Idade da vítima"
             />
             <label>CPF:</label>
-            <input 
-              name="cpf" 
-              value={formData.cpf} 
-              onChange={handleChange} 
+            <input
+              name="cpf"
+              value={formData.cpf}
+              onChange={handleChange}
               placeholder="CPF da vítima"
-              />
+            />
             <label>Gênero:</label>
             <select
               name="gender"
@@ -227,7 +227,8 @@ const CreateVictim = () => {
               />
             </fieldset>
             <label>Status de Identificação:*</label>
-            <select className={styles.status}
+            <select
+              className={styles.status}
               name="identificationStatus"
               value={formData.identificationStatus}
               onChange={handleChange}
@@ -242,10 +243,13 @@ const CreateVictim = () => {
                 Parcialmente identificado
               </option>
             </select>
-            <Button type="button" variant="generic" disabled={isSubmitting}>
+            <Button
+              type="button"
+              variant="generic-primary"
+              disabled={isSubmitting}
+            >
               {isSubmitting ? "Aguarde..." : "Avançar para criar caso"}
-            </button>
-
+            </Button>
           </form>
         </div>
       </div>
