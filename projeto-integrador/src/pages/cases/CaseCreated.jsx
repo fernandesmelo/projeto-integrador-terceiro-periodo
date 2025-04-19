@@ -452,7 +452,7 @@ const CaseCreated = () => {
               </div>
               <div>
                 <strong>Profissionais selecionados:</strong>
-                <ul>
+                <ol className={styles.selectedProfessionals}>
                   {users
                     .filter((u) => envolved.includes(u._id))
                     .map((u) => (
@@ -460,7 +460,7 @@ const CaseCreated = () => {
                         {u.name} ({u.role})
                       </li>
                     ))}
-                </ul>
+                </ol>
               </div>
             </fieldset>
             <Button type="button" variant="generic-primary" onClick={() => navigate("/casos")}>
