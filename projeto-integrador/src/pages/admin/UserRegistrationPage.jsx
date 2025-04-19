@@ -31,14 +31,14 @@ const UserRegistrationPage = () => {
 
         const [year, month, day] = dateOfBirth.split("-");  // Divide a data no formato YYYY-MM-DD
 
-    // Formata a data no formato DD/MM/YYYY
+        // Formata a data no formato DD/MM/YYYY
         const formattedDate = `${day}/${month}/${year}`;
 
 
         const dados = {
             name,
             email,
-            dateOfBirth : formattedDate,
+            dateOfBirth: formattedDate,
             cpf,
             role,
             password,
@@ -95,7 +95,7 @@ const UserRegistrationPage = () => {
                 <div className={styles.user_registration}>
                     <div className={styles.registration}>
                         <h3>Insira as informações do usuário</h3>
-                        <Nav2 onClick={() => navigate(-1)} content='voltar'/>
+                        <Nav2 onClick={() => navigate(-1)} content='voltar' />
 
                         <form onSubmit={handleSubmit}>
                             <label htmlFor="name">Nome:</label>
@@ -107,6 +107,8 @@ const UserRegistrationPage = () => {
                                     onChange={(e) => setName(e.target.value)}
                                     placeholder="Insira o nome completo"
                                     className={styles.input}
+                                    required
+
                                 />
                             </div>
                             <label htmlFor="email">Email:</label>
@@ -118,6 +120,8 @@ const UserRegistrationPage = () => {
                                     placeholder="Insira o email"
                                     className={styles.input}
                                     onChange={(e) => setEmail(e.target.value)}
+                                    required
+
                                 />
                             </div>
                             <label htmlFor="dataNascimento">Data de Nascimento:</label>
@@ -128,6 +132,8 @@ const UserRegistrationPage = () => {
                                     className={styles.input}
                                     value={dateOfBirth}
                                     onChange={(e) => setDateOfBirth(e.target.value)}
+                                    required
+                                    max={new Date().toISOString().split("T")[0]} // Impede datas futuras
                                 />
                             </div>
                             <label htmlFor="cpf">CPF:</label>
@@ -139,6 +145,11 @@ const UserRegistrationPage = () => {
                                     className={styles.input}
                                     value={cpf}
                                     onChange={(e) => setCpf(e.target.value)}
+                                    required
+                                    pattern="\d{11}" // Só aceita 11 dígitos
+                                    title="Digite um CPF válido com 11 números"
+                                    maxLength={11}
+
                                 />
                             </div>
                             <label htmlFor="cargo">Cargo:</label>
@@ -208,6 +219,7 @@ const UserRegistrationPage = () => {
                                     className={styles.input}
                                     value={neighborhood}
                                     onChange={(e) => setNeighborhood(e.target.value)}
+                                    required
                                 />
                             </div>
                             <label htmlFor="cidade">Cidade:</label>
@@ -219,28 +231,63 @@ const UserRegistrationPage = () => {
                                     className={styles.input}
                                     value={city}
                                     onChange={(e) => setCity(e.target.value)}
+                                    required
                                 />
                             </div>
-                            <label htmlFor="estado">Estado:</label>
                             <div>
-                                <input
-                                    type="text"
-                                    id="estado"
-                                    placeholder="Insira o estado"
+                                <label htmlFor="state">Estado:</label>
+                                <select
+                                    id="state"
+                                    name="state"
                                     value={state}
+                                    required
                                     onChange={(e) => setState(e.target.value)}
-                                    className={styles.input}
-                                />
+                                >
+                                    <option value="">Selecione um estado</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+
+                                </select>
+
+
                             </div>
                             <label htmlFor="cep">CEP:</label>
                             <div>
                                 <input
+
                                     type="text"
                                     id="cep"
                                     placeholder="Insira o CEP"
                                     className={styles.input}
                                     value={cep}
                                     onChange={(e) => setCep(e.target.value)}
+                                    required
+
                                 />
                             </div>
                             <label htmlFor="complemento">Complemento:</label>
@@ -252,6 +299,7 @@ const UserRegistrationPage = () => {
                                     className={styles.input}
                                     value={complement}
                                     onChange={(e) => setComplement(e.target.value)}
+
                                 />
                             </div>
                             <button type="submit" className={styles.button}>Cadastrar</button>
@@ -259,8 +307,8 @@ const UserRegistrationPage = () => {
                     </div>
 
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
 
