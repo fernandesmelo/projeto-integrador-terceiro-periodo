@@ -82,9 +82,12 @@ legend {
 }
 
 .professionalOption label {
-    display: flex;
     align-items: center;
     justify-content: flex-start; /* Alinha o texto e o checkbox à esquerda */
     font-weight: normal;
 }
 
+.check {
+    width: 14px;
+    margin-right: 10px;
+}
