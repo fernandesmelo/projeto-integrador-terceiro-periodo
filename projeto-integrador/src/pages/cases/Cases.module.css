@@ -1,5 +1,7 @@
 .content {
     display: flex;
+    background: var(--light-background);
+    height: 100vh;
 }
 
 .caseContent {
@@ -7,11 +9,11 @@
     margin-top: 4.6rem;
     width: calc(100% - 23rem);
     padding: 1rem 1rem;
-}
 
-.title {
-    color: black;
-    margin-bottom: 20px;
+    .title {
+        color: var(--brand-colors-primary);
+        margin-bottom: 1.25rem; 
+    }
 }
 
 .buttons {
@@ -20,8 +22,11 @@
 }
 
 .pag {
-    padding: 5px 10px;
+    width: 3%;
+    padding: 5px;
     position: relative;
     left: 50%;
     transform: translate(-50%);
+    background: var(--brand-colors-secondary);
+    color: var(--black);
 }

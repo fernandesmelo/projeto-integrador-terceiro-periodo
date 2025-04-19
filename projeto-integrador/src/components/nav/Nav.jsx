@@ -2,10 +2,11 @@ import styles from "./Nav.module.css";
 import { CgScreen } from "react-icons/cg";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { RiToothFill, RiFileShield2Fill } from "react-icons/ri";
+import { FiLogOut } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
-const Nav = ({ onBack }) => {
+const Nav = () => {
   const navigate = useNavigate();
 
   return (
@@ -25,6 +26,9 @@ const Nav = ({ onBack }) => {
         </p>
         <p className={styles.item} tabIndex={0} role="button" onClick={() => navigate("/cadastrar-usuario")}>
             <MdAdminPanelSettings size={32} style={{ color: "var(--icons)" }} />Admin
+        </p>
+        <p className={styles.item} tabIndex={0} role="button" onClick={() => navigate("/")}>
+          <FiLogOut size={32} style={{ color: "var(--icons)" }} /> Sair
         </p>
       </div>
     </div>
