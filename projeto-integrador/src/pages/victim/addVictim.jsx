@@ -127,24 +127,36 @@ const CreateVictim = () => {
         <div className={styles.marginContent}>
           <h1>Cadastro de Vítimas</h1>
           <form onSubmit={handleSubmit}>
-            <label>NIC:*</label>
+            <label>NIC:</label>
             <input
               name="nic"
               value={formData.nic}
               onChange={handleChange}
               required
+              placeholder="Número de identificação criminal"
             />
             <label>Nome:</label>
-            <input name="name" value={formData.name} onChange={handleChange} />
+            <input
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Nome da vítima"
+            />
             <label>Idade:</label>
             <input
               type="number"
               name="age"
               value={formData.age === "" ? "" : Number(formData.age)}
               onChange={handleChange}
+              placeholder="Idade da vítima"
             />
             <label>CPF:</label>
-            <input name="cpf" value={formData.cpf} onChange={handleChange} />
+            <input
+              name="cpf"
+              value={formData.cpf}
+              onChange={handleChange}
+              placeholder="CPF da vítima"
+            />
             <label>Gênero:</label>
             <select
               name="gender"
@@ -158,12 +170,13 @@ const CreateVictim = () => {
               <option value="OUTRO">Outro</option>
             </select>
             <fieldset>
-              <legend>Endereço da vítima</legend>
+              <legend>Endereço da Vítima</legend>
               <label>Rua:</label>
               <input
                 name="location.street"
                 value={formData.location.street}
                 onChange={handleChange}
+                placeholder="Rua da vítima"
               />
               <label>Número:</label>
               <input
@@ -175,41 +188,47 @@ const CreateVictim = () => {
                     : Number(formData.location.houseNumber)
                 }
                 onChange={handleChange}
+                placeholder="Número da residência da vítima"
               />
               <label>Bairro:</label>
               <input
                 name="location.district"
                 value={formData.location.district}
                 onChange={handleChange}
+                placeholder="Bairro da vítima"
               />
               <label>Cidade:</label>
               <input
                 name="location.city"
                 value={formData.location.city}
                 onChange={handleChange}
+                placeholder="Cidade da vítima"
               />
-
               <label>Estado:</label>
               <input
                 name="location.state"
                 value={formData.location.state}
                 onChange={handleChange}
+                placeholder="Estado da vítima"
               />
               <label>CEP:</label>
               <input
                 name="location.zip"
                 value={formData.location.zip}
                 onChange={handleChange}
+                placeholder="CEP da vítima"
               />
               <label>Complemento:</label>
               <input
                 name="location.complement"
                 value={formData.location.complement}
                 onChange={handleChange}
+                placeholder="Complemento do endereço da vítima"
               />
             </fieldset>
             <label>Status de Identificação:*</label>
-            <select className={styles.status}
+            <select
+              className={styles.status}
               name="identificationStatus"
               value={formData.identificationStatus}
               onChange={handleChange}
@@ -224,14 +243,14 @@ const CreateVictim = () => {
                 Parcialmente identificado
               </option>
             </select>
-            <button
-              type="submit"
+            <Button
+              type="button"
+              variant="generic-primary"
               disabled={isSubmitting}
-              style={{ marginTop: 20 }}
+              onClick={handleSubmit}
             >
               {isSubmitting ? "Aguarde..." : "Avançar para criar caso"}
-            </button>
-
+            </Button>
           </form>
         </div>
       </div>
