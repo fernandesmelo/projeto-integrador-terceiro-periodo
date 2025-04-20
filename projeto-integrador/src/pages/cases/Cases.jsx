@@ -19,7 +19,7 @@ const Cases = () => {
 
   const token = localStorage.getItem("token");
   localStorage.getItem("token");
-  const casesPerPage = 2;
+  const casesPerPage = 8;
 
   const paginatedCase = cases.slice(
     (page - 1) * casesPerPage,
