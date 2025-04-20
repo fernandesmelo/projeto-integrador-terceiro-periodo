@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Nav from "../../components/nav/Nav";
+import Button from "../../components/button/Button";
 import styles from "./EvidenceRegistrationPage.module.css";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -99,7 +100,6 @@ const EvidenceRegistrationPage = () => {
     }
   };
 
-  // Função para comprimir a imagem
   const compressImage = (file, quality = 0.7) => {
     return new Promise((resolve) => {
       const reader = new FileReader();
@@ -109,7 +109,6 @@ const EvidenceRegistrationPage = () => {
           const canvas = document.createElement("canvas");
           const ctx = canvas.getContext("2d");
 
-          // redimensiona exemplo para reduzir um pouco)
           const MAX_WIDTH = 800;
           const scaleSize = MAX_WIDTH / img.width;
           canvas.width = MAX_WIDTH;
@@ -117,7 +116,6 @@ const EvidenceRegistrationPage = () => {
 
           ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-          // Convertendo para Base64 com qualidade
           const compressedBase64 = canvas.toDataURL("image/jpeg", quality);
           resolve(compressedBase64);
         };
@@ -127,7 +125,6 @@ const EvidenceRegistrationPage = () => {
     });
   };
 
-  // Função de mudança da imagem
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -143,7 +140,7 @@ const EvidenceRegistrationPage = () => {
       <div className={styles.nav_container}>
         <Nav />
         <div className={styles.evidence_registration}>
-          <h3>Insira as informações das evidências</h3>
+          <h1>Cadastro de Evidências</h1>
           <form onSubmit={sendEvidence}>
             <label htmlFor="title">Título:*</label>
             <input
@@ -165,7 +162,9 @@ const EvidenceRegistrationPage = () => {
               onChange={(e) => setdescriptionTechnical(e.target.value)}
               required
             />
-            <label htmlFor="testimony">Testemunhas (Relatos/Depoimentos):</label>
+            <label htmlFor="testimony">
+              Testemunhas (Relatos/Depoimentos):
+            </label>
             <input
               type="text"
               id="testimony"
@@ -230,8 +229,9 @@ const EvidenceRegistrationPage = () => {
               value={longitude}
               onChange={(e) => setLongitude(Number(e.target.value))}
             />
-            <button
+            <Button
               type="button"
+              variant="generic-secondary"
               onClick={() => {
                 if (navigator.geolocation) {
                   navigator.geolocation.getCurrentPosition(
@@ -259,7 +259,7 @@ const EvidenceRegistrationPage = () => {
               className={styles.button_location}
             >
               Usar minha localização
-            </button>
+            </Button>
             <label htmlFor="obs">Observação:</label>
             <textarea
               id="obs"
@@ -283,9 +283,9 @@ const EvidenceRegistrationPage = () => {
               <option value="BIOLOGICA">Biológica</option>
               <option value="LESIONAL">Lesional</option>
             </select>
-            <button type="submit" className={styles.button}>
+            <Button type="submit" variant="generic-primary" className={styles.button}>
               Cadastrar
-            </button>
+            </Button>
           </form>
         </div>
       </div>

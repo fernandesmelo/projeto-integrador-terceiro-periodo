@@ -58,12 +58,12 @@
 }
 
 .generic-primary {
-  width: 25%;
+  width: 35%;
   padding: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: 0.5rem;
+  margin: 1rem auto 0 auto;
   background-color: var(--brand-colors-primary);
   color: var(--white);
 
