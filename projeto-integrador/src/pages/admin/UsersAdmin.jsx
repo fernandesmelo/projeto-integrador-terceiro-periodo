@@ -13,7 +13,7 @@ const UsersAdmin = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const usersPerPage = 10; 
+  const usersPerPage = 10;
 
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
@@ -45,9 +45,14 @@ const UsersAdmin = () => {
         <Nav />
         <div className={styles.contentDiv}>
           <h1 className={styles.title}>Usuários Cadastrados</h1>
-          <Button variant="button-cases" onClick={() => navigate("/admin/cadastrar-usuario")}>
-            Cadastrar usuário
-          </Button>
+          <div className={styles.buttons}>
+            <Button
+              variant="button-table"
+              onClick={() => navigate("/admin/cadastrar-usuario")}
+            >
+              Cadastrar usuário
+            </Button>
+          </div>
           <TableUsers users={currentUsers} />
           <div className={styles.pagination}>
             {Array.from(
