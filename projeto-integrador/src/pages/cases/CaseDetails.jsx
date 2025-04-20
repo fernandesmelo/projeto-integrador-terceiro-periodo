@@ -204,7 +204,7 @@ const CaseDetails = () => {
                 <div className={styles.cardList}>
                   {caseDetails.professional.length > 0 ? (
                     caseDetails.professional.map((pessoa) => (
-                      <div key={pessoa._id} className={styles.card}>
+                      <div key={pessoa._id}>
                         <p>
                           <strong>Nome:</strong> {getOrNA(pessoa.name)}
                         </p>
@@ -273,8 +273,8 @@ const CaseDetails = () => {
                             </p>
                           )}
                           {evid.reportEvidence ? (
-                            <div>
-                              <h3>Laudo Gerado</h3>
+                            <fieldset>
+                              <legend>Laudo Gerado</legend>
                               <p>
                                 <strong>Conclusão do Laudo:</strong>{" "}
                                 {getOrNA(evid.reportEvidence.note)}
@@ -304,7 +304,7 @@ const CaseDetails = () => {
                               >
                                 Imprimir laudo
                               </Button>
-                            </div>
+                            </fieldset>
                           ) : (
                             <Button
                               type="button"

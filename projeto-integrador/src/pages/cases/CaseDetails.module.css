@@ -43,6 +43,10 @@
     color: var(--brand-colors-primary);
 }
 
+legend {
+    color: var(--brand-colors-primary);
+}
+
 .caseSection p {
     margin: 0.4rem 0;
     color: var(--brand-colors-primary);
@@ -79,16 +83,6 @@
     color: var(--brand-colors-primary)
 }
 
-@media (max-width: 768px) {
-    .marginContent {
-        padding: 1rem;
-    }
-
-    .caseSection h2 {
-        font-size: 1.2rem;
-    }
-}
-
 .imageWrapper {
     margin-top: 10px;
 }
@@ -105,4 +99,14 @@
 .generateReportContainer {
     margin-top: 2rem;
     text-align: center;
+}
+
+@media (max-width: 768px) {
+    .marginContent {
+        padding: 1rem;
+    }
+
+    .caseSection h2 {
+        font-size: 1.2rem;
+    }
 }
