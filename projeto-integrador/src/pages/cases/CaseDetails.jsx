@@ -138,7 +138,7 @@ const CaseDetails = () => {
                   </p>
                   {caseDetails.caseReport.answers?.length > 0 && (
                     <div>
-                      <strong>Respostas:</strong>
+                      <strong className={styles.answers}>Respostas:</strong>
                       <ul>
                         {caseDetails.caseReport.answers.map((item, index) => (
                           <li key={item._id || index}>

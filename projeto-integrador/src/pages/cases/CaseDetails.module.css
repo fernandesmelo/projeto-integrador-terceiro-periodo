@@ -1,6 +1,7 @@
 .content {
     display: flex;
     background: var(--light-background);
+    margin: auto;
 }
 
 .marginContent {
@@ -39,16 +40,20 @@
     font-size: 1.5rem;
     border-bottom: 2px solid #e0e0e0;
     padding-bottom: 0.5rem;
-    color: var(--brand-colors-primary)
+    color: var(--brand-colors-primary);
 }
 
 .caseSection p {
     margin: 0.4rem 0;
-    color: var(--brand-colors-primary)
+    color: var(--brand-colors-primary);
 }
 
 .caseSection p strong {
-    color: var(--brand-colors-primary)
+    color: var(--brand-colors-primary);
+}
+
+.answers {
+    color: var(--brand-colors-primary);
 }
 
 .cardList {
@@ -71,6 +76,7 @@
 
 .caseSection ul {
     margin: 1rem 0 1.5rem 1rem;
+    color: var(--brand-colors-primary)
 }
 
 @media (max-width: 768px) {
