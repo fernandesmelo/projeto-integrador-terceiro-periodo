@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Nav from "../../components/nav/Nav";
+import Button from "../../components/button/Button";
 import Swal from "sweetalert2";
 import styles from "./CaseDetails.module.css";
 import axios from "axios";
@@ -292,28 +293,30 @@ const CaseDetails = () => {
                                 <strong>Data do Laudo:</strong>{" "}
                                 {formatDate(evid.reportEvidence.createdAt)}
                               </p>
-                              <button
-                                className={styles.button}
+                              <Button
+                                type="button"
+                                variant="generic-secondary"
                                 onClick={() =>
                                   navigate(`/casos/laudo/${evid._id}`, {
                                     state: { caseDetails, evidence: evid },
                                   })
                                 }
                               >
-                                Imprimir Laudo
-                              </button>
+                                Imprimir laudo
+                              </Button>
                             </div>
                           ) : (
-                            <button
-                              className={styles.button}
+                            <Button
+                              type="button"
+                              variant="generic-secondary"
                               onClick={() =>
                                 navigate("/casos/laudo/evidencia", {
                                   state: { evidence: evid, protocol },
                                 })
                               }
                             >
-                              Gerar Laudo
-                            </button>
+                              Gerar laudo
+                            </Button>
                           )}
                         </div>
                       ))
@@ -332,27 +335,29 @@ const CaseDetails = () => {
                     ) && (
                       <div className={styles.generateReportContainer}>
                         {caseDetails.caseReport ? (
-                          <button
-                            className={styles.button}
+                          <Button
+                            type="button"
+                            variant="generic-primary"
                             onClick={() =>
                               navigate("/casos/relatorio/imprimir", {
                                 state: { caseDetails },
                               })
                             }
                           >
-                            Imprimir Relatório do Caso
-                          </button>
+                            Imprimir relatório do caso
+                          </Button>
                         ) : (
-                          <button
-                            className={styles.button}
+                          <Button
+                            type="button"
+                            variant="generic-primary"
                             onClick={() =>
                               navigate("/casos/relatorio/final", {
                                 state: { caseDetails },
                               })
                             }
                           >
-                            Gerar Relatório do Caso
-                          </button>
+                            Gerar relatório do caso
+                          </Button>
                         )}
                       </div>
                     )}
@@ -364,12 +369,6 @@ const CaseDetails = () => {
           ) : (
             <p>Carregando detalhes do caso...</p>
           )}
-          <button
-            className={styles.buttonToBack}
-            onClick={() => navigate("/casos")}
-          >
-            Voltar
-          </button>
         </div>
       </div>
     </div>
