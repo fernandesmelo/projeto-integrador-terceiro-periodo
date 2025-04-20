@@ -161,7 +161,7 @@ const Cases = () => {
           <div className={styles.buttons}>
             <Button
               type="button"
-              variant="primary"
+              variant="button-cases"
               onClick={() => navigate("/casos/cadastrarVitima")}
               disabled={false}
             >
