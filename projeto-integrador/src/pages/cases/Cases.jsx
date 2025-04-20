@@ -8,7 +8,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import Nav2 from "../../components/nav2/Nav2";
 
 const Cases = () => {
   const navigate = useNavigate();
@@ -158,11 +157,11 @@ const Cases = () => {
       <div className={styles.content}>
         <Nav />
         <div className={styles.caseContent}>
-          <h1 className={styles.title}>Casos periciais</h1>
+          <h1 className={styles.title}>Casos Periciais</h1>
           <div className={styles.buttons}>
             <Button
               type="button"
-              variant="generic"
+              variant="generic-primary"
               onClick={() => navigate("/casos/cadastrarVitima")}
               disabled={false}
             >
