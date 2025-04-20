@@ -59,6 +59,10 @@
     color: var(--brand-colors-primary);
     margin-bottom: 1rem;
   }
+
+  label {
+    color: var(--brand-colors-primary)
+  }
 }
 
 .modalButtons {

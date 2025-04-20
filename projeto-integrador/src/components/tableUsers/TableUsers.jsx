@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./TableUsers.module.css";
+import Button from "../button/Button";
 import { BiPencil, BiSearch } from "react-icons/bi";
 import { RiDeleteBinLine } from "react-icons/ri";
 import axios from "axios";
@@ -249,8 +250,9 @@ const TableUsers = () => {
               placeholder="Número"
             />
             <div className={styles.modalButtons}>
-              <button onClick={() => setIsModalOpen(false)}>Cancelar</button>
-              <button
+              <Button variant="button-cancel" onClick={() => setIsModalOpen(false)}>Cancelar</Button>
+              <Button
+                variant="button-save"
                 onClick={async () => {
                   console.log("Token:", token);
 
@@ -297,7 +299,7 @@ const TableUsers = () => {
                 }}
               >
                 Salvar
-              </button>
+              </Button>
             </div>
           </div>
         </div>

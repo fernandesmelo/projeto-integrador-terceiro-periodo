@@ -109,6 +109,36 @@
   pointer-events: none;
 }
 
+.button-cancel {
+  width: 40%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 auto 0 auto;
+  background-color: var(--accent-error);
+  color: var(--white);
+
+  &:hover {
+    background-color: #C0392B;
+  }
+}
+
+.button-save {
+  width: 40%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 auto 0 auto;
+  background-color: var(--accent-success);
+  color: var(--white);
+
+  &:hover {
+    background-color: #1E8449;
+  }
+}
+
 @media (max-width: 600px) {
   .button {
     width: 100%;
