@@ -1,6 +1,7 @@
 .content {
     display: flex;
     background: var(--light-background);
+    margin: auto;
 }
 
 .marginContent {
