@@ -1,21 +1,22 @@
 .content {
     display: flex;
+    background: var(--light-background);
 }
 
 .marginContent {
-    margin: 6rem 0 0 26rem;
-}
-
-.marginContent {
-    flex: 1;
+    width: 60%;
+    max-width: 800px;
+    margin: 6rem 0 2rem 27rem;
     padding: 2rem;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
-}
 
-.title {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #333;
+    h1 {
+        color: var(--brand-colors-primary);
+        margin-bottom: 1rem;
+    }
 }
 
 .caseDetails {
@@ -29,24 +30,25 @@
     border-radius: 10px;
     padding: 1.5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+
 }
 
 .caseSection h2 {
     margin-top: 0;
     margin-bottom: 1rem;
     font-size: 1.5rem;
-    color: #444;
     border-bottom: 2px solid #e0e0e0;
     padding-bottom: 0.5rem;
+    color: var(--brand-colors-primary)
 }
 
 .caseSection p {
     margin: 0.4rem 0;
-    color: #555;
+    color: var(--brand-colors-primary)
 }
 
 .caseSection p strong {
-    color: #000;
+    color: var(--brand-colors-primary)
 }
 
 .cardList {
@@ -65,6 +67,10 @@
 
 .card p {
     margin: 0.3rem 0;
+}
+
+.caseSection ul {
+    margin: 1rem 0 1.5rem 1rem;
 }
 
 @media (max-width: 768px) {

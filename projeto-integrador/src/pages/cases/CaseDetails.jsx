@@ -67,7 +67,7 @@ const CaseDetails = () => {
       <div className={styles.content}>
         <Nav />
         <div className={styles.marginContent}>
-          <h1 className={styles.title}>Detalhes do Caso</h1>
+        <h1>Detalhes do Caso</h1>
           {caseDetails ? (
             <div className={styles.caseDetails}>
               <div className={styles.caseSection}>
@@ -344,7 +344,7 @@ const CaseDetails = () => {
                               })
                             }
                           >
-                            Imprimir relatório do caso
+                            Imprimir relatório
                           </Button>
                         ) : (
                           <Button
@@ -356,7 +356,7 @@ const CaseDetails = () => {
                               })
                             }
                           >
-                            Gerar relatório do caso
+                            Gerar relatório
                           </Button>
                         )}
                       </div>
