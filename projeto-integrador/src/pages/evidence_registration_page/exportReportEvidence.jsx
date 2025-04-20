@@ -4,6 +4,7 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import styles from "./exportReportEvidence.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import Nav2 from "../../components/nav2/Nav2";
 
 const LaudoEvidenciaPage = () => {
   const navigate = useNavigate();
@@ -41,6 +42,8 @@ const LaudoEvidenciaPage = () => {
         <header className={styles["laudo-header"]}>
           <img src={logo} alt="Logo" className={styles["laudo-logo"]} />
           <h1>Dentalysis Odonto Legal</h1>
+                    <Nav2 onClick={() => navigate(-1)} content='voltar'/>
+
           <h2>Laudo Técnico - Protocolo do caso Nº {protocol.toUpperCase()}</h2>
         </header>
         <div className={styles["section-row"]}>

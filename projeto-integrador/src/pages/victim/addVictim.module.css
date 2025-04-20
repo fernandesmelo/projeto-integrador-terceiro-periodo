@@ -1,6 +1,7 @@
 .content {
     display: flex;
     background: var(--light-background);
+    margin: auto;
 }
 
 .marginContent {
@@ -56,4 +57,3 @@ legend {
     font-weight: bold;
     padding: 0 0.5rem;
 }
-

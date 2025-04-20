@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Nav from "../../components/nav/Nav";
+import Button from "../../components/button/Button";
 import styles from "./CaseCreated.module.css";
 import Swal from "sweetalert2";
 import axios from "axios";
@@ -243,7 +244,7 @@ const CaseCreated = () => {
       <div className={styles.content}>
         <Nav />
         <div className={styles.marginContent}>
-          <h1>Cadastre um novo caso</h1>
+          <h1>Cadastrar Novo Caso</h1>
           <form onSubmit={handleSubmit}>
             <div>
               <label>NIC*:</label>
@@ -368,8 +369,7 @@ const CaseCreated = () => {
                 value={location.street}
                 onChange={(e) => handleLocationChange("street", e.target.value)}
               />
-
-              <label htmlFor="Número">Número</label>
+              <label htmlFor="Número">Número:</label>
               <input
                 className={styles.input}
                 id="Número"
@@ -380,8 +380,7 @@ const CaseCreated = () => {
                   handleLocationChange("houseNumber", e.target.value)
                 }
               />
-
-              <label htmlFor="Bairro">Bairro</label>
+              <label htmlFor="Bairro">Bairro:</label>
               <input
                 className={styles.input}
                 id="Bairro"
@@ -392,8 +391,7 @@ const CaseCreated = () => {
                   handleLocationChange("district", e.target.value)
                 }
               />
-
-              <label htmlFor="Cidade">Cidade</label>
+              <label htmlFor="Cidade">Cidade:</label>
               <input
                 className={styles.input}
                 id="Cidade"
@@ -402,8 +400,7 @@ const CaseCreated = () => {
                 value={location.city}
                 onChange={(e) => handleLocationChange("city", e.target.value)}
               />
-
-              <label htmlFor="Estado">Estado</label>
+              <label htmlFor="Estado">Estado:</label>
               <input
                 className={styles.input}
                 id="Estado"
@@ -412,8 +409,7 @@ const CaseCreated = () => {
                 value={location.state}
                 onChange={(e) => handleLocationChange("state", e.target.value)}
               />
-
-              <label htmlFor="CEP">CEP</label>
+              <label htmlFor="CEP">CEP:</label>
               <input
                 className={styles.input}
                 id="CEP"
@@ -424,13 +420,12 @@ const CaseCreated = () => {
                   handleLocationChange("zipCode", e.target.value)
                 }
               />
-
-              <label htmlFor="Complemento">Complemento</label>
+              <label htmlFor="Complemento">Complemento:</label>
               <input
                 className={styles.input}
                 id="Complemento"
                 type="text"
-                placeholder="Digite o complemento (opcional)"
+                placeholder="Digite o complemento"
                 value={location.complement}
                 onChange={(e) =>
                   handleLocationChange("complement", e.target.value)
@@ -477,9 +472,9 @@ const CaseCreated = () => {
             </div>
 
 
-            <button type="submit" className={styles.button}>
+            <Button type="submit" className={styles.button}>
               Cadastrar
-            </button>
+            </Button>
           </form>
         </div>
       </div>

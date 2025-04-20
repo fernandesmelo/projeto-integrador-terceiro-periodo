@@ -31,6 +31,25 @@
     font-weight: 500;
 }
 
+.menu {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100px;
+    background-color: #222;
+    color: white;
+    padding: 20px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+
+}
+
+.open {
+    right: 0;
+    top: 60px;
+}
+
 @media screen and (max-width: 978px) {
     .content {
         display: none;

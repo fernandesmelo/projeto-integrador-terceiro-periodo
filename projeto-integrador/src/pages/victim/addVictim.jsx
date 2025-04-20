@@ -2,14 +2,16 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Header from "../../components/header/Header";
 import Nav from "../../components/nav/Nav";
-import Button from "../../components/button/Button";
 import styles from "./addVictim.module.css";
 import Swal from "sweetalert2";
+import Button from "../../components/button/Button";
+import Nav2 from "../../components/nav2/Nav2";
 
 const CreateVictim = () => {
   const navigate = useNavigate();
   const [isSubmitting] = useState(false);
 
+  // Recupera dados do localStorage se existirem
   const [formData, setFormData] = useState(() => {
     const defaultData = {
       nic: "",
@@ -33,7 +35,7 @@ const CreateVictim = () => {
 
     if (savedData) {
       const parsed = JSON.parse(savedData);
-
+      // Faz merge com os dados padrão, garantindo que location e outros campos existam
       return {
         ...defaultData,
         ...parsed,
@@ -74,6 +76,7 @@ const CreateVictim = () => {
     const { name, value } = e.target;
     let newValue = value;
 
+    // Converte para número se o campo for 'age' ou algum campo numérico
     if (name === "age" || name === "location.houseNumber") {
       newValue = value === "" ? "" : parseInt(value);
     }
@@ -125,7 +128,8 @@ const CreateVictim = () => {
       <div className={styles.content}>
         <Nav />
         <div className={styles.marginContent}>
-          <h1>Cadastro de Vítimas</h1>
+          <h1>Cadastro da Vítima</h1>
+          <Nav2 onClick={() => navigate(-1)} content='voltar' />
           <form onSubmit={handleSubmit}>
             <label>NIC:*</label>
             <input
@@ -135,6 +139,7 @@ const CreateVictim = () => {
               required
               placeholder="Número de identificação criminal"
             />
+
             <label>Nome:</label>
             <input
               name="name"
@@ -150,6 +155,7 @@ const CreateVictim = () => {
               onChange={handleChange}
               placeholder="Idade da vítima"
             />
+
             <label>CPF:</label>
             <input
               name="cpf"
@@ -163,12 +169,13 @@ const CreateVictim = () => {
               value={formData.gender}
               onChange={handleChange}
             >
-              <option value="">Selecione a identidade de gênero: </option>
+              <option value="">Selecione...</option>
               <option value="MASCULINO">Masculino</option>
               <option value="FEMININO"> Feminino</option>
-              <option value="NAO-BINARIO">Não-Binário</option>
+              <option value="NAO-BINARIO">Não-Binario</option>
               <option value="OUTRO">Outro</option>
             </select>
+
             <fieldset>
               <legend>Endereço da Vítima</legend>
               <label>Rua:</label>
@@ -178,6 +185,7 @@ const CreateVictim = () => {
                 onChange={handleChange}
                 placeholder="Rua da vítima"
               />
+
               <label>Número:</label>
               <input
                 type="number"
@@ -190,6 +198,7 @@ const CreateVictim = () => {
                 onChange={handleChange}
                 placeholder="Número da residência da vítima"
               />
+
               <label>Bairro:</label>
               <input
                 name="location.district"
@@ -197,6 +206,7 @@ const CreateVictim = () => {
                 onChange={handleChange}
                 placeholder="Bairro da vítima"
               />
+
               <label>Cidade:</label>
               <input
                 name="location.city"
@@ -211,6 +221,7 @@ const CreateVictim = () => {
                 onChange={handleChange}
                 placeholder="Estado da vítima"
               />
+
               <label>CEP:</label>
               <input
                 name="location.zip"
@@ -218,6 +229,7 @@ const CreateVictim = () => {
                 onChange={handleChange}
                 placeholder="CEP da vítima"
               />
+
               <label>Complemento:</label>
               <input
                 name="location.complement"
@@ -234,13 +246,11 @@ const CreateVictim = () => {
               onChange={handleChange}
               required
             >
-              <option value="">
-                Selecione o status de identificação da vítma
-              </option>
-              <option value="IDENTIFICADO">Identificado</option>
-              <option value="NÃO IDENTIFICADO">Não identificado</option>
+              <option value="">Selecione...</option>
+              <option value="IDENTIFICADO">IDENTIFICADO</option>
+              <option value="NÃO IDENTIFICADO">NÃO IDENTIFICADO</option>
               <option value="PARCIALMENTE IDENTIFICADO">
-                Parcialmente identificado
+                PARCIALMENTE IDENTIFICADO
               </option>
             </select>
             <Button

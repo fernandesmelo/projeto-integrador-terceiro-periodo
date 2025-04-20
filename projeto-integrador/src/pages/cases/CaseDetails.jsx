@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Nav from "../../components/nav/Nav";
 import Button from "../../components/button/Button";
 import Swal from "sweetalert2";
 import styles from "./CaseDetails.module.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import Nav2 from "../../components/nav2/Nav2";
 
 const formatDate = (dateString) => {
   if (!dateString) return "N/A";
@@ -67,7 +67,9 @@ const CaseDetails = () => {
       <div className={styles.content}>
         <Nav />
         <div className={styles.marginContent}>
-        <h1>Detalhes do Caso</h1>
+          <h1 className={styles.title}>Detalhes do caso</h1>
+          <Nav2 onClick={() => navigate(-1)} content='voltar'/>
+
           {caseDetails ? (
             <div className={styles.caseDetails}>
               <div className={styles.caseSection}>

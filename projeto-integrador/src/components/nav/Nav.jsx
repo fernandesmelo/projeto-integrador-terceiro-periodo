@@ -5,9 +5,24 @@ import { RiToothFill, RiFileShield2Fill } from "react-icons/ri";
 import { FiLogOut } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import Swal from "sweetalert2";
 
 const Nav = () => {
   const navigate = useNavigate();
+
+  const handleAdmin = () => {
+    const role = localStorage.getItem("role")
+    console.log(role)
+    if (role === 'ADMIN') {
+      navigate("/admin/usuarios-cadastrados")  
+    } else {
+      Swal.fire({
+        icon: 'warning',
+        text: 'voce nao tem acesso a area de admin',
+        title: 'atencao'
+      })
+    }
+  }
 
   return (
     <div>
@@ -24,7 +39,7 @@ const Nav = () => {
         <p className={styles.item} tabIndex={0} role="button">
             <RiToothFill size={32} style={{ color: "var(--icons)" }} />Banco Odonto-Legal
         </p>
-        <p className={styles.item} tabIndex={0} role="button" onClick={() => navigate("/cadastrar-usuario")}>
+        <p className={styles.item} tabIndex={0} role="button" onClick={handleAdmin}>
             <MdAdminPanelSettings size={32} style={{ color: "var(--icons)" }} />Admin
         </p>
         <p className={styles.item} tabIndex={0} role="button" onClick={() => navigate("/")}>

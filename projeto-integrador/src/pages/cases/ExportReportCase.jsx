@@ -4,6 +4,7 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import styles from "./ExportReportCase.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import Nav2 from "../../components/nav2/Nav2";
 
 const RelatorioPage = () => {
   const navigate = useNavigate();
@@ -67,6 +68,7 @@ const RelatorioPage = () => {
   const EvidenceSection = () => (
     <section className={styles["laudo-section"]}>
       <h3>Evidências Vinculadas</h3>
+      <Nav2 onClick={() => navigate(-1)} content='voltar'/>
       {caseData.caseDetails.evidence?.map((item, index) => (
         <EvidenceItem key={index} data={item} index={index} />
       ))}
