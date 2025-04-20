@@ -176,7 +176,7 @@ const Cases = () => {
               Limpar filtros
             </Button>
           </div>
-          <div style={{ display: "flex", gap: 5 }}>
+          <div className={styles.inputArea}>
             <InputSearch
               placeholder="Pesquisar protocolo"
               variant="secondary"
@@ -192,31 +192,33 @@ const Cases = () => {
                 }
               }}
             />
-            <select
-              value={statusFilter}
-              onChange={(e) => {
-                setStatusFilter(e.target.value);
-                setPage(1);
-              }} 
-            >
-              <option value="">Filtrar por: </option>
-              <option value="ABERTO">Aberto</option>
-              <option value="FINALIZADO">Finalizado</option>
-              <option value="ARQUIVADO">Arquivo</option>
-            </select>
-            <input
-              type="date"
-              value={dateFilter}
-              onChange={(e) => {
-                setDateFilter(e.target.value);
-                setPage(1);
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  applyFilterDate();
-                }
-              }}
-            />
+            <div className={styles.filterArea}>
+              <select
+                value={statusFilter}
+                onChange={(e) => {
+                  setStatusFilter(e.target.value);
+                  setPage(1);
+                }}
+              >
+                <option value="">Filtrar por: </option>
+                <option value="ABERTO">Aberto</option>
+                <option value="FINALIZADO">Finalizado</option>
+                <option value="ARQUIVADO">Arquivo</option>
+              </select>
+              <input
+                type="date"
+                value={dateFilter}
+                onChange={(e) => {
+                  setDateFilter(e.target.value);
+                  setPage(1);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    applyFilterDate();
+                  }
+                }}
+              />
+            </div>
           </div>
           <Table cases={paginatedCase} />
           <div>

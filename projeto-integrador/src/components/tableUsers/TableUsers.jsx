@@ -75,7 +75,7 @@ const TableUsers = () => {
       }
     }
   }
-  console.log('dados recebidos: ', editingUser)
+
 
 
 
@@ -260,7 +260,7 @@ const TableUsers = () => {
             <div className={styles.modalButtons}>
               <button onClick={() => setIsModalOpen(false)}>Cancelar</button>
               <button onClick={async () => {
-                console.log("Token:", token);
+               
 
                 if (!token) {
                   Swal.fire("Erro", "Token de autenticação não encontrado.", "error");

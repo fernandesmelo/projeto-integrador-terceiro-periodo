@@ -10,10 +10,16 @@
     width: calc(100% - 23rem);
     padding: 1rem 1rem;
 
+
     .title {
         color: var(--brand-colors-primary);
         margin-bottom: 1.25rem; 
     }
+}
+
+.inputArea {
+    display: flex;
+    gap: 5;
 }
 
 .buttons {
@@ -29,4 +35,39 @@
     transform: translate(-50%);
     background: var(--brand-colors-secondary);
     color: var(--black);
+}
+
+.filterArea {
+    display: flex;
+}
+
+@media screen and (max-width: 978px) {
+    .content {
+        display: flex;
+        background: var(--light-background);
+        flex-direction: column;
+    }
+    .caseContent {
+        margin-left: 0;
+        margin-top: 0;
+        width: 100%;
+        padding: 1rem 1rem;
+    
+        .title {
+            color: var(--brand-colors-primary);
+            margin-bottom: 1.25rem; 
+        }
+    }
+
+    .inputArea {
+        display: block;
+        gap: 5;
+
+        .filterArea {
+            display: flex;
+        }
+
+     
+    }
+    
 }

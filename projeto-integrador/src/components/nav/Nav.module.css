@@ -51,7 +51,7 @@
 
 @media screen and (max-width: 978px) {
     .nav {
-        top: -4.6875rem;
+        top: -4rem;
         position: relative;
         width: 100%;
         height: 4.375rem;
@@ -71,6 +71,7 @@
     .item {
         height: 4.6875rem;
         width: 4.6875rem;
+        display: none;
     }
 
 }
