@@ -78,6 +78,9 @@ legend {
     margin-top: 0;
     margin-bottom: 0;
 }
+.inputDisabled {
+    opacity: 0.5;
+}
 
 .selectedProfessionals {
     display: flex;

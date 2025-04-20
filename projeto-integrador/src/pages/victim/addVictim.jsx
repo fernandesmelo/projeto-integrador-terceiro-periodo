@@ -127,7 +127,7 @@ const CreateVictim = () => {
         <div className={styles.marginContent}>
           <h1>Cadastro de Vítimas</h1>
           <form onSubmit={handleSubmit}>
-            <label>NIC:</label>
+            <label>NIC:*</label>
             <input
               name="nic"
               value={formData.nic}
