@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Table.module.css";
 import { BiPencil, BiSearch, BiTrash, BiFile } from "react-icons/bi";
 import Button from "../button/Button";
@@ -8,6 +8,14 @@ import axios from "axios";
 
 const Table = ({ cases }) => {
   const navigate = useNavigate();
+
+  // Estado interno que armazena os casos exibidos
+  const [tableCases, setTableCases] = useState(cases);
+
+  // Sincroniza o estado interno quando a prop 'cases' mudar
+  useEffect(() => {
+    setTableCases(cases);
+  }, [cases]);
 
   const verDetalhes = (protocol) => {
     navigate(`/casos/detalhes/${protocol}`);
@@ -34,21 +42,23 @@ const Table = ({ cases }) => {
 
     if (confirm.isConfirmed) {
       try {
-        console.log("Excluindo caso com protocolo:", protocol);
         await axios.delete(
-          `https://sistema-odonto-legal.onrender.com/api/cases/search/protocol`,
+          `https://sistema-odonto-legal.onrender.com/api/cases/delete/protocol`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
-            params: {
-              protocol,
-            },
+            params: { protocol },
           }
         );
+
         Swal.fire("Excluído!", "O caso foi excluído com sucesso.", "success");
+        // Atualiza o estado interno: remove o caso excluído
+        setTableCases((prev) =>
+          prev.filter((item) => item.protocol !== protocol)
+        );
       } catch (error) {
-        console.log("Erro ao excluir caso:", error);
+        console.error("Erro ao excluir caso:", error);
         Swal.fire(
           "Erro!",
           error.response?.data?.message || "Erro ao excluir o caso.",
@@ -74,14 +84,16 @@ const Table = ({ cases }) => {
           </tr>
         </thead>
         <tbody>
-          {cases.map((item, index) => (
+          {tableCases.map((item, index) => (
             <tr key={index}>
               <td>{item.protocol}</td>
               <td>{item.title}</td>
               <td>{item.caseType}</td>
               <td>{item.patient.nic}</td>
               <td>{item.status}</td>
-              <td>{new Date(item.openedAt).toLocaleDateString("pt-BR")}</td>
+              <td>
+                {new Date(item.openedAt).toLocaleDateString("pt-BR")}
+              </td>
               <td>
                 {item.evidence?.length || 0}
                 <Button
@@ -96,31 +108,54 @@ const Table = ({ cases }) => {
                 <BiSearch
                   className={styles.icon}
                   title="Ver detalhes"
-                  style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
+                  style={{
+                    cursor: "pointer",
+                    marginRight: 10,
+                    color: "#012130",
+                  }}
                   onClick={() => verDetalhes(item.protocol)}
                 />
                 <BiPencil
                   className={styles.icon}
                   title="Editar"
-                  style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
+                  style={{
+                    cursor: "pointer",
+                    marginRight: 10,
+                    color: "#012130",
+                  }}
                 />
                 <BiFile
                   className={styles.icon}
                   title="Gerar relatório"
-                  style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
+                  style={{
+                    cursor: "pointer",
+                    marginRight: 10,
+                    color: "#012130",
+                  }}
                   onClick={() => gerarRelatorio(item.protocol)}
                 />
                 {item.evidence?.length === 0 && (
                   <BiTrash
                     className={styles.icon}
                     title="Excluir caso"
-                    style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
+                    style={{
+                      cursor: "pointer",
+                      marginRight: 10,
+                      color: "#012130",
+                    }}
                     onClick={() => excluirCaso(item.protocol)}
                   />
                 )}
               </td>
             </tr>
           ))}
+          {tableCases.length === 0 && (
+            <tr>
+              <td colSpan={8} style={{ textAlign: "center", padding: "1rem" }}>
+                Nenhum caso encontrado.
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>

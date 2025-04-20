@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../../assets/logo.png";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import styles from "./exportReportCase.module.css";
+import styles from "./ExportReportCase.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import Nav2 from "../../components/nav2/Nav2";
 
