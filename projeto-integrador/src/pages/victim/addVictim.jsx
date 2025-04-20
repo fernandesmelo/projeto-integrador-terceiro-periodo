@@ -4,6 +4,7 @@ import Header from "../../components/header/Header";
 import Nav from "../../components/nav/Nav";
 import styles from "./addVictim.module.css";
 import Swal from "sweetalert2";
+import Button from "../../components/button/Button";
 
 const CreateVictim = () => {
   const navigate = useNavigate();
