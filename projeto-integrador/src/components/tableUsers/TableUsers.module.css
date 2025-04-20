@@ -1,70 +1,42 @@
 .container {
-    width: 100%;
-    overflow-x: auto;
-    padding: 1rem;
+  width: 100%;
+  overflow-x: auto;
+  padding-top: 1rem;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+
+  thead {
+    background-color: var(--background-color);
+
   }
-  
-  .tabela {
-    width: 100%;
-    border-collapse: collapse;
-    border: 1px solid #ccc;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  .tabela thead {
-    background-color: #f5f5f5;
-  }
-  
+}
+
+.tabela th,
+.tabela td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #E0E0E0;
+  color: var(--brand-colors-primary);
+}
+
+.ativo {
+  color: var(--accent-success);
+  font-weight: bold;
+}
+
+.inativo {
+  color: var(--accent-error);
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
   .tabela th,
   .tabela td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #e0e0e0;
+    padding: 8px;
+    font-size: 14px;
   }
-  
-  .ativo {
-    color: green;
-    font-weight: bold;
-  }
-  
-  .inativo {
-    color: red;
-    font-weight: bold;
-  }
-
-  .modalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  
-  .modalContent {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    width: 400px;
-    max-width: 90%;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  }
-  
-  .modalButtons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 1rem;
-  }
-  
-  @media (max-width: 600px) {
-    .tabela th,
-    .tabela td {
-      padding: 8px;
-      font-size: 14px;
-    }
-  }
+}
