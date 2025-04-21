@@ -30,18 +30,29 @@
     background-color: var(--light-background);
     border-radius: 10px;
     padding: 1.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); 
 }
 
-
-
-.section {
-    margin-bottom: 20px;
+.caseSection h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 0.5rem;
+    color: var(--brand-colors-primary);
 }
 
-.label {
-    font-weight: bold;
-    margin-top: 10px;
+legend {
+    color: var(--brand-colors-primary);
+}
+
+.caseSection p {
+    margin: 0.4rem 0;
+    color: var(--brand-colors-primary);
+}
+
+.caseSection p strong {
+    color: var(--brand-colors-primary);
 }
 
 .textarea {
@@ -50,14 +61,38 @@
     resize: vertical;
 }
 
-.button {
-    padding: 10px 20px;
-    background-color: #3085d6;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.cardList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
 }
+
+.card {
+    background-color: #f1f1f1;
+    position: relative;
+    padding: 1rem 1rem 1rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.card p {
+    margin: 0.3rem 0;
+}
+
+.imageWrapper {
+    margin-top: 10px;
+}
+
+.imagePreview {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    margin-top: 5px;
+}
+
 
 @media screen and (max-width: 978px) {
     .content {

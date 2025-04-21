@@ -20,7 +20,7 @@ const CaseReportForm = () => {
   const [answers, setAnswers] = useState(() => Array(numQuestions).fill(""));
   const [status, setStatus] = useState("");
   const [editVictim, setEditVictim] = useState(false);
-  const [showEditModal, setShowEditModal] = useState(false); 
+  const [showEditModal, setShowEditModal] = useState(false);
   const [victimData, setVictimData] = useState({
     name: caseData.patient?.name || "",
     age: caseData.patient?.age || "",
@@ -237,8 +237,6 @@ const CaseReportForm = () => {
                 {getOrNA(caseData.requestingInstitution)}
               </p>
             </div>
-          </section>
-          <section>
             <div className={styles.caseSection}>
               {caseData.questions && caseData.questions.length > 0 && (
                 <div>
@@ -251,8 +249,6 @@ const CaseReportForm = () => {
                 </div>
               )}
             </div>
-          </section>
-          <section>
             <div className={styles.caseSection}>
               <h2>Dados da Vítima</h2>
               <p>
@@ -269,9 +265,6 @@ const CaseReportForm = () => {
                 {getOrNA(caseData.patient?.identificationStatus)}
               </p>
             </div>
-          </section>
-
-          <section>
             <div className={styles.caseSection}>
               <h2>Localização do Ocorrido</h2>
               <p>
@@ -290,8 +283,6 @@ const CaseReportForm = () => {
                 <strong>CEP:</strong> {getOrNA(caseData.location?.zipCode)}
               </p>
             </div>
-          </section>
-          <section>
             <div className={styles.caseSection}>
               <h2>Responsável pela Abertura</h2>
               <p>
@@ -301,14 +292,12 @@ const CaseReportForm = () => {
                 <strong>Cargo:</strong> {getOrNA(caseData.openedBy?.role)}
               </p>
             </div>
-          </section>
-          <section>
             <div className={styles.caseSection}>
               <h2>Profissionais</h2>
-              <div className={styles.cardList}>
+              <div>
                 {caseData.professional.length > 0 ? (
                   caseData.professional.map((pessoa) => (
-                    <div key={pessoa._id} className={styles.card}>
+                    <div key={pessoa._id} >
                       <p>
                         <strong>Nome:</strong> {getOrNA(pessoa.name)}
                       </p>
@@ -322,8 +311,6 @@ const CaseReportForm = () => {
                 )}
               </div>
             </div>
-          </section>
-          <section>
             <div className={styles.caseSection}>
               <h2>Evidências</h2>
               <div className={styles.cardList}>
@@ -372,8 +359,8 @@ const CaseReportForm = () => {
                           <strong>Foto:</strong> Não disponível
                         </p>
                       )}
-                      <div>
-                        <h3>Laudo Gerado</h3>
+                      <fieldset>
+                        <legend>Laudo Gerado</legend>
                         <p>
                           <strong>Conclusão do Laudo:</strong>{" "}
                           {getOrNA(evid.reportEvidence.note)}
@@ -390,7 +377,7 @@ const CaseReportForm = () => {
                           <strong>Data do Laudo:</strong>{" "}
                           {formatDate(evid.reportEvidence.createdAt)}
                         </p>
-                      </div>
+                      </fieldset>
                     </div>
                   ))
                 ) : (
