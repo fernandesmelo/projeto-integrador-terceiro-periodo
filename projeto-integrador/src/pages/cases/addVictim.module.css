@@ -57,3 +57,18 @@ fieldset {
     font-weight: bold;
     padding: 0 0.5rem;
 }
+
+@media screen and (max-width: 978px) {
+    .content {
+        display: flex;
+        flex-direction: column;
+        background: var(--light-background);
+        margin: auto;
+    }
+    
+    .marginContent {
+        margin: 0;
+        width: 100%;
+    }
+
+}

@@ -101,6 +101,20 @@ legend {
     text-align: center;
 }
 
+@media screen and (max-width: 978px) {
+    .content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .marginContent {
+      margin: 0;
+      padding: 1rem;
+      width: 100%;
+    }
+  }
+  
+
 @media (max-width: 768px) {
     .marginContent {
         padding: 1rem;

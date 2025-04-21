@@ -45,3 +45,18 @@ textarea {
 select {
     width: 100%;
 }
+
+@media screen and (max-width: 978px) {
+    .nav_container {
+        display: flex;
+        flex-direction: column;
+        background: var(--light-background);
+        margin: auto;
+    }
+    
+    .evidence_registration {
+        margin: 0;
+        width: 100%;
+    }
+
+}
