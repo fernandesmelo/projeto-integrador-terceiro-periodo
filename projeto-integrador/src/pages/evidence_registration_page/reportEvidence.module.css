@@ -25,6 +25,10 @@
     padding: 16px;
     border-radius: 8px;
     margin-bottom: 20px;
+    width: 100%;
+    max-width: 100%; 
+    box-sizing: border-box; 
+    overflow: hidden;
 }
 
 .evidenceInfo p strong {
@@ -48,6 +52,8 @@ textarea {
 .imageContainer {
     margin-bottom: 1rem;
     text-align: center;
+    max-width: 100%;
+    
 }
 
 .image {
