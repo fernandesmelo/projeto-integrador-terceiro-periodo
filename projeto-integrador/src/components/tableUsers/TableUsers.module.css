@@ -73,10 +73,16 @@
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 978px) {
   .tabela th,
   .tabela td {
     padding: 8px;
     font-size: 14px;
+  }
+
+  .container {
+    width: 95%;
+    overflow-x: auto;
+    padding-top: 1rem;
   }
 }

@@ -39,5 +39,11 @@
   .content {
     display: flex;
     flex-direction: column;
+    height: 100%;
+  }
+  .contentDiv {
+    margin-left: 0;
+    padding: 1rem;
+    width: 100%;
   }
 }

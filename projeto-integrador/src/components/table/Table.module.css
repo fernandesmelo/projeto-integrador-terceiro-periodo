@@ -37,7 +37,7 @@
   font-weight: bold;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 978px) {
   .tabela th,
   .tabela td {
     padding: 8px;
