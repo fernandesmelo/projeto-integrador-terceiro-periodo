@@ -297,7 +297,7 @@ const CaseReportForm = () => {
               <div>
                 {caseData.professional.length > 0 ? (
                   caseData.professional.map((pessoa) => (
-                    <div key={pessoa._id} >
+                    <div key={pessoa._id}>
                       <p>
                         <strong>Nome:</strong> {getOrNA(pessoa.name)}
                       </p>
@@ -396,9 +396,7 @@ const CaseReportForm = () => {
               }}
             >
               <div className={styles.modalContent}>
-                <Button variant="generic-primary" >
-                  Editar dados da vítima
-                </Button>
+                <h2>Editar Dados da Vítima</h2>
                 <div className={styles.formGroup}>
                   <label>Nome completo:*</label>
                   <input
@@ -470,114 +468,118 @@ const CaseReportForm = () => {
                     </option>
                   </select>
                 </div>
-                <h4>Endereço</h4>
-                <div className={styles.formGroup}>
-                  <label>Rua:</label>
-                  <input
-                    value={victimData.address.street}
-                    onChange={(e) =>
-                      setVictimData({
-                        ...victimData,
-                        address: {
-                          ...victimData.address,
-                          street: e.target.value,
-                        },
-                      })
-                    }
-                  />
-                </div>
-                <div className={styles.formGroup}>
-                  <label>Número:</label>
-                  <input
-                    type="number"
-                    value={victimData.address.houseNumber}
-                    onChange={(e) =>
-                      setVictimData({
-                        ...victimData,
-                        address: {
-                          ...victimData.address,
-                          houseNumber: e.target.value,
-                        },
-                      })
-                    }
-                  />
-                </div>
-                <div className={styles.formGroup}>
-                  <label>Bairro:</label>
-                  <input
-                    value={victimData.address.district}
-                    onChange={(e) =>
-                      setVictimData({
-                        ...victimData,
-                        address: {
-                          ...victimData.address,
-                          district: e.target.value,
-                        },
-                      })
-                    }
-                  />
-                </div>
-                <div className={styles.formGroup}>
-                  <label>Cidade:</label>
-                  <input
-                    value={victimData.address.city}
-                    onChange={(e) =>
-                      setVictimData({
-                        ...victimData,
-                        address: {
-                          ...victimData.address,
-                          city: e.target.value,
-                        },
-                      })
-                    }
-                  />
-                </div>
-                <div className={styles.formGroup}>
-                  <label>Estado:</label>
-                  <input
-                    value={victimData.address.state}
-                    onChange={(e) =>
-                      setVictimData({
-                        ...victimData,
-                        address: {
-                          ...victimData.address,
-                          state: e.target.value,
-                        },
-                      })
-                    }
-                  />
-                </div>
-                <div className={styles.formGroup}>
-                  <label>CEP:</label>
-                  <input
-                    value={victimData.address.zipCode}
-                    onChange={(e) =>
-                      setVictimData({
-                        ...victimData,
-                        address: {
-                          ...victimData.address,
-                          zipCode: e.target.value,
-                        },
-                      })
-                    }
-                  />
-                </div>
+                <fieldset>
+                  <legend>Endereço</legend>
+                  <div className={styles.formGroup}>
+                    <label>Rua:</label>
+                    <input
+                      value={victimData.address.street}
+                      onChange={(e) =>
+                        setVictimData({
+                          ...victimData,
+                          address: {
+                            ...victimData.address,
+                            street: e.target.value,
+                          },
+                        })
+                      }
+                    />
+                  </div>
+                  <div className={styles.formGroup}>
+                    <label>Número:</label>
+                    <input
+                      type="number"
+                      value={victimData.address.houseNumber}
+                      onChange={(e) =>
+                        setVictimData({
+                          ...victimData,
+                          address: {
+                            ...victimData.address,
+                            houseNumber: e.target.value,
+                          },
+                        })
+                      }
+                    />
+                  </div>
+                  <div className={styles.formGroup}>
+                    <label>Bairro:</label>
+                    <input
+                      value={victimData.address.district}
+                      onChange={(e) =>
+                        setVictimData({
+                          ...victimData,
+                          address: {
+                            ...victimData.address,
+                            district: e.target.value,
+                          },
+                        })
+                      }
+                    />
+                  </div>
+                  <div className={styles.formGroup}>
+                    <label>Cidade:</label>
+                    <input
+                      value={victimData.address.city}
+                      onChange={(e) =>
+                        setVictimData({
+                          ...victimData,
+                          address: {
+                            ...victimData.address,
+                            city: e.target.value,
+                          },
+                        })
+                      }
+                    />
+                  </div>
+                  <div className={styles.formGroup}>
+                    <label>Estado:</label>
+                    <input
+                      value={victimData.address.state}
+                      onChange={(e) =>
+                        setVictimData({
+                          ...victimData,
+                          address: {
+                            ...victimData.address,
+                            state: e.target.value,
+                          },
+                        })
+                      }
+                    />
+                  </div>
+                  <div className={styles.formGroup}>
+                    <label>CEP:</label>
+                    <input
+                      value={victimData.address.zipCode}
+                      onChange={(e) =>
+                        setVictimData({
+                          ...victimData,
+                          address: {
+                            ...victimData.address,
+                            zipCode: e.target.value,
+                          },
+                        })
+                      }
+                    />
+                  </div>
+                </fieldset>
                 <div className={styles.modalButtons}>
-                  <button
+                  <Button
+                    variant="button-save"
                     onClick={() => {
                       setShowEditModal(false);
                       setEditVictim(true);
                     }}
                     className={styles.saveButton}
                   >
-                    Salvar Alterações
-                  </button>
-                  <button
+                    Salvar
+                  </Button>
+                  <Button
+                    variant="button-cancel"
                     onClick={() => setShowEditModal(false)}
                     className={styles.cancelButton}
                   >
                     Cancelar
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>
