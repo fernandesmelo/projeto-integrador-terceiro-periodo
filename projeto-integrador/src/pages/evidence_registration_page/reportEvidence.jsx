@@ -85,11 +85,11 @@ const LaudoForm = () => {
           <fieldset className={styles.evidenceInfo}>
             <legend>Dados da Evidência</legend>
               {evidence?.photo && (
-                <div className={styles.imageContainer}>
+                <div className={styles.imageWrapper}>
                   <img
                     src={evidence.photo}
                     alt="Imagem da evidência"
-                    className={styles.photo}
+                    className={styles.imagePreview}
                   />
                 </div>
               )}
