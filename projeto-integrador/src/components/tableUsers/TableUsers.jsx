@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styles from "./TableUsers.module.css";
-import { BiPencil, BiSearch } from "react-icons/bi";
 import Button from "../button/Button";
-import { HiOutlineExclamation } from "react-icons/hi";
-import { TbFileReport } from "react-icons/tb";
+import { BiPencil, BiSearch } from "react-icons/bi";
 import { RiDeleteBinLine } from "react-icons/ri";
 import axios from "axios";
 import Swal from "sweetalert2";
 
 const TableUsers = () => {
-  const urlDelete = 'https://sistema-odonto-legal.onrender.com/api/user/delete'
-  const urlEdit = 'https://sistema-odonto-legal.onrender.com/api/user/profile'
-  const token = localStorage.getItem("token")
+  const urlDelete = "https://sistema-odonto-legal.onrender.com/api/user/delete";
+  const urlEdit = "https://sistema-odonto-legal.onrender.com/api/user/profile";
+  const token = localStorage.getItem("token");
 
   const [users, setUsers] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,55 +21,56 @@ const TableUsers = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('https://sistema-odonto-legal.onrender.com/api/search/all', {
-        headers: {
-          Authorization: `bearer ${localStorage.getItem("token")}`
+      const response = await axios.get(
+        "https://sistema-odonto-legal.onrender.com/api/search/all",
+        {
+          headers: {
+            Authorization: `bearer ${localStorage.getItem("token")}`,
+          },
         }
-      });
-      setUsers(response.data); // Atualiza a lista
+      );
+      setUsers(response.data); 
     } catch (err) {
       console.error("Erro ao buscar usuários:", err);
     }
   };
 
   useEffect(() => {
-    fetchUsers(); // Carrega a lista ao abrir o componente
+    fetchUsers(); 
   }, []);
-
 
   const deleteUser = async (id) => {
     const result = await Swal.fire({
-      title: 'Tem certeza?',
-      text: 'Essa ação não pode ser desfeita!',
-      icon: 'warning',
+      title: "Tem certeza?",
+      text: "Essa ação não pode ser desfeita!",
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Sim, deletar!',
-      cancelButtonText: 'Cancelar'
+      confirmButtonColor: "#EB5757",
+      cancelButtonColor: "#1E88E5",
+      confirmButtonText: "Sim, deletar!",
+      cancelButtonText: "Cancelar",
     });
 
     if (result.isConfirmed) {
       try {
         const response = await axios.delete(urlDelete, {
           headers: {
-            Authorization: `bearer ${localStorage.getItem("token")}`
+            Authorization: `bearer ${localStorage.getItem("token")}`,
           },
           params: {
-            id: id
-          }
-        })
-        console.log('usuario deletado com sucesso!', response.data)
+            id: id,
+          },
+        });
+        console.log("usuario deletado com sucesso!", response.data);
         Swal.fire(
-          'Deletado!',
-          'O usuário foi removido com sucesso.',
-          'success'
+          "Deletado!",
+          "O usuário foi removido com sucesso.",
+          "success"
         );
 
-        fetchUsers()
-
+        fetchUsers();
       } catch (err) {
-        console.error(err)
+        console.error(err);
       }
     }
   }
@@ -84,14 +83,14 @@ const TableUsers = () => {
       <table className={styles.tabela}>
         <thead>
           <tr>
-            <th>nome</th>
-            <th>data de nascimento</th>
-            <th>cargo</th>
-            <th>cpf</th>
-            <th>email</th>
-            <th>cidade</th>
-            <th>estado</th>
-            <th>açoes</th>
+            <th>Nome</th>
+            <th>Data de Nascimento</th>
+            <th>Cargo</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Cidade</th>
+            <th>Estado</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -104,22 +103,20 @@ const TableUsers = () => {
               <td>{e.email}</td>
               <td>{e.address.city}</td>
               <td>{e.address.state}</td>
-
               <td>
-                <div style={{ cursor: 'pointer', display: 'flex', gap: 5 }}>
+                <div style={{ cursor: "pointer", display: "flex", gap: 5 }}>
                   <BiSearch
                     className={styles.icon}
                     title="Ver detalhes"
                     style={{ cursor: "pointer" }}
-
                   />
                   <BiPencil
                     className={styles.icon}
                     title="Editar"
-                    onClick={() => openEditModal(e)} />
-
+                    onClick={() => openEditModal(e)}
+                  />
                   <RiDeleteBinLine
-                    title="deletar"
+                    title="Deletar"
                     onClick={() => deleteUser(e.id)}
                   />
                 </div>
@@ -138,20 +135,22 @@ const TableUsers = () => {
               name="name"
               type="text"
               value={editingUser.name}
-              onChange={(e) => setEditingUser({ ...editingUser, name: e.target.value })}
+              onChange={(e) =>
+                setEditingUser({ ...editingUser, name: e.target.value })
+              }
               placeholder="Nome"
             />
-
             <label htmlFor="email">Email:</label>
             <input
               id="email"
               type="email"
               name="email"
               value={editingUser.email}
-              onChange={(e) => setEditingUser({ ...editingUser, email: e.target.value })}
+              onChange={(e) =>
+                setEditingUser({ ...editingUser, email: e.target.value })
+              }
               placeholder="Email"
             />
-
             <label htmlFor="city">Cidade:</label>
             <input
               id="city"
@@ -166,7 +165,6 @@ const TableUsers = () => {
               }
               placeholder="Cidade"
             />
-
             <label htmlFor="state">Estado:</label>
             <select
               id="state"
@@ -208,7 +206,6 @@ const TableUsers = () => {
               <option value="SE">Sergipe</option>
               <option value="TO">Tocantins</option>
             </select>
-
             <label htmlFor="street">Rua:</label>
             <input
               id="street"
@@ -223,7 +220,6 @@ const TableUsers = () => {
               }
               placeholder="Rua"
             />
-
             <label htmlFor="district">Bairro:</label>
             <input
               id="district"
@@ -238,7 +234,6 @@ const TableUsers = () => {
               }
               placeholder="Bairro"
             />
-
             <label htmlFor="houseNumber">Número:</label>
             <input
               id="houseNumber"
@@ -256,42 +251,57 @@ const TableUsers = () => {
               }
               placeholder="Número"
             />
-
             <div className={styles.modalButtons}>
-              <button onClick={() => setIsModalOpen(false)}>Cancelar</button>
-              <button onClick={async () => {
-               
+              <Button variant="button-cancel" onClick={() => setIsModalOpen(false)}>Cancelar</Button>
+              <Button
+                variant="button-save"
+                onClick={async () => {
+                  console.log("Token:", token);
 
-                if (!token) {
-                  Swal.fire("Erro", "Token de autenticação não encontrado.", "error");
-                  return;
-                }
+                  if (!token) {
+                    Swal.fire(
+                      "Erro",
+                      "Token de autenticação não encontrado.",
+                      "error"
+                    );
+                    return;
+                  }
 
-                try {
-                  const updatedUser = {
-                    ...editingUser
-                  };
+                  try {
+                    const updatedUser = {
+                      ...editingUser,
+                    };
 
-                  console.log("Editando usuário com ID:", editingUser.id);
-                  
+                    console.log("Editando usuário com ID:", editingUser.id);
 
-                  await axios.put(urlEdit, updatedUser, {
-                    headers: {
-                      Authorization: `Bearer ${token}`,
-                    },
-                    params: {
-                      id: editingUser.id
-                    }
-                  });
+                    await axios.put(urlEdit, updatedUser, {
+                      headers: {
+                        Authorization: `Bearer ${token}`,
+                      },
+                      params: {
+                        id: editingUser.id,
+                      },
+                    });
 
-                  Swal.fire("Atualizado!", "O usuário foi editado com sucesso.", "success");
-                  setIsModalOpen(false);
-                  fetchUsers();
-                } catch (err) {
-                  Swal.fire("Erro", "Não foi possível atualizar o usuário", "error");
-                  console.error(err);
-                }
-              }}>Salvar</button>
+                    Swal.fire(
+                      "Atualizado!",
+                      "O usuário foi editado com sucesso.",
+                      "success"
+                    );
+                    setIsModalOpen(false);
+                    fetchUsers();
+                  } catch (err) {
+                    Swal.fire(
+                      "Erro",
+                      "Não foi possível atualizar o usuário",
+                      "error"
+                    );
+                    console.error(err);
+                  }
+                }}
+              >
+                Salvar
+              </Button>
             </div>
           </div>
         </div>
@@ -299,6 +309,5 @@ const TableUsers = () => {
     </div>
   );
 };
-
 
 export default TableUsers;

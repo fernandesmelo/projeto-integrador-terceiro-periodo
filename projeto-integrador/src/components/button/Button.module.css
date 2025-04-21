@@ -7,6 +7,21 @@
   margin-bottom: 0.5rem;
 }
 
+.button-table {
+  width: 25%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  background-color: var(--brand-colors-primary);
+  color: var(--white);
+
+  &:hover {
+    background-color: var(--hover-effect-primary);
+  }
+}
+
 .primary {
   background-color: var(--brand-colors-primary);
   color: var(--white);
@@ -58,12 +73,12 @@
 }
 
 .generic-primary {
-  width: 25%;
+  width: 35%;
   padding: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: 0.5rem;
+  margin: 1rem auto 0 auto;
   background-color: var(--brand-colors-primary);
   color: var(--white);
 
@@ -92,6 +107,36 @@
   color: var(--desabled-color);
   cursor: not-allowed;
   pointer-events: none;
+}
+
+.button-cancel {
+  width: 40%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 auto 0 auto;
+  background-color: var(--accent-error);
+  color: var(--white);
+
+  &:hover {
+    background-color: #C0392B;
+  }
+}
+
+.button-save {
+  width: 40%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 auto 0 auto;
+  background-color: var(--accent-success);
+  color: var(--white);
+
+  &:hover {
+    background-color: #1E8449;
+  }
 }
 
 @media (max-width: 600px) {

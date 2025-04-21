@@ -128,7 +128,7 @@ const CreateVictim = () => {
       <div className={styles.content}>
         <Nav />
         <div className={styles.marginContent}>
-          <h1>Cadastro da vítima</h1>
+          <h1>Cadastro da Vítima</h1>
           <Nav2 onClick={() => navigate(-1)} content='voltar' />
           <form onSubmit={handleSubmit}>
             <label>NIC:*</label>
