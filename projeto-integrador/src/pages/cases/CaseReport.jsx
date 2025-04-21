@@ -396,7 +396,9 @@ const CaseReportForm = () => {
               }}
             >
               <div className={styles.modalContent}>
-                <h3>Editar Dados da Vítima</h3>
+                <Button variant="generic-primary" >
+                  Editar dados da vítima
+                </Button>
                 <div className={styles.formGroup}>
                   <label>Nome completo:*</label>
                   <input
