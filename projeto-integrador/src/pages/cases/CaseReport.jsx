@@ -264,6 +264,18 @@ const CaseReportForm = () => {
                 <strong>Status de Identificação:</strong>{" "}
                 {getOrNA(caseData.patient?.identificationStatus)}
               </p>
+              <Button
+                variant="generic-secondary"
+                type="button"
+                onClick={confirmEdit}
+                className={`${styles.editButton} ${
+                  editVictim ? styles.edited : ""
+                }`}
+              >
+                {editVictim
+                  ? "Dados da vítima editados"
+                  : "Editar dados da vítima"}
+              </Button>
             </div>
             <div className={styles.caseSection}>
               <h2>Localização do Ocorrido</h2>
@@ -431,7 +443,7 @@ const CaseReportForm = () => {
                   />
                 </div>
                 <div className={styles.formGroup}>
-                  <label>Genero:</label>
+                  <label>Gênero:</label>
                   <select
                     value={victimData.gender}
                     onChange={(e) =>
@@ -584,17 +596,6 @@ const CaseReportForm = () => {
               </div>
             </div>
           )}
-          <button
-            type="button"
-            onClick={confirmEdit}
-            className={`${styles.editButton} ${
-              editVictim ? styles.edited : ""
-            }`}
-          >
-            {editVictim
-              ? "✓ Dados da Vítima Editados"
-              : "✎ Editar Dados da Vítima"}
-          </button>
           <h2 className={styles.title}>Relatório Final do Caso</h2>
           <form onSubmit={handleSubmit} className={styles.form}>
             <label>Descrição do Caso:*</label>

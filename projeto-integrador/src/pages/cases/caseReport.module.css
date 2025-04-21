@@ -135,7 +135,12 @@ legend {
     justify-content: flex-end;
     gap: 10px;
     margin-top: 1rem;
-  }  
+}
+
+.title {
+    margin: 2rem 0 1rem 0;
+    color: var(--brand-colors-primary);
+}
 
 
 @media screen and (max-width: 978px) {
