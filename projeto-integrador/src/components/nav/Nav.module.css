@@ -33,6 +33,22 @@
     }
 }
 
+.itemMenu {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    display: none;
+
+    &:hover {
+        color: var(--icons);
+        cursor: pointer;
+    }
+
+}
+
 .back {
     display: flex;
     align-items: center;
@@ -73,5 +89,25 @@
         width: 4.6875rem;
         display: none;
     }
+
+    .itemMenu {
+        display: block;
+        position: absolute;
+        right: 15px;
+        top: 20px;
+
+        &:hover {
+            color: #fff;
+            cursor: pointer;
+        }
+    }
+
+    .itemH {
+        
+        &:hover {
+            color: rgb(0, 93, 82);
+        }
+    }
+
 
 }

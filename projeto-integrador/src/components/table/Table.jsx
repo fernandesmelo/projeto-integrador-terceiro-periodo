@@ -5,6 +5,7 @@ import Button from "../button/Button";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { IoMdAddCircleOutline } from "react-icons/io";
 
 const Table = ({ cases }) => {
   const navigate = useNavigate();
@@ -96,13 +97,11 @@ const Table = ({ cases }) => {
               </td>
               <td>
                 {item.evidence?.length || 0}
-                <Button
-                  type="button"
-                  variant="small-primary"
+                <IoMdAddCircleOutline className={styles.add}
+
                   onClick={() => addEvidence(item.protocol)}
-                >
-                  Adicionar evidência
-                </Button>
+                />
+                
               </td>
               <td>
                 <BiSearch
