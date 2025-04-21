@@ -53,7 +53,7 @@ fieldset {
     margin-right: 1.5rem;
 }
 
-legend {
+.legend {
     font-weight: bold;
     padding: 0 0.5rem;
 }
