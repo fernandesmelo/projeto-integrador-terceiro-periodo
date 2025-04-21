@@ -2,11 +2,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Header from "../../components/header/Header";
 import Nav from "../../components/nav/Nav";
+import Button from "../../components/button/Button";
 import styles from "./CaseReport.module.css";
 import Swal from "sweetalert2";
 import axios from "axios";
 import Nav2 from "../../components/nav2/Nav2";
-
 
 const CaseReportForm = () => {
   const location = useLocation();
@@ -19,8 +19,8 @@ const CaseReportForm = () => {
   const numQuestions = caseData.questions?.length || 0;
   const [answers, setAnswers] = useState(() => Array(numQuestions).fill(""));
   const [status, setStatus] = useState("");
-  const [editVictim, setEditVictim] = useState(false); // Controla se está editando
-  const [showEditModal, setShowEditModal] = useState(false); // Controla o modal de confirmação
+  const [editVictim, setEditVictim] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false); 
   const [victimData, setVictimData] = useState({
     name: caseData.patient?.name || "",
     age: caseData.patient?.age || "",
@@ -58,14 +58,13 @@ const CaseReportForm = () => {
       showCancelButton: true,
       confirmButtonText: "Sim, editar",
       cancelButtonText: "Não, continuar",
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#1E88E5",
+      cancelButtonColor: "#EB5757",
     });
 
     if (response) {
       setShowEditModal(true);
     } else {
-      // Continua sem editar
       setEditVictim(false);
     }
   };
@@ -73,7 +72,6 @@ const CaseReportForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Verifica se o modal está aberto
     if (showEditModal) {
       Swal.fire(
         "Atenção",
@@ -83,7 +81,6 @@ const CaseReportForm = () => {
       return;
     }
 
-    // Validação dos campos obrigatórios
     if (!description || !conclusion || answers.some((a) => !a) || !status) {
       Swal.fire("Aviso", "Preencha todos os campos obrigatórios!", "warning");
       return;
@@ -105,12 +102,10 @@ const CaseReportForm = () => {
       },
     };
 
-    // Só adiciona age se for preenchido
     if (victimData.age !== "" && !isNaN(Number(victimData.age))) {
       updateData.age = Number(victimData.age);
     }
 
-    // Só adiciona houseNumber se for preenchido
     if (
       victimData.address.houseNumber !== "" &&
       !isNaN(Number(victimData.address.houseNumber))
@@ -127,8 +122,6 @@ const CaseReportForm = () => {
       },
     });
     try {
-
-      // Primeiro atualiza os dados da vítima se foram editados
       if (editVictim && caseData.patient?.nic) {
         await axios.put(
           `https://sistema-odonto-legal.onrender.com/api/patient/update`,
@@ -144,7 +137,6 @@ const CaseReportForm = () => {
         );
       }
 
-      // Depois envia o relatório do caso
       await axios.post(
         "https://sistema-odonto-legal.onrender.com/api/case/report/case",
         {
@@ -162,7 +154,6 @@ const CaseReportForm = () => {
         }
       );
 
-      // Finalmente atualiza o status do caso
       await axios.patch(
         `https://sistema-odonto-legal.onrender.com/api/cases/edit/status/protocol`,
         { status },
@@ -175,7 +166,7 @@ const CaseReportForm = () => {
           },
         }
       );
-      Swal.close()
+      Swal.close();
       Swal.fire({
         icon: "success",
         title: "Relatorio salvo com sucesso!",
@@ -183,7 +174,6 @@ const CaseReportForm = () => {
         timer: 1500,
       });
 
-      // redirecionar após um pequeno delay
       setTimeout(() => {
         navigate(`/casos/detalhes/${caseData.protocol}`);
       }, 1500);
@@ -210,10 +200,11 @@ const CaseReportForm = () => {
       <div className={styles.content}>
         <Nav />
         <div className={styles.marginContent}>
-          <section>
+          <h1>Gerar Relatório do Caso</h1>
+          <Nav2 onClick={() => navigate(-1)} content="voltar" />
+          <section className={styles.caseDetails}>
             <div className={styles.caseSection}>
-              <h2>Informações Gerais</h2>
-              <Nav2 onClick={() => navigate(-1)} content='voltar'/>
+              <h1>Informações Gerais</h1>
               <p>
                 <strong>Protocolo:</strong> {getOrNA(caseData.protocol)}
               </p>
@@ -238,16 +229,15 @@ const CaseReportForm = () => {
                 {getOrNA(caseData.inquiryNumber)}
               </p>
               <p>
-                <strong>Autoridade requisitante:</strong>{" "}
+                <strong>Autoridade Requisitante:</strong>{" "}
                 {getOrNA(caseData.requestingAuthority)}
               </p>
               <p>
-                <strong>Instituição requisitante:</strong>{" "}
+                <strong>Instituição Requisitante:</strong>{" "}
                 {getOrNA(caseData.requestingInstitution)}
               </p>
             </div>
           </section>
-
           <section>
             <div className={styles.caseSection}>
               {caseData.questions && caseData.questions.length > 0 && (
@@ -262,10 +252,9 @@ const CaseReportForm = () => {
               )}
             </div>
           </section>
-
           <section>
             <div className={styles.caseSection}>
-              <h2>Dados da vítima</h2>
+              <h2>Dados da Vítima</h2>
               <p>
                 <strong>Nome:</strong> {getOrNA(caseData.patient?.name)}
               </p>
@@ -284,7 +273,7 @@ const CaseReportForm = () => {
 
           <section>
             <div className={styles.caseSection}>
-              <h2>Localização do ocorrido</h2>
+              <h2>Localização do Ocorrido</h2>
               <p>
                 <strong>Rua:</strong> {getOrNA(caseData.location?.street)}
               </p>
@@ -302,10 +291,9 @@ const CaseReportForm = () => {
               </p>
             </div>
           </section>
-
           <section>
             <div className={styles.caseSection}>
-              <h2>Responsável pela abertura</h2>
+              <h2>Responsável pela Abertura</h2>
               <p>
                 <strong>Nome:</strong> {getOrNA(caseData.openedBy?.name)}
               </p>
@@ -314,10 +302,9 @@ const CaseReportForm = () => {
               </p>
             </div>
           </section>
-
           <section>
             <div className={styles.caseSection}>
-              <h2>Profissionais </h2>
+              <h2>Profissionais</h2>
               <div className={styles.cardList}>
                 {caseData.professional.length > 0 ? (
                   caseData.professional.map((pessoa) => (
@@ -336,7 +323,6 @@ const CaseReportForm = () => {
               </div>
             </div>
           </section>
-
           <section>
             <div className={styles.caseSection}>
               <h2>Evidências</h2>
@@ -348,7 +334,7 @@ const CaseReportForm = () => {
                         <strong>Título:</strong> {getOrNA(evid.title)}
                       </p>
                       <p>
-                        <strong>Depoimento:</strong> {getOrNA(evid.testimony)}
+                        <strong>Depoimentos:</strong> {getOrNA(evid.testimony)}
                       </p>
                       <p>
                         <strong>Descrição Técnica:</strong>{" "}
@@ -370,7 +356,6 @@ const CaseReportForm = () => {
                       <p>
                         <strong>Longitude:</strong> {getOrNA(evid.longitude)}
                       </p>
-
                       {evid.photo ? (
                         <div className={styles.imageWrapper}>
                           <p>
@@ -387,7 +372,6 @@ const CaseReportForm = () => {
                           <strong>Foto:</strong> Não disponível
                         </p>
                       )}
-
                       <div>
                         <h3>Laudo Gerado</h3>
                         <p>
@@ -415,7 +399,6 @@ const CaseReportForm = () => {
               </div>
             </div>
           </section>
-
           {showEditModal && (
             <div
               className={styles.modalOverlay}
@@ -427,7 +410,6 @@ const CaseReportForm = () => {
             >
               <div className={styles.modalContent}>
                 <h3>Editar Dados da Vítima</h3>
-
                 <div className={styles.formGroup}>
                   <label>Nome completo:*</label>
                   <input
@@ -438,7 +420,6 @@ const CaseReportForm = () => {
                     required
                   />
                 </div>
-
                 <div className={styles.formGroup}>
                   <label>Idade:</label>
                   <input
@@ -453,7 +434,6 @@ const CaseReportForm = () => {
                     }}
                   />
                 </div>
-
                 <div className={styles.formGroup}>
                   <label>CPF:</label>
                   <input
@@ -463,7 +443,6 @@ const CaseReportForm = () => {
                     }
                   />
                 </div>
-
                 <div className={styles.formGroup}>
                   <label>Genero:</label>
                   <select
@@ -483,7 +462,6 @@ const CaseReportForm = () => {
                     <option value="OUTRO">Outro</option>
                   </select>
                 </div>
-
                 <div className={styles.formGroup}>
                   <label>Status de Identificação:*</label>
                   <select
@@ -503,7 +481,6 @@ const CaseReportForm = () => {
                     </option>
                   </select>
                 </div>
-
                 <h4>Endereço</h4>
                 <div className={styles.formGroup}>
                   <label>Rua:</label>
@@ -520,7 +497,6 @@ const CaseReportForm = () => {
                     }
                   />
                 </div>
-
                 <div className={styles.formGroup}>
                   <label>Número:</label>
                   <input
@@ -537,7 +513,6 @@ const CaseReportForm = () => {
                     }
                   />
                 </div>
-
                 <div className={styles.formGroup}>
                   <label>Bairro:</label>
                   <input
@@ -553,7 +528,6 @@ const CaseReportForm = () => {
                     }
                   />
                 </div>
-
                 <div className={styles.formGroup}>
                   <label>Cidade:</label>
                   <input
@@ -569,7 +543,6 @@ const CaseReportForm = () => {
                     }
                   />
                 </div>
-
                 <div className={styles.formGroup}>
                   <label>Estado:</label>
                   <input
@@ -585,7 +558,6 @@ const CaseReportForm = () => {
                     }
                   />
                 </div>
-
                 <div className={styles.formGroup}>
                   <label>CEP:</label>
                   <input
@@ -601,9 +573,6 @@ const CaseReportForm = () => {
                     }
                   />
                 </div>
-
-                {/* Adicione os outros campos de endereço conforme necessário */}
-
                 <div className={styles.modalButtons}>
                   <button
                     onClick={() => {
@@ -624,18 +593,17 @@ const CaseReportForm = () => {
               </div>
             </div>
           )}
-
           <button
             type="button"
             onClick={confirmEdit}
-            className={`${styles.editButton} ${editVictim ? styles.edited : ""
-              }`}
+            className={`${styles.editButton} ${
+              editVictim ? styles.edited : ""
+            }`}
           >
             {editVictim
               ? "✓ Dados da Vítima Editados"
               : "✎ Editar Dados da Vítima"}
           </button>
-
           <h2 className={styles.title}>Relatório Final do Caso</h2>
           <form onSubmit={handleSubmit} className={styles.form}>
             <label>Descrição do Caso:*</label>
@@ -645,7 +613,6 @@ const CaseReportForm = () => {
               required
               className={styles.textarea}
             />
-
             <label>Conclusão:*</label>
             <textarea
               value={conclusion}
@@ -653,7 +620,6 @@ const CaseReportForm = () => {
               required
               className={styles.textarea}
             />
-
             {answers.map((ans, idx) => (
               <div key={idx}>
                 <label>Pergunta {idx + 1}:*</label>
@@ -666,7 +632,6 @@ const CaseReportForm = () => {
                 />
               </div>
             ))}
-
             <label>Status do Caso:*</label>
             <select
               value={status}
@@ -678,10 +643,9 @@ const CaseReportForm = () => {
               <option value="FINALIZADO">Finalizado</option>
               <option value="ARQUIVADO">Arquivado</option>
             </select>
-
-            <button type="submit" className={styles.button}>
-              Salvar Relatório
-            </button>
+            <Button type="submit" variant="generic-primary">
+              Salvar relatório
+            </Button>
           </form>
         </div>
       </div>
