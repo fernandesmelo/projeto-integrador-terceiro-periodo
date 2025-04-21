@@ -10,7 +10,7 @@ import Nav2 from "../../components/nav2/Nav2";
 
 const LaudoForm = () => {
   const { state } = useLocation();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const evidence = state?.evidence;
   const protocol = state?.protocol;
   console.log("Evidência recebida:", evidence);
@@ -82,33 +82,34 @@ const LaudoForm = () => {
         <div className={styles.formContainer}>
           <h1>Gerar Laudo da Evidência</h1>
           <Nav2 onClick={() => navigate(-1)} content="voltar" />
-          <div className={styles.evidenceInfo}>
-            {evidence?.photo && (
-              <div className={styles.imageContainer}>
-                <img
-                  src={evidence.photo}
-                  alt="Imagem da evidência"
-                  className={styles.photo}
-                />
-              </div>
-            )}
-            <p>
-              <strong>Título:</strong> {evidence?.title}
-            </p>
-            <p>
-              <strong>Relatos Testemunhais:</strong> {evidence?.testimony}
-            </p>
-            <p>
-              <strong>Descrição Técnica:</strong>{" "}
-              {evidence?.descriptionTechnical}
-            </p>
-            <p>
-              <strong>Condição:</strong> {evidence?.condition}
-            </p>
-            <p>
-              <strong>Categoria:</strong> {evidence?.category}
-            </p>
-          </div>
+          <fieldset className={styles.evidenceInfo}>
+            <legend>Dados da Evidência</legend>
+              {evidence?.photo && (
+                <div className={styles.imageContainer}>
+                  <img
+                    src={evidence.photo}
+                    alt="Imagem da evidência"
+                    className={styles.photo}
+                  />
+                </div>
+              )}
+              <p>
+                <strong>Título:</strong> {evidence?.title}
+              </p>
+              <p>
+                <strong>Relatos Testemunhais:</strong> {evidence?.testimony}
+              </p>
+              <p>
+                <strong>Descrição Técnica:</strong>{" "}
+                {evidence?.descriptionTechnical}
+              </p>
+              <p>
+                <strong>Condição:</strong> {evidence?.condition}
+              </p>
+              <p>
+                <strong>Categoria:</strong> {evidence?.category}
+              </p>
+          </fieldset>
           <form onSubmit={handleSubmit}>
             <label>Análise Técnica:*</label>
             <textarea
@@ -124,7 +125,7 @@ const LaudoForm = () => {
               rows="4"
               required
             />
-            <Button type="submit" variant="generic-primary" >
+            <Button type="submit" variant="generic-primary">
               Salvar laudo
             </Button>
           </form>
