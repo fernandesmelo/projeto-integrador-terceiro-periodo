@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Header from "../../components/header/Header";
 import Nav from "../../components/nav/Nav";
+import Button from "../../components/button/Button";
 import styles from "./reportEvidence.module.css";
 import Swal from "sweetalert2";
 import axios from "axios";
@@ -9,7 +10,7 @@ import Nav2 from "../../components/nav2/Nav2";
 
 const LaudoForm = () => {
   const { state } = useLocation();
-  const navigate = useNavigate(); // <--- Adicionado para redirecionar
+  const navigate = useNavigate();
   const evidence = state?.evidence;
   const protocol = state?.protocol;
   console.log("Evidência recebida:", evidence);
@@ -25,8 +26,8 @@ const LaudoForm = () => {
       text: "Você não poderá editar ou remover o laudo depois de salvo!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#1E88E5",
+      cancelButtonColor: "#EB5757",
       confirmButtonText: "Sim, gerar laudo!",
       cancelButtonText: "Cancelar",
     });
@@ -61,7 +62,6 @@ const LaudoForm = () => {
         timer: 1500,
       });
 
-      // redirecionar após um pequeno delay
       setTimeout(() => {
         navigate(`/casos/detalhes/${protocol}`);
       }, 1500);
@@ -81,36 +81,35 @@ const LaudoForm = () => {
         <Nav />
         <div className={styles.formContainer}>
           <h1>Gerar Laudo da Evidência</h1>
-          <Nav2 onClick={() => navigate(-1)} content='voltar'/>
-
-          <div className={styles.evidenceInfo}>
-            {evidence?.photo && (
-              <div className={styles.imageContainer}>
-                <img
-                  src={evidence.photo}
-                  alt="Imagem da evidência"
-                  className={styles.photo}
-                />
-              </div>
-            )}
-            <p>
-              <strong>Título:</strong> {evidence?.title}
-            </p>
-            <p>
-              <strong>Relatos testemunhais:</strong> {evidence?.testimony}
-            </p>
-            <p>
-              <strong>Descrição Técnica:</strong>{" "}
-              {evidence?.descriptionTechnical}
-            </p>
-            <p>
-              <strong>Condição:</strong> {evidence?.condition}
-            </p>
-            <p>
-              <strong>Categoria:</strong> {evidence?.category}
-            </p>
-          </div>
-
+          <Nav2 onClick={() => navigate(-1)} content="voltar" />
+          <fieldset className={styles.evidenceInfo}>
+            <legend>Dados da Evidência</legend>
+              {evidence?.photo && (
+                <div className={styles.imageContainer}>
+                  <img
+                    src={evidence.photo}
+                    alt="Imagem da evidência"
+                    className={styles.photo}
+                  />
+                </div>
+              )}
+              <p>
+                <strong>Título:</strong> {evidence?.title}
+              </p>
+              <p>
+                <strong>Relatos Testemunhais:</strong> {evidence?.testimony}
+              </p>
+              <p>
+                <strong>Descrição Técnica:</strong>{" "}
+                {evidence?.descriptionTechnical}
+              </p>
+              <p>
+                <strong>Condição:</strong> {evidence?.condition}
+              </p>
+              <p>
+                <strong>Categoria:</strong> {evidence?.category}
+              </p>
+          </fieldset>
           <form onSubmit={handleSubmit}>
             <label>Análise Técnica:*</label>
             <textarea
@@ -119,7 +118,6 @@ const LaudoForm = () => {
               rows="4"
               required
             />
-
             <label>Conclusão do Laudo:*</label>
             <textarea
               value={conclusion}
@@ -127,10 +125,9 @@ const LaudoForm = () => {
               rows="4"
               required
             />
-
-            <button type="submit" className={styles.button}>
-              Salvar Laudo
-            </button>
+            <Button type="submit" variant="generic-primary">
+              Salvar laudo
+            </Button>
           </form>
         </div>
       </div>
