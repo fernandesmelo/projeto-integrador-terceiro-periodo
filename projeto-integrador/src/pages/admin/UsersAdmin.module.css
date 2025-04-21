@@ -34,3 +34,10 @@
     background-color: var(--hover-effect-secondary);
   }
 }
+
+@media screen and (max-width: 978px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+}
