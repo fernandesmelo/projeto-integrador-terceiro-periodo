@@ -2,6 +2,10 @@
     display: flex;
     background: var(--light-background);
     margin: auto;
+
+    img {
+        width: 100%;
+    }
 }
 
 .formContainer {
