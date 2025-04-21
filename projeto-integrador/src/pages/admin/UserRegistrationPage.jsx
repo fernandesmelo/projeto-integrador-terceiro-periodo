@@ -91,84 +91,85 @@ const UserRegistrationPage = () => {
       <Header />
       <div className={styles.nav_container}>
         <Nav />
-        <div className={styles.user_registration}>
-          <div className={styles.registration}>
-            <h1>Cadastro de Usuário</h1>
-            <Nav2 onClick={() => navigate(-1)} content="voltar" />
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="name">Nome:</label>
-              <input
-                type="text"
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Insira o nome completo"
-                className={styles.input}
-                required
-              />
-              <label htmlFor="email">Email:</label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                placeholder="Insira o email"
-                className={styles.input}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <label htmlFor="dataNascimento">Data de Nascimento:</label>
-              <input
-                type="date"
-                id="dataNascimento"
-                className={styles.input}
-                value={dateOfBirth}
-                onChange={(e) => setDateOfBirth(e.target.value)}
-                required
-                max={new Date().toISOString().split("T")[0]}
-              />
-              <label htmlFor="cpf">CPF:</label>
-              <input
-                type="text"
-                id="cpf"
-                placeholder="Insira o CPF"
-                className={styles.input}
-                value={cpf}
-                onChange={(e) => setCpf(e.target.value)}
-                required
-                pattern="\d{11}"
-                title="Digite um CPF válido com 11 números"
-                maxLength={11}
-              />
-              <label htmlFor="cargo">Cargo:</label>
-              <select
-                id="cargo"
-                value={role}
-                onChange={(e) => setRole(e.target.value)}
-                className={styles.input}
-              >
-                <option value="">Selecione o cargo:</option>
-                <option value="ADMIN">Admin</option>
-                <option value="ASSISTENTE">Assistente</option>
-                <option value="PERITO">Perito</option>
-              </select>
-              <label htmlFor="senha">Senha:</label>
-              <input
-                type="password"
-                id="senha"
-                placeholder="Insira a senha"
-                className={styles.input}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <label htmlFor="confirmarSenha">Confirme a Senha:</label>
-              <input
-                type="password"
-                id="confirmarSenha"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                placeholder="Confirme a senha"
-                className={styles.input}
-              />
+        <div className={styles.registration}>
+          <h1>Cadastro de Usuário</h1>
+          <Nav2 onClick={() => navigate(-1)} content="voltar" />
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="name">Nome:</label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Insira o nome completo"
+              className={styles.input}
+              required
+            />
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              placeholder="Insira o email"
+              className={styles.input}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <label htmlFor="dataNascimento">Data de Nascimento:</label>
+            <input
+              type="date"
+              id="dataNascimento"
+              className={styles.input}
+              value={dateOfBirth}
+              onChange={(e) => setDateOfBirth(e.target.value)}
+              required
+              max={new Date().toISOString().split("T")[0]}
+            />
+            <label htmlFor="cpf">CPF:</label>
+            <input
+              type="text"
+              id="cpf"
+              placeholder="Insira o CPF"
+              className={styles.input}
+              value={cpf}
+              onChange={(e) => setCpf(e.target.value)}
+              required
+              pattern="\d{11}"
+              title="Digite um CPF válido com 11 números"
+              maxLength={11}
+            />
+            <label htmlFor="cargo">Cargo:</label>
+            <select
+              id="cargo"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              className={styles.input}
+            >
+              <option value="">Selecione o cargo:</option>
+              <option value="ADMIN">Admin</option>
+              <option value="ASSISTENTE">Assistente</option>
+              <option value="PERITO">Perito</option>
+            </select>
+            <label htmlFor="senha">Senha:</label>
+            <input
+              type="password"
+              id="senha"
+              placeholder="Insira a senha"
+              className={styles.input}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <label htmlFor="confirmarSenha">Confirme a Senha:</label>
+            <input
+              type="password"
+              id="confirmarSenha"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="Confirme a senha"
+              className={styles.input}
+            />
+            <fieldset>
+              <legend>Endereço do Usuário</legend>
               <label htmlFor="rua">Rua:</label>
               <input
                 type="text"
@@ -263,11 +264,11 @@ const UserRegistrationPage = () => {
                 value={complement}
                 onChange={(e) => setComplement(e.target.value)}
               />
-              <Button type="submit" variant="generic-primary">
-                Cadastrar
-              </Button>
-            </form>
-          </div>
+            </fieldset>
+            <Button type="submit" variant="generic-primary">
+              Cadastrar
+            </Button>
+          </form>
         </div>
       </div>
     </div>
