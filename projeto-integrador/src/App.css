@@ -7,6 +7,10 @@
     font-family: "inter";
 }
 
+html {
+    background-color: var(--light-background);
+}
+
 :root {
     --brand-colors-primary: #012130;
     --brand-colors-secondary: #EDBF5F;

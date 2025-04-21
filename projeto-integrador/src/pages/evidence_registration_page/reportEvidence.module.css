@@ -2,6 +2,10 @@
     display: flex;
     background: var(--light-background);
     margin: auto;
+
+    img {
+        width: 100%;
+    }
 }
 
 .formContainer {
@@ -61,4 +65,21 @@ textarea {
     height: auto;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 978px) {
+    .content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .formContainer {
+      margin: 0;
+      padding: 1rem;
+      width: 100%;
+
+      img {
+        width: 100%;
+      }
+    }
 }

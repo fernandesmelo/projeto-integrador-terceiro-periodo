@@ -78,5 +78,7 @@ fieldset {
 
     .registration {
         display: block;
+        margin: auto;
+        width: 100%;
     }
 }

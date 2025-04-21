@@ -4,6 +4,10 @@
 
 .marginContent {
     margin: 6rem 0 0 26rem;
+
+    img {
+        width: 100%;
+    }
 }
 
 .marginContent {
@@ -36,4 +40,21 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 978px) {
+    .content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .marginContent {
+      margin: 0;
+      padding: 1rem;
+      width: 100%;
+
+      img {
+        width: 100%;
+      }
+    }
 }
