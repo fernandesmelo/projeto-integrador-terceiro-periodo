@@ -5,3 +5,13 @@
   margin: 0 auto;
   position: relative;
 }
+
+.title {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  color: var(--brand-colors-primary);
+  margin: 0 0 0.5rem 0;
+  text-align: center; 
+}
+

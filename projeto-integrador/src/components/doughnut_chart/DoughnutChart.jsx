@@ -72,6 +72,9 @@ export default function VictimsStatusDoughnut({
 
   return (
     <div className={styles.container}>
+      <div className={styles.title}>
+        <h4>Identificação de Vítimas</h4>
+      </div>
       <Doughnut data={chartData} options={options} />
     </div>
   );
