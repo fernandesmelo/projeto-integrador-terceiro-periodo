@@ -77,7 +77,7 @@ const CasesBarChart = () => {
       title: {
         display: true,
         text: "Casos por Mês",
-        font: { size: 18 },
+        font: { size: 16 },
         color: "#012130",
       },
     },
