@@ -16,12 +16,12 @@
 }
 
 .add {
-  margin-left: 20px;
+  margin-left: 1.25rem;
 }
 
 .tabela th,
 .tabela td {
-  padding: 12px;
+  padding: 0.75rem;
   text-align: left;
   border-bottom: 1px solid #E0E0E0;
   color: var(--brand-colors-primary);
@@ -38,9 +38,10 @@
 }
 
 @media (max-width: 978px) {
+
   .tabela th,
   .tabela td {
-    padding: 8px;
-    font-size: 14px;
+    padding: 0.5rem; 
+    font-size: 0.875rem;
   }
 }
