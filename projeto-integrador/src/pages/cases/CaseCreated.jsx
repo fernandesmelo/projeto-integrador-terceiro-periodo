@@ -326,7 +326,6 @@ const CaseCreated = () => {
                 value={observations}
                 onChange={(e) => setObservations(e.target.value)}
               />
-
               <h3>Perguntas do requisitante*:</h3>
               {questions.map((q, index) => (
                 <div key={index} className={styles.questionContainer}>
