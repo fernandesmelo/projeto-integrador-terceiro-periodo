@@ -34,12 +34,12 @@
 .menu {
     position: fixed;
     top: 0;
-    right: -250px;
-    width: 250px;
-    height: 100px;
+    right: -15.625rem;
+    width: 15.625rem;
+    height: 6.25rem;
     background-color: #222;
-    color: white;
-    padding: 20px;
+    color: var(--white);
+    padding: 1.25rem;
     transition: left 0.3s ease;
     z-index: 1000;
 
@@ -47,7 +47,7 @@
 
 .open {
     right: 0;
-    top: 60px;
+    top: 3.75rem;
 }
 
 @media screen and (max-width: 978px) {
