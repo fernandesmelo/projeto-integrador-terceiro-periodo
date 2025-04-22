@@ -3,7 +3,9 @@
 }
 
 .description {
-    color: var(--brand-colors-primary);
+    color: var(--soft-contrast-text);
+    font-size: 13px;
+    margin-bottom: 2rem;
 }
 
 .mapContainer {

@@ -102,7 +102,7 @@ const MapComponent = () => {
 
   return (
     <>
-      <h2 className={styles.title}>Mapa de Casos em Recife</h2>
+      <h4 className={styles.title}>Mapa de Casos em Recife</h4>
       <p className={styles.description}>
         Aqui você vê, bairro a bairro, a quantidade de casos registrados.
       </p>
