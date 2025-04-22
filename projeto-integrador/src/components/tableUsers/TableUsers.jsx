@@ -29,14 +29,14 @@ const TableUsers = () => {
           },
         }
       );
-      setUsers(response.data); 
+      setUsers(response.data);
     } catch (err) {
       console.error("Erro ao buscar usuários:", err);
     }
   };
 
   useEffect(() => {
-    fetchUsers(); 
+    fetchUsers();
   }, []);
 
   const deleteUser = async (id) => {
@@ -73,10 +73,7 @@ const TableUsers = () => {
         console.error(err);
       }
     }
-  }
-
-
-
+  };
 
   return (
     <div className={styles.container}>
@@ -252,7 +249,12 @@ const TableUsers = () => {
               placeholder="Número"
             />
             <div className={styles.modalButtons}>
-              <Button variant="button-cancel" onClick={() => setIsModalOpen(false)}>Cancelar</Button>
+              <Button
+                variant="button-cancel"
+                onClick={() => setIsModalOpen(false)}
+              >
+                Cancelar
+              </Button>
               <Button
                 variant="button-save"
                 onClick={async () => {
