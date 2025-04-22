@@ -8,7 +8,6 @@ const MapComponent = () => {
   const [geoData, setGeoData] = useState(null);
   const [data, setData] = useState([]);
 
-  // Carrega GeoJSON
   useEffect(() => {
     d3.json("/dados/bvisualizacao_fcbairro.geojson")
       .then((json) => setGeoData(json))
@@ -16,7 +15,6 @@ const MapComponent = () => {
   }, []);
 
   useEffect(() => {
-    
     fetch("https://sistema-odonto-legal.onrender.com/api/dash/cases/district")
       .then((res) => {
         if (!res.ok) throw new Error(`Erro na API: ${res.status}`);
@@ -38,12 +36,10 @@ const MapComponent = () => {
       );
   }, []);
 
-  // Prepara escala e thresholds
   const maxCases = d3.max(data, (d) => d.casos) ?? 1;
   const colorScale = d3.scaleSequential([0, maxCases], d3.interpolateReds);
   const thresholds = [0, Math.round(maxCases / 2), maxCases];
 
-  // desenha / atualiza o mapa
   useEffect(() => {
     if (!geoData || data.length === 0) return;
 
@@ -59,7 +55,6 @@ const MapComponent = () => {
     const path = d3.geoPath().projection(projection);
     const dataMap = new Map(data.map((d) => [d.bairro, d.casos]));
 
-    // desenha os bairros
     const paths = svg
       .selectAll("path")
       .data(geoData.features)
@@ -68,7 +63,6 @@ const MapComponent = () => {
       .attr("stroke", "#444")
       .attr("stroke-width", 0.5);
 
-    // anima o fill
     paths
       .transition()
       .duration(750)
@@ -83,7 +77,6 @@ const MapComponent = () => {
         return casos > 0 ? colorScale(casos) : "#f0f0f0";
       });
 
-    // tooltip
     paths
       .on("mouseover", (e, f) => {
         const raw = (
@@ -109,11 +102,10 @@ const MapComponent = () => {
 
   return (
     <>
-      <h2 className={styles.title}>Mapa de casos em Recife</h2>
+      <h2 className={styles.title}>Mapa de Casos em Recife</h2>
       <p className={styles.description}>
         Aqui você vê, bairro a bairro, a quantidade de casos registrados.
       </p>
-
       <div className={styles.mapContainer}>
         <svg ref={svgRef} />
         <div ref={tooltipRef} className={styles.tooltip} />
