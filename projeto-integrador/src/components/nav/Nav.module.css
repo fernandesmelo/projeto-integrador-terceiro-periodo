@@ -90,20 +90,35 @@
         display: none;
     }
 
+    .menu {
+        position: absolute;
+        top: 2.5rem;
+        width: 13.75rem;
+        right: 0;
+        background-color: var(--light-background);
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 0.625rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3125rem;
+        z-index: 1000;
+    }
+
     .itemMenu {
+        color: var(--brand-colors-primary);
         display: block;
         position: absolute;
-        right: 15px;
-        top: 20px;
+        right: 0.9375rem;
+        top: 1.25rem;
 
         &:hover {
-            color: #fff;
+            color: var(--hover-effect-primary);
             cursor: pointer;
         }
     }
 
     .itemH {
-        
         &:hover {
             color: rgb(0, 93, 82);
         }
