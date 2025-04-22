@@ -71,7 +71,6 @@ const Nav = () => {
             >
               <a  className={styles.itemH}  onClick={() => navigate("/inicio")}>Início</a>
               <a className={styles.itemH} onClick={() => navigate("/casos")}>Casos Periciais</a>
-              <a className={styles.itemH} >Banco Odonto-Legal</a> 
               <a className={styles.itemH} onClick={handleAdmin}>Admin</a>
               <a className={styles.itemH} onClick={() => navigate("/")}>Sair</a>
             </div>

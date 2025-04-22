@@ -26,9 +26,7 @@ const Table = ({ cases }) => {
     navigate(`/casos/evidencia/${protocol}`);
   };
 
-  const gerarRelatorio = (protocol) => {
-    navigate(`/casos/laudo/evidencia/${protocol}`);
-  };
+
 
   const excluirCaso = async (protocol) => {
     const confirm = await Swal.fire({
@@ -123,16 +121,7 @@ const Table = ({ cases }) => {
                     color: "#012130",
                   }}
                 />
-                <BiFile
-                  className={styles.icon}
-                  title="Gerar relatório"
-                  style={{
-                    cursor: "pointer",
-                    marginRight: 10,
-                    color: "#012130",
-                  }}
-                  onClick={() => gerarRelatorio(item.protocol)}
-                />
+             
                 {item.evidence?.length === 0 && (
                   <BiTrash
                     className={styles.icon}
