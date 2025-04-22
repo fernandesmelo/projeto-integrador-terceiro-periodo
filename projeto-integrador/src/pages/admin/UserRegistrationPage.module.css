@@ -5,8 +5,8 @@
 }
 
 .registration {
-    width: 60%; 
-    max-width: 800px; 
+    width: 60%;
+    max-width: 50rem;
     margin: 6rem 0 2rem 27rem;
     padding: 2rem;
     background: var(--white);
@@ -22,19 +22,19 @@
 
 form {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     color: var(--brand-colors-primary);
 
     label {
         width: 100%;
         font-weight: bold;
-    
+
     }
 }
 
 form input,
 form select {
-    flex: 1 1 calc(50% - 1rem); 
+    flex: 1 1 calc(50% - 1rem);
     padding: 0.625rem;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -42,7 +42,7 @@ form select {
 }
 
 fieldset {
-    width: 100%; 
+    width: 100%;
     margin: 1rem 0 1rem 0;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -58,7 +58,7 @@ fieldset {
     .nav_container {
         flex-direction: column;
 
-    } 
+    }
 
     .user_registration {
         display: flex;
