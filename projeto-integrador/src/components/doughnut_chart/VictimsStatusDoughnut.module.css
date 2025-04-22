@@ -1,9 +1,7 @@
-/* src/components/VictimsStatusDoughnut.module.css */
 .container {
-    width: 100%;
-    max-width: 250px;
-    height: 250px;
-    margin: 0 auto;
-    position: relative;
-  }
-  
+  width: 100%;
+  max-width: 15.625rem; 
+  height: 15.625rem; 
+  margin: 0 auto;
+  position: relative;
+}
