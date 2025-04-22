@@ -1,5 +1,4 @@
-/* src/components/CasesBarChart.jsx */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -7,12 +6,11 @@ import {
   BarElement,
   Title,
   Tooltip,
-  Legend
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
-import styles from './casesBarChart.module.css';
+  Legend,
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
+import styles from "./CasesBarChart.module.css";
 
-// Registrar componentes do Chart.js
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -23,9 +21,18 @@ ChartJS.register(
 );
 
 const monthNames = [
-  'Jan', 'Fev', 'Mar', 'Abr',
-  'Mai', 'Jun', 'Jul', 'Ago',
-  'Set', 'Out', 'Nov', 'Dez'
+  "Jan",
+  "Fev",
+  "Mar",
+  "Abr",
+  "Mai",
+  "Jun",
+  "Jul",
+  "Ago",
+  "Set",
+  "Out",
+  "Nov",
+  "Dez",
 ];
 
 const CasesBarChart = () => {
@@ -33,20 +40,19 @@ const CasesBarChart = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('https://sistema-odonto-legal.onrender.com/api/dash/cases/date')
-      .then(res => {
-        if (!res.ok) throw new Error('Erro na rede ao buscar dados');
+    fetch("https://sistema-odonto-legal.onrender.com/api/dash/cases/date")
+      .then((res) => {
+        if (!res.ok) throw new Error("Erro na rede ao buscar dados");
         return res.json();
       })
-      .then(raw => {
-        // preenche 12 meses
+      .then((raw) => {
         const filled = monthNames.map((_, i) => {
-          const found = raw.find(r => r.mes === i + 1);
+          const found = raw.find((r) => r.mes === i + 1);
           return found ? found.casos : 0;
         });
         setData(filled);
       })
-      .catch(err => console.error(err))
+      .catch((err) => console.error(err))
       .finally(() => setLoading(false));
   }, []);
 
@@ -54,32 +60,33 @@ const CasesBarChart = () => {
     labels: monthNames,
     datasets: [
       {
-        label: 'Quantidade de casos',
+        label: "Quantidade de casos",
         data,
-        backgroundColor: 'rgba(105,179,162,0.7)',
-        borderColor: 'rgba(105,179,162,1)',
-        borderWidth: 1
-      }
-    ]
+        backgroundColor: "#EDBF5F",
+        borderColor: "#E2B93B",
+        borderWidth: 1,
+      },
+    ],
   };
 
   const options = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
-      legend: { position: 'top' },
+      legend: { position: "top" },
       title: {
         display: true,
-        text: 'Casos por Mês',
-        font: { size: 18 }
-      }
+        text: "Casos por Mês",
+        font: { size: 18 },
+        color: "#012130",
+      },
     },
     scales: {
       y: {
         beginAtZero: true,
-        ticks: { precision: 0 }
-      }
-    }
+        ticks: { precision: 0 },
+      },
+    },
   };
 
   return (

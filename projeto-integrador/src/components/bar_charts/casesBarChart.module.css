@@ -1,11 +1,11 @@
 .chartContainer {
     width: 100%;
-    max-width: 800px;
+    max-width: 50rem;
     margin: 0 auto;
     padding: 1rem;
 }
 
 .chartWrapper {
     position: relative;
-    height: 400px;
+    height: 25rem;
 }
