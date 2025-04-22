@@ -1,22 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { Pie } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip, Title } from 'chart.js';
-import styles from './PieCharts.module.css';
-
+import React, { useState, useEffect } from "react";
+import { Pie } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Tooltip, Title } from "chart.js";
+import styles from "./PieCharts.module.css";
 
 ChartJS.register(ArcElement, Tooltip, Title);
 const StatusPieChart = ({
-  endpoint = 'https://sistema-odonto-legal.onrender.com/api/dash/cases/status',
+  endpoint = "https://sistema-odonto-legal.onrender.com/api/dash/cases/status",
 }) => {
   const [statusData, setStatusData] = useState([]);
-  const statuses = ['ABERTO', 'FINALIZADO', 'ARQUIVADO'];
-  const colors = ['#36A2EB', '#4d965d', '#FFCE56'];
+  const statuses = ["ABERTO", "FINALIZADO", "ARQUIVADO"];
+  const colors = ["#023A4A", "#EDBF5F", "#2A9D8F"];
 
   useEffect(() => {
     fetch(endpoint)
       .then((res) => res.json())
       .then((data) => setStatusData(data))
-      .catch((err) => console.error('Erro ao buscar status:', err));
+      .catch((err) => console.error("Erro ao buscar status:", err));
   }, [endpoint]);
 
   const counts = statuses.map((status) => {
@@ -41,11 +40,12 @@ const StatusPieChart = ({
     plugins: {
       title: {
         display: true,
-        text: 'Distribuição de Casos por Status',
+        text: "Distribuição de Casos por Status",
         font: { size: 16 },
+        color: "#012130",
       },
       legend: {
-        display: false, // desativa legenda interna
+        display: false, 
       },
       tooltip: {
         callbacks: {
@@ -57,7 +57,6 @@ const StatusPieChart = ({
 
   return (
     <div className={styles.chartWrapper}>
-      
       <div className={styles.pieContainer}>
         <Pie data={chartData} options={options} />
       </div>
