@@ -284,7 +284,8 @@ const CaseReportForm = () => {
                   <strong>Rua:</strong> {getOrNA(caseData.location?.street)}
                 </p>
                 <p>
-                  <strong>Bairro:</strong> {getOrNA(caseData.location?.district)}
+                  <strong>Bairro:</strong>{" "}
+                  {getOrNA(caseData.location?.district)}
                 </p>
                 <p>
                   <strong>Cidade:</strong> {getOrNA(caseData.location?.city)}
@@ -334,7 +335,8 @@ const CaseReportForm = () => {
                           <strong>Título:</strong> {getOrNA(evid.title)}
                         </p>
                         <p>
-                          <strong>Depoimentos:</strong> {getOrNA(evid.testimony)}
+                          <strong>Depoimentos:</strong>{" "}
+                          {getOrNA(evid.testimony)}
                         </p>
                         <p>
                           <strong>Descrição Técnica:</strong>{" "}
