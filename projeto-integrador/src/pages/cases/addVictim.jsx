@@ -127,141 +127,135 @@ const CreateVictim = () => {
       <Header />
       <div className={styles.content}>
         <Nav />
-        <div className={styles.marginContent}>
-          <h1>Cadastro da Vítima</h1>
-          <Nav2 onClick={() => navigate(-1)} content='voltar' />
-          <form onSubmit={handleSubmit}>
-            <label>NIC:*</label>
-            <input
-              name="nic"
-              value={formData.nic}
-              onChange={handleChange}
-              required
-              placeholder="Número de identificação criminal"
-            />
-
-            <label>Nome:</label>
-            <input
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Nome da vítima"
-            />
-            <label>Idade:</label>
-            <input
-              type="number"
-              name="age"
-              value={formData.age === "" ? "" : Number(formData.age)}
-              onChange={handleChange}
-              placeholder="Idade da vítima"
-            />
-
-            <label>CPF:</label>
-            <input
-              name="cpf"
-              value={formData.cpf}
-              onChange={handleChange}
-              placeholder="CPF da vítima"
-            />
-            <label>Gênero:</label>
-            <select
-              name="gender"
-              value={formData.gender}
-              onChange={handleChange}
-            >
-              <option value="">Selecione...</option>
-              <option value="MASCULINO">Masculino</option>
-              <option value="FEMININO"> Feminino</option>
-              <option value="NAO-BINARIO">Não-Binario</option>
-              <option value="OUTRO">Outro</option>
-            </select>
-
-            <fieldset>
-              <legend>Endereço da Vítima</legend>
-              <label>Rua:</label>
+        <div className={styles.margin}>
+          <div className={styles.marginContent}>
+            <h1>Cadastro da Vítima</h1>
+            <Nav2 onClick={() => navigate(-1)}/>
+            <form onSubmit={handleSubmit}>
+              <label>NIC:*</label>
               <input
-                name="location.street"
-                value={formData.location.street}
+                name="nic"
+                value={formData.nic}
                 onChange={handleChange}
-                placeholder="Rua da vítima"
+                required
+                placeholder="Número de identificação criminal"
               />
-
-              <label>Número:</label>
+              <label>Nome:</label>
+              <input
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Nome da vítima"
+              />
+              <label>Idade:</label>
               <input
                 type="number"
-                name="location.houseNumber"
-                value={
-                  formData.location.houseNumber === ""
-                    ? ""
-                    : Number(formData.location.houseNumber)
-                }
+                name="age"
+                value={formData.age === "" ? "" : Number(formData.age)}
                 onChange={handleChange}
-                placeholder="Número da residência da vítima"
+                placeholder="Idade da vítima"
               />
-
-              <label>Bairro:</label>
+              <label>CPF:</label>
               <input
-                name="location.district"
-                value={formData.location.district}
+                name="cpf"
+                value={formData.cpf}
                 onChange={handleChange}
-                placeholder="Bairro da vítima"
+                placeholder="CPF da vítima"
               />
-
-              <label>Cidade:</label>
-              <input
-                name="location.city"
-                value={formData.location.city}
+              <label>Gênero:</label>
+              <select
+                name="gender"
+                value={formData.gender}
                 onChange={handleChange}
-                placeholder="Cidade da vítima"
-              />
-              <label>Estado:</label>
-              <input
-                name="location.state"
-                value={formData.location.state}
+              >
+                <option value="">Selecione...</option>
+                <option value="MASCULINO">Masculino</option>
+                <option value="FEMININO"> Feminino</option>
+                <option value="NAO-BINARIO">Não-Binario</option>
+                <option value="OUTRO">Outro</option>
+              </select>
+              <fieldset>
+                <legend>Endereço da Vítima</legend>
+                <label>Rua:</label>
+                <input
+                  name="location.street"
+                  value={formData.location.street}
+                  onChange={handleChange}
+                  placeholder="Rua da vítima"
+                />
+                <label>Número:</label>
+                <input
+                  type="number"
+                  name="location.houseNumber"
+                  value={
+                    formData.location.houseNumber === ""
+                      ? ""
+                      : Number(formData.location.houseNumber)
+                  }
+                  onChange={handleChange}
+                  placeholder="Número da residência da vítima"
+                />
+                <label>Bairro:</label>
+                <input
+                  name="location.district"
+                  value={formData.location.district}
+                  onChange={handleChange}
+                  placeholder="Bairro da vítima"
+                />
+                <label>Cidade:</label>
+                <input
+                  name="location.city"
+                  value={formData.location.city}
+                  onChange={handleChange}
+                  placeholder="Cidade da vítima"
+                />
+                <label>Estado:</label>
+                <input
+                  name="location.state"
+                  value={formData.location.state}
+                  onChange={handleChange}
+                  placeholder="Estado da vítima"
+                />
+                <label>CEP:</label>
+                <input
+                  name="location.zip"
+                  value={formData.location.zip}
+                  onChange={handleChange}
+                  placeholder="CEP da vítima"
+                />
+                <label>Complemento:</label>
+                <input
+                  name="location.complement"
+                  value={formData.location.complement}
+                  onChange={handleChange}
+                  placeholder="Complemento do endereço da vítima"
+                />
+              </fieldset>
+              <label>Status de Identificação:*</label>
+              <select
+                className={styles.status}
+                name="identificationStatus"
+                value={formData.identificationStatus}
                 onChange={handleChange}
-                placeholder="Estado da vítima"
-              />
-
-              <label>CEP:</label>
-              <input
-                name="location.zip"
-                value={formData.location.zip}
-                onChange={handleChange}
-                placeholder="CEP da vítima"
-              />
-
-              <label>Complemento:</label>
-              <input
-                name="location.complement"
-                value={formData.location.complement}
-                onChange={handleChange}
-                placeholder="Complemento do endereço da vítima"
-              />
-            </fieldset>
-            <label>Status de Identificação:*</label>
-            <select
-              className={styles.status}
-              name="identificationStatus"
-              value={formData.identificationStatus}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Selecione...</option>
-              <option value="IDENTIFICADO">IDENTIFICADO</option>
-              <option value="NÃO IDENTIFICADO">NÃO IDENTIFICADO</option>
-              <option value="PARCIALMENTE IDENTIFICADO">
-                PARCIALMENTE IDENTIFICADO
-              </option>
-            </select>
-            <Button
-              type="button"
-              variant="generic-primary"
-              disabled={isSubmitting}
-              onClick={handleSubmit}
-            >
-              {isSubmitting ? "Aguarde..." : "Avançar para criar caso"}
-            </Button>
-          </form>
+                required
+              >
+                <option value="">Selecione...</option>
+                <option value="IDENTIFICADO">IDENTIFICADO</option>
+                <option value="NÃO IDENTIFICADO">NÃO IDENTIFICADO</option>
+                <option value="PARCIALMENTE IDENTIFICADO">
+                  PARCIALMENTE IDENTIFICADO
+                </option>
+              </select>
+              <Button
+                type="button"
+                variant="generic-primary"
+                disabled={isSubmitting}
+                onClick={handleSubmit}
+              >
+                {isSubmitting ? "Aguarde..." : "Avançar para criar caso"}
+              </Button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

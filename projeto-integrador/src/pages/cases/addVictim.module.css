@@ -5,19 +5,25 @@
 }
 
 .marginContent {
-    width: 60%; 
-    max-width: 800px; 
-    margin: 6rem 0 2rem 27rem;
+    width: 60%;
+    max-width: 800px;
+    min-width: 550px; 
     padding: 2rem;
     background: var(--white);
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
+    margin: auto;
 
     h1 {
         color: var(--brand-colors-primary);
         margin-bottom: 1rem;
     }
+}
+
+.margin {
+    margin: 6rem 0 2rem 20rem;
+    width: 100%;
 }
 
 form {
@@ -67,8 +73,19 @@ fieldset {
     }
     
     .marginContent {
+        margin:auto;
+        margin-top: 6.375rem;
+        width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        min-width: 0;
+    }
+
+    .margin {
         margin: 0;
         width: 100%;
+        background-color: var(--white);
+
     }
 
 }

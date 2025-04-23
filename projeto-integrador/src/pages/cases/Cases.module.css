@@ -49,10 +49,10 @@
     }
     .caseContent {
         margin-left: 0;
-        margin-top: 0;
+        margin-top: 4.375rem;
         width: 100%;
         padding: 1rem 1rem;
-    
+        
         .title {
             color: var(--brand-colors-primary);
             margin-bottom: 1.25rem; 

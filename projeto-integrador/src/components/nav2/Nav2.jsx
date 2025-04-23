@@ -1,32 +1,37 @@
-import Swal from "sweetalert2";
-import styles from "./Nav2.module.css";
+import Swal from 'sweetalert2'
+import styles from './Nav2.module.css'
+import { FaArrowLeftLong } from "react-icons/fa6";
 
-const Nav2 = ({ content, onClick }) => {
-  const handleClick = () => {
-    Swal.fire({
-      title: "Tem certeza?",
-      text: "Você realmente deseja voltar?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#1E88E5",
-      cancelButtonColor: "#EB5757",
-      confirmButtonText: "Sim, voltar",
-      cancelButtonText: "Cancelar",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        onClick();
-      }
-    });
-  };
+const Nav2 = ({onClick}) => {
 
-  return (
-    <div className={styles.navContainer}>
-      <nav className={styles.nav}>
-        <a onClick={handleClick}>{content}</a>
-      </nav>
-      <hr />
-    </div>
-  );
-};
+    const handleClick = () => {
+      Swal.fire({
+        title: "Tem certeza?",
+        text: "Você realmente deseja voltar?",
+        icon: "warning",
+        showCancelButton : true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sim, voltar",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          onClick()
+        }
+      })
+    }
 
-export default Nav2;
+    return (
+        <div className={styles.navContainer}>
+            <nav className={styles.nav}>
+                <a onClick={handleClick}><FaArrowLeftLong size={22}/></a>
+            </nav>
+        </div>
+
+       
+
+    )
+}
+
+export default Nav2
+

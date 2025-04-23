@@ -79,6 +79,7 @@ const LaudoForm = () => {
       <Header />
       <div className={styles.content}>
         <Nav />
+        <div className={styles.margin}>
         <div className={styles.formContainer}>
           <h1>Gerar Laudo da Evidência</h1>
           <Nav2 onClick={() => navigate(-1)} content="voltar" />
@@ -133,6 +134,7 @@ const LaudoForm = () => {
         </div>
       </div>
     </div>
+  </div>
   );
 };
 

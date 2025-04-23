@@ -8,7 +8,8 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 
 const Table = ({ cases }) => {
   const navigate = useNavigate();
-
+  const token = localStorage.getItem("token")
+  // Estado interno que armazena os casos exibidos
   const [tableCases, setTableCases] = useState(cases);
 
   useEffect(() => {
@@ -22,6 +23,25 @@ const Table = ({ cases }) => {
   const addEvidence = (protocol) => {
     navigate(`/casos/evidencia/${protocol}`);
   };
+
+  const handleEdit = async (protocol) => {
+    try {
+      const response = await axios.put( `https://sistema-odonto-legal.onrender.com/api/cases/data/protocol`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        params: {
+         protocol : protocol
+        }
+      })
+    
+      console.log(response.data)
+    } catch (err) {
+      console.error("erro na busca", err)
+    }
+  }
+
+
 
   const excluirCaso = async (protocol) => {
     const confirm = await Swal.fire({
@@ -40,7 +60,7 @@ const Table = ({ cases }) => {
           `https://sistema-odonto-legal.onrender.com/api/cases/delete/protocol`,
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              Authorization: `Bearer ${token}}`,
             },
             params: { protocol },
           }
@@ -111,6 +131,7 @@ const Table = ({ cases }) => {
                     marginRight: 10,
                     color: "#012130",
                   }}
+                  onClick={() => handleEdit(item.protocol)}
                 />
                 {item.evidence?.length === 0 && (
                   <BiTrash

@@ -1,0 +1,16 @@
+.nav {
+    cursor: pointer;
+    position: fixed;
+    top: 100px;
+    left: 340px;
+
+}
+
+
+@media screen and (max-width: 978px) {
+    .nav {
+        position: absolute;
+        top: 90px;
+        left: 20px;
+    }
+}

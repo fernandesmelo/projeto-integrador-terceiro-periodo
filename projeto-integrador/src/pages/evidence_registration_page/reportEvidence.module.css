@@ -24,6 +24,11 @@
     }
 }
 
+.margin {
+    margin: 6rem 0 2rem 20rem;
+    width: 100%;
+}
+
 .evidenceInfo {
     background-color: var(--light-background);
     padding: 1rem; 

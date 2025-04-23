@@ -20,6 +20,11 @@
     }
 }
 
+.margin {
+    margin: 6rem 0 2rem 20rem;
+    width: 100%;
+}
+
 label {
     font-size: 1rem;
 }
@@ -55,8 +60,19 @@ select {
     }
 
     .evidence_registration {
-        margin: 0;
+        margin:auto;
+        margin-top: 6.375rem;
         width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        min-width: 0;
     }
 
+
+    .margin {
+        margin: 0;
+        width: 100%;
+        background-color: var(--white);
+
+    }
 }

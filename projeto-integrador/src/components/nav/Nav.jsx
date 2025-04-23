@@ -84,19 +84,26 @@ const Nav = () => {
         >
           <BiMenu size={32} style={{ color: "var(--icons)" }} />
           {menuOpen && (
-            <div className={styles.menu}>
-              <a className={styles.itemH} onClick={() => navigate("/inicio")}>
-                Início
-              </a>
-              <a className={styles.itemH} onClick={() => navigate("/casos")}>
-                Casos Periciais
-              </a>
-              <a className={styles.itemH} onClick={handleAdmin}>
-                Admin
-              </a>
-              <a className={styles.itemH} onClick={() => navigate("/")}>
-                Sair
-              </a>
+            <div
+              style={{
+                position: "absolute",
+                top: "40px",
+                width: "220px",
+                right: "0",
+                backgroundColor: "#023A4A",
+                color: "#fff",
+                borderRadius: "8px",
+                padding: "10px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "12px",
+                zIndex: 1000
+              }}
+            >
+              <a  className={styles.itemH}  onClick={() => navigate("/inicio")}>Início</a>
+              <a className={styles.itemH} onClick={() => navigate("/casos")}>Casos Periciais</a>
+              <a className={styles.itemH} onClick={handleAdmin}>Admin</a>
+              <a className={styles.itemH} onClick={() => navigate("/")}>Sair</a>
             </div>
           )}
         </p>

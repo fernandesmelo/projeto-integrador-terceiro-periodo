@@ -6,6 +6,7 @@ import Button from "../../components/button/Button";
 import styles from "./CaseCreated.module.css";
 import Swal from "sweetalert2";
 import axios from "axios";
+import Nav2 from "../../components/nav2/Nav2";
 
 const CaseCreated = () => {
   const navigate = useNavigate();
@@ -243,238 +244,236 @@ const CaseCreated = () => {
       <Header />
       <div className={styles.content}>
         <Nav />
-        <div className={styles.marginContent}>
-          <h1>Cadastrar Novo Caso</h1>
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label>NIC*:</label>
-              <input
-                className={styles.inputDisabled}
-                name="nic"
-                value={nic}
-                onChange={(e) => setNic(e.target.value)}
-                required
-                readOnly
-              />
-              <label htmlFor="Título">TÍtulo*:</label>
-              <input
-                className={styles.input}
-                id="Título"
-                type="text"
-                placeholder="Título"
-                required
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-              <label htmlFor="Número do Inquérito">Número do Inquérito*:</label>
-              <input
-                required
-                className={styles.input}
-                id="Número do Inquérito"
-                type="text"
-                placeholder="Número do Inquérito"
-                value={inquiryNumber}
-                onChange={(e) => setInquiryNumber(e.target.value)}
-              />
-              <label htmlFor="Instituição requisitante">
-                Instituição requisitante*:
-              </label>
-              <input
-                required
-                className={styles.input}
-                id="Instituição requisitante"
-                type="text"
-                placeholder="Instituição requisitante"
-                value={requestingInstitution}
-                onChange={(e) => setRequestingInstitution(e.target.value)}
-              />
-              <label htmlFor="Autoridade requisitante">
-                Autoridade requisitante*:
-              </label>
-              <input
-                required
-                className={styles.input}
-                id="Autoridade requisitante"
-                type="text"
-                placeholder="Autoridade requisitante"
-                value={requestingAuthority}
-                onChange={(e) => setRequestingAuthority(e.target.value)}
-              />
-              <label htmlFor="Tipo de caso">Tipo de caso*:</label>
-              <select
-                required
-                className={styles.input}
-                id="Tipo de caso"
-                value={caseType}
-                onChange={(e) => setCaseType(e.target.value)}
-              >
-                <option value="">Selecione o tipo de caso</option>
-                <option value="COLETA DNA">COLETA DNA</option>
-                <option value="EXAME MARCA DE MORDIDA">
-                  EXAME MARCA DE MORDIDA
-                </option>
-                <option value="IDENTIFICAÇÃO DE VÍTIMA">
-                  IDENTIFICAÇÃO DE VÍTIMA
-                </option>
-                <option value="LESÕES CORPORAIS">EXAME CADAVÉRICO</option>
-              </select>
-              <label htmlFor="Observações">Observações:</label>
-              <textarea
-                className={styles.input}
-                id="Observações"
-                placeholder="Observações"
-                value={observations}
-                onChange={(e) => setObservations(e.target.value)}
-              />
-              <h3>Perguntas do requisitante*:</h3>
-              {questions.map((q, index) => (
-                <div key={index} className={styles.questionContainer}>
-                  <input
-                    className={styles.input}
-                    type="text"
-                    placeholder={`Pergunta ${index + 1}`}
-                    value={q.question}
-                    onChange={(e) =>
-                      handleQuestionChange(index, e.target.value)
-                    }
-                    required
-                  />
-                  {questions.length > 1 && (
-                    <button
-                      type="button"
-                      className={styles.removeBtn}
-                      onClick={() => removeQuestion(index)}
-                    >
-                      Remover
-                    </button>
+        <div className={styles.margin}>
+          <div className={styles.marginContent}>
+            <h1>Cadastrar Novo Caso</h1>
+            <Nav2 onClick={() => navigate(-1)}/>
+            <form onSubmit={handleSubmit}>
+              <div>
+                <label>NIC*:</label>
+                <input
+                  className={styles.inputDisabled}
+                  name="nic"
+                  value={nic}
+                  onChange={(e) => setNic(e.target.value)}
+                  required
+                  readOnly
+                />
+                <label htmlFor="Título">TÍtulo*:</label>
+                <input
+                  className={styles.input}
+                  id="Título"
+                  type="text"
+                  placeholder="Título"
+                  required
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+                <label htmlFor="Número do Inquérito">Número do Inquérito*:</label>
+                <input
+                  required
+                  className={styles.input}
+                  id="Número do Inquérito"
+                  type="text"
+                  placeholder="Número do Inquérito"
+                  value={inquiryNumber}
+                  onChange={(e) => setInquiryNumber(e.target.value)}
+                />
+                <label htmlFor="Instituição requisitante">
+                  Instituição requisitante*:
+                </label>
+                <input
+                  required
+                  className={styles.input}
+                  id="Instituição requisitante"
+                  type="text"
+                  placeholder="Instituição requisitante"
+                  value={requestingInstitution}
+                  onChange={(e) => setRequestingInstitution(e.target.value)}
+                />
+                <label htmlFor="Autoridade requisitante">
+                  Autoridade requisitante*:
+                </label>
+                <input
+                  required
+                  className={styles.input}
+                  id="Autoridade requisitante"
+                  type="text"
+                  placeholder="Autoridade requisitante"
+                  value={requestingAuthority}
+                  onChange={(e) => setRequestingAuthority(e.target.value)}
+                />
+                <label htmlFor="Tipo de caso">Tipo de caso*:</label>
+                <select
+                  required
+                  className={styles.input}
+                  id="Tipo de caso"
+                  value={caseType}
+                  onChange={(e) => setCaseType(e.target.value)}
+                >
+                  <option value="">Selecione o tipo de caso</option>
+                  <option value="COLETA DNA">COLETA DNA</option>
+                  <option value="EXAME MARCA DE MORDIDA">
+                    EXAME MARCA DE MORDIDA
+                  </option>
+                  <option value="IDENTIFICAÇÃO DE VÍTIMA">
+                    IDENTIFICAÇÃO DE VÍTIMA
+                  </option>
+                  <option value="LESÕES CORPORAIS">EXAME CADAVÉRICO</option>
+                </select>
+                <label htmlFor="Observações">Observações:</label>
+                <textarea
+                  className={styles.input}
+                  id="Observações"
+                  placeholder="Observações"
+                  value={observations}
+                  onChange={(e) => setObservations(e.target.value)}
+                />
+                <h3>Perguntas do requisitante*:</h3>
+                {questions.map((q, index) => (
+                  <div key={index} className={styles.questionContainer}>
+                    <input
+                      className={styles.input}
+                      type="text"
+                      placeholder={`Pergunta ${index + 1}`}
+                      value={q.question}
+                      onChange={(e) =>
+                        handleQuestionChange(index, e.target.value)
+                      }
+                      required
+                    />
+                    {questions.length > 1 && (
+                      <button
+                        type="button"
+                        className={styles.removeBtn}
+                        onClick={() => removeQuestion(index)}
+                      >
+                        Remover
+                      </button>
+                    )}
+                  </div>
+                ))}
+                <button
+                  type="button"
+                  onClick={addQuestion}
+                  className={styles.addBtn}
+                >
+                  Adicionar nova pergunta
+                </button>
+                <h3>Local do ocorrido:</h3>
+                <label htmlFor="Rua">Rua</label>
+                <input
+                  className={styles.input}
+                  id="Rua"
+                  type="text"
+                  placeholder="Digite o nome da rua"
+                  value={location.street}
+                  onChange={(e) => handleLocationChange("street", e.target.value)}
+                />
+                <label htmlFor="Número">Número:</label>
+                <input
+                  className={styles.input}
+                  id="Número"
+                  type="number"
+                  placeholder="Digite o número da casa"
+                  value={location.houseNumber}
+                  onChange={(e) =>
+                    handleLocationChange("houseNumber", e.target.value)
+                  }
+                />
+                <label htmlFor="Bairro">Bairro:</label>
+                <input
+                  className={styles.input}
+                  id="Bairro"
+                  type="text"
+                  placeholder="Digite o bairro"
+                  value={location.district}
+                  onChange={(e) =>
+                    handleLocationChange("district", e.target.value)
+                  }
+                />
+                <label htmlFor="Cidade">Cidade:</label>
+                <input
+                  className={styles.input}
+                  id="Cidade"
+                  type="text"
+                  placeholder="Digite a cidade"
+                  value={location.city}
+                  onChange={(e) => handleLocationChange("city", e.target.value)}
+                />
+                <label htmlFor="Estado">Estado:</label>
+                <input
+                  className={styles.input}
+                  id="Estado"
+                  type="text"
+                  placeholder="Digite o estado"
+                  value={location.state}
+                  onChange={(e) => handleLocationChange("state", e.target.value)}
+                />
+                <label htmlFor="CEP">CEP:</label>
+                <input
+                  className={styles.input}
+                  id="CEP"
+                  type="text"
+                  placeholder="Digite o CEP"
+                  value={location.zipCode}
+                  onChange={(e) =>
+                    handleLocationChange("zipCode", e.target.value)
+                  }
+                />
+                <label htmlFor="Complemento">Complemento:</label>
+                <input
+                  className={styles.input}
+                  id="Complemento"
+                  type="text"
+                  placeholder="Digite o complemento"
+                  value={location.complement}
+                  onChange={(e) =>
+                    handleLocationChange("complement", e.target.value)
+                  }
+                />            <div>
+                  <button
+                    className={styles.button}
+                    type="button"
+                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                  >
+                    Selecionar profissionais ▼
+                  </button>
+                  {dropdownOpen && (
+                    <ul className={styles.input}>
+                      {users.map((user) => (
+                        <li key={user._id}>
+                          <label>
+                            <input
+                              type="checkbox"
+                              checked={envolved.includes(user._id)}
+                              onChange={() => toggleUser(user._id)}
+                            />
+                            {user.name} ({user.role})
+                          </label>
+                        </li>
+                      ))}
+                    </ul>
                   )}
                 </div>
-              ))}
-              <button
-                type="button"
-                onClick={addQuestion}
-                className={styles.addBtn}
-              >
-                Adicionar nova pergunta
-              </button>
-
-              <h3>Local do ocorrido:</h3>
-              <label htmlFor="Rua">Rua</label>
-              <input
-                className={styles.input}
-                id="Rua"
-                type="text"
-                placeholder="Digite o nome da rua"
-                value={location.street}
-                onChange={(e) => handleLocationChange("street", e.target.value)}
-              />
-              <label htmlFor="Número">Número:</label>
-              <input
-                className={styles.input}
-                id="Número"
-                type="number"
-                placeholder="Digite o número da casa"
-                value={location.houseNumber}
-                onChange={(e) =>
-                  handleLocationChange("houseNumber", e.target.value)
-                }
-              />
-              <label htmlFor="Bairro">Bairro:</label>
-              <input
-                className={styles.input}
-                id="Bairro"
-                type="text"
-                placeholder="Digite o bairro"
-                value={location.district}
-                onChange={(e) =>
-                  handleLocationChange("district", e.target.value)
-                }
-              />
-              <label htmlFor="Cidade">Cidade:</label>
-              <input
-                className={styles.input}
-                id="Cidade"
-                type="text"
-                placeholder="Digite a cidade"
-                value={location.city}
-                onChange={(e) => handleLocationChange("city", e.target.value)}
-              />
-              <label htmlFor="Estado">Estado:</label>
-              <input
-                className={styles.input}
-                id="Estado"
-                type="text"
-                placeholder="Digite o estado"
-                value={location.state}
-                onChange={(e) => handleLocationChange("state", e.target.value)}
-              />
-              <label htmlFor="CEP">CEP:</label>
-              <input
-                className={styles.input}
-                id="CEP"
-                type="text"
-                placeholder="Digite o CEP"
-                value={location.zipCode}
-                onChange={(e) =>
-                  handleLocationChange("zipCode", e.target.value)
-                }
-              />
-              <label htmlFor="Complemento">Complemento:</label>
-              <input
-                className={styles.input}
-                id="Complemento"
-                type="text"
-                placeholder="Digite o complemento"
-                value={location.complement}
-                onChange={(e) =>
-                  handleLocationChange("complement", e.target.value)
-                }
-              />            <div>
-                <button
-                  className={styles.button}
-                  type="button"
-                  onClick={() => setDropdownOpen(!dropdownOpen)}
-                >
-                  Selecionar profissionais ▼
-                </button>
-                {dropdownOpen && (
-                  <ul className={styles.input}>
-                    {users.map((user) => (
-                      <li key={user._id}>
-                        <label>
-                          <input
-                            type="checkbox"
-                            checked={envolved.includes(user._id)}
-                            onChange={() => toggleUser(user._id)}
-                          />
-                          {user.name} ({user.role})
-                        </label>
-                      </li>
-                    ))}
+                <div>
+                  <strong>Profissionais selecionados:</strong>
+                  <ul>
+                    {users
+                      .filter((u) => envolved.includes(u._id))
+                      .map((u) => (
+                        <li key={u._id}>
+                          {u.name} ({u.role})
+                        </li>
+                      ))}
                   </ul>
-                )}
+                </div>
               </div>
-
-              <div>
-                <strong>Profissionais selecionados:</strong>
-                <ul>
-                  {users
-                    .filter((u) => envolved.includes(u._id))
-                    .map((u) => (
-                      <li key={u._id}>
-                        {u.name} ({u.role})
-                      </li>
-                    ))}
-                </ul>
-              </div>
-
-            </div>
-
-
-            <Button type="submit" className={styles.button}>
-              Cadastrar
-            </Button>
-          </form>
+              <Button type="submit" className={styles.button}>
+                Cadastrar
+              </Button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

@@ -20,6 +20,11 @@
     }
 }
 
+.margin {
+    margin: 6rem 0 2rem 20rem;
+    width: 100%;
+}
+
 form {
     display: flex;
     flex-wrap: wrap;
@@ -60,25 +65,21 @@ fieldset {
 
     }
 
-    .user_registration {
-        display: flex;
-        flex-direction: column;
+
+    .margin {
         margin: 0;
-        padding: 1rem;
         width: 100%;
+        background-color: var(--white);
 
-        input {
-            width: 100%;
-        }
 
-        select {
-            width: 100%;
-        }
     }
 
     .registration {
-        display: block;
-        margin: auto;
+        margin-top: 6.375rem;
         width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        min-width: 0;
+
     }
 }
