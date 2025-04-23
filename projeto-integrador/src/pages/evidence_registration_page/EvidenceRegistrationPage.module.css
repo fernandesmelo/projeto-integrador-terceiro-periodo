@@ -5,8 +5,8 @@
 }
 
 .evidence_registration {
-    width: 60%; 
-    max-width: 800px; 
+    width: 60%;
+    max-width: 50rem;
     margin: 6rem 0 2rem 27rem;
     padding: 2rem;
     background: var(--white);
@@ -26,8 +26,8 @@ label {
 
 input {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 0.625rem; 
+    margin: 0.625rem 0;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: var(--light-background);
@@ -35,8 +35,8 @@ input {
 
 textarea {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 0.625rem; 
+    margin: 0.625rem 0;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: var(--light-background);
@@ -53,7 +53,7 @@ select {
         background: var(--light-background);
         margin: auto;
     }
-    
+
     .evidence_registration {
         margin: 0;
         width: 100%;
