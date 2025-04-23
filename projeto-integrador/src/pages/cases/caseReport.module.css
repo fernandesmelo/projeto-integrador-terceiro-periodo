@@ -6,9 +6,9 @@
 
 .marginContent {
     width: 60%;
+    margin: auto;
     max-width: 50rem; 
     min-width: 34.375rem;
-    margin: auto;
     padding: 2rem;
     background: var(--white);
     border-radius: 10px;
