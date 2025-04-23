@@ -8,8 +8,9 @@
 .marginContent {
     width: 60%;
     max-width: 800px;
-    margin: 6rem 0 2rem 27rem;
+    min-width: 550px;
     padding: 2rem;
+    margin: auto;
     background: var(--white);
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -89,6 +90,11 @@ legend {
     gap: 0.5rem;
 }
 
+.margin {
+    margin: 6rem 0 2rem 20rem;
+    width: 100%;
+}
+
 @media screen and (max-width: 978px) {
     .content {
         display: flex;
@@ -99,7 +105,18 @@ legend {
     
     .marginContent {
         margin: 0;
+        margin-top: 6.375rem;
         width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        min-width: 0;
+    }
+
+    .margin {
+        margin: 0;
+        width: 100%;
+        background-color: var(--white);
+
     }
 
 }

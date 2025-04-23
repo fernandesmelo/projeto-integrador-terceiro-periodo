@@ -81,7 +81,7 @@
   }
 
   .container {
-    width: 95%;
+    width: 100%;
     overflow-x: auto;
     padding-top: 1rem;
   }

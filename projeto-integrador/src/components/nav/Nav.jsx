@@ -59,13 +59,13 @@ const Nav = () => {
                 top: "40px",
                 width: "220px",
                 right: "0",
-                backgroundColor: "#000",
-                border: "1px solid #ccc",
+                backgroundColor: "#023A4A",
+                color: "#fff",
                 borderRadius: "8px",
                 padding: "10px",
                 display: "flex",
                 flexDirection: "column",
-                gap: "5px",
+                gap: "12px",
                 zIndex: 1000
               }}
             >

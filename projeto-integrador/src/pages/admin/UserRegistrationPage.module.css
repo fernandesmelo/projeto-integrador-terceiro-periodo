@@ -5,9 +5,11 @@
 }
 
 .registration {
-    width: 60%; 
-    max-width: 800px; 
-    margin: 6rem 0 2rem 27rem;
+    width: 60%;
+    margin: auto;
+    max-width: 800px;
+    min-width: 550px;
+
     padding: 2rem;
     background: var(--white);
     border-radius: 10px;
@@ -20,21 +22,26 @@
     }
 }
 
+.margin {
+    margin: 6rem 0 2rem 20rem;
+    width: 100%;
+}
+
 form {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     color: var(--brand-colors-primary);
 
     label {
         width: 100%;
         font-weight: bold;
-    
+
     }
 }
 
 form input,
 form select {
-    flex: 1 1 calc(50% - 1rem); 
+    flex: 1 1 calc(50% - 1rem);
     padding: 0.625rem;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -42,7 +49,7 @@ form select {
 }
 
 fieldset {
-    width: 100%; 
+    width: 100%;
     margin: 1rem 0 1rem 0;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -58,27 +65,23 @@ fieldset {
     .nav_container {
         flex-direction: column;
 
-    } 
+    }
 
-    .user_registration {
-        display: flex;
-        flex-direction: column;
+
+    .margin {
         margin: 0;
-        padding: 1rem;
         width: 100%;
+        background-color: var(--white);
 
-        input {
-            width: 100%;
-        }
 
-        select {
-            width: 100%;
-        }
     }
 
     .registration {
-        display: block;
-        margin: auto;
+        margin-top: 6.375rem;
         width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        min-width: 0;
+
     }
 }

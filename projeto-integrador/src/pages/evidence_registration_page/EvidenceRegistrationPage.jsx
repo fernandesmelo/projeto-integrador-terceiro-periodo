@@ -7,6 +7,7 @@ import styles from "./EvidenceRegistrationPage.module.css";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import Nav2 from "../../components/nav2/Nav2";
 
 const EvidenceRegistrationPage = () => {
   const navigate = useNavigate();
@@ -139,154 +140,157 @@ const EvidenceRegistrationPage = () => {
       <Header />
       <div className={styles.nav_container}>
         <Nav />
-        <div className={styles.evidence_registration}>
-          <h1>Cadastro de Evidências</h1>
-          <form onSubmit={sendEvidence}>
-            <label htmlFor="title">Título:*</label>
-            <input
-              type="text"
-              id="title"
-              placeholder="Insira um título"
-              className={styles.input}
-              value={title}
-              onChange={(e) => settitle(e.target.value)}
-              required
-            />
-            <label htmlFor="descriptionTechnical">Descrição Técnica:*</label>
-            <input
-              type="text"
-              id="descriptionTechnical"
-              placeholder="Insira a descrição técnica"
-              className={styles.input}
-              value={descriptionTechnical}
-              onChange={(e) => setdescriptionTechnical(e.target.value)}
-              required
-            />
-            <label htmlFor="testimony">
-              Testemunhas (Relatos/Depoimentos):
-            </label>
-            <input
-              type="text"
-              id="testimony"
-              placeholder="Insira os relatos/depoimentos das testemunhas"
-              className={styles.input}
-              value={testimony}
-              onChange={(e) => settestimony(e.target.value)}
-            />
-            <label htmlFor="imagem">
-              Imagens (Radiografias/Fotografias Intraorais):*
-            </label>
-            <input
-              type="file"
-              id="imagem"
-              className={styles.input}
-              onChange={handleImageChange}
-              accept="image/*"
-              required
-            />
-            {photo && (
+        <div className={styles.margin}>
+          <div className={styles.evidence_registration}>
+            <h1>Cadastro de Evidências</h1>
+            <Nav2 onClick={() => navigate(-1)}/>
+            <form onSubmit={sendEvidence}>
+              <label htmlFor="title">Título:*</label>
+              <input
+                type="text"
+                id="title"
+                placeholder="Insira um título"
+                className={styles.input}
+                value={title}
+                onChange={(e) => settitle(e.target.value)}
+                required
+              />
+              <label htmlFor="descriptionTechnical">Descrição Técnica:*</label>
+              <input
+                type="text"
+                id="descriptionTechnical"
+                placeholder="Insira a descrição técnica"
+                className={styles.input}
+                value={descriptionTechnical}
+                onChange={(e) => setdescriptionTechnical(e.target.value)}
+                required
+              />
+              <label htmlFor="testimony">
+                Testemunhas (Relatos/Depoimentos):
+              </label>
+              <input
+                type="text"
+                id="testimony"
+                placeholder="Insira os relatos/depoimentos das testemunhas"
+                className={styles.input}
+                value={testimony}
+                onChange={(e) => settestimony(e.target.value)}
+              />
+              <label htmlFor="imagem">
+                Imagens (Radiografias/Fotografias Intraorais):*
+              </label>
+              <input
+                type="file"
+                id="imagem"
+                className={styles.input}
+                onChange={handleImageChange}
+                accept="image/*"
+                required
+              />
+              {photo && (
+                <div>
+                  <img
+                    src={photo}
+                    alt="Imagem selecionada"
+                    style={{ maxWidth: "200px" }}
+                  />
+                </div>
+              )}
+              <label htmlFor="condicaoEvidencia">Condição da Evidência:*</label>
+              <select
+                id="condicaoEvidencia"
+                onChange={(e) => setcondition(e.target.value)}
+                required
+                className={styles.input}
+              >
+                <option value="">Selecione a condição</option>
+                <option value="INTEGRA">Íntegra</option>
+                <option value="ALTERADA">Alterada</option>
+                <option value="DANIFICADA">Danificada</option>
+                <option value="CORROMPIDO">Corrompida</option>
+                <option value="APAGADA">Apagada</option>
+                <option value="VOLATIL">Volátil</option>
+                <option value="INACESSIVEL">Inacessível</option>
+              </select>
+              <label htmlFor="latitude">Latitude:</label>
               <div>
-                <img
-                  src={photo}
-                  alt="Imagem selecionada"
-                  style={{ maxWidth: "200px" }}
+                <input
+                  type="number"
+                  id="latitude"
+                  placeholder="Insira a latitude"
+                  className={styles.input}
+                  value={latitude}
+                  onChange={(e) => setLatitude(Number(e.target.value))}
                 />
               </div>
-            )}
-            <label htmlFor="condicaoEvidencia">Condição da Evidência:*</label>
-            <select
-              id="condicaoEvidencia"
-              onChange={(e) => setcondition(e.target.value)}
-              required
-              className={styles.input}
-            >
-              <option value="">Selecione a condição</option>
-              <option value="INTEGRA">Íntegra</option>
-              <option value="ALTERADA">Alterada</option>
-              <option value="DANIFICADA">Danificada</option>
-              <option value="CORROMPIDO">Corrompida</option>
-              <option value="APAGADA">Apagada</option>
-              <option value="VOLATIL">Volátil</option>
-              <option value="INACESSIVEL">Inacessível</option>
-            </select>
-            <label htmlFor="latitude">Latitude:</label>
-            <div>
+              <label htmlFor="longitude">Longitude:</label>
               <input
                 type="number"
-                id="latitude"
-                placeholder="Insira a latitude"
+                id="longitude"
+                placeholder="Insira a longitude"
                 className={styles.input}
-                value={latitude}
-                onChange={(e) => setLatitude(Number(e.target.value))}
+                value={longitude}
+                onChange={(e) => setLongitude(Number(e.target.value))}
               />
-            </div>
-            <label htmlFor="longitude">Longitude:</label>
-            <input
-              type="number"
-              id="longitude"
-              placeholder="Insira a longitude"
-              className={styles.input}
-              value={longitude}
-              onChange={(e) => setLongitude(Number(e.target.value))}
-            />
-            <Button
-              type="button"
-              variant="generic-secondary"
-              onClick={() => {
-                if (navigator.geolocation) {
-                  navigator.geolocation.getCurrentPosition(
-                    (position) => {
-                      setLatitude(position.coords.latitude);
-                      setLongitude(position.coords.longitude);
-                    },
-                    (error) => {
-                      console.error(error);
-                      Swal.fire({
-                        icon: "error",
-                        title: "Erro ao obter localização",
-                        text: "Não foi possível obter sua localização. Verifique se você concedeu permissão.",
-                      });
-                    }
-                  );
-                } else {
-                  Swal.fire({
-                    icon: "warning",
-                    title: "Geolocalização não suportada",
-                    text: "Seu navegador não suporta essa funcionalidade.",
-                  });
-                }
-              }}
-              className={styles.button_location}
-            >
-              Usar minha localização
-            </Button>
-            <label htmlFor="obs">Observação:</label>
-            <textarea
-              id="obs"
-              placeholder="Insira uma observação"
-              className={styles.input}
-              value={obs}
-              onChange={(e) => setobs(e.target.value)}
-            />
-            <label htmlFor="category">Categoria:*</label>
-            <select
-              required
-              id="category"
-              className={styles.input}
-              value={category}
-              onChange={(e) => setcategory(e.target.value)}
-            >
-              <option value="">Selecione a categoria</option>
-              <option value="RADIOGRAFICA">Radiográfica</option>
-              <option value="FOTOGRAFICA">Fotográfica</option>
-              <option value="DOCUMENTAL">Documental</option>
-              <option value="BIOLOGICA">Biológica</option>
-              <option value="LESIONAL">Lesional</option>
-            </select>
-            <Button type="submit" variant="generic-primary" className={styles.button}>
-              Cadastrar
-            </Button>
-          </form>
+              <Button
+                type="button"
+                variant="generic-secondary"
+                onClick={() => {
+                  if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                      (position) => {
+                        setLatitude(position.coords.latitude);
+                        setLongitude(position.coords.longitude);
+                      },
+                      (error) => {
+                        console.error(error);
+                        Swal.fire({
+                          icon: "error",
+                          title: "Erro ao obter localização",
+                          text: "Não foi possível obter sua localização. Verifique se você concedeu permissão.",
+                        });
+                      }
+                    );
+                  } else {
+                    Swal.fire({
+                      icon: "warning",
+                      title: "Geolocalização não suportada",
+                      text: "Seu navegador não suporta essa funcionalidade.",
+                    });
+                  }
+                }}
+                className={styles.button_location}
+              >
+                Usar minha localização
+              </Button>
+              <label htmlFor="obs">Observação:</label>
+              <textarea
+                id="obs"
+                placeholder="Insira uma observação"
+                className={styles.input}
+                value={obs}
+                onChange={(e) => setobs(e.target.value)}
+              />
+              <label htmlFor="category">Categoria:*</label>
+              <select
+                required
+                id="category"
+                className={styles.input}
+                value={category}
+                onChange={(e) => setcategory(e.target.value)}
+              >
+                <option value="">Selecione a categoria</option>
+                <option value="RADIOGRAFICA">Radiográfica</option>
+                <option value="FOTOGRAFICA">Fotográfica</option>
+                <option value="DOCUMENTAL">Documental</option>
+                <option value="BIOLOGICA">Biológica</option>
+                <option value="LESIONAL">Lesional</option>
+              </select>
+              <Button type="submit" variant="generic-primary" className={styles.button}>
+                Cadastrar
+              </Button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

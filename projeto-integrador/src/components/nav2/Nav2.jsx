@@ -1,7 +1,8 @@
 import Swal from 'sweetalert2'
 import styles from './Nav2.module.css'
+import { FaArrowLeftLong } from "react-icons/fa6";
 
-const Nav2 = ({content, onClick}) => {
+const Nav2 = ({onClick}) => {
 
     const handleClick = () => {
       Swal.fire({
@@ -23,9 +24,8 @@ const Nav2 = ({content, onClick}) => {
     return (
         <div className={styles.navContainer}>
             <nav className={styles.nav}>
-                <a onClick={handleClick}>{content}</a>
+                <a onClick={handleClick}><FaArrowLeftLong size={22}/></a>
             </nav>
-            <hr />
         </div>
 
        
