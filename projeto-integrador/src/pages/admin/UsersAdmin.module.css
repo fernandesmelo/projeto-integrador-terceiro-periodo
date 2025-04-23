@@ -23,12 +23,16 @@
 
 .activePage {
   width: 3%;
-  padding: 5px;
+  padding: 0.3125rem;
+  margin-top: 1rem;
   position: relative;
   left: 50%;
   transform: translate(-50%);
   background: var(--brand-colors-secondary);
   color: var(--black);
+  border: none;
+  border-radius: 0.375rem; 
+  cursor: pointer;
 
   &:hover {
     background-color: var(--hover-effect-secondary);
@@ -41,6 +45,7 @@
     flex-direction: column;
     height: 100%;
   }
+
   .contentDiv {
     margin-left: 0;
     padding: 1rem;

@@ -66,7 +66,7 @@ const Cases = () => {
         Swal.fire({
           icon: "error",
           title: "Erro!",
-          text: errorMessage, 
+          text: errorMessage,
         });
         setStatusFilter("");
       } else {

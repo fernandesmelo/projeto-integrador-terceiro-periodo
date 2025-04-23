@@ -11,7 +11,6 @@ const CreateVictim = () => {
   const navigate = useNavigate();
   const [isSubmitting] = useState(false);
 
-  // Recupera dados do localStorage se existirem
   const [formData, setFormData] = useState(() => {
     const defaultData = {
       nic: "",
@@ -35,7 +34,7 @@ const CreateVictim = () => {
 
     if (savedData) {
       const parsed = JSON.parse(savedData);
-      // Faz merge com os dados padrão, garantindo que location e outros campos existam
+
       return {
         ...defaultData,
         ...parsed,
@@ -76,7 +75,6 @@ const CreateVictim = () => {
     const { name, value } = e.target;
     let newValue = value;
 
-    // Converte para número se o campo for 'age' ou algum campo numérico
     if (name === "age" || name === "location.houseNumber") {
       newValue = value === "" ? "" : parseInt(value);
     }
@@ -130,7 +128,7 @@ const CreateVictim = () => {
         <div className={styles.margin}>
           <div className={styles.marginContent}>
             <h1>Cadastro da Vítima</h1>
-            <Nav2 onClick={() => navigate(-1)}/>
+            <Nav2 onClick={() => navigate(-1)} />
             <form onSubmit={handleSubmit}>
               <label>NIC:*</label>
               <input
@@ -210,12 +208,41 @@ const CreateVictim = () => {
                   placeholder="Cidade da vítima"
                 />
                 <label>Estado:</label>
-                <input
+                <select
                   name="location.state"
                   value={formData.location.state}
                   onChange={handleChange}
                   placeholder="Estado da vítima"
-                />
+                >
+                  <option value="">Selecione um estado:</option>
+                  <option value="AC">Acre</option>
+                  <option value="AL">Alagoas</option>
+                  <option value="AP">Amapá</option>
+                  <option value="AM">Amazonas</option>
+                  <option value="BA">Bahia</option>
+                  <option value="CE">Ceará</option>
+                  <option value="DF">Distrito Federal</option>
+                  <option value="ES">Espírito Santo</option>
+                  <option value="GO">Goiás</option>
+                  <option value="MA">Maranhão</option>
+                  <option value="MT">Mato Grosso</option>
+                  <option value="MS">Mato Grosso do Sul</option>
+                  <option value="MG">Minas Gerais</option>
+                  <option value="PA">Pará</option>
+                  <option value="PB">Paraíba</option>
+                  <option value="PR">Paraná</option>
+                  <option value="PE">Pernambuco</option>
+                  <option value="PI">Piauí</option>
+                  <option value="RJ">Rio de Janeiro</option>
+                  <option value="RN">Rio Grande do Norte</option>
+                  <option value="RS">Rio Grande do Sul</option>
+                  <option value="RO">Rondônia</option>
+                  <option value="RR">Roraima</option>
+                  <option value="SC">Santa Catarina</option>
+                  <option value="SP">São Paulo</option>
+                  <option value="SE">Sergipe</option>
+                  <option value="TO">Tocantins</option>
+                </select>
                 <label>CEP:</label>
                 <input
                   name="location.zip"
@@ -239,12 +266,10 @@ const CreateVictim = () => {
                 onChange={handleChange}
                 required
               >
-                <option value="">Selecione...</option>
-                <option value="IDENTIFICADO">IDENTIFICADO</option>
-                <option value="NÃO IDENTIFICADO">NÃO IDENTIFICADO</option>
-                <option value="PARCIALMENTE IDENTIFICADO">
-                  PARCIALMENTE IDENTIFICADO
-                </option>
+                <option value="">Selecione o status:</option>
+                <option value="IDENTIFICADO">Identificado</option>
+                <option value="NÃO IDENTIFICADO">Não identificado</option>
+                <option value="PARCIALMENTE IDENTIFICADO">Parcialmente identificado</option>
               </select>
               <Button
                 type="button"

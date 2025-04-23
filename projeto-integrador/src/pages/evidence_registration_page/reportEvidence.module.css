@@ -10,9 +10,8 @@
 
 .formContainer {
     width: 60%;
-    margin: auto;
-    max-width: 800px;
-    min-width: 550px; 
+    max-width: 50rem;
+    margin: 6rem 0 2rem 27rem;
     padding: 2rem;
     background: var(--white);
     border-radius: 10px;
@@ -32,9 +31,9 @@
 
 .evidenceInfo {
     background-color: var(--light-background);
-    padding: 16px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+    padding: 1rem; 
+    border-radius: 0.5rem; 
+    margin-bottom: 1.25rem;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -47,29 +46,29 @@
 
 label {
     display: block;
-    margin-top: 12px;
+    margin-top: 0.75rem;
     font-weight: bold;
 }
 
 textarea {
     width: 100%;
-    padding: 10px;
-    margin-top: 4px;
-    border-radius: 5px;
+    padding: 0.625rem; 
+    margin-top: 0.25rem; 
+    border-radius: 0.3125rem;
     border: 1px solid #ccc;
 }
 
 .imageWrapper {
-    margin-top: 10px;
+    margin-top: 0.625rem;
 }
 
 .imagePreview {
     width: 100%;
-    max-width: 400px;
+    max-width: 25rem;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    margin-top: 5px;
+    margin-top: 0.3125rem;
 }
 
 @media screen and (max-width: 978px) {
@@ -80,20 +79,12 @@ textarea {
     }
 
     .formContainer {
-        margin:auto;
-        margin-top: 6.375rem;
+        margin: 0;
+        padding: 1rem;
         width: 100%;
-        border-radius: 0;
-        box-shadow: none;
-        min-width: 0;
+
         img {
             width: 100%;
         }
-    }
-
-    .margin {
-        margin: 0;
-        width: 100%;
-        background-color: var(--white);
     }
 }

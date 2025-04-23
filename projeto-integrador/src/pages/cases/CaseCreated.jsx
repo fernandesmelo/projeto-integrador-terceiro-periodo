@@ -94,10 +94,7 @@ const CaseCreated = () => {
     const victimFormData = localStorage.getItem("victimFormData");
     if (victimFormData) {
       const parsedData = JSON.parse(victimFormData);
-      // Definindo o estado de 'nic' com o valor recuperado
       setNic(parsedData.nic || "");
-      // Defina outros estados se necessário
-      // Exemplo: setTitle(parsedData.title || "");
     }
   }, []);
 
@@ -161,8 +158,6 @@ const CaseCreated = () => {
       Swal.close();
 
       if (patientResponse.status === 201) {
-        // Vítima cadastrada com sucesso, agora cadastrar o caso
-
         const data = {
           nic,
           title,
@@ -185,7 +180,6 @@ const CaseCreated = () => {
           },
         });
         await delay(1500);
-        // Passo 2: Cadastrar o caso
         const caseResponse = await axios.post(
           "https://sistema-odonto-legal.onrender.com/api/cases/create",
           data,
@@ -214,7 +208,7 @@ const CaseCreated = () => {
             text:
               caseResponse.err.response?.data?.message ||
               "Tente novamente mais tarde.",
-            confirmButtonColor: "#d33",
+            confirmButtonColor: "#EB5757",
           });
         }
       } else {
@@ -224,7 +218,7 @@ const CaseCreated = () => {
           text:
             patientResponse.err.response?.data?.message ||
             "Tente novamente mais tarde.",
-          confirmButtonColor: "#d33",
+          confirmButtonColor: "#EB5757",
         });
       }
     } catch (err) {
@@ -233,7 +227,7 @@ const CaseCreated = () => {
         icon: "error",
         title: "Erro",
         text: err.response?.data?.message || "Tente novamente mais tarde.",
-        confirmButtonColor: "#d33",
+        confirmButtonColor: "#EB5757",
       });
       console.error(err);
     }
@@ -247,7 +241,7 @@ const CaseCreated = () => {
         <div className={styles.margin}>
           <div className={styles.marginContent}>
             <h1>Cadastrar Novo Caso</h1>
-            <Nav2 onClick={() => navigate(-1)}/>
+            <Nav2 onClick={() => navigate(-1)} />
             <form onSubmit={handleSubmit}>
               <div>
                 <label>NIC*:</label>
@@ -269,7 +263,9 @@ const CaseCreated = () => {
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 />
-                <label htmlFor="Número do Inquérito">Número do Inquérito*:</label>
+                <label htmlFor="Número do Inquérito">
+                  Número do Inquérito*:
+                </label>
                 <input
                   required
                   className={styles.input}
@@ -280,7 +276,7 @@ const CaseCreated = () => {
                   onChange={(e) => setInquiryNumber(e.target.value)}
                 />
                 <label htmlFor="Instituição requisitante">
-                  Instituição requisitante*:
+                  Instituição Requisitante*:
                 </label>
                 <input
                   required
@@ -292,7 +288,7 @@ const CaseCreated = () => {
                   onChange={(e) => setRequestingInstitution(e.target.value)}
                 />
                 <label htmlFor="Autoridade requisitante">
-                  Autoridade requisitante*:
+                  Autoridade Requisitante*:
                 </label>
                 <input
                   required
@@ -303,7 +299,7 @@ const CaseCreated = () => {
                   value={requestingAuthority}
                   onChange={(e) => setRequestingAuthority(e.target.value)}
                 />
-                <label htmlFor="Tipo de caso">Tipo de caso*:</label>
+                <label htmlFor="Tipo de caso">Tipo de Caso*:</label>
                 <select
                   required
                   className={styles.input}
@@ -311,15 +307,15 @@ const CaseCreated = () => {
                   value={caseType}
                   onChange={(e) => setCaseType(e.target.value)}
                 >
-                  <option value="">Selecione o tipo de caso</option>
-                  <option value="COLETA DNA">COLETA DNA</option>
+                  <option value="">Selecione o tipo de caso:</option>
+                  <option value="COLETA DNA">Coleta DNA</option>
                   <option value="EXAME MARCA DE MORDIDA">
-                    EXAME MARCA DE MORDIDA
+                    Exame marca de mordida
                   </option>
                   <option value="IDENTIFICAÇÃO DE VÍTIMA">
-                    IDENTIFICAÇÃO DE VÍTIMA
+                    Identificação de vítma
                   </option>
-                  <option value="LESÕES CORPORAIS">EXAME CADAVÉRICO</option>
+                  <option value="LESÕES CORPORAIS">Exame cadavérico</option>
                 </select>
                 <label htmlFor="Observações">Observações:</label>
                 <textarea
@@ -329,7 +325,7 @@ const CaseCreated = () => {
                   value={observations}
                   onChange={(e) => setObservations(e.target.value)}
                 />
-                <h3>Perguntas do requisitante*:</h3>
+                <h3>Perguntas do Requisitante*:</h3>
                 {questions.map((q, index) => (
                   <div key={index} className={styles.questionContainer}>
                     <input
@@ -343,108 +339,154 @@ const CaseCreated = () => {
                       required
                     />
                     {questions.length > 1 && (
-                      <button
+                      <Button
                         type="button"
+                        variant="small-secondary"
                         className={styles.removeBtn}
                         onClick={() => removeQuestion(index)}
                       >
                         Remover
-                      </button>
+                      </Button>
                     )}
                   </div>
                 ))}
-                <button
+                <Button
                   type="button"
+                  variant="generic-secondary"
                   onClick={addQuestion}
                   className={styles.addBtn}
                 >
                   Adicionar nova pergunta
-                </button>
-                <h3>Local do ocorrido:</h3>
-                <label htmlFor="Rua">Rua</label>
-                <input
-                  className={styles.input}
-                  id="Rua"
-                  type="text"
-                  placeholder="Digite o nome da rua"
-                  value={location.street}
-                  onChange={(e) => handleLocationChange("street", e.target.value)}
-                />
-                <label htmlFor="Número">Número:</label>
-                <input
-                  className={styles.input}
-                  id="Número"
-                  type="number"
-                  placeholder="Digite o número da casa"
-                  value={location.houseNumber}
-                  onChange={(e) =>
-                    handleLocationChange("houseNumber", e.target.value)
-                  }
-                />
-                <label htmlFor="Bairro">Bairro:</label>
-                <input
-                  className={styles.input}
-                  id="Bairro"
-                  type="text"
-                  placeholder="Digite o bairro"
-                  value={location.district}
-                  onChange={(e) =>
-                    handleLocationChange("district", e.target.value)
-                  }
-                />
-                <label htmlFor="Cidade">Cidade:</label>
-                <input
-                  className={styles.input}
-                  id="Cidade"
-                  type="text"
-                  placeholder="Digite a cidade"
-                  value={location.city}
-                  onChange={(e) => handleLocationChange("city", e.target.value)}
-                />
-                <label htmlFor="Estado">Estado:</label>
-                <input
-                  className={styles.input}
-                  id="Estado"
-                  type="text"
-                  placeholder="Digite o estado"
-                  value={location.state}
-                  onChange={(e) => handleLocationChange("state", e.target.value)}
-                />
-                <label htmlFor="CEP">CEP:</label>
-                <input
-                  className={styles.input}
-                  id="CEP"
-                  type="text"
-                  placeholder="Digite o CEP"
-                  value={location.zipCode}
-                  onChange={(e) =>
-                    handleLocationChange("zipCode", e.target.value)
-                  }
-                />
-                <label htmlFor="Complemento">Complemento:</label>
-                <input
-                  className={styles.input}
-                  id="Complemento"
-                  type="text"
-                  placeholder="Digite o complemento"
-                  value={location.complement}
-                  onChange={(e) =>
-                    handleLocationChange("complement", e.target.value)
-                  }
-                />            <div>
-                  <button
+                </Button>
+                <fieldset>
+                  <legend>Local do Ocorrido</legend>
+                  <label htmlFor="Rua">Rua</label>
+                  <input
+                    className={styles.input}
+                    id="Rua"
+                    type="text"
+                    placeholder="Digite o nome da rua"
+                    value={location.street}
+                    onChange={(e) =>
+                      handleLocationChange("street", e.target.value)
+                    }
+                  />
+                  <label htmlFor="Número">Número:</label>
+                  <input
+                    className={styles.input}
+                    id="Número"
+                    type="number"
+                    placeholder="Digite o número da casa"
+                    value={location.houseNumber}
+                    onChange={(e) =>
+                      handleLocationChange("houseNumber", e.target.value)
+                    }
+                  />
+                  <label htmlFor="Bairro">Bairro:</label>
+                  <input
+                    className={styles.input}
+                    id="Bairro"
+                    type="text"
+                    placeholder="Digite o bairro"
+                    value={location.district}
+                    onChange={(e) =>
+                      handleLocationChange("district", e.target.value)
+                    }
+                  />
+                  <label htmlFor="Cidade">Cidade:</label>
+                  <select
+                    className={styles.input}
+                    id="Cidade"
+                    type="text"
+                    placeholder="Digite a cidade"
+                    value={location.city}
+                    onChange={(e) =>
+                      handleLocationChange("city", e.target.value)
+                    }
+                  >
+                    <option value="">Selecione um estado</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                  </select>
+                  <label htmlFor="Estado">Estado:</label>
+                  <input
+                    className={styles.input}
+                    id="Estado"
+                    type="text"
+                    placeholder="Digite o estado"
+                    value={location.state}
+                    onChange={(e) =>
+                      handleLocationChange("state", e.target.value)
+                    }
+                  />
+                  <label htmlFor="CEP">CEP:</label>
+                  <input
+                    className={styles.input}
+                    id="CEP"
+                    type="text"
+                    placeholder="Digite o CEP"
+                    value={location.zipCode}
+                    onChange={(e) =>
+                      handleLocationChange("zipCode", e.target.value)
+                    }
+                  />
+                  <label htmlFor="Complemento">Complemento:</label>
+                  <input
+                    className={styles.input}
+                    id="Complemento"
+                    type="text"
+                    placeholder="Digite o complemento"
+                    value={location.complement}
+                    onChange={(e) =>
+                      handleLocationChange("complement", e.target.value)
+                    }
+                  />{" "}
+                </fieldset>
+                <fieldset className={styles.professionalsFieldset}>
+                  <legend>Profissionais Envolvidos</legend>
+                  <Button
                     className={styles.button}
                     type="button"
+                    variant="generic-secondary"
                     onClick={() => setDropdownOpen(!dropdownOpen)}
                   >
-                    Selecionar profissionais ▼
-                  </button>
+                    Selecionar profissionais
+                  </Button>
                   {dropdownOpen && (
-                    <ul className={styles.input}>
+                    <ul className={styles.professionalsList}>
                       {users.map((user) => (
-                        <li key={user._id}>
+                        <li
+                          key={user._id}
+                          className={styles.professionalOption}
+                        >
                           <label>
                             <input
+                              className={styles.check}
                               type="checkbox"
                               checked={envolved.includes(user._id)}
                               onChange={() => toggleUser(user._id)}
@@ -455,21 +497,21 @@ const CaseCreated = () => {
                       ))}
                     </ul>
                   )}
-                </div>
-                <div>
-                  <strong>Profissionais selecionados:</strong>
-                  <ul>
-                    {users
-                      .filter((u) => envolved.includes(u._id))
-                      .map((u) => (
-                        <li key={u._id}>
-                          {u.name} ({u.role})
-                        </li>
-                      ))}
-                  </ul>
-                </div>
+                  <div className={styles.selectedProfessionals}>
+                    <strong>Profissionais selecionados:</strong>
+                    <ul className={styles.selectedList}>
+                      {users
+                        .filter((u) => envolved.includes(u._id))
+                        .map((u) => (
+                          <li key={u._id}>
+                            {u.name} ({u.role})
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                </fieldset>
               </div>
-              <Button type="submit" className={styles.button}>
+              <Button type="submit" variant="generic-primary">
                 Cadastrar
               </Button>
             </form>

@@ -6,10 +6,8 @@
 
 .registration {
     width: 60%;
-    margin: auto;
-    max-width: 800px;
-    min-width: 550px;
-
+    max-width: 50rem;
+    margin: 6rem 0 2rem 27rem;
     padding: 2rem;
     background: var(--white);
     border-radius: 10px;

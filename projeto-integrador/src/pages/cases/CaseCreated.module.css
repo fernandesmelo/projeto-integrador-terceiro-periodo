@@ -2,13 +2,12 @@
     display: flex;
     background: var(--light-background);
     margin: auto;
-    
 }
 
 .marginContent {
     width: 60%;
-    max-width: 800px;
-    min-width: 550px;
+    max-width: 50rem; 
+    min-width: 34.375rem;
     padding: 2rem;
     margin: auto;
     background: var(--white);
@@ -61,6 +60,10 @@ legend {
     gap: 1rem;
 }
 
+.professionalsFieldset {
+    margin-bottom: 0;
+}
+
 .professionalsList {
     display: flex;
     flex-direction: column;
@@ -79,6 +82,7 @@ legend {
     margin-top: 0;
     margin-bottom: 0;
 }
+
 .inputDisabled {
     opacity: 0.5;
 }
@@ -86,8 +90,12 @@ legend {
 .selectedProfessionals {
     display: flex;
     flex-direction: column;
-    margin: 1rem 0 1.5rem 1rem;
+    margin: 1rem 0 1.5rem 0;
     gap: 0.5rem;
+}
+
+.selectedList {
+    margin: 0.5rem 1rem;
 }
 
 .margin {
@@ -102,7 +110,7 @@ legend {
         background: var(--light-background);
         margin: auto;
     }
-    
+
     .marginContent {
         margin: auto;
         margin-top: 6.375rem;
@@ -116,7 +124,5 @@ legend {
         margin: 0;
         width: 100%;
         background-color: var(--white);
-
     }
-
 }
