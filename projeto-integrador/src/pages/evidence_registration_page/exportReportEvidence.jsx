@@ -43,7 +43,6 @@ const LaudoEvidenciaPage = () => {
         <header className={styles["laudo-header"]}>
           <img src={logo} alt="Logo" className={styles["laudo-logo"]} />
           <h1>Dentalysis Odonto-Legal</h1>
-          <Nav2 onClick={() => navigate(-1)} content="voltar" />
           <h2>Laudo Técnico - Protocolo do Caso Nº {protocol.toUpperCase()}</h2>
         </header>
         <div className={styles["section-row"]}>
@@ -177,9 +176,11 @@ const LaudoEvidenciaPage = () => {
           </p>
         </footer>
       </div>
-
       <div className={styles.buttonContainer}>
-        <Button variant="generic-primary" onClick={gerarPDF}>
+        <Button variant="generic-secondary" onClick={() => navigate(-1)}>
+          Voltar
+        </Button>
+        <Button variant="generic" onClick={gerarPDF}>
           Baixar PDF
         </Button>
       </div>

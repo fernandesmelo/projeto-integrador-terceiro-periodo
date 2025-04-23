@@ -40,6 +40,21 @@
   }
 }
 
+.generic {
+  width: 25%;
+  padding: 0.625rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  background-color: var(--brand-colors-primary);
+  color: var(--white);
+
+  &:hover {
+    background-color: var(--hover-effect-primary);
+  }
+}
+
 .generic-primary {
   width: 35%;
   padding: 0.625rem;
