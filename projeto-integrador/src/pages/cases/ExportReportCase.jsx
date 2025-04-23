@@ -1,17 +1,16 @@
 import React from "react";
 import logo from "../../assets/logo.png";
 import jsPDF from "jspdf";
+import Button from "../../components/button/Button";
 import html2canvas from "html2canvas";
 import styles from "./ExportReportCase.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import Nav2 from "../../components/nav2/Nav2";
 
 const RelatorioPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const caseData = location.state || {};
 
-  // Utilitários
   const formatDate = (iso) => new Date(iso).toLocaleString("pt-BR");
   const renderIfExists = (data, renderFn) => data && renderFn();
 
@@ -19,11 +18,10 @@ const RelatorioPage = () => {
     return <p>Dados insuficientes para gerar o relatório.</p>;
   }
 
-  // Componentes Modulares
   const Header = () => (
     <header className={styles["laudo-header"]}>
       <img src={logo} alt="Logo" className={styles["laudo-logo"]} />
-      <h1>Dentalysis Odonto Legal</h1>
+      <h1>Dentalysis Odonto-Legal</h1>
       <h2>Relatório do Caso - Protocolo Nº {caseData.caseDetails.protocol}</h2>
     </header>
   );
@@ -68,7 +66,6 @@ const RelatorioPage = () => {
   const EvidenceSection = () => (
     <section className={styles["laudo-section"]}>
       <h3>Evidências Vinculadas</h3>
-      <Nav2 onClick={() => navigate(-1)} content='voltar'/>
       {caseData.caseDetails.evidence?.map((item, index) => (
         <EvidenceItem key={index} data={item} index={index} />
       ))}
@@ -79,7 +76,6 @@ const RelatorioPage = () => {
     <div className={styles["evidence-item"]}>
       <div className={styles["evidence-info"]}>
         <h4>Evidência {data.title}</h4>
-
         <InfoItem label="Categoria" value={data.category} />
         <InfoItem label="Condição" value={data.condition} />
         <InfoItem
@@ -115,7 +111,7 @@ const RelatorioPage = () => {
 
   const CaseDetails = () => (
     <section className={styles["laudo-section"]}>
-      <h3>Detalhamento do caso</h3>
+      <h3>Detalhamento do Caso</h3>
       <InfoItem label="Título" value={caseData.caseDetails.title} />
       <InfoItem label="Status" value={caseData.caseDetails.state} />
       <InfoItem
@@ -184,7 +180,6 @@ const RelatorioPage = () => {
     </p>
   );
 
-  // Gerador de PDF otimizado
   const gerarPDF = () => {
     const input = document.getElementById("relatorio-pdf");
     const options = {
@@ -230,14 +225,13 @@ const RelatorioPage = () => {
         <Questionnaire />
         <ReportFooter />
       </div>
-
       <div className={styles.buttonContainer}>
-        <button className={styles.buttonToBack} onClick={() => navigate(-1)}>
+      <Button variant="generic-secondary" onClick={() => navigate(-1)}>
           Voltar
-        </button>
-        <button className={styles.buttonDownload} onClick={gerarPDF}>
+        </Button>
+        <Button variant="generic" onClick={gerarPDF}>
           Baixar PDF
-        </button>
+        </Button>
       </div>
     </div>
   );
