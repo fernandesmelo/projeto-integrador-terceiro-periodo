@@ -84,31 +84,32 @@ const LaudoForm = () => {
           <Nav2 onClick={() => navigate(-1)} content="voltar" />
           <fieldset className={styles.evidenceInfo}>
             <legend>Dados da Evidência</legend>
-              {evidence?.photo && (
-                <div className={styles.imageWrapper}>
-                  <img
-                    src={evidence.photo}
-                    alt="Imagem da evidência"
-                    className={styles.imagePreview}
-                  />
-                </div>
-              )}
-              <p>
-                <strong>Título:</strong> {evidence?.title}
-              </p>
-              <p>
-                <strong>Relatos Testemunhais:</strong> {evidence?.testimony}
-              </p>
-              <p>
-                <strong>Descrição Técnica:</strong>{" "}
-                {evidence?.descriptionTechnical}
-              </p>
-              <p>
-                <strong>Condição:</strong> {evidence?.condition}
-              </p>
-              <p>
-                <strong>Categoria:</strong> {evidence?.category}
-              </p>
+            {evidence?.photo && (
+              <div className={styles.imageWrapper}>
+                <img
+                  src={evidence.photo}
+                  alt="Imagem da evidência"
+                  className={styles.imagePreview}
+                />
+              </div>
+            )}
+            <p>
+              <strong>Título:</strong> {evidence?.title}
+            </p>
+            <p>
+              <strong>Relatos/Depoimentos Testemunhais:</strong>{" "}
+              {evidence?.testimony}
+            </p>
+            <p>
+              <strong>Descrição Técnica:</strong>{" "}
+              {evidence?.descriptionTechnical}
+            </p>
+            <p>
+              <strong>Condição:</strong> {evidence?.condition}
+            </p>
+            <p>
+              <strong>Categoria:</strong> {evidence?.category}
+            </p>
           </fieldset>
           <form onSubmit={handleSubmit}>
             <label>Análise Técnica:*</label>
