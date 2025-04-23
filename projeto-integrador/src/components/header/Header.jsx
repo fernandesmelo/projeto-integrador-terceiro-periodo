@@ -3,10 +3,12 @@ import styles from "./Header.module.css";
 import { FaBell } from "react-icons/fa";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const API_URL = "https://sistema-odonto-legal.onrender.com/api/profile";
 
 const Header = () => {
+  const navigate = useNavigate()
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -25,7 +27,7 @@ const Header = () => {
       } catch (error) {
         console.error("Erro ao buscar os dados do perfil", error);
         setLoading(false);
-        alert("Erro ao buscar os dados.");
+        navigate('/')
       }
     };
 

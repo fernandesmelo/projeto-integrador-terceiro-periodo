@@ -26,7 +26,7 @@ const Table = ({ cases }) => {
 
   const handleEdit = async (protocol) => {
     try {
-      const response = await axios.put( `https://sistema-odonto-legal.onrender.com/api/cases/data/protocol`, {
+      const response = await axios.put(`https://sistema-odonto-legal.onrender.com/api/cases/data/protocol`, {},{
         headers: {
           Authorization: `Bearer ${token}`
         },
