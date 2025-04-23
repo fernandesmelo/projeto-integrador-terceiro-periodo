@@ -2,14 +2,17 @@ import { useNavigate } from "react-router-dom";
 import styles from "./NewPassword.module.css";
 import logo from "../../assets/logo.png";
 import Button from "../../components/button/Button";
+import Swal from "sweetalert2";
 
 const NewPassword = () => {
   const navigate = useNavigate();
 
   function handleNewPassword() {
-    alert(
-      "Nova senha cadastrada com sucesso! Aguarde o seu novo acesso ser aprovado."
-    );
+    Swal.fire({
+      icon: 'success',
+      title: 'Sucesso!',
+      text: "Nova senha cadastrada com sucesso! Aguarde o seu novo acesso ser aprovado."
+    })
     navigate("/");
   }
 

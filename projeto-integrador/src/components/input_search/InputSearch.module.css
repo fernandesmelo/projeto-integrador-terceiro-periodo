@@ -1,6 +1,5 @@
 .input {
     width: 28.75rem;
-    font-size: 1rem;
     border-radius: 5px;
     border: 1px solid #808080;
     height: 66%;
@@ -17,7 +16,11 @@
 }
 
 .secondary {
-    padding: 0.5rem;
+    padding: 0.625rem;
+    margin: 0.625rem 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--light-background);
 }
 
 @media screen and (max-width: 978px) {

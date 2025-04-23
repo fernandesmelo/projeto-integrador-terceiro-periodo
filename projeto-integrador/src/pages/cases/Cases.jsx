@@ -201,6 +201,7 @@ const Cases = () => {
                 }}
               >
                 <option value="">Filtrar por: </option>
+                <option value="">Todos</option>
                 <option value="ABERTO">Aberto</option>
                 <option value="FINALIZADO">Finalizado</option>
                 <option value="ARQUIVADO">Arquivo</option>
