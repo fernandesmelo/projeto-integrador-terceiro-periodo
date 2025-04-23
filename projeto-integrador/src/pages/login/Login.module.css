@@ -46,3 +46,9 @@
   }
 }
 
+@media screen and (max-width: 978px) {
+  .link {
+    display: block;
+  }
+
+}
