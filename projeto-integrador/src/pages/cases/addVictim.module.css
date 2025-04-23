@@ -6,8 +6,8 @@
 
 .marginContent {
     width: 60%;
-    max-width: 800px;
-    min-width: 550px; 
+    max-width: 50rem; 
+    min-width: 34.375rem;
     padding: 2rem;
     background: var(--white);
     border-radius: 10px;
@@ -28,19 +28,19 @@
 
 form {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     color: var(--brand-colors-primary);
 
     label {
         width: 100%;
         font-weight: bold;
-    
+
     }
 }
 
 form input,
 form select {
-    flex: 1 1 calc(50% - 1rem); 
+    flex: 1 1 calc(50% - 1rem);
     padding: 0.625rem;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -48,7 +48,7 @@ form select {
 }
 
 fieldset {
-    width: 100%; 
+    width: 100%;
     margin: 1rem 0 1rem 0;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -71,9 +71,9 @@ fieldset {
         background: var(--light-background);
         margin: auto;
     }
-    
+
     .marginContent {
-        margin:auto;
+        margin: auto;
         margin-top: 6.375rem;
         width: 100%;
         border-radius: 0;
@@ -85,7 +85,5 @@ fieldset {
         margin: 0;
         width: 100%;
         background-color: var(--white);
-
     }
-
 }
