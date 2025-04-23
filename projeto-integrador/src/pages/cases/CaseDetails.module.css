@@ -74,7 +74,7 @@ legend {
 }
 
 .card {
-    background-color: var(--desabled-background);
+    background-color: var(--evidence);
     position: relative;
     padding: 1rem 1rem 4rem 1rem;
     border-radius: 8px;
