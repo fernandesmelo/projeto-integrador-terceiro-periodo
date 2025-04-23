@@ -49,7 +49,7 @@ const CaseDetails = () => {
           icon: "error",
           title: `Erro`,
           text: err.response?.data?.message || "Tente novamente mais tarde.",
-          confirmButtonColor: "#d33",
+          confirmButtonColor: "#EB5757",
         });
       } finally {
         Swal.close();
@@ -68,8 +68,8 @@ const CaseDetails = () => {
         <Nav />
         <div className={styles.margin}>
           <div className={styles.marginContent}>
-            <h1 className={styles.title}>Detalhes do caso</h1>
-            <Nav2 onClick={() => navigate(-1)} content='voltar'/>
+            <h1 className={styles.title}>Detalhes do Caso</h1>
+            <Nav2 onClick={() => navigate(-1)} content="voltar" />
             {caseDetails ? (
               <div className={styles.caseDetails}>
                 <div className={styles.caseSection}>
@@ -84,7 +84,8 @@ const CaseDetails = () => {
                     <strong>Status:</strong> {getOrNA(caseDetails.status)}
                   </p>
                   <p>
-                    <strong>Tipo de Caso:</strong> {getOrNA(caseDetails.caseType)}
+                    <strong>Tipo de Caso:</strong>{" "}
+                    {getOrNA(caseDetails.caseType)}
                   </p>
                   <p>
                     <strong>Data de Abertura:</strong>{" "}
@@ -108,16 +109,17 @@ const CaseDetails = () => {
                   </p>
                 </div>
                 <div className={styles.caseSection}>
-                  {caseDetails.questions && caseDetails.questions.length > 0 && (
-                    <div>
-                      <h2>Perguntas do Caso</h2>
-                      <ul>
-                        {caseDetails.questions.map((item, index) => (
-                          <li key={index}>{item.question}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+                  {caseDetails.questions &&
+                    caseDetails.questions.length > 0 && (
+                      <div>
+                        <h2>Perguntas do Caso</h2>
+                        <ul>
+                          {caseDetails.questions.map((item, index) => (
+                            <li key={index}>{item.question}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                 </div>
                 {caseDetails.caseReport && (
                   <div className={styles.caseSection}>
@@ -175,21 +177,24 @@ const CaseDetails = () => {
                 <div className={styles.caseSection}>
                   <h2>Localização do Ocorrido</h2>
                   <p>
-                    <strong>Rua:</strong> {getOrNA(caseDetails.location?.street)}
+                    <strong>Rua:</strong>{" "}
+                    {getOrNA(caseDetails.location?.street)}
                   </p>
                   <p>
                     <strong>Bairro:</strong>{" "}
                     {getOrNA(caseDetails.location?.district)}
                   </p>
                   <p>
-                    <strong>Cidade:</strong> {getOrNA(caseDetails.location?.city)}
+                    <strong>Cidade:</strong>{" "}
+                    {getOrNA(caseDetails.location?.city)}
                   </p>
                   <p>
                     <strong>Estado:</strong>{" "}
                     {getOrNA(caseDetails.location?.state)}
                   </p>
                   <p>
-                    <strong>CEP:</strong> {getOrNA(caseDetails.location?.zipCode)}
+                    <strong>CEP:</strong>{" "}
+                    {getOrNA(caseDetails.location?.zipCode)}
                   </p>
                 </div>
                 <div className={styles.caseSection}>
@@ -198,11 +203,12 @@ const CaseDetails = () => {
                     <strong>Nome:</strong> {getOrNA(caseDetails.openedBy?.name)}
                   </p>
                   <p>
-                    <strong>Cargo:</strong> {getOrNA(caseDetails.openedBy?.role)}
+                    <strong>Cargo:</strong>{" "}
+                    {getOrNA(caseDetails.openedBy?.role)}
                   </p>
                 </div>
                 <div className={styles.caseSection}>
-                  <h2>Profissionais </h2>
+                  <h2>Profissionais</h2>
                   <div className={styles.cardList}>
                     {caseDetails.professional.length > 0 ? (
                       caseDetails.professional.map((pessoa) => (
@@ -239,20 +245,23 @@ const CaseDetails = () => {
                               {getOrNA(evid.descriptionTechnical)}
                             </p>
                             <p>
-                              <strong>Condição:</strong> {getOrNA(evid.condition)}
+                              <strong>Condição:</strong>{" "}
+                              {getOrNA(evid.condition)}
                             </p>
                             <p>
                               <strong>Coletor:</strong>{" "}
                               {getOrNA(evid.collector?.name)}
                             </p>
                             <p>
-                              <strong>Categoria:</strong> {getOrNA(evid.category)}
+                              <strong>Categoria:</strong>{" "}
+                              {getOrNA(evid.category)}
                             </p>
                             <p>
                               <strong>Observações:</strong> {getOrNA(evid.obs)}
                             </p>
                             <p>
-                              <strong>Latitude:</strong> {getOrNA(evid.latitude)}
+                              <strong>Latitude:</strong>{" "}
+                              {getOrNA(evid.latitude)}
                             </p>
                             <p>
                               <strong>Longitude:</strong>{" "}
@@ -289,7 +298,9 @@ const CaseDetails = () => {
                                 </p>
                                 <p>
                                   <strong>Concluído por:</strong>{" "}
-                                  {getOrNA(evid.reportEvidence.responsible?.name)}
+                                  {getOrNA(
+                                    evid.reportEvidence.responsible?.name
+                                  )}
                                 </p>
                                 <p>
                                   <strong>Data do Laudo:</strong>{" "}

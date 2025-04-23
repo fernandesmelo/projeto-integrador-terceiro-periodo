@@ -7,8 +7,8 @@
 .marginContent {
     width: 60%;
     margin: auto;
-    max-width: 800px;
-    min-width: 550px;
+    max-width: 50rem; 
+    min-width: 34.375rem;
     padding: 2rem;
     background: var(--white);
     border-radius: 10px;
@@ -74,7 +74,7 @@ legend {
 }
 
 .card {
-    background-color: #f1f1f1;
+    background-color: var(--desabled-background);
     position: relative;
     padding: 1rem 1rem 4rem 1rem;
     border-radius: 8px;
@@ -91,16 +91,16 @@ legend {
 }
 
 .imageWrapper {
-    margin-top: 10px;
+    margin-top: 0.625rem;
 }
 
 .imagePreview {
     width: 100%;
-    max-width: 400px;
+    max-width: 25rem;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    margin-top: 5px;
+    margin-top: 0.3125rem;
 }
 
 .generateReportContainer {
@@ -109,7 +109,7 @@ legend {
 
 @media screen and (max-width: 978px) {
     .marginContent {
-        margin:auto;
+        margin: auto;
         margin-top: 6.375rem;
         width: 100%;
         border-radius: 0;
@@ -121,9 +121,5 @@ legend {
         margin: 0;
         width: 100%;
         background-color: var(--white);
-
     }
-
-  }
-  
-
+}
