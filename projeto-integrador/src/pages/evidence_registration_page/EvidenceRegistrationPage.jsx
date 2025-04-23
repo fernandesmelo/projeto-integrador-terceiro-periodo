@@ -7,7 +7,7 @@ import styles from "./EvidenceRegistrationPage.module.css";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import Nav2 from "../../components/nav2/Nav2";
+import ToGoBack from "../../components/togoback/ToGoBack";
 
 const EvidenceRegistrationPage = () => {
   const navigate = useNavigate();
@@ -140,7 +140,7 @@ const EvidenceRegistrationPage = () => {
         <div className={styles.margin}>
           <div className={styles.evidence_registration}>
             <h1>Cadastro de Evidências</h1>
-            <Nav2 onClick={() => navigate(-1)}/>
+            <ToGoBack onClick={() => navigate(-1)} />
             <form onSubmit={sendEvidence}>
               <label htmlFor="title">Título:*</label>
               <input
@@ -283,7 +283,11 @@ const EvidenceRegistrationPage = () => {
                 <option value="BIOLOGICA">Biológica</option>
                 <option value="LESIONAL">Lesional</option>
               </select>
-              <Button type="submit" variant="generic-primary" className={styles.button}>
+              <Button
+                type="submit"
+                variant="generic-primary"
+                className={styles.button}
+              >
                 Cadastrar
               </Button>
             </form>

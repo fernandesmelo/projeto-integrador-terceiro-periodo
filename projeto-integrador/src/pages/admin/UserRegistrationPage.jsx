@@ -5,7 +5,7 @@ import Button from "../../components/button/Button";
 import styles from "./UserRegistrationPage.module.css";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import Nav2 from "../../components/nav2/Nav2";
+import ToGoBack from "../../components/togoback/ToGoBack";
 
 const UserRegistrationPage = () => {
   const [name, setName] = useState("");
@@ -92,185 +92,185 @@ const UserRegistrationPage = () => {
       <div className={styles.nav_container}>
         <Nav />
         <div className={styles.margin}>
-            <div className={styles.registration}>
-              <h1>Cadastro de Usuário</h1>
-              <Nav2 onClick={() => navigate(-1)} content="voltar" />
-              <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Nome:</label>
+          <div className={styles.registration}>
+            <h1>Cadastro de Usuário</h1>
+            <ToGoBack onClick={() => navigate(-1)} content="voltar" />
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="name">Nome:</label>
+              <input
+                type="text"
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Insira o nome completo"
+                className={styles.input}
+                required
+              />
+              <label htmlFor="email">Email:</label>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                placeholder="Insira o email"
+                className={styles.input}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <label htmlFor="dataNascimento">Data de Nascimento:</label>
+              <input
+                type="date"
+                id="dataNascimento"
+                className={styles.input}
+                value={dateOfBirth}
+                onChange={(e) => setDateOfBirth(e.target.value)}
+                required
+                max={new Date().toISOString().split("T")[0]}
+              />
+              <label htmlFor="cpf">CPF:</label>
+              <input
+                type="text"
+                id="cpf"
+                placeholder="Insira o CPF"
+                className={styles.input}
+                value={cpf}
+                onChange={(e) => setCpf(e.target.value)}
+                required
+                pattern="\d{11}"
+                title="Digite um CPF válido com 11 números"
+                maxLength={11}
+              />
+              <label htmlFor="cargo">Cargo:</label>
+              <select
+                id="cargo"
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                className={styles.input}
+              >
+                <option value="">Selecione o cargo:</option>
+                <option value="ADMIN">Admin</option>
+                <option value="ASSISTENTE">Assistente</option>
+                <option value="PERITO">Perito</option>
+              </select>
+              <label htmlFor="senha">Senha:</label>
+              <input
+                type="password"
+                id="senha"
+                placeholder="Insira a senha"
+                className={styles.input}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <label htmlFor="confirmarSenha">Confirme a Senha:</label>
+              <input
+                type="password"
+                id="confirmarSenha"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder="Confirme a senha"
+                className={styles.input}
+              />
+              <fieldset>
+                <legend>Endereço do Usuário</legend>
+                <label htmlFor="rua">Rua:</label>
                 <input
                   type="text"
-                  id="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Insira o nome completo"
+                  id="rua"
+                  placeholder="Insira a rua"
+                  value={road}
+                  onChange={(e) => setRoad(e.target.value)}
                   className={styles.input}
-                  required
                 />
-                <label htmlFor="email">Email:</label>
+                <label htmlFor="numero">Número:</label>
                 <input
-                  type="email"
-                  id="email"
-                  value={email}
-                  placeholder="Insira o email"
+                  type="number"
+                  id="numero"
+                  value={houseNumber}
+                  onChange={(e) => setHouseNumber(Number(e.target.value))}
+                  placeholder="Insira o número"
                   className={styles.input}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
                 />
-                <label htmlFor="dataNascimento">Data de Nascimento:</label>
-                <input
-                  type="date"
-                  id="dataNascimento"
-                  className={styles.input}
-                  value={dateOfBirth}
-                  onChange={(e) => setDateOfBirth(e.target.value)}
-                  required
-                  max={new Date().toISOString().split("T")[0]}
-                />
-                <label htmlFor="cpf">CPF:</label>
+                <label htmlFor="bairro">Bairro:</label>
                 <input
                   type="text"
-                  id="cpf"
-                  placeholder="Insira o CPF"
+                  id="bairro"
+                  placeholder="Insira o bairro"
                   className={styles.input}
-                  value={cpf}
-                  onChange={(e) => setCpf(e.target.value)}
+                  value={neighborhood}
+                  onChange={(e) => setNeighborhood(e.target.value)}
                   required
-                  pattern="\d{11}"
-                  title="Digite um CPF válido com 11 números"
-                  maxLength={11}
                 />
-                <label htmlFor="cargo">Cargo:</label>
+                <label htmlFor="cidade">Cidade:</label>
+                <input
+                  type="text"
+                  id="cidade"
+                  placeholder="Insira a cidade"
+                  className={styles.input}
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  required
+                />
+                <label htmlFor="state">Estado:</label>
                 <select
-                  id="cargo"
-                  value={role}
-                  onChange={(e) => setRole(e.target.value)}
-                  className={styles.input}
+                  id="state"
+                  name="state"
+                  value={state}
+                  required
+                  onChange={(e) => setState(e.target.value)}
                 >
-                  <option value="">Selecione o cargo:</option>
-                  <option value="ADMIN">Admin</option>
-                  <option value="ASSISTENTE">Assistente</option>
-                  <option value="PERITO">Perito</option>
+                  <option value="">Selecione um estado:</option>
+                  <option value="AC">Acre</option>
+                  <option value="AL">Alagoas</option>
+                  <option value="AP">Amapá</option>
+                  <option value="AM">Amazonas</option>
+                  <option value="BA">Bahia</option>
+                  <option value="CE">Ceará</option>
+                  <option value="DF">Distrito Federal</option>
+                  <option value="ES">Espírito Santo</option>
+                  <option value="GO">Goiás</option>
+                  <option value="MA">Maranhão</option>
+                  <option value="MT">Mato Grosso</option>
+                  <option value="MS">Mato Grosso do Sul</option>
+                  <option value="MG">Minas Gerais</option>
+                  <option value="PA">Pará</option>
+                  <option value="PB">Paraíba</option>
+                  <option value="PR">Paraná</option>
+                  <option value="PE">Pernambuco</option>
+                  <option value="PI">Piauí</option>
+                  <option value="RJ">Rio de Janeiro</option>
+                  <option value="RN">Rio Grande do Norte</option>
+                  <option value="RS">Rio Grande do Sul</option>
+                  <option value="RO">Rondônia</option>
+                  <option value="RR">Roraima</option>
+                  <option value="SC">Santa Catarina</option>
+                  <option value="SP">São Paulo</option>
+                  <option value="SE">Sergipe</option>
+                  <option value="TO">Tocantins</option>
                 </select>
-                <label htmlFor="senha">Senha:</label>
+                <label htmlFor="cep">CEP:</label>
                 <input
-                  type="password"
-                  id="senha"
-                  placeholder="Insira a senha"
+                  type="text"
+                  id="cep"
+                  placeholder="Insira o CEP"
                   className={styles.input}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={cep}
+                  onChange={(e) => setCep(e.target.value)}
+                  required
                 />
-                <label htmlFor="confirmarSenha">Confirme a Senha:</label>
+                <label htmlFor="complemento">Complemento:</label>
                 <input
-                  type="password"
-                  id="confirmarSenha"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  placeholder="Confirme a senha"
+                  type="text"
+                  id="complemento"
+                  placeholder="Insira o complemento"
                   className={styles.input}
+                  value={complement}
+                  onChange={(e) => setComplement(e.target.value)}
                 />
-                <fieldset>
-                  <legend>Endereço do Usuário</legend>
-                  <label htmlFor="rua">Rua:</label>
-                  <input
-                    type="text"
-                    id="rua"
-                    placeholder="Insira a rua"
-                    value={road}
-                    onChange={(e) => setRoad(e.target.value)}
-                    className={styles.input}
-                  />
-                  <label htmlFor="numero">Número:</label>
-                  <input
-                    type="number"
-                    id="numero"
-                    value={houseNumber}
-                    onChange={(e) => setHouseNumber(Number(e.target.value))}
-                    placeholder="Insira o número"
-                    className={styles.input}
-                  />
-                  <label htmlFor="bairro">Bairro:</label>
-                  <input
-                    type="text"
-                    id="bairro"
-                    placeholder="Insira o bairro"
-                    className={styles.input}
-                    value={neighborhood}
-                    onChange={(e) => setNeighborhood(e.target.value)}
-                    required
-                  />
-                  <label htmlFor="cidade">Cidade:</label>
-                  <input
-                    type="text"
-                    id="cidade"
-                    placeholder="Insira a cidade"
-                    className={styles.input}
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    required
-                  />
-                  <label htmlFor="state">Estado:</label>
-                  <select
-                    id="state"
-                    name="state"
-                    value={state}
-                    required
-                    onChange={(e) => setState(e.target.value)}
-                  >
-                    <option value="">Selecione um estado:</option>
-                    <option value="AC">Acre</option>
-                    <option value="AL">Alagoas</option>
-                    <option value="AP">Amapá</option>
-                    <option value="AM">Amazonas</option>
-                    <option value="BA">Bahia</option>
-                    <option value="CE">Ceará</option>
-                    <option value="DF">Distrito Federal</option>
-                    <option value="ES">Espírito Santo</option>
-                    <option value="GO">Goiás</option>
-                    <option value="MA">Maranhão</option>
-                    <option value="MT">Mato Grosso</option>
-                    <option value="MS">Mato Grosso do Sul</option>
-                    <option value="MG">Minas Gerais</option>
-                    <option value="PA">Pará</option>
-                    <option value="PB">Paraíba</option>
-                    <option value="PR">Paraná</option>
-                    <option value="PE">Pernambuco</option>
-                    <option value="PI">Piauí</option>
-                    <option value="RJ">Rio de Janeiro</option>
-                    <option value="RN">Rio Grande do Norte</option>
-                    <option value="RS">Rio Grande do Sul</option>
-                    <option value="RO">Rondônia</option>
-                    <option value="RR">Roraima</option>
-                    <option value="SC">Santa Catarina</option>
-                    <option value="SP">São Paulo</option>
-                    <option value="SE">Sergipe</option>
-                    <option value="TO">Tocantins</option>
-                  </select>
-                  <label htmlFor="cep">CEP:</label>
-                  <input
-                    type="text"
-                    id="cep"
-                    placeholder="Insira o CEP"
-                    className={styles.input}
-                    value={cep}
-                    onChange={(e) => setCep(e.target.value)}
-                    required
-                  />
-                  <label htmlFor="complemento">Complemento:</label>
-                  <input
-                    type="text"
-                    id="complemento"
-                    placeholder="Insira o complemento"
-                    className={styles.input}
-                    value={complement}
-                    onChange={(e) => setComplement(e.target.value)}
-                  />
-                </fieldset>
-                <Button type="submit" variant="generic-primary">
-                  Cadastrar
-                </Button>
-              </form>
-            </div>
+              </fieldset>
+              <Button type="submit" variant="generic-primary">
+                Cadastrar
+              </Button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

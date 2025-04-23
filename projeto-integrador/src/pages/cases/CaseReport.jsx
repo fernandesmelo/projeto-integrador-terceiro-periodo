@@ -6,7 +6,7 @@ import Button from "../../components/button/Button";
 import styles from "./CaseReport.module.css";
 import Swal from "sweetalert2";
 import axios from "axios";
-import Nav2 from "../../components/nav2/Nav2";
+import ToGoBack from "../../components/togoback/ToGoBack";
 
 const CaseReportForm = () => {
   const location = useLocation();
@@ -202,7 +202,7 @@ const CaseReportForm = () => {
         <div className={styles.margin}>
           <div className={styles.marginContent}>
             <h1>Gerar Relatório do Caso</h1>
-            <Nav2 onClick={() => navigate(-1)} content="voltar" />
+            <ToGoBack onClick={() => navigate(-1)} content="voltar" />
             <section className={styles.caseDetails}>
               <div className={styles.caseSection}>
                 <h1>Informações Gerais</h1>

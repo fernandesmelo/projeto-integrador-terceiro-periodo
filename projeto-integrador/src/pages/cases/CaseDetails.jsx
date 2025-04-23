@@ -6,7 +6,7 @@ import Button from "../../components/button/Button";
 import Swal from "sweetalert2";
 import styles from "./CaseDetails.module.css";
 import axios from "axios";
-import Nav2 from "../../components/nav2/Nav2";
+import ToGoBack from "../../components/togoback/ToGoBack";
 
 const formatDate = (dateString) => {
   if (!dateString) return "N/A";
@@ -69,7 +69,7 @@ const CaseDetails = () => {
         <div className={styles.margin}>
           <div className={styles.marginContent}>
             <h1 className={styles.title}>Detalhes do Caso</h1>
-            <Nav2 onClick={() => navigate(-1)} content="voltar" />
+            <ToGoBack onClick={() => navigate(-1)} content="voltar" />
             {caseDetails ? (
               <div className={styles.caseDetails}>
                 <div className={styles.caseSection}>
