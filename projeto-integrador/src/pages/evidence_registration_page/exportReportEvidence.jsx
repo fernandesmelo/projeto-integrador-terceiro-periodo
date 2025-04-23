@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../../components/button/Button";
 import logo from "../../assets/logo.png";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
@@ -41,32 +42,31 @@ const LaudoEvidenciaPage = () => {
       <div className={styles["laudo-container"]} id="laudo-pdf">
         <header className={styles["laudo-header"]}>
           <img src={logo} alt="Logo" className={styles["laudo-logo"]} />
-          <h1>Dentalysis Odonto Legal</h1>
-                    <Nav2 onClick={() => navigate(-1)} content='voltar'/>
-
-          <h2>Laudo Técnico - Protocolo do caso Nº {protocol.toUpperCase()}</h2>
+          <h1>Dentalysis Odonto-Legal</h1>
+          <Nav2 onClick={() => navigate(-1)} content="voltar" />
+          <h2>Laudo Técnico - Protocolo do Caso Nº {protocol.toUpperCase()}</h2>
         </header>
         <div className={styles["section-row"]}>
           <div className={styles["section-column"]}>
             <section className={styles["laudo-section"]}>
               <h3>Dados do Caso</h3>
               <p>
-                <strong>Insituição requisitante </strong>
+                <strong>Insituição Requisitante:</strong>
                 {caseDetails.requestingInstitution || "N/A"}
               </p>
               <p>
-                <strong>Autoridade requisitante:</strong>{" "}
+                <strong>Autoridade Requisitante:</strong>{" "}
                 {caseDetails.requestingAuthority || "N/A"}
               </p>
               <p>
-                <strong>Número do inquerito:</strong>
+                <strong>Número do Inquérito:</strong>
                 {caseDetails.inquiryNumber || "N/A"}
               </p>
               <p>
                 <strong>Tipo de Caso:</strong> {caseDetails.caseType}
               </p>
               <p>
-                <strong>Responsável pelo caso:</strong>{" "}
+                <strong>Responsável pelo Caso:</strong>{" "}
                 {caseDetails.openedBy.name}
               </p>
               <p>
@@ -89,7 +89,7 @@ const LaudoEvidenciaPage = () => {
                   <strong>Idade:</strong> {patient.age || "N/A"}
                 </p>
                 <p>
-                  <strong>Genero:</strong> {patient.gender || "N/A"}
+                  <strong>Gênero:</strong> {patient.gender || "N/A"}
                 </p>
               </div>
 
@@ -130,7 +130,7 @@ const LaudoEvidenciaPage = () => {
                 {evidence.collector.role})
               </p>
               <p>
-                <strong>Depoimento de testemunha:</strong>{" "}
+                <strong>Relatos/Depoimentos de Testemunha:</strong>{" "}
                 {evidence.testimony || "N/A"}
               </p>
               <p>
@@ -139,7 +139,7 @@ const LaudoEvidenciaPage = () => {
               </p>
               <div className={styles["laudo-foto"]}>
                 <p>
-                  <strong>Foto da evidência:</strong>
+                  <strong>Foto da Evidência:</strong>
                 </p>
                 <img src={evidence.photo} alt="Foto da evidência" />
               </div>
@@ -179,12 +179,9 @@ const LaudoEvidenciaPage = () => {
       </div>
 
       <div className={styles.buttonContainer}>
-        <button className={styles.buttonToBack} onClick={() => navigate(-1)}>
-          Voltar
-        </button>
-        <button className={styles.buttonDownload} onClick={gerarPDF}>
+        <Button variant="generic-primary" onClick={gerarPDF}>
           Baixar PDF
-        </button>
+        </Button>
       </div>
     </div>
   );

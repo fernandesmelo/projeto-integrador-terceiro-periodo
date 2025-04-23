@@ -1,18 +1,13 @@
-/* exportReportEvidence.module.css */
-
-/* Estilos gerais */
 .laudo-container {
     font-family: 'Arial', sans-serif;
     max-width: 210mm;
-    /* Tamanho A4 */
     margin: 0 auto;
     padding: 10mm;
     color: #333;
-    background-color: #f8f9fa !important;
+    background-color: var(--white) !important;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Cabeçalho */
 .laudo-header {
     text-align: center;
     border-bottom: 2px solid #2c3e50;
@@ -27,155 +22,119 @@
 }
 
 .laudo-header h1 {
-    color: #2c3e50;
-    margin: 5px 0;
-    font-size: 14px;
+    color: var(--brand-colors-primary);
+    margin: 0.3125rem 0; 
+    font-size: 0.875rem;
 }
 
 .laudo-header h2 {
-    color: #0d334d;
-    margin: 2px 0;
-    font-size: 12px;
+    color: var(--brand-colors-primary);
+    margin: 0.125rem 0; 
+    font-size: 0.75rem; 
 }
 
 .laudo-logo {
-    height: 50px;
+    height: 3.125rem;
 }
 
-/* Seções do laudo */
 .laudo-section {
-    
     page-break-inside: avoid;
-    /* Evita quebrar seções entre páginas */
 }
 
 .laudo-section h3 {
-    background-color: #EDBF5F;
-    padding: 5px 10px;
+    background-color: var(--brand-colors-secondary);
+    padding: 0.3125rem 0.625rem; 
     border-left: 4px solid #012130;
-    color: #2c3e50;
-    margin: 15px 0 10px;
-    font-size: 14px;
+    color: var(--brand-colors-primary);
+    margin: 0.9375rem 0 0.625rem; 
+    font-size: 0.875rem; 
 }
 
-/* Layout de duas colunas para algumas seções */
 .section-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 20px;
+    gap: 1.25rem; 
+    margin-bottom: 1.25rem; 
 }
 
 .section-column {
     flex: 1;
-    min-width: 250px;
+    min-width: 15.625rem;
 }
 
-/* Estilos para parágrafos e dados */
 .laudo-section p {
-    margin: 4px 0;
-    line-height: 1.3;
-    font-size: 12px;
+    margin: 0.25rem 0; 
+    line-height: 1.3; 
+    font-size: 0.75rem; 
 }
 
 .laudo-section strong {
-    color: #2c3e50;
-    margin-right: 5px;
+    color: var(--brand-colors-primary);
+    margin-right: 0.3125rem;
 }
 
-/* Seção de fotos */
 .laudo-foto {
-    margin-top: 15px;
+    margin-top: 0.9375rem; 
     text-align: center;
 }
 
 .laudo-foto img {
     max-width: 100%;
-    max-height: 200px;
+    max-height: 12.5rem;
     border: 1px solid #ddd;
-    padding: 5px;
-
+    padding: 0.3125rem;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Rodapé */
 .laudo-footer {
-    margin-top: 30px;
-    padding-top: 15px;
+    margin-top: 1.875rem; 
+    padding-top: 0.9375rem; 
     border-top: 2px solid #2c3e50;
     text-align: center;
 }
 
 .laudo-footer p {
-    margin: 10px 0;
+    margin: 0.625rem 0; 
 }
 
-/* Botões */
 .buttonContainer {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin: 30px auto;
+    gap: 1.25rem; 
+    margin: 1.875rem auto; 
     max-width: 210mm;
     padding: 0 15mm;
 }
 
-.buttonToBack,
-.buttonDownload {
-    padding: 10px 25px;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-
-
-.buttonToBack:hover {
-    background-color: #e9ecef;
-}
-
-.buttonDownload {
-    background-color: #3498db;
-    color: white;
-}
-
-.buttonDownload:hover {
-    background-color: #2980b9;
-}
 
 .paragraph-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 8px;
+    gap: 0.9375rem; 
+    margin-bottom: 0.5rem; 
 }
 
 .paragraph-row p {
     margin: 0;
     flex: 1;
     min-width: calc(50% - 15px);
-    /* Dois itens por linha com gap */
 }
 
-/* Ajustes específicos para a seção de evidência */
 .evidence-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 10px 20px;
+    gap: 0.625rem 1.25rem;
 }
 
 .evidence-item {
-    margin-bottom: 5px;
+    margin-bottom: 0.3125rem;
     break-inside: avoid;
 }
 
-/* Para grupos específicos de 2 itens */
 .two-column-group {
     display: flex;
-    gap: 20px;
-    margin-bottom: 8px;
+    gap: 1.25rem; 
+    margin-bottom: 0.5rem;
 }
 
 .two-column-group>div {
