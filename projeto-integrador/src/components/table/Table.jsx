@@ -5,12 +5,16 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { IoMdAddCircleOutline } from "react-icons/io";
+import EditModal from "./EditModal";
+
 
 const Table = ({ cases }) => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token")
   // Estado interno que armazena os casos exibidos
   const [tableCases, setTableCases] = useState(cases);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedCase, setSelectedCase] = useState(null);
 
   useEffect(() => {
     setTableCases(cases);
@@ -24,23 +28,11 @@ const Table = ({ cases }) => {
     navigate(`/casos/evidencia/${protocol}`);
   };
 
-  const handleEdit = async (protocol) => {
-    try {
-      const response = await axios.put(`https://sistema-odonto-legal.onrender.com/api/cases/data/protocol`, {},{
-        headers: {
-          Authorization: `Bearer ${token}`
-        },
-        params: {
-         protocol : protocol
-        }
-      })
-    
-      console.log(response.data)
-    } catch (err) {
-      console.error("erro na busca", err)
-    }
-  }
-
+  const handleEdit = (caso) => {
+    setSelectedCase(caso);
+    setShowModal(true);
+    console.log(selectedCase)
+  };
 
 
   const excluirCaso = async (protocol) => {
@@ -126,12 +118,8 @@ const Table = ({ cases }) => {
                 <BiPencil
                   className={styles.icon}
                   title="Editar"
-                  style={{
-                    cursor: "pointer",
-                    marginRight: 10,
-                    color: "#012130",
-                  }}
-                  onClick={() => handleEdit(item.protocol)}
+                  style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
+                  onClick={() => handleEdit(item)}
                 />
                 {item.evidence?.length === 0 && (
                   <BiTrash
@@ -157,6 +145,15 @@ const Table = ({ cases }) => {
           )}
         </tbody>
       </table>
+      {showModal && selectedCase && (
+        <EditModal
+          protocol={selectedCase.protocol}
+          currentTitle={selectedCase.title}
+          currentCaseType={selectedCase.caseType}
+          onClose={() => setShowModal(false)}
+          onUpdate={() => window.location.reload()} // ou uma função melhor de refresh
+        />
+      )}
     </div>
   );
 };
