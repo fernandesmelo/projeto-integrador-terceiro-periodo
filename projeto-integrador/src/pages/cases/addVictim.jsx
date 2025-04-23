@@ -5,7 +5,7 @@ import Nav from "../../components/nav/Nav";
 import styles from "./addVictim.module.css";
 import Swal from "sweetalert2";
 import Button from "../../components/button/Button";
-import Nav2 from "../../components/nav2/Nav2";
+import ToGoBack from "../../components/togoback/ToGoBack";
 
 const CreateVictim = () => {
   const navigate = useNavigate();
@@ -128,7 +128,7 @@ const CreateVictim = () => {
         <div className={styles.margin}>
           <div className={styles.marginContent}>
             <h1>Cadastro da Vítima</h1>
-            <Nav2 onClick={() => navigate(-1)} />
+            <ToGoBack onClick={() => navigate(-1)} />
             <form onSubmit={handleSubmit}>
               <label>NIC:*</label>
               <input
@@ -269,7 +269,9 @@ const CreateVictim = () => {
                 <option value="">Selecione o status:</option>
                 <option value="IDENTIFICADO">Identificado</option>
                 <option value="NÃO IDENTIFICADO">Não identificado</option>
-                <option value="PARCIALMENTE IDENTIFICADO">Parcialmente identificado</option>
+                <option value="PARCIALMENTE IDENTIFICADO">
+                  Parcialmente identificado
+                </option>
               </select>
               <Button
                 type="button"

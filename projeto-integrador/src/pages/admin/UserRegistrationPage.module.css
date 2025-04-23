@@ -6,8 +6,9 @@
 
 .registration {
     width: 60%;
-    max-width: 50rem;
-    margin: 6rem 0 2rem 27rem;
+    margin: auto;
+    max-width: 50rem; 
+    min-width: 34.375rem;
     padding: 2rem;
     background: var(--white);
     border-radius: 10px;
@@ -18,11 +19,6 @@
         color: var(--brand-colors-primary);
         margin-bottom: 1rem;
     }
-}
-
-.margin {
-    margin: 6rem 0 2rem 20rem;
-    width: 100%;
 }
 
 form {
@@ -59,19 +55,20 @@ fieldset {
     }
 }
 
+.margin {
+    margin: 6rem 0 2rem 20rem;
+    width: 100%;
+}
+
 @media screen and (max-width: 978px) {
     .nav_container {
         flex-direction: column;
-
     }
-
 
     .margin {
         margin: 0;
         width: 100%;
         background-color: var(--white);
-
-
     }
 
     .registration {

@@ -6,7 +6,7 @@ import Button from "../../components/button/Button";
 import styles from "./CaseCreated.module.css";
 import Swal from "sweetalert2";
 import axios from "axios";
-import Nav2 from "../../components/nav2/Nav2";
+import ToGoBack from "../../components/togoback/ToGoBack";
 
 const CaseCreated = () => {
   const navigate = useNavigate();
@@ -241,7 +241,7 @@ const CaseCreated = () => {
         <div className={styles.margin}>
           <div className={styles.marginContent}>
             <h1>Cadastrar Novo Caso</h1>
-            <Nav2 onClick={() => navigate(-1)} />
+            <ToGoBack onClick={() => navigate(-1)} />
             <form onSubmit={handleSubmit}>
               <div>
                 <label>NIC*:</label>

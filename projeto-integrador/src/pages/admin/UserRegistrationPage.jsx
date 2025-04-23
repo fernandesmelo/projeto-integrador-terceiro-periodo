@@ -5,7 +5,7 @@ import Button from "../../components/button/Button";
 import styles from "./UserRegistrationPage.module.css";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import Nav2 from "../../components/nav2/Nav2";
+import ToGoBack from "../../components/togoback/ToGoBack";
 
 const UserRegistrationPage = () => {
   const [name, setName] = useState("");
@@ -94,7 +94,7 @@ const UserRegistrationPage = () => {
         <div className={styles.margin}>
           <div className={styles.registration}>
             <h1>Cadastro de Usuário</h1>
-            <Nav2 onClick={() => navigate(-1)} content="voltar" />
+            <ToGoBack onClick={() => navigate(-1)} content="voltar" />
             <form onSubmit={handleSubmit}>
               <label htmlFor="name">Nome:</label>
               <input
