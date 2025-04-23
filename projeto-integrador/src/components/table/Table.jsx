@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Table.module.css";
 import { BiPencil, BiSearch, BiTrash, BiFile } from "react-icons/bi";
-import Button from "../button/Button";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
@@ -13,7 +12,6 @@ const Table = ({ cases }) => {
   // Estado interno que armazena os casos exibidos
   const [tableCases, setTableCases] = useState(cases);
 
-  // Sincroniza o estado interno quando a prop 'cases' mudar
   useEffect(() => {
     setTableCases(cases);
   }, [cases]);
@@ -69,7 +67,6 @@ const Table = ({ cases }) => {
         );
 
         Swal.fire("Excluído!", "O caso foi excluído com sucesso.", "success");
-        // Atualiza o estado interno: remove o caso excluído
         setTableCases((prev) =>
           prev.filter((item) => item.protocol !== protocol)
         );
@@ -107,16 +104,13 @@ const Table = ({ cases }) => {
               <td>{item.caseType}</td>
               <td>{item.patient.nic}</td>
               <td>{item.status}</td>
-              <td>
-                {new Date(item.openedAt).toLocaleDateString("pt-BR")}
-              </td>
+              <td>{new Date(item.openedAt).toLocaleDateString("pt-BR")}</td>
               <td>
                 {item.evidence?.length || 0}
-                <IoMdAddCircleOutline className={styles.add}
-
+                <IoMdAddCircleOutline
+                  className={styles.add}
                   onClick={() => addEvidence(item.protocol)}
                 />
-                
               </td>
               <td>
                 <BiSearch
@@ -139,7 +133,6 @@ const Table = ({ cases }) => {
                   }}
                   onClick={() => handleEdit(item.protocol)}
                 />
-             
                 {item.evidence?.length === 0 && (
                   <BiTrash
                     className={styles.icon}

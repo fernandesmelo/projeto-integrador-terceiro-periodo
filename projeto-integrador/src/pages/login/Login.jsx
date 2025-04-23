@@ -50,7 +50,7 @@ const Login = () => {
       );
     }
   }
-  
+
   return (
     <div className={styles.container}>
       <div className={styles.card}>
@@ -80,7 +80,12 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           className={styles.input}
         />
-        <Button type="button" variant="primary" onClick={handleLogin} disabled={false}>
+        <Button
+          type="button"
+          variant="primary"
+          onClick={handleLogin}
+          disabled={false}
+        >
           Entrar
         </Button>
         <Link to="/nova-senha" className={styles.link}>

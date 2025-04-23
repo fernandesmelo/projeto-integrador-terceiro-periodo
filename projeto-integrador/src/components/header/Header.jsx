@@ -7,8 +7,8 @@ import axios from "axios";
 const API_URL = "https://sistema-odonto-legal.onrender.com/api/profile";
 
 const Header = () => {
-  const [userData, setUserData] = useState(null); 
-  const [loading, setLoading] = useState(true); 
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,11 +17,11 @@ const Header = () => {
       try {
         const response = await axios.get(API_URL, {
           headers: {
-            Authorization: `Bearer ${token}`, 
+            Authorization: `Bearer ${token}`,
           },
         });
-        setUserData(response.data); 
-        setLoading(false); 
+        setUserData(response.data);
+        setLoading(false);
       } catch (error) {
         console.error("Erro ao buscar os dados do perfil", error);
         setLoading(false);

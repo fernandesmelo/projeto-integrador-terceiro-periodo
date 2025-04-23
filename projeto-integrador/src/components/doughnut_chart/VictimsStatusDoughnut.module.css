@@ -1,9 +1,17 @@
-/* src/components/VictimsStatusDoughnut.module.css */
 .container {
-    width: 100%;
-    max-width: 250px;
-    height: 250px;
-    margin: 0 auto;
-    position: relative;
-  }
-  
+  width: 100%;
+  max-width: 15.625rem; 
+  height: 15.625rem; 
+  margin: 0 auto;
+  position: relative;
+}
+
+.title {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  color: var(--brand-colors-primary);
+  margin: 0 0 0.5rem 0;
+  text-align: center; 
+}
+

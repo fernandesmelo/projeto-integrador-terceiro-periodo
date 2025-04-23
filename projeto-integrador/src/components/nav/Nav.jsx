@@ -11,25 +11,25 @@ import { useState } from "react";
 
 const Nav = () => {
   const navigate = useNavigate();
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen)
-  }
+    setMenuOpen(!menuOpen);
+  };
 
   const handleAdmin = () => {
-    const role = localStorage.getItem("role")
-    console.log(role)
-    if (role === 'ADMIN') {
-      navigate("/admin/usuarios-cadastrados")
+    const role = localStorage.getItem("role");
+    console.log(role);
+    if (role === "ADMIN") {
+      navigate("/admin/usuarios-cadastrados");
     } else {
       Swal.fire({
-        icon: 'warning',
-        text: 'voce nao tem acesso a area de admin',
-        title: 'atencao'
-      })
+        icon: "warning",
+        text: "voce nao tem acesso a area de admin",
+        title: "atencao",
+      });
     }
-  }
+  };
 
   return (
     <div>
@@ -37,21 +37,52 @@ const Nav = () => {
         <div className={styles.image}>
           <img src={logo} alt="Logo" />
         </div>
-        <p className={styles.item} tabIndex={0} role="button" onClick={() => navigate("/inicio")}>
-          <CgScreen size={31} strokeWidth={1} style={{ color: "var(--icons)" }} />Início
+        <p
+          className={styles.item}
+          tabIndex={0}
+          role="button"
+          onClick={() => navigate("/inicio")}
+        >
+          <CgScreen
+            size={31}
+            strokeWidth={1}
+            style={{ color: "var(--icons)" }}
+          />
+          Início
         </p>
-        <p className={styles.item} tabIndex={0} role="button" onClick={() => navigate("/casos")}>
-          <RiFileShield2Fill size={32} style={{ color: "var(--icons)" }} />Casos Periciais
+        <p
+          className={styles.item}
+          tabIndex={0}
+          role="button"
+          onClick={() => navigate("/casos")}
+        >
+          <RiFileShield2Fill size={32} style={{ color: "var(--icons)" }} />
+          Casos Periciais
         </p>
-        <p className={styles.item} tabIndex={0} role="button" onClick={handleAdmin}>
-          <MdAdminPanelSettings size={32} style={{ color: "var(--icons)" }} />Admin
+        <p
+          className={styles.item}
+          tabIndex={0}
+          role="button"
+          onClick={handleAdmin}
+        >
+          <MdAdminPanelSettings size={32} style={{ color: "var(--icons)" }} />
+          Admin
         </p>
-        <p className={styles.item} tabIndex={0} role="button" onClick={() => navigate("/")}>
+        <p
+          className={styles.item}
+          tabIndex={0}
+          role="button"
+          onClick={() => navigate("/")}
+        >
           <FiLogOut size={32} style={{ color: "var(--icons)" }} /> Sair
         </p>
-        <p className={styles.itemMenu} tabIndex={0} role="button" onClick={toggleMenu}>
+        <p
+          className={styles.itemMenu}
+          tabIndex={0}
+          role="button"
+          onClick={toggleMenu}
+        >
           <BiMenu size={32} style={{ color: "var(--icons)" }} />
-
           {menuOpen && (
             <div
               style={{

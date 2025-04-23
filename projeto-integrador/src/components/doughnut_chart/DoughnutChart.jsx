@@ -1,6 +1,3 @@
-// src/components/VictimsStatusDoughnut.jsx
-
-// src/components/VictimsStatusDoughnut.jsx
 import React, { useEffect, useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
@@ -8,11 +5,10 @@ import styles from "./VictimsStatusDoughnut.module.css";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-// Mapeamento de cores (use uppercase e sem espaços extras)
 const colorMap = {
-  "NÃO IDENTIFICADO": "#FF6384",
-  IDENTIFICADO: "#36A2EB",
-  "PARCIALMENTE IDENTIFICADO": "#FFCE56",
+  "NÃO IDENTIFICADO": "#023A4A",
+  IDENTIFICADO: "#EDBF5F",
+  "PARCIALMENTE IDENTIFICADO": "#2A9D8F",
 };
 
 export default function VictimsStatusDoughnut({
@@ -28,14 +24,12 @@ export default function VictimsStatusDoughnut({
         return res.json();
       })
       .then((data) => {
-        // Extrai labels e valores
         const labels = data.map((d) => d.status.trim());
         const values = data.map((d) => d.vitimas);
 
-        // Garante que o status bate com a chave do colorMap
         const bgColors = labels.map((label) => {
           const key = label.toUpperCase();
-          return colorMap[key] || "#CCCCCC";
+          return colorMap[key] || "#D3D3D3";
         });
 
         setChartData({
@@ -44,7 +38,7 @@ export default function VictimsStatusDoughnut({
             {
               data: values,
               backgroundColor: bgColors,
-              borderColor: "#fff",
+              borderColor: "#FFFFFF",
               borderWidth: 2,
               cutout: "60%",
             },
@@ -78,6 +72,9 @@ export default function VictimsStatusDoughnut({
 
   return (
     <div className={styles.container}>
+      <div className={styles.title}>
+        <h4>Identificação de Vítimas</h4>
+      </div>
       <Doughnut data={chartData} options={options} />
     </div>
   );
