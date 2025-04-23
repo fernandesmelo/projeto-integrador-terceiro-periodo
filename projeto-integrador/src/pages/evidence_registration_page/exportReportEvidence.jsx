@@ -3,9 +3,8 @@ import Button from "../../components/button/Button";
 import logo from "../../assets/logo.png";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import styles from "./exportReportEvidence.module.css";
+import styles from "./ExportReportEvidence.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import Nav2 from "../../components/nav2/Nav2";
 
 const LaudoEvidenciaPage = () => {
   const navigate = useNavigate();

@@ -3,7 +3,7 @@ import { useState } from "react";
 import Header from "../../components/header/Header";
 import Nav from "../../components/nav/Nav";
 import Button from "../../components/button/Button";
-import styles from "./reportEvidence.module.css";
+import styles from "./ReportEvidence.module.css";
 import Swal from "sweetalert2";
 import axios from "axios";
 import Nav2 from "../../components/nav2/Nav2";
