@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Header from "../../components/header/Header";
 import Nav from "../../components/nav/Nav";
-import styles from "./addVictim.module.css";
+import styles from "./AddVictim.module.css";
 import Swal from "sweetalert2";
 import Button from "../../components/button/Button";
 import ToGoBack from "../../components/togoback/ToGoBack";
