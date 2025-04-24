@@ -23,3 +23,37 @@
     justify-content: flex-end;
     gap: 1rem;
   }
+
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+  }
+  
+  button:hover {
+    opacity: 0.9;
+  }
+  
+  /* Estilo para o botão Salvar */
+  button.save {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+  }
+  
+  button.save:hover {
+    background-color: #45a049;
+  }
+  
+  /* Estilo para o botão Cancelar */
+  button.cancel {
+    background-color: #f44336; /* Vermelho */
+    color: white;
+  }
+  
+  button.cancel:hover {
+    background-color: #e53935;
+  }

@@ -33,12 +33,14 @@ const EditModal = ({ protocol, currentTitle, currentCaseType, onClose, onUpdate 
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modal}>
-        <h2>Editar Título</h2>
+        <h2>Editar Caso</h2>
+        <label htmlFor="">titulo</label>
         <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+        <label htmlFor="">tipo de caso</label>
         <select
           name=""
           id=""
@@ -56,8 +58,8 @@ const EditModal = ({ protocol, currentTitle, currentCaseType, onClose, onUpdate 
           <option value="LESÕES CORPORAIS">Exame cadavérico</option>
         </select>
         <div className={styles.actions}>
-          <button onClick={handleSubmit}>Salvar</button>
-          <button onClick={onClose}>Cancelar</button>
+          <button className={styles.save} onClick={handleSubmit}>Salvar</button>
+          <button className={styles.cancel} onClick={onClose}>Cancelar</button>
         </div>
       </div>
     </div>
