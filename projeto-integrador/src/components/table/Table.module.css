@@ -28,24 +28,24 @@
 }
 
 .status-aberto {
-  background-color: #E2B93B;
-  color: white;
+  background-color: var(--accent-warning);
+  color: var(--white);
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   text-align: center;
 }
 
 .status-finalizado {
-  background-color: #27AE60;
-  color: white;
+  background-color: var(--accent-success);
+  color: var(--white);
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   text-align: center;
 }
 
 .status-arquivado {
-  background-color: #A9A9A9;
-  color: white;
+  background-color: var(--desabled-background);
+  color: var(--soft-contrast-text);
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   text-align: center;
