@@ -27,6 +27,30 @@
   color: var(--brand-colors-primary);
 }
 
+.status-aberto {
+  background-color: #E2B93B;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.status-finalizado {
+  background-color: #27AE60;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.status-arquivado {
+  background-color: #A9A9A9;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  text-align: center;
+}
+
 .ativo {
   color: var(--accent-success);
   font-weight: bold;
