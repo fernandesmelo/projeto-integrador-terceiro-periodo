@@ -281,12 +281,6 @@ const CaseDetails = () => {
                                   alt="Foto da evidência"
                                   className={styles.imagePreview}
                                 />
-                                <Button
-                                  variant="generic-secondary"
-                                  onClick={() => addEvidence(item.protocol)}
-                                  >
-                                  Adicionar evidências
-                                </Button>
                               </div>
                             ) : (
                               <p>
@@ -346,6 +340,12 @@ const CaseDetails = () => {
                       ) : (
                         <p>Nenhuma evidência registrada.</p>
                       )}
+                      <Button
+                        variant="generic-secondary"
+                        onClick={() => addEvidence(caseDetails.protocol)}
+                      >
+                        Adicionar evidências
+                      </Button>
                     </div>
                     {caseDetails.evidence.length > 0 &&
                       caseDetails.evidence.every(
