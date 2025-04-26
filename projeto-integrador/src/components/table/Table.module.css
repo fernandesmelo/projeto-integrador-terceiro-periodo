@@ -15,10 +15,6 @@
   }
 }
 
-.add {
-  margin-left: 1.25rem;
-}
-
 .tabela th,
 .tabela td {
   padding: 0.75rem;
@@ -51,6 +47,17 @@
   text-align: center;
 }
 
+.add {
+  margin-left: 1.25rem;
+  cursor: pointer;
+}
+
+.icon {
+  cursor: pointer;
+  margin-right: 10;
+  color: var(--brand-colors-primary);
+}
+
 .ativo {
   color: var(--accent-success);
   font-weight: bold;
@@ -65,7 +72,7 @@
 
   .tabela th,
   .tabela td {
-    padding: 0.5rem; 
+    padding: 0.5rem;
     font-size: 0.875rem;
   }
 }

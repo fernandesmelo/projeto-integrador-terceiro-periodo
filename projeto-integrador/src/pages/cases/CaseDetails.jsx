@@ -19,6 +19,10 @@ const CaseDetails = () => {
   const { protocol } = useParams();
   const [caseDetails, setCaseDetails] = useState(null);
 
+  const addEvidence = (protocol) => {
+    navigate(`/casos/evidencia/${protocol}`);
+  };
+
   useEffect(() => {
     const fetchCaseDetails = async () => {
       Swal.fire({
@@ -277,6 +281,12 @@ const CaseDetails = () => {
                                   alt="Foto da evidência"
                                   className={styles.imagePreview}
                                 />
+                                <Button
+                                  variant="generic-secondary"
+                                  onClick={() => addEvidence(item.protocol)}
+                                  >
+                                  Adicionar evidências
+                                </Button>
                               </div>
                             ) : (
                               <p>

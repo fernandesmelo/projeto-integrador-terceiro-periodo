@@ -110,6 +110,7 @@ const Table = ({ cases }) => {
                 {item.evidence?.length || 0}
                 <IoMdAddCircleOutline
                   className={styles.add}
+                  title="Adicionar evidência"
                   onClick={() => addEvidence(item.protocol)}
                 />
               </td>
@@ -117,32 +118,17 @@ const Table = ({ cases }) => {
                 <BiSearch
                   className={styles.icon}
                   title="Ver detalhes"
-                  style={{
-                    cursor: "pointer",
-                    marginRight: 10,
-                    color: "#012130",
-                  }}
                   onClick={() => verDetalhes(item.protocol)}
                 />
                 <BiPencil
                   className={styles.icon}
                   title="Editar"
-                  style={{
-                    cursor: "pointer",
-                    marginRight: 10,
-                    color: "#012130",
-                  }}
                   onClick={() => handleEdit(item)}
                 />
                 {item.evidence?.length === 0 && (
                   <BiTrash
                     className={styles.icon}
                     title="Excluir caso"
-                    style={{
-                      cursor: "pointer",
-                      marginRight: 10,
-                      color: "#012130",
-                    }}
                     onClick={() => excluirCaso(item.protocol)}
                   />
                 )}
