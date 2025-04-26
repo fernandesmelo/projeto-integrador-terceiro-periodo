@@ -1,59 +1,47 @@
 .modalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .modal {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    min-width: 300px;
-  }
-  
-  .actions {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 10px;
+  width: 40rem;
+  max-width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+
+  h2 {
+    color: var(--brand-colors-primary);
+    margin-bottom: 1rem;
   }
 
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
+  label {
+    color: var(--brand-colors-primary)
+  }
+
+  select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-right: 10px;
+    background-color: var(--light-background);
   }
-  
-  button:hover {
-    opacity: 0.9;
-  }
-  
-  /* Estilo para o botão Salvar */
-  button.save {
-    background-color: #4CAF50; /* Verde */
-    color: white;
-  }
-  
-  button.save:hover {
-    background-color: #45a049;
-  }
-  
-  /* Estilo para o botão Cancelar */
-  button.cancel {
-    background-color: #f44336; /* Vermelho */
-    color: white;
-  }
-  
-  button.cancel:hover {
-    background-color: #e53935;
-  }
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 1rem;
+}
