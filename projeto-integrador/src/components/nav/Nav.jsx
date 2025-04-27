@@ -31,6 +31,23 @@ const Nav = () => {
     }
   };
 
+   const handleClick = () => {
+      Swal.fire({
+        title: "Tem certeza?",
+        text: "Você realmente deseja sair?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sim, sair",
+        cancelButtonText: "Cancelar",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/")
+        }
+      });
+    };
+
   return (
     <div>
       <div className={styles.nav}>
@@ -72,7 +89,7 @@ const Nav = () => {
           className={styles.item}
           tabIndex={0}
           role="button"
-          onClick={() => navigate("/")}
+          onClick={handleClick}
         >
           <FiLogOut size={32} style={{ color: "var(--icons)" }} /> Sair
         </p>
@@ -103,7 +120,7 @@ const Nav = () => {
               <a  className={styles.itemH}  onClick={() => navigate("/inicio")}>Início</a>
               <a className={styles.itemH} onClick={() => navigate("/casos")}>Casos Periciais</a>
               <a className={styles.itemH} onClick={handleAdmin}>Admin</a>
-              <a className={styles.itemH} onClick={() => navigate("/")}>Sair</a>
+              <a className={styles.itemH} onClick={handleClick}>Sair</a>
             </div>
           )}
         </p>

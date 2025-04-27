@@ -1,49 +1,65 @@
 import React, { useState } from "react";
 import styles from "./EditModal.module.css"; // você pode criar esse CSS depois
-import axios from "axios";
 
-const EditModal = ({ protocol, currentTitle, currentCaseType, onClose, onUpdate }) => {
+const EditModal = ({
+  protocol,
+  currentLocation,
+  currentObservations,
+  currentTitle,
+  currentCaseType,
+  currentInquiryNumber,
+  currentRequestingInstitution,
+  currentRequestingAuthority,
+  onClose,
+  onNextStep,
+ }) => {
   const [title, setTitle] = useState(currentTitle);
   const [caseType, setCaseType] = useState(currentCaseType)
-  const token = localStorage.getItem("token");
+  const [observations, setObservations] = useState(currentObservations)
+  const [location] = useState(currentLocation)
+  const [inquiryNumber, setInquiryNumber] = useState(currentInquiryNumber)
+  const [requestingInstitution, setRequestingInstitution] = useState(currentRequestingInstitution) 
+  const [requestingAuthority, setRequestingAuthority] = useState(currentRequestingAuthority)
+ 
 
-  const handleSubmit = async () => {
-    try {
-      const response = await axios.put(
-        "https://sistema-odonto-legal.onrender.com/api/cases/data/protocol",
-        {
-          title,
-          caseType
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          params: { protocol },
-        }
-      );
-      console.log("Sucesso:", response.data);
-      onUpdate(); // recarrega os dados
-      onClose(); // fecha o modal
-    } catch (err) {
-      console.error("Erro ao atualizar:", err.response?.data || err.message);
-    }
+
+
+
+  const handleContinue = () => {
+    onNextStep({
+      protocol,
+      title,
+      caseType,
+      observations,
+      location,
+      inquiryNumber,
+      requestingInstitution,
+      requestingAuthority,
+    });
   };
 
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modal}>
         <h2>Editar Caso</h2>
-        <label htmlFor="">titulo</label>
+        <label htmlFor="title">titulo</label>
         <input
+          id="title"
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <label htmlFor="">tipo de caso</label>
+        <label htmlFor="inquiryNumber">Numero de inquerito</label>
+        <input
+          id="inquiryNumber"
+          type="text"
+          value={inquiryNumber}
+          onChange={(e) => setInquiryNumber(e.target.value)}
+        />
+        <label htmlFor="typeCase">tipo de caso</label>
         <select
           name=""
-          id=""
+          id="typeCase"
           value={caseType}
           onChange={(e) => setCaseType(e.target.value)}
         >
@@ -57,8 +73,34 @@ const EditModal = ({ protocol, currentTitle, currentCaseType, onClose, onUpdate 
           </option>
           <option value="LESÕES CORPORAIS">Exame cadavérico</option>
         </select>
+        <label htmlFor="observations">Observações:</label>
+        <textarea
+          className={styles.input}
+          id="observations"
+          placeholder="Observações"
+          value={observations}
+          onChange={(e) => setObservations(e.target.value)}
+        />
+        <label htmlFor="requestingInstitution">Instituição Requisitante</label>
+        <input
+          type="text"
+          id="requestingInstitution"
+          value={requestingInstitution}
+          onChange={(e) =>
+            setRequestingInstitution(e.target.value)
+          }
+        />
+        <label htmlFor="requestingAuthority">Autoridade Requisitante</label>
+        <input
+          type="text"
+          id="requestingAuthority"
+          value={requestingAuthority}
+          onChange={(e) =>
+            setRequestingAuthority(e.target.value)
+          }
+        />
         <div className={styles.actions}>
-          <button className={styles.save} onClick={handleSubmit}>Salvar</button>
+          <button className={styles.save} onClick={handleContinue}>Continuar</button>
           <button className={styles.cancel} onClick={onClose}>Cancelar</button>
         </div>
       </div>

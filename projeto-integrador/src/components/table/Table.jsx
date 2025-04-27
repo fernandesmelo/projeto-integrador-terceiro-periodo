@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import EditModal from "./EditModal";
+import EditModalStepTwo from "./EditModalStepTwo";
 
 
 const Table = ({ cases }) => {
@@ -15,10 +16,49 @@ const Table = ({ cases }) => {
   const [tableCases, setTableCases] = useState(cases);
   const [showModal, setShowModal] = useState(false);
   const [selectedCase, setSelectedCase] = useState(null);
+  const [showModalStepTwo, setShowModalStepTwo] = useState(false);
+  const [stepTwoFormData, setStepTwoFormData] = useState(null);
 
   useEffect(() => {
     setTableCases(cases);
   }, [cases]);
+
+
+  const fetchCaseDetails = async (protocol) => {
+    Swal.fire({
+      title: "Carregando...",
+      text: "Buscando detalhes do caso.",
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+    try {
+      const response = await axios.get(
+        `https://sistema-odonto-legal.onrender.com/api/cases/search/protocol`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          params: {
+            protocol,
+          },
+        }
+      );
+      setSelectedCase(response.data);
+      handleEdit()
+
+    } catch (err) {
+      Swal.fire({
+        icon: "error",
+        title: `Erro`,
+        text: err.response?.data?.message || "Tente novamente mais tarde.",
+        confirmButtonColor: "#EB5757",
+      });
+    } finally {
+      Swal.close();
+    }
+  }
 
   const verDetalhes = (protocol) => {
     navigate(`/casos/detalhes/${protocol}`);
@@ -28,12 +68,16 @@ const Table = ({ cases }) => {
     navigate(`/casos/evidencia/${protocol}`);
   };
 
-  const handleEdit = (caso) => {
-    setSelectedCase(caso);
+  const handleEdit = () => {
     setShowModal(true);
-    console.log(selectedCase)
   };
 
+
+  const handleNextStep = (formData) => {
+    setShowModal(false); // fecha o primeiro modal
+    setStepTwoFormData(formData); // salva os dados pra usar no segundo
+    setShowModalStepTwo(true); // abre o segundo modal
+  };
 
   const excluirCaso = async (protocol) => {
     const confirm = await Swal.fire({
@@ -52,7 +96,7 @@ const Table = ({ cases }) => {
           `https://sistema-odonto-legal.onrender.com/api/cases/delete/protocol`,
           {
             headers: {
-              Authorization: `Bearer ${token}}`,
+              Authorization: `Bearer ${token}`,
             },
             params: { protocol },
           }
@@ -115,12 +159,16 @@ const Table = ({ cases }) => {
                   }}
                   onClick={() => verDetalhes(item.protocol)}
                 />
-                <BiPencil
-                  className={styles.icon}
-                  title="Editar"
-                  style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
-                  onClick={() => handleEdit(item)}
-                />
+
+                {
+                  <BiPencil
+                    className={styles.icon}
+                    title="Editar"
+                    style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
+                    onClick={() => fetchCaseDetails(item.protocol)}
+                  />
+                }
+
                 {item.evidence?.length === 0 && (
                   <BiTrash
                     className={styles.icon}
@@ -150,8 +198,22 @@ const Table = ({ cases }) => {
           protocol={selectedCase.protocol}
           currentTitle={selectedCase.title}
           currentCaseType={selectedCase.caseType}
+          currentObservations={selectedCase.observations}
+          currentLocation={selectedCase.location}
+          currentInquiryNumber={selectedCase.inquiryNumber}
+          currentRequestingInstitution={selectedCase.requestingInstitution}
+          currentRequestingAuthority={selectedCase.requestingAuthority}
           onClose={() => setShowModal(false)}
-          onUpdate={() => window.location.reload()} // ou uma função melhor de refresh
+          onNextStep={handleNextStep} // <<< passa essa função aqui
+          onUpdate={() => window.location.reload()}
+        />
+      )}
+
+      {showModalStepTwo && stepTwoFormData && (
+        <EditModalStepTwo
+          formData={stepTwoFormData}
+          onClose={() => setShowModalStepTwo(false)}
+          onUpdate={() => window.location.reload()}
         />
       )}
     </div>

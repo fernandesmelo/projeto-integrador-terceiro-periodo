@@ -393,15 +393,15 @@ const CaseCreated = () => {
                       handleLocationChange("district", e.target.value)
                     }
                   />
-                  <label htmlFor="Cidade">Cidade:</label>
+                  <label htmlFor="Estado">Estado:</label>
                   <select
                     className={styles.input}
-                    id="Cidade"
+                    id="Estado"
                     type="text"
-                    placeholder="Digite a cidade"
-                    value={location.city}
+                    placeholder="Digite o estado"
+                    value={location.state}
                     onChange={(e) =>
-                      handleLocationChange("city", e.target.value)
+                      handleLocationChange("state", e.target.value)
                     }
                   >
                     <option value="">Selecione um estado</option>
@@ -433,15 +433,15 @@ const CaseCreated = () => {
                     <option value="SE">Sergipe</option>
                     <option value="TO">Tocantins</option>
                   </select>
-                  <label htmlFor="Estado">Estado:</label>
+                  <label htmlFor="Cidade">Cidade:</label>
                   <input
                     className={styles.input}
-                    id="Estado"
+                    id="Cidade"
                     type="text"
-                    placeholder="Digite o estado"
-                    value={location.state}
+                    placeholder="Digite a cidade"
+                    value={location.city}
                     onChange={(e) =>
-                      handleLocationChange("state", e.target.value)
+                      handleLocationChange("city", e.target.value)
                     }
                   />
                   <label htmlFor="CEP">CEP:</label>

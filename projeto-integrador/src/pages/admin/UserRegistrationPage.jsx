@@ -16,7 +16,7 @@ const UserRegistrationPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [road, setRoad] = useState("");
-  const [houseNumber, setHouseNumber] = useState(0);
+  const [houseNumber, setHouseNumber] = useState(null);
   const [neighborhood, setNeighborhood] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
