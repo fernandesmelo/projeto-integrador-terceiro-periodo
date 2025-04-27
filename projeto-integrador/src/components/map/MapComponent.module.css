@@ -22,7 +22,7 @@
 
 .legend {
     position: absolute;
-    top: 1rem; 
+    top: 1rem;
     right: 1rem;
     display: flex;
     flex-direction: column;
@@ -41,7 +41,13 @@
 }
 
 .legendColor {
-    width: 1rem; 
+    width: 1rem;
     height: 1rem;
     border: 1px solid #aaa;
+}
+
+@media screen and (max-width: 978px) {
+    .mapContainer {
+        right: 5rem;
+    }
 }
