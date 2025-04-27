@@ -29,6 +29,7 @@
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   text-align: center;
+  font-size: 0.875rem;
 }
 
 .status-finalizado {
@@ -37,6 +38,8 @@
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   text-align: center;
+  font-size: 0.875rem;
+
 }
 
 .status-arquivado {
@@ -45,6 +48,8 @@
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   text-align: center;
+  font-size: 0.875rem;
+
 }
 
 .add {
