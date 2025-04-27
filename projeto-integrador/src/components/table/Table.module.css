@@ -57,9 +57,13 @@
   cursor: pointer;
 }
 
+.trash:hover {
+  color: red;
+}
+
 .icon {
   cursor: pointer;
-  margin-right: 10;
+  margin-right: 2px;
   color: var(--brand-colors-primary);
 }
 

@@ -64,8 +64,8 @@ const Cases = () => {
         const errorMessage = error.response.data.message || "Erro desconhecido";
 
         Swal.fire({
-          icon: "error",
-          title: "Erro!",
+          icon: "warning",
+          title: "Nenhum caso encontrado!",
           text: errorMessage,
         });
         setStatusFilter("");
@@ -95,9 +95,9 @@ const Cases = () => {
 
       if (response.data.length === 0) {
         Swal.fire({
-          icon: "error",
-          text: "nenhum caso com essa data foi encontrado",
-          title: "Erro!",
+          icon: "warning",
+          text: "Nenhum caso com essa data foi encontrado",
+          title: "Nenhum caso encontrado!",
         });
         getData();
       }
@@ -128,9 +128,9 @@ const Cases = () => {
     } catch (err) {
       console.error(err);
       Swal.fire(
-        "Erro!",
-        "nenhum caso com esse protocolo foi encotrado",
-        "error"
+        "Nenhum caso encontrado!",
+        "Nenhum caso com esse protocolo foi encotrado.",
+        "warning"
       );
     }
   };

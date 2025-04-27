@@ -6,8 +6,9 @@ import { FiLogOut } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import Swal from "sweetalert2";
-import { BiMenu } from "react-icons/bi";
+import { BiExit, BiMenu } from "react-icons/bi";
 import { useState } from "react";
+import { IoIosExit } from "react-icons/io";
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -91,7 +92,7 @@ const Nav = () => {
           role="button"
           onClick={handleClick}
         >
-          <FiLogOut size={32} style={{ color: "var(--icons)" }} /> Sair
+          <IoIosExit size={32} style={{ color: "var(--icons)" }} /> Sair
         </p>
         <p
           className={styles.itemMenu}
