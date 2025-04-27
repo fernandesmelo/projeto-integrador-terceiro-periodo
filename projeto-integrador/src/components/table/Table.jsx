@@ -177,7 +177,7 @@ const Table = ({ cases }) => {
 
                 {item.evidence?.length === 0 && (
                   <BiTrash
-                    className={styles.icon}
+                    className={`${styles.icon} ${styles.trash}`}
                     title="Excluir caso"
                     onClick={() => excluirCaso(item.protocol)}
                   />
