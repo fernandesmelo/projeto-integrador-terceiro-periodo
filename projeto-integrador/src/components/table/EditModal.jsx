@@ -40,7 +40,7 @@ const EditModal = ({
 
   return (
     <div className={styles.modalOverlay}>
-      <div className={styles.modal}>
+      <div className={styles.modalContent}>
         <h2>Editar Caso</h2>
         <label htmlFor="title">titulo</label>
         <input
@@ -65,12 +65,8 @@ const EditModal = ({
         >
           <option value="">Selecione o tipo de caso:</option>
           <option value="COLETA DNA">Coleta DNA</option>
-          <option value="EXAME MARCA DE MORDIDA">
-            Exame marca de mordida
-          </option>
-          <option value="IDENTIFICAÇÃO DE VÍTIMA">
-            Identificação de vítma
-          </option>
+          <option value="EXAME MARCA DE MORDIDA">Exame marca de mordida</option>
+          <option value="IDENTIFICAÇÃO DE VÍTIMA">Identificação de vítma</option>
           <option value="LESÕES CORPORAIS">Exame cadavérico</option>
         </select>
         <label htmlFor="observations">Observações:</label>

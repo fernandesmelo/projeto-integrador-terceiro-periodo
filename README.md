@@ -1,5 +1,5 @@
 # Dentalysis - Odonto Legal
-A plataforma [Dentalysis - Odonto Legal](https://dentalysis-odonto-legal.vercel.app/) tem como objetivo modernizar e centralizar a gestão de laudos periciais odontológicos, facilitando o
+A plataforma [Dentalysis - Odonto Legal](https://dentalysis.onrender.com/) tem como objetivo modernizar e centralizar a gestão de laudos periciais odontológicos, facilitando o
 registro, análise e identificação forense por meio de um sistema seguro, eficiente e acessível via Web.
 
 Ela permitirá que peritos odontolegais, dentistas forenses e órgãos competentes possam cadastrar casos, anexar

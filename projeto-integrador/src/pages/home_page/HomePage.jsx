@@ -14,6 +14,7 @@ const Inicio = () => {
         <Nav />
         <div className={styles.marginContent}>
           <div className={styles.container}>
+            <h1 className={styles.title}>Banco Odonto-Legal</h1>
             <div className={styles.row}>
               <div className={`${styles.dataCard} ${styles.revenueCard}`}>
                 <MapaD3Geojson />

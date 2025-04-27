@@ -8,11 +8,9 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import EditModal from "./EditModal";
 import EditModalStepTwo from "./EditModalStepTwo";
 
-
 const Table = ({ cases }) => {
   const navigate = useNavigate();
-  const token = localStorage.getItem("token")
-  // Estado interno que armazena os casos exibidos
+  const token = localStorage.getItem("token");
   const [tableCases, setTableCases] = useState(cases);
   const [showModal, setShowModal] = useState(false);
   const [selectedCase, setSelectedCase] = useState(null);
@@ -139,12 +137,25 @@ const Table = ({ cases }) => {
               <td>{item.title}</td>
               <td>{item.caseType}</td>
               <td>{item.patient.nic}</td>
-              <td>{item.status}</td>
+              <td>
+                <span
+                  className={
+                    item.status === "ABERTO"
+                      ? styles["status-aberto"]
+                      : item.status === "FINALIZADO"
+                      ? styles["status-finalizado"]
+                      : styles["status-arquivado"]
+                  }
+                >
+                  {item.status}
+                </span>
+              </td>
               <td>{new Date(item.openedAt).toLocaleDateString("pt-BR")}</td>
               <td>
                 {item.evidence?.length || 0}
                 <IoMdAddCircleOutline
                   className={styles.add}
+                  title="Adicionar evidência"
                   onClick={() => addEvidence(item.protocol)}
                 />
               </td>
@@ -152,11 +163,6 @@ const Table = ({ cases }) => {
                 <BiSearch
                   className={styles.icon}
                   title="Ver detalhes"
-                  style={{
-                    cursor: "pointer",
-                    marginRight: 10,
-                    color: "#012130",
-                  }}
                   onClick={() => verDetalhes(item.protocol)}
                 />
 
@@ -173,11 +179,6 @@ const Table = ({ cases }) => {
                   <BiTrash
                     className={styles.icon}
                     title="Excluir caso"
-                    style={{
-                      cursor: "pointer",
-                      marginRight: 10,
-                      color: "#012130",
-                    }}
                     onClick={() => excluirCaso(item.protocol)}
                   />
                 )}

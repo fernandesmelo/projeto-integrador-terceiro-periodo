@@ -19,6 +19,10 @@ const CaseDetails = () => {
   const { protocol } = useParams();
   const [caseDetails, setCaseDetails] = useState(null);
 
+  const addEvidence = (protocol) => {
+    navigate(`/casos/evidencia/${protocol}`);
+  };
+
   useEffect(() => {
     const fetchCaseDetails = async () => {
       Swal.fire({
@@ -336,6 +340,12 @@ const CaseDetails = () => {
                       ) : (
                         <p>Nenhuma evidência registrada.</p>
                       )}
+                      <Button
+                        variant="generic-secondary"
+                        onClick={() => addEvidence(caseDetails.protocol)}
+                      >
+                        Adicionar evidências
+                      </Button>
                     </div>
                     {caseDetails.evidence.length > 0 &&
                       caseDetails.evidence.every(
