@@ -61,11 +61,7 @@ const Nav = () => {
           role="button"
           onClick={() => navigate("/inicio")}
         >
-          <CgScreen
-            size={31}
-            strokeWidth={1}
-            style={{ color: "var(--icons)" }}
-          />
+          <CgScreen className={styles.icon} />
           Início
         </p>
         <p
@@ -74,7 +70,7 @@ const Nav = () => {
           role="button"
           onClick={() => navigate("/casos")}
         >
-          <RiFileShield2Fill size={32} style={{ color: "var(--icons)" }} />
+          <RiFileShield2Fill className={styles.icon} />
           Casos Periciais
         </p>
         <p
@@ -83,7 +79,7 @@ const Nav = () => {
           role="button"
           onClick={handleAdmin}
         >
-          <MdAdminPanelSettings size={32} style={{ color: "var(--icons)" }} />
+          <MdAdminPanelSettings className={styles.icon} />
           Admin
         </p>
         <p
@@ -92,7 +88,7 @@ const Nav = () => {
           role="button"
           onClick={handleClick}
         >
-          <IoIosExit size={32} style={{ color: "var(--icons)" }} /> Sair
+          <FiLogOut size={32} style={{ color: "var(--icons)" }} /> Sair
         </p>
         <p
           className={styles.itemMenu}
@@ -100,24 +96,9 @@ const Nav = () => {
           role="button"
           onClick={toggleMenu}
         >
-          <BiMenu size={32} style={{ color: "var(--icons)" }} />
+          <BiMenu className={styles.menuIcon} />
           {menuOpen && (
-            <div
-              style={{
-                position: "absolute",
-                top: "40px",
-                width: "220px",
-                right: "0",
-                backgroundColor: "#023A4A",
-                color: "#fff",
-                borderRadius: "8px",
-                padding: "10px",
-                display: "flex",
-                flexDirection: "column",
-                gap: "12px",
-                zIndex: 1000
-              }}
-            >
+            <div className={styles.menu}>
               <a  className={styles.itemH}  onClick={() => navigate("/inicio")}>Início</a>
               <a className={styles.itemH} onClick={() => navigate("/casos")}>Casos Periciais</a>
               <a className={styles.itemH} onClick={handleAdmin}>Admin</a>

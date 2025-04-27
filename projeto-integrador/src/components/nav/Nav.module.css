@@ -20,6 +20,11 @@
     }
 }
 
+.icon {
+    color: var(--icons);
+    font-size: 32px; 
+}
+
 .item {
     display: flex;
     align-items: center;
@@ -76,7 +81,7 @@
 
     .image {
         position: absolute;
-        top: -0.3125rem;
+        top: -0.3rem;
         left: 0.4375rem;
 
         img {
@@ -91,12 +96,18 @@
         display: none;
     }
 
+    .menuIcon {
+        color: var(--icons);
+        margin-right: 10px;
+        font-size: 32px; 
+    }
+
     .menu {
         position: absolute;
         top: 2.5rem;
         width: 13.75rem;
         right: 0;
-        background-color: var(--light-background);
+        background: var(--light-background);
         border: 1px solid #ccc;
         border-radius: 8px;
         padding: 0.625rem;
@@ -124,6 +135,4 @@
             color: rgb(212, 212, 212);
         }
     }
-
-
 }
