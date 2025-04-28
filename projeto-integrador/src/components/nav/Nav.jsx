@@ -26,8 +26,8 @@ const Nav = () => {
     } else {
       Swal.fire({
         icon: "warning",
-        text: "voce nao tem acesso a area de admin",
-        title: "atencao",
+        text: "Você não tem acesso a área de Admin",
+        title: "Atenção",
       });
     }
   };
