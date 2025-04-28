@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./EditModal.module.css";
-import Button from "../Button/Button";
+import Button from "../button/Button";
 
 const EditModal = ({
   protocol,
