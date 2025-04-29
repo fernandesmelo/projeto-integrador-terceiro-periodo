@@ -342,7 +342,7 @@ const CaseCreated = () => {
                   <option value="IDENTIFICAÇÃO DE VÍTIMA">
                     Identificação de vítma
                   </option>
-                  <option value="LESÕES CORPORAIS">Exame cadavérico</option>
+                  <option value="LESÕES CORPORAIS">Lesões Corporais</option>
                 </select>
                 <label htmlFor="Observações">Observações:</label>
                 <textarea
