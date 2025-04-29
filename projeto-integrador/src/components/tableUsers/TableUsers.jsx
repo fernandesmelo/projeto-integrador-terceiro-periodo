@@ -102,11 +102,7 @@ const TableUsers = () => {
               <td>{e.address.state}</td>
               <td>
                 <div style={{ cursor: "pointer", display: "flex", gap: 5 }}>
-                  <BiSearch
-                    className={styles.icon}
-                    title="Ver detalhes"
-                    style={{ cursor: "pointer" }}
-                  />
+              
                   <BiPencil
                     className={styles.icon}
                     title="Editar"
