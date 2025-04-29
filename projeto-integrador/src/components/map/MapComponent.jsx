@@ -37,7 +37,7 @@ const MapComponent = () => {
   }, []);
 
   const maxCases = d3.max(data, (d) => d.casos) ?? 1;
-  const colorScale = d3.scaleSequential([0, maxCases], d3.interpolateReds);
+  const colorScale = d3.scaleSequential([0, maxCases], d3.interpolateRgb("#f0f8ff", "#013746"));
   const thresholds = [0, Math.round(maxCases / 2), maxCases];
 
   useEffect(() => {

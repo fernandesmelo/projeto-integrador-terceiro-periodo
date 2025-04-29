@@ -40,7 +40,7 @@ const Header = () => {
 
   return (
     <div className={styles.content}>
-      <p>Bem-vindo(a) ao Dentalysis</p>
+      <p>Dentalysis</p>
       <div className={styles.info}>
         <FaBell />
         <div>

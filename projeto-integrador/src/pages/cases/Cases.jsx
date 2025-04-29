@@ -16,6 +16,7 @@ const Cases = () => {
   const [statusFilter, setStatusFilter] = useState("");
   const [protocoloFilter, setProtocoloFilter] = useState("");
   const [dateFilter, setDateFilter] = useState("");
+  const role = localStorage.getItem("role")
 
   const token = localStorage.getItem("token");
   localStorage.getItem("token");
@@ -135,6 +136,19 @@ const Cases = () => {
     }
   };
 
+  const handleCaseCreated = () => {
+    if (role === "ASSISTENTE") {
+      Swal.fire({
+        icon: "warning",
+        title: "Voce nao tem acesso",
+        text: "Seu usuario nao tem acesso a criar casos"
+
+      })
+    } else {
+      navigate("/casos/cadastrarVitima")
+    }
+  }
+
   const clearFilters = () => {
     setStatusFilter("");
     setProtocoloFilter("");
@@ -162,7 +176,7 @@ const Cases = () => {
             <Button
               type="button"
               variant="button-table"
-              onClick={() => navigate("/casos/cadastrarVitima")}
+              onClick={handleCaseCreated}
               disabled={false}
             >
               Adicionar caso
