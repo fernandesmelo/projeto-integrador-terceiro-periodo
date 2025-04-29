@@ -111,6 +111,7 @@ const CaseCreated = () => {
       ...prev,
       [field]: field === "houseNumber" ? Number(value) || 0 : value,
     }));
+    
   };
 
   const handleSubmit = async (e) => {
@@ -232,6 +233,32 @@ const CaseCreated = () => {
       console.error(err);
     }
   };
+
+  useEffect(() => {
+    const cep = location.zipCode;
+
+    if (cep && cep.length === 8 && /^[0-9]{8}$/.test(cep)) {
+      fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.erro) {
+            Swal.fire("Erro", "CEP não encontrado", "error");
+            return;
+          }
+
+          setLocation((prev) => ({
+            ...prev,
+            street: data.logradouro || "",
+            district: data.bairro || "",
+            city: data.localidade || "",
+            state: data.uf || "",
+          }));
+        })
+        .catch(() => {
+          Swal.fire("Erro", "Não foi possível consultar o CEP", "error");
+        });
+    }
+  }, [location.zipCode]);
 
   return (
     <div className={styles.caseCreated}>
@@ -359,6 +386,18 @@ const CaseCreated = () => {
                   Adicionar nova pergunta
                 </Button>
                 <fieldset>
+                  <label htmlFor="CEP">CEP:</label>
+                  <input
+                    className={styles.input}
+                    id="CEP"
+                    type="text"
+                    maxLength="8"
+                    placeholder="Digite o CEP (apenas números)"
+                    value={location.zipCode}
+                    onChange={(e) =>
+                      handleLocationChange("zipCode", e.target.value.replace(/\D/g, ""))
+                    }
+                  />
                   <legend>Local do Ocorrido</legend>
                   <label htmlFor="Rua">Rua</label>
                   <input
@@ -442,17 +481,6 @@ const CaseCreated = () => {
                     value={location.city}
                     onChange={(e) =>
                       handleLocationChange("city", e.target.value)
-                    }
-                  />
-                  <label htmlFor="CEP">CEP:</label>
-                  <input
-                    className={styles.input}
-                    id="CEP"
-                    type="text"
-                    placeholder="Digite o CEP"
-                    value={location.zipCode}
-                    onChange={(e) =>
-                      handleLocationChange("zipCode", e.target.value)
                     }
                   />
                   <label htmlFor="Complemento">Complemento:</label>

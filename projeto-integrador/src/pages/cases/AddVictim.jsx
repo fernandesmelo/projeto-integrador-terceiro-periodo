@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "../../components/header/Header";
 import Nav from "../../components/nav/Nav";
 import styles from "./AddVictim.module.css";
@@ -75,6 +75,10 @@ const CreateVictim = () => {
     const { name, value } = e.target;
     let newValue = value;
 
+    if (name === "location.zip") {
+      newValue = value.replace(/\D/g, ""); // mantém apenas dígitos
+    }
+
     if (name === "age" || name === "location.houseNumber") {
       newValue = value === "" ? "" : parseInt(value);
     }
@@ -119,6 +123,35 @@ const CreateVictim = () => {
     localStorage.setItem("victimFormData", JSON.stringify(cleanedData));
     navigate("/casos/cadastrar");
   };
+
+  useEffect(() => {
+    const cep = formData.location.zip;
+
+    if (cep && cep.length === 8 && /^[0-9]{8}$/.test(cep)) {
+      fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.erro) {
+            Swal.fire("Erro", "CEP não encontrado", "error");
+            return;
+          }
+
+          setFormData((prev) => ({
+            ...prev,
+            location: {
+              ...prev.location,
+              street: data.logradouro || "",
+              district: data.bairro || "",
+              city: data.localidade || "",
+              state: data.uf || "",
+            },
+          }));
+        })
+        .catch(() => {
+          Swal.fire("Erro", "Não foi possível consultar o CEP", "error");
+        });
+    }
+  }, [formData.location.zip]);
 
   return (
     <div className={styles.caseCreated}>
@@ -174,6 +207,15 @@ const CreateVictim = () => {
               </select>
               <fieldset>
                 <legend>Endereço da Vítima</legend>
+                <label>CEP:</label>
+                <input
+                  type="text"
+                  maxLength="8"
+                  name="location.zip"
+                  value={formData.location.zip}
+                  onChange={handleChange}
+                  placeholder="CEP da vítima (apenas números)"
+                />
                 <label>Rua:</label>
                 <input
                   name="location.street"
@@ -243,13 +285,6 @@ const CreateVictim = () => {
                   <option value="SE">Sergipe</option>
                   <option value="TO">Tocantins</option>
                 </select>
-                <label>CEP:</label>
-                <input
-                  name="location.zip"
-                  value={formData.location.zip}
-                  onChange={handleChange}
-                  placeholder="CEP da vítima"
-                />
                 <label>Complemento:</label>
                 <input
                   name="location.complement"
