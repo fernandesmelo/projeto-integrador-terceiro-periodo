@@ -11,7 +11,7 @@
 .formContainer {
     width: 60%;
     margin: auto;
-    max-width: 50rem;
+    max-width: 50rem; 
     min-width: 34.375rem;
     padding: 2rem;
     background: var(--white);
@@ -76,16 +76,26 @@ textarea {
     .content {
         display: flex;
         flex-direction: column;
-        height: 100%;
+        background: var(--light-background);
+        margin: auto;
     }
 
     .formContainer {
-        margin: 0;
-        padding: 1rem;
+        margin: auto;
+        margin-top: 6.375rem;
         width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        min-width: 0;
 
         img {
             width: 100%;
         }
+    }
+
+    .margin {
+        margin: 0;
+        width: 100%;
+        background-color: var(--white);
     }
 }
