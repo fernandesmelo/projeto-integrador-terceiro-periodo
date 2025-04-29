@@ -47,7 +47,6 @@ const Header = () => {
           <p className={styles.role}>{userData.role}</p>
           <p className={styles.name}>{userData.name}</p>
         </div>
-        <MdOutlineKeyboardArrowDown size={30} />
       </div>
     </div>
   );
