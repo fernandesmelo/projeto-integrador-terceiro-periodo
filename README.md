@@ -66,9 +66,9 @@ A solução conta com um Web App, para gestão e análise detalhada dos casos.
 
 ## ✒️ Autores
 
-| <img src="https://github.com/fernandesmelo/carona-solidaria/assets/113717317/1d3daac1-3d6a-40d6-b755-09d583ce392f" width="100" height="100" /> | <img src="https://github.com/user-attachments/assets/fa917b45-5cf7-4198-a42d-35340e41dacb" width="100" height="100" /> | <img src="https://github.com/user-attachments/assets/82c3a928-18b1-4fba-95a5-b3988d7a2ee0" width="100" height="100" /> | <img src="https://github.com/user-attachments/assets/db9cc241-da0f-4df7-8f17-5a6baebdccab" width="100" height="100" /> |
-|:-------------------------------------------------------:|:-------------------------------------------------------:|:-------------------------------------------------------:|:-------------------------------------------------------:|
-| [Laércio Fernandes](https://www.linkedin.com/in/laercio-fernandes/) | [Natália Santos](https://www.linkedin.com/in/natalia-bento-364b2b235/) | [Everton Freitas](https://www.linkedin.com/in/everton-freitas-a54a45300/) | [Matheus Bezerra](https://www.linkedin.com/in/matheus-bzrr/) | 
+| <img src="https://github.com/fernandesmelo/carona-solidaria/assets/113717317/1d3daac1-3d6a-40d6-b755-09d583ce392f" width="100" height="100" /> | <img src="https://github.com/user-attachments/assets/82c3a928-18b1-4fba-95a5-b3988d7a2ee0" width="100" height="100" /> | <img src="https://github.com/user-attachments/assets/db9cc241-da0f-4df7-8f17-5a6baebdccab" width="100" height="100" /> |
+|:-------------------------------------------------------:|:-------------------------------------------------------:|:-------------------------------------------------------:|
+| [Laércio Fernandes](https://www.linkedin.com/in/laercio-fernandes/) | [Everton Freitas](https://www.linkedin.com/in/everton-freitas-a54a45300/) | [Matheus Bezerra](https://www.linkedin.com/in/matheus-bzrr/) | 
 
 ## 🚀 Guia de Como Baixar e Rodar o Projeto
 
