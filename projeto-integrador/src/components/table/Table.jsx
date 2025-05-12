@@ -18,7 +18,7 @@ const Table = ({ cases }) => {
   const [selectedCase, setSelectedCase] = useState(null);
   const [showModalStepTwo, setShowModalStepTwo] = useState(false);
   const [stepTwoFormData, setStepTwoFormData] = useState(null);
-  console.log(selectedCase)
+  console.log(tableCases)
 
   useEffect(() => {
     setTableCases(cases);
@@ -209,7 +209,7 @@ const Table = ({ cases }) => {
               <td>{item.protocol}</td>
               <td>{item.title}</td>
               <td>{item.caseType}</td>
-              <td>{item.patient.nic}</td>
+              <td></td>
               <td>
                 <span
                   className={

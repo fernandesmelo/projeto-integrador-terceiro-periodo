@@ -50,4 +50,14 @@
     .mapContainer {
         right: 5rem;
     }
+
+
+    .tooltip {
+        margin-left: 4.7rem;
+        margin-top: -0.8rem;
+    }
+
+    .mapContainer svg {
+        width: 100vw;
+    }
 }

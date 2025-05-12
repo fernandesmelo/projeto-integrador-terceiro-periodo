@@ -14,6 +14,7 @@ import ExportReportEvidence from "./pages/evidence_registration_page/ExportRepor
 import ReportCase from "./pages/cases/CaseReport";
 import RelatorioPage from "./pages/cases/ExportReportCase";
 import UsersAdmin from "./pages/admin/UsersAdmin";
+import Victim from "./pages/victim/Victim";
 
 const AppRoutes = () => {
   return (
@@ -32,8 +33,8 @@ const AppRoutes = () => {
         <Route path="/casos/laudo/evidencia" element={<ReportEvidence />} />
         <Route path="/casos/laudo/:evidenceId" element={<ExportReportEvidence />} />
         <Route path="/casos/relatorio/final" element={<ReportCase/>} />
-        
         <Route path="/casos/relatorio/imprimir" element={<RelatorioPage />} />
+        <Route path="/vitima" element={<Victim/>} />
       </Routes>
     </Router>
   );

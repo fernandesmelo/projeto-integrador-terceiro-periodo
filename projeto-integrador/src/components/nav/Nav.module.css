@@ -71,6 +71,36 @@
     }
 }
 
+.inativo {
+    transform: translateX(0);
+    display: none;
+  }
+
+  .menu {
+    position: absolute;
+    
+    top: 2.5rem;
+    width: 16.25rem;
+    height: 100vh;
+    right: 0;
+    background: var(--brand-colors-primary);
+    padding: 0 0.625rem 0.625rem 0.625rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+    z-index: 1000;
+    top: 0;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    display: none;
+}
+
+.ativo {
+    transform: translateX(-1000px);
+    display: block;
+  }
+
+
 @media screen and (max-width: 978px) {
     .nav {
         top: -4rem;
@@ -78,6 +108,41 @@
         width: 100%;
         height: 4.375rem;
     }
+
+    .ativo {
+        transform: translateX(0);
+        display: block;
+      }
+
+      .menu {
+        position: absolute;
+        
+        top: 2.5rem;
+        width: 16.25rem;
+        height: 100vh;
+        right: 0;
+        background: var(--brand-colors-primary);
+        padding: 0 0.625rem 0.625rem 0.625rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.3rem;
+        z-index: 1000;
+        top: 0;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+
+
+    .headerMenu {
+        height: 4.375rem;
+        display: flex;
+        
+        align-items: center;
+        font-weight: 500;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+
 
     .image {
         position: absolute;
@@ -102,37 +167,52 @@
         font-size: 32px; 
     }
 
-    .menu {
-        position: absolute;
-        top: 2.5rem;
-        width: 13.75rem;
-        right: 0;
-        background: var(--light-background);
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        padding: 0.625rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.3125rem;
-        z-index: 1000;
+
+
+    .ativo {
+        transform: translateX(0);
+        display: block;
     }
 
     .itemMenu {
-        color: var(--brand-colors-primary);
+        color: var(--white);
         display: block;
         position: absolute;
-        right: 0.9375rem;
-        top: 1.25rem;
+        right: 0.4375rem;
+        top: 1.2rem;
 
         &:hover {
-            color: var(--hover-effect-primary);
+            color: white;
             cursor: pointer;
         }
     }
 
+    .title {
+        font-weight: 600;
+        font-size: 1.150rem;
+    }
+
     .itemH {
+        display: flex;
+        gap: .8rem;
+        align-items: center;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        
         &:hover {
-            color: rgb(212, 212, 212);
+            color: white;
+            opacity: 0.9;
+            cursor: pointer;
         }
+    }
+
+    .imageMenu {
+        position: absolute;
+        bottom: 0.5rem;
+        text-align: center;
+        width: 50%;
+        display: flex;
+        left: 50%;
+        transform: translate(-50%);
     }
 }
