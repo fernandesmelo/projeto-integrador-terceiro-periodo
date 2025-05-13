@@ -1,0 +1,90 @@
+.container {
+    width: 100%;
+    overflow-x: auto;
+    padding-top: 1rem;
+  }
+  
+  .tabela {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+  
+    thead {
+      background-color: var(--background-color);
+  
+    }
+  }
+  
+  .tabela th,
+  .tabela td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #E0E0E0;
+    color: var(--brand-colors-primary);
+  }
+  
+  
+
+  .status-aberto {
+    background-color: var(--accent-warning);
+    color: var(--white);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.875rem;
+    
+  }
+  
+  .status-finalizado {
+    background-color: var(--accent-success);
+    color: var(--white);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.875rem;
+  
+  }
+  
+  .status-arquivado {
+    background-color: var(--desabled-background);
+    color: var(--soft-contrast-text);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.875rem;
+  
+  }
+  
+  .add {
+    margin-left: 1.25rem;
+    cursor: pointer;
+  }
+  
+  .trash:hover {
+    color: red;
+  }
+  
+  .icon {
+    cursor: pointer;
+    margin-right: 2px;
+    color: var(--brand-colors-primary);
+  }
+  
+  .ativo {
+    color: var(--accent-success);
+    font-weight: bold;
+  }
+  
+  .inativo {
+    color: var(--accent-error);
+    font-weight: bold;
+  }
+  
+  @media (max-width: 978px) {
+  
+    .tabela th,
+    .tabela td {
+      padding: 0.5rem;
+      font-size: 0.875rem;
+    }
+  }

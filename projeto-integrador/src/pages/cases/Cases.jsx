@@ -192,8 +192,9 @@ const Cases = () => {
           </div>
           <div className={styles.inputArea}>
             <InputSearch
+              
               placeholder="Pesquisar protocolo"
-              variant="secondary"
+              variant="InputSearch"
               value={protocoloFilter}
               onChange={(e) => {
                 setProtocoloFilter(e.target.value);
@@ -209,10 +210,12 @@ const Cases = () => {
             <div className={styles.filterArea}>
               <select
                 value={statusFilter}
+                className={styles.filter}
                 onChange={(e) => {
                   setStatusFilter(e.target.value);
                   setPage(1);
                 }}
+                
               >
                 <option value="">Filtrar por: </option>
                 <option value="">Todos</option>
@@ -222,6 +225,7 @@ const Cases = () => {
               </select>
               <input
                 type="date"
+                className={styles.inputDate}
                 value={dateFilter}
                 onChange={(e) => {
                   setDateFilter(e.target.value);

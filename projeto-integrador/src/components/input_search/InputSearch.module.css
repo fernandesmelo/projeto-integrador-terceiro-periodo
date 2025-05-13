@@ -11,6 +11,15 @@
     }
 }
 
+.InputSearch {
+    width: 20rem;
+    padding: 0.625rem;
+    margin: 0.625rem 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--light-background);
+}
+
 .primary {
     padding: 0;
 }

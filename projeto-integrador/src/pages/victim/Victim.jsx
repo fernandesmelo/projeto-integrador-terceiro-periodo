@@ -8,38 +8,42 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import TableVictims from "../../components/tableVictims/TableVictims";
 
 const Cases = () => {
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
-  const [cases, setCases] = useState([]);
+  const [victims, setVictims] = useState([]);
   const [statusFilter, setStatusFilter] = useState("");
-  const [protocoloFilter, setProtocoloFilter] = useState("");
+  const [nicFilter, setNicFilter] = useState("");
   const [dateFilter, setDateFilter] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
   const role = localStorage.getItem("role")
 
   const token = localStorage.getItem("token");
   localStorage.getItem("token");
-  const casesPerPage = 8;
+  const victimPerPage = 8;
 
-  const paginatedCase = cases.slice(
-    (page - 1) * casesPerPage,
-    page * casesPerPage
+  const paginatedVictim = victims.slice(
+    (page - 1) * victimPerPage,
+    page * victimPerPage
   );
-  const lengthPag = Math.ceil(cases.length / casesPerPage);
+  const lengthPag = Math.ceil(victims.length / victimPerPage);
   const arrayPag = [...Array(lengthPag)];
+
+  console.log(victims)
 
   const getData = async () => {
     try {
       const response = await axios.get(
-        `https://sistema-odonto-legal.onrender.com/api/cases/search/all`,
+        `https://sistema-odonto-legal.onrender.com/api/patient/all/1`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-      setCases(response.data);
+      setVictims(response.data);
     } catch (error) {
       console.error("Erro ao buscar dados:", error);
     }
@@ -59,7 +63,7 @@ const Cases = () => {
         },
       });
 
-      setCases(response.data);
+      setVictims(response.data);
     } catch (error) {
       if (error.response) {
         const errorMessage = error.response.data.message || "Erro desconhecido";
@@ -92,7 +96,7 @@ const Cases = () => {
           date: dateFilter,
         },
       });
-      setCases(response.data);
+      setVictims(response.data);
 
       if (response.data.length === 0) {
         Swal.fire({
@@ -113,24 +117,24 @@ const Cases = () => {
 
   const protocolSearch = async () => {
     const apiProtocol =
-      "https://sistema-odonto-legal.onrender.com/api/cases/search/protocol";
+      "https://sistema-odonto-legal.onrender.com/api/patient/search";
     try {
-      console.log(protocoloFilter);
+      console.log(nicFilter);
       const response = await axios.get(apiProtocol, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
         params: {
-          protocol: protocoloFilter,
+          nic: nicFilter,
         },
       });
       console.log(response.data);
-      setCases([response.data]);
+      setVictims([response.data]);
     } catch (err) {
       console.error(err);
       Swal.fire(
-        "Nenhum caso encontrado!",
-        "Nenhum caso com esse protocolo foi encotrado.",
+        "Nenhum nic encontrado!",
+        "Nenhum nic com esse protocolo foi encotrado.",
         "warning"
       );
     }
@@ -151,7 +155,7 @@ const Cases = () => {
 
   const clearFilters = () => {
     setStatusFilter("");
-    setProtocoloFilter("");
+    setNicFilter("");
     setDateFilter("");
     setPage(1);
     getData();
@@ -192,11 +196,11 @@ const Cases = () => {
           </div>
           <div className={styles.inputArea}>
             <InputSearch
-              placeholder="Pesquisar protocolo"
+              placeholder="Pesquisar Nic"
               variant="secondary"
-              value={protocoloFilter}
+              value={nicFilter}
               onChange={(e) => {
-                setProtocoloFilter(e.target.value);
+                setNicFilter(e.target.value);
                 setPage(1);
               }}
               onKeyDown={(e) => {
@@ -235,7 +239,7 @@ const Cases = () => {
               />
             </div>
           </div>
-          <Table cases={paginatedCase} />
+          <TableVictims victims={paginatedVictim} />
           <div>
             {arrayPag.map((_, i) => (
               <button
