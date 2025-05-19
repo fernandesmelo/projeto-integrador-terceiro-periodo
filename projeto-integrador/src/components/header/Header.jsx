@@ -40,7 +40,7 @@ const Header = () => {
 
   return (
     <div className={styles.content}>
-      <p>Dentalysis</p>
+      <p className={styles.nameLogo}>Dentalysis  </p>
       <div className={styles.info}>
         <FaBell />
         <div>

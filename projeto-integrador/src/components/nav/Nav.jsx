@@ -2,7 +2,7 @@ import styles from "./Nav.module.css";
 import { CgScreen } from "react-icons/cg";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { RiFileShield2Fill } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import Swal from "sweetalert2";
 import { BiExit, BiMenu } from "react-icons/bi";
@@ -50,52 +50,59 @@ const Nav = () => {
         <div className={styles.image}>
           <img src={logo} alt="Logo" />
         </div>
-        <p
-          className={styles.item}
-          tabIndex={0}
-          role="button"
-          onClick={() => navigate("/inicio")}
-        >
-          <CgScreen className={styles.icon} />
-          Início
-        </p>
-        <p
-          className={styles.item}
-          tabIndex={0}
-          role="button"
-          onClick={() => navigate("/casos")}
-        >
-          <RiFileShield2Fill className={styles.icon} />
-          Casos Periciais
-        </p>
-        <p 
-          className={styles.item}
-          tabIndex={0}
-          role="button"
-          onClick={() => navigate("/vitima")}
-          
-        >
-          <FaUser className={styles.icon} size={26}/> Banco de dados da vitima
-        </p>
+
+         <NavLink  
+              className={({ isActive }) =>
+              isActive ? `${styles.link} ${styles.active}` : styles.link} 
+              to="/inicio" 
+            >
+              <span className={styles.iconArea}> 
+                <CgScreen size={29} className={styles.icon} />
+              </span> <p className={styles.text}>Inicio</p>
+            </NavLink>
+             <NavLink  
+              className={({ isActive }) =>
+              isActive ? `${styles.link} ${styles.active}` : styles.link} 
+              to="/casos" 
+            >
+              <span className={styles.iconArea}>
+                <RiFileShield2Fill size={29} className={styles.icon} />
+              </span> <p className={styles.text}>Casos Periciais</p>
+            </NavLink>
+      <NavLink  
+              className={({ isActive }) =>
+              isActive ? `${styles.link} ${styles.active}` : styles.link} 
+              to="/vitima" 
+            >
+              <span className={styles.iconArea}>
+                <FaUser size={26} className={styles.icon} />
+              </span> <p className={styles.text}>Vitima</p>
+            </NavLink>
+     
+    
         {isAdmin && (
-          <p
-            className={styles.item}
-            tabIndex={0}
-            role="button"
-            onClick={handleAdmin}
-          >
-            <MdAdminPanelSettings className={styles.icon} />
-            Admin
-          </p>
+         
+            <NavLink  
+              className={({ isActive }) =>
+              isActive ? `${styles.link} ${styles.active}` : styles.link} 
+              to="/admin/usuarios-cadastrados" 
+            >
+              <span className={styles.iconArea}>
+                <MdAdminPanelSettings className={styles.icon} />
+              </span> <p className={styles.text}>Admin</p>
+            </NavLink>
+        
         )}
-        <p
-          className={styles.item}
-          tabIndex={0}
-          role="button"
-          onClick={handleClick}
-        >
-          <BiExit size={32} style={{ color: "var(--icons)" }} /> Sair
-        </p>
+
+         <NavLink  
+              className={({ isActive }) =>
+              isActive ? `${styles.link} ${styles.active}` : styles.link} 
+              to="/" 
+            >
+              <span className={styles.iconArea}>
+                <BiExit size={30} className={styles.icon} />
+              </span> <p className={styles.text}>Sair</p>
+            </NavLink>
        {/* Botão de abrir menu */}
 <p
   className={styles.itemMenu}
@@ -123,7 +130,7 @@ const Nav = () => {
     <RiFileShield2Fill size={25} /> Casos Periciais
   </a>
   <a className={styles.itemH} onClick={() => navigate("/vitima")}>
-    <FaUser size={23} /> Banco de dados da vítima
+    <FaUser size={23} /> Vítimas
   </a>
   {isAdmin && (
     <a className={styles.itemH} onClick={handleAdmin}>

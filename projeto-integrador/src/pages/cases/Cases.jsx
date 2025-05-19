@@ -22,6 +22,7 @@ const Cases = () => {
   localStorage.getItem("token");
   const casesPerPage = 8;
 
+
   const paginatedCase = cases.slice(
     (page - 1) * casesPerPage,
     page * casesPerPage
@@ -40,6 +41,7 @@ const Cases = () => {
         }
       );
       setCases(response.data);
+      console.log(response.data)
     } catch (error) {
       console.error("Erro ao buscar dados:", error);
     }
@@ -145,7 +147,7 @@ const Cases = () => {
 
       })
     } else {
-      navigate("/casos/cadastrarVitima")
+      navigate("/casos/cadastrar")
     }
   }
 

@@ -1,157 +1,84 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Header from "../../components/header/Header";
 import Nav from "../../components/nav/Nav";
 import styles from "./AddVictim.module.css";
 import Swal from "sweetalert2";
 import Button from "../../components/button/Button";
 import ToGoBack from "../../components/togoback/ToGoBack";
+import axios from "axios";
 
 const CreateVictim = () => {
-  const navigate = useNavigate();
-  const [isSubmitting] = useState(false);
+  const navigate = useNavigate()
 
-  const [formData, setFormData] = useState(() => {
-    const defaultData = {
-      nic: "",
-      name: "N/A",
-      age: Number,
-      cpf: "",
-      gender: "",
-      location: {
-        street: "",
-        city: "",
-        state: "",
-        zipCode: "",
-        houseNumber: Number,
-        district: "",
-        complement: "",
-      },
-      identificationStatus: "",
-    };
+  const APIVICTIM = "https://sistema-odonto-legal.onrender.com/api/patient/create"
+  const token = localStorage.getItem("token")
 
-    const savedData = localStorage.getItem("victimFormData");
+  const [formData, setFormData] = useState({
+    nic: "",
+    name: "",
+    age: Number,
+    cpf: "",
+    gender: "",
+    location: {
+      street: "",
+      city: "",
+      state: "",
+      zipCode: "",
+      houseNumber: Number,
+      district: "",
+      complement: "",
+    },
+    identificationStatus: "",
+  })
 
-    if (savedData) {
-      const parsed = JSON.parse(savedData);
-
-      return {
-        ...defaultData,
-        ...parsed,
-        location: {
-          ...defaultData.location,
-          ...(parsed.location || {}),
-        },
-      };
-    }
-
-    return defaultData;
-  });
-
-  const cleanObject = (obj) => {
-    const cleaned = {};
-
-    Object.entries(obj).forEach(([key, value]) => {
-      if (
-        typeof value === "object" &&
-        value !== null &&
-        !Array.isArray(value)
-      ) {
-        const nestedCleaned = cleanObject(value);
-        if (Object.keys(nestedCleaned).length > 0) {
-          cleaned[key] = nestedCleaned;
-        }
-      } else if (typeof value === "string" && value.trim() !== "") {
-        cleaned[key] = value.trim();
-      } else if (typeof value === "number" && !isNaN(value)) {
-        cleaned[key] = value;
-      }
-    });
-
-    return cleaned;
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    let newValue = value;
-
-    if (name === "location.zip") {
-      newValue = value.replace(/\D/g, ""); // mantém apenas dígitos
-    }
-
-    if (name === "age" || name === "location.houseNumber") {
-      newValue = value === "" ? "" : parseInt(value);
-    }
-
-    let updatedData;
-
     if (name.startsWith("location.")) {
-      const field = name.split(".")[1];
-      updatedData = {
-        ...formData,
+      const locationField = name.split(".")[1];
+      setFormData((prevData) => ({
+        ...prevData,
         location: {
-          ...formData.location,
-          [field]: newValue,
+          ...prevData.location,
+          [locationField]: value,
         },
-      };
+      }));
     } else {
-      updatedData = {
-        ...formData,
-        [name]: newValue,
-      };
+      setFormData((data) => ({
+        ...data,
+        [name]: value
+      }))
     }
 
-    setFormData(updatedData);
+  }
 
-    const cleanedData = cleanObject(updatedData);
-    localStorage.setItem("victimFormData", JSON.stringify(cleanedData));
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!formData.nic.trim() || !formData.identificationStatus) {
-      Swal.fire(
-        "Erro",
-        "Os campos NIC e Status de Identificação são obrigatórios",
-        "error"
-      );
-      return;
-    }
-
-    const cleanedData = cleanObject(formData);
-    localStorage.setItem("victimFormData", JSON.stringify(cleanedData));
-    navigate("/casos/cadastrar");
-  };
-
-  useEffect(() => {
-    const cep = formData.location.zip;
-
-    if (cep && cep.length === 8 && /^[0-9]{8}$/.test(cep)) {
-      fetch(`https://viacep.com.br/ws/${cep}/json/`)
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.erro) {
-            Swal.fire("Erro", "CEP não encontrado", "error");
-            return;
-          }
-
-          setFormData((prev) => ({
-            ...prev,
-            location: {
-              ...prev.location,
-              street: data.logradouro || "",
-              district: data.bairro || "",
-              city: data.localidade || "",
-              state: data.uf || "",
-            },
-          }));
+    try {
+      const response = await axios.post(APIVICTIM, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      console.log("criado com sucesso!", response.data)
+        Swal.fire({
+        text: "Vitima cadastrada com sucesso.",
+        icon: "success",
+        title: "Sucesso!"
         })
-        .catch(() => {
-          Swal.fire("Erro", "Não foi possível consultar o CEP", "error");
-        });
+        navigate('/vitima')
+    } catch (err) {
+      console.error("erro ao criar", err)
+      Swal.fire({
+        text: err.response?.data?.message || "Algo deu errado.",
+        icon: "error",
+        title: "Erro!"
+      })
     }
-  }, [formData.location.zip]);
+  }
+
+
 
   return (
     <div className={styles.caseCreated}>
@@ -171,9 +98,10 @@ const CreateVictim = () => {
                 required
                 placeholder="Número de identificação criminal"
               />
-              <label>Nome:</label>
+              <label>Nome:*</label>
               <input
                 name="name"
+                required
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Nome da vítima"
@@ -193,8 +121,9 @@ const CreateVictim = () => {
                 onChange={handleChange}
                 placeholder="CPF da vítima"
               />
-              <label>Gênero:</label>
+              <label>Gênero:*</label>
               <select
+                required
                 name="gender"
                 value={formData.gender}
                 onChange={handleChange}
@@ -309,12 +238,10 @@ const CreateVictim = () => {
                 </option>
               </select>
               <Button
-                type="button"
+                type="submit"
                 variant="generic-primary"
-                disabled={isSubmitting}
-                onClick={handleSubmit}
               >
-                {isSubmitting ? "Aguarde..." : "Avançar para criar caso"}
+                Cadastrar vitima
               </Button>
             </form>
           </div>

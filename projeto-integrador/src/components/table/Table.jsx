@@ -223,6 +223,7 @@ const Table = ({ cases }) => {
                   {item.status}
                 </span>
               </td>
+               {/* <td>{item.patient._id}</td> */}
               <td>{new Date(item.openedAt).toLocaleDateString("pt-BR")}</td>
               <td>
                 {item.evidence?.length || 0}

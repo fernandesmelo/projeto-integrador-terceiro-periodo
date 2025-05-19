@@ -65,10 +65,10 @@ const TableVictims = ({ victims }) => {
                         <tr key={index}>
                             <td>{item.nic}</td>
                             <td>{item.identificationStatus}</td>
-                            <td>{item.name || 'Nao identificado'}</td>
-                            <td>{item.age || 'Nao identificado'}</td>
-                            <td>{item.gender || 'Nao identificado'} </td>
-                            <td>{item.cpf || 'Nao identificado'}</td>
+                            <td>{item.name || 'N/A'}</td>
+                            <td>{item.age || 'N/A'}</td>
+                            <td>{item.gender || 'N/A'} </td>
+                            <td>{item.cpf || 'N/A'}</td>
                             <td className={styles.status}>
                                 <span
 
@@ -80,7 +80,7 @@ const TableVictims = ({ victims }) => {
                                                 : styles["status-arquivado"]
                                     }>
 
-                                    {item.idCase?.status || 'NAO IDENTIFICADO'}
+                                    {item.idCase?.status || 'N/A'}
                                 </span>
                             </td>
                             <td>{item.idCase?._id || 'Nao identificado'}</td>

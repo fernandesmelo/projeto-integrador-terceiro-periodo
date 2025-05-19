@@ -10,14 +10,14 @@ import ToGoBack from "../../components/togoback/ToGoBack";
 
 const CaseCreated = () => {
   const navigate = useNavigate();
-  const [nic, setNic] = useState("");
   const [title, setTitle] = useState("");
   const [inquiryNumber, setInquiryNumber] = useState("");
   const [requestingInstitution, setRequestingInstitution] = useState("");
   const [requestingAuthority, setRequestingAuthority] = useState("");
   const [caseType, setCaseType] = useState("");
   const [observations, setObservations] = useState("");
-  const [questions, setQuestions] = useState([{ question: "" }]);
+  const [questions, setQuestions] = useState([{ question: "N/A" }]);
+  const [nic, setNic] = useState(['']);
 
   const [location, setLocation] = useState({
     street: "",
@@ -70,6 +70,18 @@ const CaseCreated = () => {
     setDropdownOpen(false);
   };
 
+
+  const adicionarCampo = () => {
+    setNic([...nic, '']);
+  }
+
+
+  const handleChange = (i, valor) => {
+    const novosCampos = [...nic];
+    novosCampos[i] = valor;
+    setNic(novosCampos);
+  }
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     const fetchUsers = async () => {
@@ -111,7 +123,7 @@ const CaseCreated = () => {
       ...prev,
       [field]: field === "houseNumber" ? Number(value) || 0 : value,
     }));
-    
+
   };
 
   const handleSubmit = async (e) => {
@@ -130,24 +142,20 @@ const CaseCreated = () => {
       questions,
       professional: envolved,
     };
-    const victimFormData = localStorage.getItem("victimFormData");
-    console.log("Payload enviado pro back:", data);
 
+    Swal.fire({
+      title: "Cadastrando...",
+      text: "Por favor, aguarde enquanto o caso é cadastrado.",
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+    await delay(1500);
     try {
-      Swal.fire({
-        title: "Enviando...",
-        text: "Por favor, aguarde enquanto a vítima é cadastrada.",
-        allowOutsideClick: false,
-        didOpen: () => {
-          Swal.showLoading();
-        },
-      });
-
-      await delay(1500);
-
-      const patientResponse = await axios.post(
-        "https://sistema-odonto-legal.onrender.com/api/patient/create",
-        victimFormData,
+      const caseResponse = await axios.post(
+        "https://sistema-odonto-legal.onrender.com/api/cases/create",
+        data,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -155,69 +163,23 @@ const CaseCreated = () => {
           },
         }
       );
-      localStorage.removeItem("victimFormData");
-      Swal.close();
 
-      if (patientResponse.status === 201) {
-        const data = {
-          nic,
-          title,
-          inquiryNumber,
-          requestingInstitution,
-          requestingAuthority,
-          caseType,
-          observations,
-          location,
-          questions,
-          professional: envolved,
-        };
-
+      if (caseResponse.status === 201) {
         Swal.fire({
-          title: "Cadastrando...",
-          text: "Por favor, aguarde enquanto o caso é cadastrado.",
-          allowOutsideClick: false,
-          didOpen: () => {
-            Swal.showLoading();
-          },
+          icon: "success",
+          title: "Caso cadastrado!",
+          text: "Clique em ok e seja redirecionado para a página de casos.",
+          confirmButtonColor: "#3085d6",
+        }).then(() => {
+          navigate("/casos");
         });
-        await delay(1500);
-        const caseResponse = await axios.post(
-          "https://sistema-odonto-legal.onrender.com/api/cases/create",
-          data,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
-
-        if (caseResponse.status === 201) {
-          Swal.fire({
-            icon: "success",
-            title: "Caso cadastrado!",
-            text: "Clique em ok e seja redirecionado para a página de casos.",
-            confirmButtonColor: "#3085d6",
-          }).then(() => {
-            navigate("/casos");
-          });
-          limparCampos();
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "Erro ao cadastrar o caso",
-            text:
-              caseResponse.err.response?.data?.message ||
-              "Tente novamente mais tarde.",
-            confirmButtonColor: "#EB5757",
-          });
-        }
+        limparCampos();
       } else {
         Swal.fire({
           icon: "error",
-          title: "Erro ao cadastrar a vítima",
+          title: "Erro ao cadastrar o caso",
           text:
-            patientResponse.err.response?.data?.message ||
+            caseResponse.err.response?.data?.message ||
             "Tente novamente mais tarde.",
           confirmButtonColor: "#EB5757",
         });
@@ -272,14 +234,22 @@ const CaseCreated = () => {
             <form onSubmit={handleSubmit}>
               <div>
                 <label>NIC*:</label>
-                <input
-                  className={styles.inputDisabled}
-                  name="nic"
-                  value={nic}
-                  onChange={(e) => setNic(e.target.value)}
-                  required
-                  readOnly
-                />
+                <div>
+                  {nic.map((valor, i) => (
+                    <input
+                      key={i}
+                      type="text"
+                      placeholder={`Campo opcional ${i + 1}`}
+                      value={valor}
+                      onChange={(e) => handleChange(i, e.target.value)}
+                      style={{ display: 'block', marginBottom: '10px' }}
+                    />
+                  ))}
+
+                  <Button className={styles.addBtn} variant="generic-secondary" onClick={adicionarCampo} type="button">
+                    Adicionar outro Nic
+                  </Button>
+                </div>
                 <label htmlFor="Título">TÍtulo*:</label>
                 <input
                   className={styles.input}
@@ -335,14 +305,17 @@ const CaseCreated = () => {
                   onChange={(e) => setCaseType(e.target.value)}
                 >
                   <option value="">Selecione o tipo de caso:</option>
-                  <option value="COLETA DNA">Coleta DNA</option>
-                  <option value="EXAME MARCA DE MORDIDA">
-                    Exame marca de mordida
+                  <option value="IDENTIFICAÇÃO">IDENTIFICAÇÃO</option>
+                  <option value="AVALIAÇÃO DE LESÕES CORPORAIS">
+                    AVALIAÇÃO DE LESÕES CORPORAIS
                   </option>
-                  <option value="IDENTIFICAÇÃO DE VÍTIMA">
-                    Identificação de vítma
+                  <option value="COLETA DE PROVA">
+                    COLETA DE PROVA
                   </option>
-                  <option value="LESÕES CORPORAIS">Lesões Corporais</option>
+                  <option value="PERÍCIA DE RESPONSABILIDADE">PERÍCIA DE RESPONSABILIDADE</option>
+                  <option value="EXAME DE VIOLÊNCIA">EXAME DE VIOLÊNCIA</option>
+                  <option value="ANÁLISE MULTIVÍTIMA">ANÁLISE MULTIVÍTIMA</option>
+                  <option value="OUTROS">OUTROS</option>
                 </select>
                 <label htmlFor="Observações">Observações:</label>
                 <textarea

@@ -197,7 +197,7 @@ const Cases = () => {
           <div className={styles.inputArea}>
             <InputSearch
               placeholder="Pesquisar Nic"
-              variant="secondary"
+              variant="InputSearch"
               value={nicFilter}
               onChange={(e) => {
                 setNicFilter(e.target.value);
@@ -211,33 +211,36 @@ const Cases = () => {
               }}
             />
             <div className={styles.filterArea}>
-              <select
-                value={statusFilter}
-                onChange={(e) => {
-                  setStatusFilter(e.target.value);
-                  setPage(1);
-                }}
-              >
-                <option value="">Filtrar por: </option>
-                <option value="">Todos</option>
-                <option value="ABERTO">Aberto</option>
-                <option value="FINALIZADO">Finalizado</option>
-                <option value="ARQUIVADO">Arquivo</option>
-              </select>
-              <input
-                type="date"
-                value={dateFilter}
-                onChange={(e) => {
-                  setDateFilter(e.target.value);
-                  setPage(1);
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    applyFilterDate();
-                  }
-                }}
-              />
-            </div>
+                          <select
+                            value={statusFilter}
+                            className={styles.filter}
+                            onChange={(e) => {
+                              setStatusFilter(e.target.value);
+                              setPage(1);
+                            }}
+                            
+                          >
+                            <option value="">Filtrar por: </option>
+                            <option value="">Todos</option>
+                            <option value="ABERTO">Aberto</option>
+                            <option value="FINALIZADO">Finalizado</option>
+                            <option value="ARQUIVADO">Arquivo</option>
+                          </select>
+                          <input
+                            type="date"
+                            className={styles.inputDate}
+                            value={dateFilter}
+                            onChange={(e) => {
+                              setDateFilter(e.target.value);
+                              setPage(1);
+                            }}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                applyFilterDate();
+                              }
+                            }}
+                          />
+                        </div>
           </div>
           <TableVictims victims={paginatedVictim} />
           <div>

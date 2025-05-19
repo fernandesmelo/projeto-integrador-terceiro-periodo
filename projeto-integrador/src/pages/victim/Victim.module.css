@@ -19,12 +19,20 @@
 
 .inputArea {
     display: flex;
-    gap: 5;
+    justify-content: space-between;
 }
 
 .buttons {
     display: flex;
     justify-content: space-between;
+}
+
+.inputDate {
+    width: auto;
+}
+
+.filter {
+    width: auto;
 }
 
 .pag {
@@ -47,8 +55,7 @@
 }
 
 .filterArea {
-    display: flex;
-    width: 100%;
+
 }
 
 select {
@@ -79,14 +86,18 @@ select {
         }
     }
 
-    .inputArea {
-        display: block;
-        gap: 5;
 
-        .filterArea {
-            display: flex;
-        }
-    }
+   .inputArea {
+    display: block;
+
+}
+   
+    
+
+    .filterArea {
+        display: flex;
+        justify-content: right;
+}
 
     .pag {
         padding: 0.5rem 1.5rem 0.5rem 1rem;
