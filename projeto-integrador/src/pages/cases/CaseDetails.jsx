@@ -14,10 +14,26 @@ const formatDate = (dateString) => {
   return date.toLocaleString("pt-BR");
 };
 
+
+
 const CaseDetails = () => {
   const navigate = useNavigate();
   const { protocol } = useParams();
   const [caseDetails, setCaseDetails] = useState(null);
+
+
+
+  useEffect(() => {
+  const hash = window.location.hash;
+  if (hash) {
+    setTimeout(() => {
+      const elemento = document.querySelector(hash);
+      if (elemento) {
+        elemento.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 1200); 
+  }
+}, []);
 
   const addEvidence = (protocol) => {
     navigate(`/casos/evidencia/${protocol}`);
@@ -115,7 +131,7 @@ const CaseDetails = () => {
                 <div className={styles.caseSection}>
                   {caseDetails.questions &&
                     caseDetails.questions.length > 0 && (
-                      <div>
+                      <div id="lista-de-vitimas" >
                         <h2>Perguntas do Caso</h2>
                         <ul>
                           {caseDetails.questions.map((item, index) => (
@@ -126,7 +142,7 @@ const CaseDetails = () => {
                     )}
                 </div>
                 {caseDetails.caseReport && (
-                  <div className={styles.caseSection}>
+                  <div  className={styles.caseSection}>
                     <h2>Relatório Final do Caso</h2>
                     <p>
                       <strong>Descrição:</strong>{" "}
@@ -145,7 +161,7 @@ const CaseDetails = () => {
                       {getOrNA(caseDetails.caseReport.responsible?.name)}
                     </p>
                     {caseDetails.caseReport.answers?.length > 0 && (
-                      <div>
+                      <div >
                         <strong className={styles.answers}>Respostas:</strong>
                         <ul>
                           {caseDetails.caseReport.answers.map((item, index) => (
@@ -158,7 +174,7 @@ const CaseDetails = () => {
                     )}
                   </div>
                 )}
-                <div className={styles.caseSection}>
+                <div   className={styles.caseSection}>
                   <h2>Dados da Vítima</h2>
                   <p>
                     <strong>Nome:</strong> {getOrNA(caseDetails.patient?.name)}

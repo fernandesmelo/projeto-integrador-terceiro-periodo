@@ -42,6 +42,12 @@
 
 }
 
+.link {
+
+  text-decoration: none;
+  color: var(--brand-colors-primary)
+}
+
 .status-arquivado {
   background-color: var(--desabled-background);
   color: var(--soft-contrast-text);
