@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Table.module.css";
 import { BiPencil, BiSearch, BiTrash } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { IoMdAddCircleOutline } from "react-icons/io";
@@ -23,6 +23,7 @@ const Table = ({ cases }) => {
   useEffect(() => {
     setTableCases(cases);
   }, [cases]);
+
 
 
   const fetchCaseDetails = async (protocol) => {
@@ -188,7 +189,9 @@ const Table = ({ cases }) => {
     }
   };
 
+
   return (
+
     <div className={styles.container}>
       <table className={styles.tabela}>
         <thead>
@@ -204,61 +207,76 @@ const Table = ({ cases }) => {
           </tr>
         </thead>
         <tbody>
-          {tableCases.map((item, index) => (
-            <tr key={index}>
-              <td>{item.protocol}</td>
-              <td>{item.title}</td>
-              <td>{item.caseType}</td>
-              <td></td>
-              <td>
-                <span
-                  className={
-                    item.status === "ABERTO"
-                      ? styles["status-aberto"]
-                      : item.status === "FINALIZADO"
-                        ? styles["status-finalizado"]
-                        : styles["status-arquivado"]
-                  }
-                >
-                  {item.status}
-                </span>
-              </td>
-               {/* <td>{item.patient._id}</td> */}
-              <td>{new Date(item.openedAt).toLocaleDateString("pt-BR")}</td>
-              <td>
-                {item.evidence?.length || 0}
-                <IoMdAddCircleOutline
-                  className={styles.add}
-                  title="Adicionar evidência"
-                  onClick={() => addEvidence(item.protocol)}
-                />
-              </td>
-              <td>
-                <BiSearch
-                  className={styles.icon}
-                  title="Ver detalhes"
-                  onClick={() => verDetalhes(item.protocol)}
-                />
+          {tableCases.map((item, index) => {
 
-                {
-                  <BiPencil
+
+
+            return (
+              <tr key={index}>
+                <td>{item.protocol}</td>
+                <td>{item.title}</td>
+                <td>{item.caseType}</td>
+                <td>
+                  {item.patient[0].nic}
+                  {item.patient.length > 1 && (
+                    <span>
+                      ... 
+                      <Link className={styles.link} to={`/casos/detalhes/${item.protocol}#lista-de-vitimas`}> ver mais</Link>
+                    </span>
+                  )}
+
+
+                </td>
+                <td>
+                  <span
+                    className={
+                      item.status === "ABERTO"
+                        ? styles["status-aberto"]
+                        : item.status === "FINALIZADO"
+                          ? styles["status-finalizado"]
+                          : styles["status-arquivado"]
+                    }
+                  >
+                    {item.status}
+                  </span>
+                </td>
+                {/* <td>{item.patient._id}</td> */}
+                <td>{new Date(item.openedAt).toLocaleDateString("pt-BR")}</td>
+                <td>
+                  {item.evidence?.length || 0}
+                  <IoMdAddCircleOutline
+                    className={styles.add}
+                    title="Adicionar evidência"
+                    onClick={() => addEvidence(item.protocol)}
+                  />
+                </td>
+                <td>
+                  <BiSearch
                     className={styles.icon}
-                    title="Editar"
-                    style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
-                    onClick={() => fetchCaseDetails(item.protocol)}
+                    title="Ver detalhes"
+                    onClick={() => verDetalhes(item.protocol)}
                   />
-                }
 
-                {item.evidence?.length === 0 && (
-                  <BiTrash
-                    className={`${styles.icon} ${styles.trash}`}
-                    title="Excluir caso"
-                    onClick={() => excluirCaso(item.protocol)}
-                  />
-                )}
-              </td>
-            </tr>
-          ))}
+                  {
+                    <BiPencil
+                      className={styles.icon}
+                      title="Editar"
+                      style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
+                      onClick={() => fetchCaseDetails(item.protocol)}
+                    />
+                  }
+
+                  {item.evidence?.length === 0 && (
+                    <BiTrash
+                      className={`${styles.icon} ${styles.trash}`}
+                      title="Excluir caso"
+                      onClick={() => excluirCaso(item.protocol)}
+                    />
+                  )}
+                </td>
+              </tr>
+            )
+          })}
           {tableCases.length === 0 && (
             <tr>
               <td colSpan={8} style={{ textAlign: "center", padding: "1rem" }}>
