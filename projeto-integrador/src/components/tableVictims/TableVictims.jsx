@@ -1,23 +1,19 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styles from "./TableVictims.module.css";
-import { BiPencil, BiSearch, BiTrash } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
+import { BiPencil, } from "react-icons/bi";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { IoMdAddCircleOutline } from "react-icons/io";
-import { jwtDecode } from "jwt-decode";
+
 import ModalVictim from "./modalVictim";
+import Button from "../button/Button";
 
 
 const TableVictims = ({ victims }) => {
-    const navigate = useNavigate();
     const token = localStorage.getItem("token");
     const [tableVictims, setTableVictims] = useState(victims);
     const [modalOpen, setModalOpen] = useState(false);
-    const [selectedVictim, setSelectedVictim] = useState(null);
-    const [showModalStepTwo, setShowModalStepTwo] = useState(false);
-    const [stepTwoFormData, setStepTwoFormData] = useState(null);
-    console.log('tabela de vitimas:', tableVictims)
+    const [, setSelectedVictim] = useState(null);
+    const [editedVictim, setEditedVictim] = useState({});
 
     useEffect(() => {
         setTableVictims(victims);
@@ -30,18 +26,52 @@ const TableVictims = ({ victims }) => {
 
 
 
-    const handleEdit = () => {
-        setShowModal(true);
-    };
 
 
-    const handleNextStep = (formData) => {
-        setShowModal(false); // fecha o primeiro modal
-        setStepTwoFormData(formData); // salva os dados pra usar no segundo
-        setShowModalStepTwo(true); // abre o segundo modal
-    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setEditedVictim((data) => ({
+            ...data,
+            [name]: name === "age" ? Number(value) : value
+        }))
+    }
+    console.log('editar a vitima', editedVictim)
 
 
+    const handleSave = async () => {
+        try {
+            await axios.put("https://sistema-odonto-legal.onrender.com/api/patient/update", editedVictim, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+                params: {
+                    nic: editedVictim.nic,
+                }
+            })
+            Swal.fire(
+                "Atualizado!",
+                "A vitima foi editada com sucesso.",
+                "success"
+            );
+
+            setTableVictims((data) =>
+                data.map((victim) =>
+                    victim.nic === editedVictim.nic ? { ...victim, ...editedVictim } : victim
+                )
+            )
+
+            setModalOpen(false)
+
+        } catch (err) {
+            Swal.fire(
+                "Erro",
+                "Não foi possível atualizar o usuário",
+                "error"
+            );
+            console.error(err);
+        }
+    }
 
     return (
         <div className={styles.container}>
@@ -83,7 +113,7 @@ const TableVictims = ({ victims }) => {
                                     {item.idCase?.status || 'N/A'}
                                 </span>
                             </td>
-                            <td>{item.idCase?._id || 'Nao identificado'}</td>
+                            <td>{item.idCase?._id || 'N/A'}</td>
 
                             <td>{new Date(item.createdAt
                             ).toLocaleDateString("pt-BR")}</td>
@@ -94,6 +124,7 @@ const TableVictims = ({ victims }) => {
                                 onClick={() => {
                                     setSelectedVictim(item)
                                     setModalOpen(true)
+                                    setEditedVictim(item)
                                 }}
                             /></td>
 
@@ -109,25 +140,59 @@ const TableVictims = ({ victims }) => {
                 </tbody>
             </table>
             <ModalVictim isOpen={modalOpen} onClose={() => setModalOpen(false)}>
-                <h2>conteudo do modal</h2>
+                <h2>Editar vitima</h2>
                 <label htmlFor="nic">Nic</label>
                 <input
                     type="text"
                     id="nic"
-                    value={selectedVictim?.nic || ''}
+                    name="nic"
+                    value={editedVictim?.nic || ''}
+                    onChange={handleChange}
+
                 />
-                <label htmlFor="nic">Nic</label>
+                <label htmlFor="name">Nome</label>
                 <input
                     type="text"
-                    id="nic"
-                    value={selectedVictim?.nic || ''}
+                    id="name"
+                    name="name"
+                    value={editedVictim?.name || ''}
+                    onChange={handleChange}
                 />
-                <label htmlFor="nic">Nic</label>
+                <label htmlFor="age">Idade</label>
+                <input
+                    type="number"
+                    id="age"
+                    name="age"
+                    max={120}
+                    value={editedVictim?.age || ''}
+                    onChange={handleChange}
+                />
+                <label htmlFor="gender">Gênero</label>
+                <select
+                    type="text"
+                    name="gender"
+                    id="gender"
+                    value={editedVictim?.gender}
+                    onChange={handleChange}
+                >
+                    <option value="">Selecione...</option>
+                    <option value="MASCULINO">Masculino</option>
+                    <option value="FEMININO"> Feminino</option>
+                    <option value="NAO-BINARIO">Não-Binario</option>
+                    <option value="OUTRO">Outro</option>
+                </select>
+                <label htmlFor="cpf">CPF:</label>
                 <input
                     type="text"
-                    id="nic"
-                    value={selectedVictim?.nic || ''}
+                    name="cpf"
+                    id="cpf"
+                    value={editedVictim?.cpf}
+                    onChange={handleChange}
                 />
+                <div className={styles.button}>
+                    <Button variant='button-cancel' onClick={() => setModalOpen(false)}>Cancelar</Button>
+                    <Button variant='button-save' onClick={handleSave}>Salvar</Button>
+                </div>
             </ModalVictim>
         </div >
     );

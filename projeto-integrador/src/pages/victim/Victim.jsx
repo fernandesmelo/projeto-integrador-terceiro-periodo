@@ -17,7 +17,6 @@ const Cases = () => {
   const [statusFilter, setStatusFilter] = useState("");
   const [nicFilter, setNicFilter] = useState("");
   const [dateFilter, setDateFilter] = useState("");
-  const [modalOpen, setModalOpen] = useState(false);
   const role = localStorage.getItem("role")
 
   const token = localStorage.getItem("token");

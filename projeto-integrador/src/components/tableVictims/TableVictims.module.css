@@ -23,6 +23,13 @@
     color: var(--brand-colors-primary);
   }
   
+  .button {
+    display: flex;
+    flex: 1;
+    gap: 1rem;
+    margin-top: 2rem;
+
+  }
   
 
   .status-aberto {

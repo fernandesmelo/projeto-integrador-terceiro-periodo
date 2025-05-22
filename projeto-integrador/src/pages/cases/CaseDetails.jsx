@@ -20,6 +20,7 @@ const CaseDetails = () => {
   const navigate = useNavigate();
   const { protocol } = useParams();
   const [caseDetails, setCaseDetails] = useState(null);
+  
 
 
 
@@ -64,6 +65,7 @@ const CaseDetails = () => {
         console.log("dados", response.data);
 
         setCaseDetails(response.data);
+        console.log(response.data)
       } catch (err) {
         Swal.fire({
           icon: "error",
@@ -174,26 +176,30 @@ const CaseDetails = () => {
                     )}
                   </div>
                 )}
-                <div   className={styles.caseSection}>
-                  <h2>Dados da Vítima</h2>
+                  {caseDetails.patient?.map((e, i) => (
+                <div key={i}  className={styles.caseSection}>
+                  <h2>Dados da Vítima {i + 1}</h2>
                   <p>
-                    <strong>Nome:</strong> {getOrNA(caseDetails.patient?.name)}
+                    <strong>Nome:</strong> {getOrNA(e.name)}
                   </p>
                   <p>
-                    <strong>NIC:</strong> {getOrNA(caseDetails.patient?.nic)}
+                    <strong>NIC:</strong> {getOrNA(e.nic)}
                   </p>
                   <p>
-                    <strong>Idade:</strong> {getOrNA(caseDetails.patient?.age)}
+                    <strong>Idade:</strong> {getOrNA(e.age)}
                   </p>
                   <p>
                     <strong>Gênero:</strong>{" "}
-                    {getOrNA(caseDetails.patient?.gender || "N/A")}
+                    {getOrNA(e.gender || "N/A")}
                   </p>
                   <p>
                     <strong>Status de Identificação:</strong>{" "}
-                    {getOrNA(caseDetails.patient?.identificationStatus)}
-                  </p>
+                    {getOrNA(e.identificationStatus)}
+                  </p>  
+                  
                 </div>
+              ))}
+
                 <div className={styles.caseSection}>
                   <h2>Localização do Ocorrido</h2>
                   <p>
