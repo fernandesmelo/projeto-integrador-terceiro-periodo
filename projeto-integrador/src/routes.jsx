@@ -8,7 +8,7 @@ import Cases from "./pages/cases/Cases";
 import CaseCreated from "./pages/cases/CaseCreated";
 import CaseDetails from "./pages/cases/CaseDetails";
 import EvidenceRegistrationPage from "./pages/evidence_registration_page/EvidenceRegistrationPage";
-import CreateVictim from "./pages/cases/AddVictim";
+import CreateVictim from "./pages/victim/AddVictim";
 import ReportEvidence from "./pages/evidence_registration_page/ReportEvidence";
 import ExportReportEvidence from "./pages/evidence_registration_page/ExportReportEvidence";
 import ReportCase from "./pages/cases/CaseReport";

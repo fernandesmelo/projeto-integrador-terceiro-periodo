@@ -45,7 +45,11 @@
 .link {
 
   text-decoration: none;
-  color: var(--brand-colors-primary)
+  color: var(--brand-colors-primary);
+
+  &:hover {
+      opacity: 0.8;
+  }
 }
 
 .status-arquivado {
