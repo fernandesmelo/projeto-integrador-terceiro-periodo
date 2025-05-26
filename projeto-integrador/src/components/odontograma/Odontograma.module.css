@@ -1,0 +1,66 @@
+.odontogramaContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+  padding: 1rem;
+  background-color: var(--light-background);
+  border: 1px solid #ccc;
+}
+
+.linhaDentes {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+}
+
+.dentes {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.caption {
+  display: flex;
+  margin-top: 2rem;
+  justify-content: end;
+}
+
+.toothPosition {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  justify-content: center;
+}
+
+.alignTooth {
+  display: flex;
+  justify-content: center;
+
+}
+
+.denteWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.denteWrapper:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -25px;
+  white-space: nowrap;
+  background: #222;
+  color: white;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0.9;
+  z-index: 10;
+}

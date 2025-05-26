@@ -44,8 +44,8 @@ const Header = () => {
       <div className={styles.info}>
         <FaBell />
         <div>
-          <p className={styles.role}>{userData.role}</p>
-          <p className={styles.name}>{userData.name}</p>
+          <p className={styles.role}>{userData.name}</p>
+          <p className={styles.name}>{userData.role}</p>
         </div>
       </div>
     </div>

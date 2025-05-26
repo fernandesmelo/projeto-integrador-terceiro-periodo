@@ -1,0 +1,55 @@
+.legendaOdontograma {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 2rem;
+  justify-content: end;
+}
+
+.itemLegenda {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+.name {
+  font-size: 0.7rem;
+}
+
+
+.corLegenda {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+/* Cores específicas */
+.saudavel {
+  background-color: #4caf50;
+}
+
+.ausente {
+  background-color: #f44336;
+}
+
+.restaurado {
+  background-color: #2196f3;
+}
+
+.fraturado {
+  background-color: #f3ec21;
+}
+
+.cariado {
+  background-color: #000000;
+}
+
+.implante {
+  background-color: #9521f3;
+}
+
+.outro {
+  background-color: #999;
+}

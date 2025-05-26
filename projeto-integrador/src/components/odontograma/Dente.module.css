@@ -1,0 +1,57 @@
+.botao {
+  position: relative;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.imagemDente {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.numeroDente {
+  font-weight: bold;
+  margin-top: 4px;
+  font-size: 14px;
+  color: #333;
+}
+
+
+
+/* Exemplo de cores para estados */
+.saudavel img {
+  filter: drop-shadow(0 0 4px #4caf50);
+}
+
+.ausente img {
+  filter: drop-shadow(0 0 4px #f44336);
+}
+
+.restaurado img {
+  filter: drop-shadow(0 0 4px #2196f3);
+}
+
+.fraturado img {
+  filter: drop-shadow(0 0 4px #f3ec21);
+}
+
+.cariado img {
+  filter:  drop-shadow(0 0 4px #000000);
+}
+
+.implante img {
+  filter:  drop-shadow(0 0 4px #9521f3);
+}
+
+.outro img {
+  filter: drop-shadow(0 0 4px #999);
+}

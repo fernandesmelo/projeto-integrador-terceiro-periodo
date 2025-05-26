@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import Button from "../../components/button/Button";
 import ToGoBack from "../../components/togoback/ToGoBack";
 import axios from "axios";
+import Odontograma from "../../components/odontograma/Odontograma";
 
 const CreateVictim = () => {
   const navigate = useNavigate()
@@ -106,7 +107,7 @@ const CreateVictim = () => {
                 value={formData.identificationStatus}
                 onChange={(e) => {
                   handleChange(e)
-                  setStatus(e.target.value === "IDENTIFICADO" ||e.target.value === "PARCIALMENTE IDENTIFICADO" ? true : false)
+                  setStatus(e.target.value === "IDENTIFICADO" || e.target.value === "PARCIALMENTE IDENTIFICADO" ? true : false)
                 }}
                 required
               >
@@ -119,7 +120,7 @@ const CreateVictim = () => {
               </select>
               {status && (
 
-                <div>
+                <div className={styles.details}>
                   <label>Nome:</label>
                   <input
                     name="name"
@@ -147,6 +148,7 @@ const CreateVictim = () => {
                     name="gender"
                     value={formData.gender}
                     onChange={handleChange}
+                    required
                   >
                     <option value="">Selecione...</option>
                     <option value="MASCULINO">Masculino</option>
@@ -242,6 +244,10 @@ const CreateVictim = () => {
                       placeholder="Complemento do endereço da vítima"
                     />
                   </fieldset>
+                  <div style={{ marginTop: "20px" }}>
+                    <h3 className={styles.odontograma}>Odontograma</h3>
+                    <Odontograma />
+                  </div>
                 </div>)}
 
 
