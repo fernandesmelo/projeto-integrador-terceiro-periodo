@@ -46,18 +46,21 @@ const dentesInfo = [
   { numero: 38, label: "Terceiro Mol. Inf. Direito" },
 ];
 
-export default function Odontograma() {
-  const [estados, setEstados] = useState({});
+export default function Odontograma({ onChange }) {
+  const estadoInicial = {};
+  dentesInfo.forEach(({ numero }) => {
+    estadoInicial[numero] = "saudável";
+  });
 
-  const onUpdateEstado = (numero, novoEstado) => {
-    setEstados((prev) => ({ ...prev, [numero]: novoEstado }));
-  };
+  const [estados, setEstados] = useState(estadoInicial);
 
-  // Os dentes superiores vão estar na primeira linha, e os inferiores na segunda.
-  // Mas pela numeração, os superiores direitos (18-11) vão do lado direito para o esquerdo, depois os superiores esquerdos (21-28).
-  // Vamos organizar na UI para ficar visualmente correto.
-
-  // Separar dentes por quadrantes para posicionar:
+ const onUpdateEstado = (numero, novoEstado) => {
+  const novoEstadoAtualizado = { ...estados, [numero]: novoEstado };
+  setEstados(novoEstadoAtualizado);
+  onChange(novoEstadoAtualizado); // <- Envia para o pai
+};
+ 
+  
   const supDireito = dentesInfo.slice(0, 8).reverse();  // 18->11 (da direita p/ esquerda)
   const supEsquerdo = dentesInfo.slice(8, 16);         // 21->28 (da esquerda p/ direita)
   const infEsquerdo = dentesInfo.slice(16, 24).reverse(); // 48->41 (da esquerda p/ direita, invertido)
@@ -65,7 +68,6 @@ export default function Odontograma() {
 
   return (
     <div className={styles.odontogramaContainer}>
-      {/* Linha dentes superiores */}
       <div className={styles.linhaDentes}>
         <div className={styles.dentes}>
           <h4 className={styles.toothPosition}>Superior direito</h4>
@@ -89,10 +91,9 @@ export default function Odontograma() {
         </div>
       </div>
 
-      {/* Espaço para separar arcadas */}
-      <div style={{ height: "40px" }}></div>
 
-      {/* Linha dentes inferiores */}
+
+
       <div className={styles.linhaDentes}>
         <div className={styles.dentes}>
           <h4 className={styles.toothPosition}>Inferior Esquerdo</h4>

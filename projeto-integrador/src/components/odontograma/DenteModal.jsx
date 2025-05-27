@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import styles from "./DenteModal.module.css";
 
 const estados = ["saudável", "restaurado", "ausente", "cariado", "fraturado", "implante"];
@@ -8,6 +8,14 @@ export default function DenteModal({ numero, estadoAtual, onFechar, onSalvar }) 
     onSalvar(numero, estado);
     onFechar();
   };
+
+  const [outro, setOutro] = useState('')
+  const inputRef = useRef()
+
+  const handleOutro = () => {
+    onSalvar(numero, outro);
+    onFechar();
+  }
 
   return (
     <div className={styles.fundo} onClick={onFechar}>
@@ -20,6 +28,16 @@ export default function DenteModal({ numero, estadoAtual, onFechar, onSalvar }) 
               {e}
             </button>
           ))}
+        </div>
+        <p className={styles.textOutro}><strong>Outro</strong></p>
+        <div className={styles.outro}>
+          <input
+            type="text"
+            ref={inputRef}
+            value={outro}
+            onChange={(e) => setOutro(e.target.value)}
+          />
+          <button className={styles.botao} onClick={handleOutro}>enviar</button>
         </div>
         <br />
         <button className={styles.botao} onClick={onFechar}>Cancelar</button>

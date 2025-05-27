@@ -19,6 +19,27 @@
   text-align: center;
 }
 
+.outro {
+  display: flex;
+  height: 2rem;
+
+  input {
+    margin: 0;
+  }
+
+  button {
+    background-color: var(--hover-effect-secondary);
+
+    &:hover {
+      background-color: var(--hover-effect-secondary);
+    }
+  }
+}
+
+.textOutro {
+  margin: 0.4rem;
+}
+
 .lista {
   display: flex;
   flex-direction: column;

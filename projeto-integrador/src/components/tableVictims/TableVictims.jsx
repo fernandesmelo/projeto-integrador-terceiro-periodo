@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./TableVictims.module.css";
-import { BiPencil, } from "react-icons/bi";
+import { BiPencil, BiSearch, } from "react-icons/bi";
 import Swal from "sweetalert2";
 import axios from "axios";
 
@@ -117,16 +117,24 @@ const TableVictims = ({ victims }) => {
 
                             <td>{new Date(item.createdAt
                             ).toLocaleDateString("pt-BR")}</td>
-                            <td> <BiPencil
-                                className={styles.icon}
-                                title="Editar"
-                                style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
-                                onClick={() => {
-                                    setSelectedVictim(item)
-                                    setModalOpen(true)
-                                    setEditedVictim(item)
-                                }}
-                            /></td>
+                            <td>
+                                <BiPencil
+                                    className={styles.icon}
+                                    title="Editar"
+                                    style={{ cursor: "pointer", marginRight: 10, color: "#012130" }}
+                                    onClick={() => {
+                                        setSelectedVictim(item)
+                                        setModalOpen(true)
+                                        setEditedVictim(item)
+                                    }}
+                                />
+                                <BiSearch
+                                    className={styles.icon}
+                                    title="Ver detalhes"
+                                    onClick={() => verDetalhes(item.protocol)}
+                                />
+                            </td>
+
 
                         </tr>
                     ))}

@@ -18,7 +18,7 @@ export default function Dente({ numero, estado, onUpdate }) {
 
   return (
     <>
-      <button
+      <button type="button"
         className={`${styles.botao} ${getClasseEstado(estado)}`}
         onClick={() => setAberto(true)}
         title={`Dente ${numero} - Estado: ${estado || "não definido"}`}

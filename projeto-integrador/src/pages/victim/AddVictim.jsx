@@ -31,8 +31,16 @@ const CreateVictim = () => {
       complement: "",
     },
     identificationStatus: "",
+    odontogram: [],
   })
   const [status, setStatus] = useState(false)
+
+  const handleToothUpdate = (toothStates) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      odontogram: toothStates,
+    }));
+  };
 
 
   const handleChange = (e) => {
@@ -57,8 +65,24 @@ const CreateVictim = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const formattedOdontogram = Object.entries(formData.odontogram)
+      .map(([tooth, note]) => ({
+        tooth: String(tooth),     // certifique-se de que é string
+        note: note || '',         // note no lugar de condition
+      }))
+      .filter(item => item.note !== '');
+
+      
+    const dataToSend = {
+      ...formData,
+      odontogram: formattedOdontogram,
+
+    };
+
     try {
-      const response = await axios.post(APIVICTIM, formData, {
+      console.log("Enviando:", dataToSend); // debug
+      const response = await axios.post(APIVICTIM, dataToSend, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -246,7 +270,9 @@ const CreateVictim = () => {
                   </fieldset>
                   <div style={{ marginTop: "20px" }}>
                     <h3 className={styles.odontograma}>Odontograma</h3>
-                    <Odontograma />
+                    <Odontograma
+                      onChange={handleToothUpdate}
+                    />
                   </div>
                 </div>)}
 
