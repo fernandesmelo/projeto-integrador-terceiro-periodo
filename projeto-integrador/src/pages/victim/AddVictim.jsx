@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import Button from "../../components/button/Button";
 import ToGoBack from "../../components/togoback/ToGoBack";
 import axios from "axios";
+import Odontograma from "../../components/odontograma/Odontograma";
 
 const CreateVictim = () => {
   const navigate = useNavigate()
@@ -30,8 +31,16 @@ const CreateVictim = () => {
       complement: "",
     },
     identificationStatus: "",
+    odontogram: [],
   })
   const [status, setStatus] = useState(false)
+
+  const handleToothUpdate = (toothStates) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      odontogram: toothStates,
+    }));
+  };
 
 
   const handleChange = (e) => {
@@ -56,8 +65,24 @@ const CreateVictim = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const formattedOdontogram = Object.entries(formData.odontogram)
+      .map(([tooth, note]) => ({
+        tooth: String(tooth),     // certifique-se de que é string
+        note: note || '',         // note no lugar de condition
+      }))
+      .filter(item => item.note !== '');
+
+      
+    const dataToSend = {
+      ...formData,
+      odontogram: formattedOdontogram,
+
+    };
+
     try {
-      const response = await axios.post(APIVICTIM, formData, {
+      console.log("Enviando:", dataToSend); // debug
+      const response = await axios.post(APIVICTIM, dataToSend, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -106,7 +131,7 @@ const CreateVictim = () => {
                 value={formData.identificationStatus}
                 onChange={(e) => {
                   handleChange(e)
-                  setStatus(e.target.value === "IDENTIFICADO" ||e.target.value === "PARCIALMENTE IDENTIFICADO" ? true : false)
+                  setStatus(e.target.value === "IDENTIFICADO" || e.target.value === "PARCIALMENTE IDENTIFICADO" ? true : false)
                 }}
                 required
               >
@@ -119,7 +144,7 @@ const CreateVictim = () => {
               </select>
               {status && (
 
-                <div>
+                <div className={styles.details}>
                   <label>Nome:</label>
                   <input
                     name="name"
@@ -147,6 +172,7 @@ const CreateVictim = () => {
                     name="gender"
                     value={formData.gender}
                     onChange={handleChange}
+                    required
                   >
                     <option value="">Selecione...</option>
                     <option value="MASCULINO">Masculino</option>
@@ -242,6 +268,12 @@ const CreateVictim = () => {
                       placeholder="Complemento do endereço da vítima"
                     />
                   </fieldset>
+                  <div style={{ marginTop: "20px" }}>
+                    <h3 className={styles.odontograma}>Odontograma</h3>
+                    <Odontograma
+                      onChange={handleToothUpdate}
+                    />
+                  </div>
                 </div>)}
 
 
