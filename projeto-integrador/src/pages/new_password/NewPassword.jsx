@@ -8,7 +8,7 @@ import axios from "axios";
 
 const NewPassword = () => {
   const navigate = useNavigate();
-  const [cpf, setCpf] = useState("");  // Alterado de "email" para "cpf"
+  const [cpf, setCpf] = useState(""); 
   const [senha, setSenha] = useState("");
   const [confirmaSenha, setConfirmaSenha] = useState("");
 
@@ -51,11 +51,11 @@ const NewPassword = () => {
         <img src={logo} alt="Logo" />
         <p className={styles.login}>Cadastre sua nova senha</p>
         <input
-          type="text"  // Alterado de "cpf" para "text", porque estamos lidando com o CPF, que é um número
+          type="text"  
           placeholder="CPF"
           className={styles.input}
           value={cpf}
-          onChange={(e) => setCpf(e.target.value)}  // Atualizado para "cpf"
+          onChange={(e) => setCpf(e.target.value)}  
         />
         <input
           type="password"
