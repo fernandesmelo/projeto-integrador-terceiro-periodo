@@ -20,7 +20,7 @@ const CreateVictim = () => {
     name: "N/A",
     age: 0,
     cpf: "",
-    gender: "",
+    gender: "OUTRO",
     location: {
       street: "",
       city: "",
