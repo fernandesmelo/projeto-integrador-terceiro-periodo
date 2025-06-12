@@ -37,6 +37,27 @@ const CaseReportForm = () => {
       complement: caseData.patient?.address?.complement || "",
     },
   });
+
+  const handleGenerateConclusion = async () => {
+    const token = await localStorage.getItem("token");
+    try {
+      const response = await axios.get(
+        `https://sistema-odonto-legal.onrender.com/api/llm/generate/case`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          params: {
+            case: caseData.protocol,
+          },
+        }
+      );
+      console.log(response.data);
+      setConclusion(response.data);
+    } catch (error) {
+      error.message;
+    }
+  };
   useEffect(() => {
     if (!caseData || !caseData.id) {
       Swal.fire("Erro", "Dados do caso não encontrados!", "error");
@@ -615,6 +636,12 @@ const CaseReportForm = () => {
                 required
                 className={styles.textarea}
               />
+              <Button
+                variant="generic-secondary"
+                onClick={handleGenerateConclusion}
+              >
+                Conclusão com IA
+              </Button>
               {answers.map((ans, idx) => (
                 <div key={idx}>
                   <label>Pergunta {idx + 1}:*</label>

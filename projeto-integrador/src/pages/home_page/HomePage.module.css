@@ -8,6 +8,22 @@
     }
 }
 
+.space {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+
+
+    /* ESCOLHA UMA ALTURA: Necessário para que o space-between funcione */
+    min-height: 80vh;
+    /* Exemplo: Ocupa no mínimo 80% da altura da tela */
+
+    /* LIMPEZA: Removido o margin-top duplicado */
+    margin-top: 5rem;
+}
+
 .row {
     display: flex;
     align-items: center;
@@ -115,7 +131,7 @@
     .container {
         display: flex;
         flex-direction: column;
-    
+
         .title {
             color: var(--brand-colors-primary);
             margin: 0;

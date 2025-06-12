@@ -1,0 +1,97 @@
+/* Estilos para a Barra de Filtros */
+.filtros {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.filtros label {
+  font-weight: bold;
+  color: #40516c;
+}
+
+select, input[type="date"] {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+/* Contêiner Principal dos Gráficos */
+.container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+/* Caixa Genérica para cada Gráfico */
+.grafico-box {
+  flex: 1 1 400px;
+  max-width: 45vw;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Estilos Específicos para o Gráfico de Rosca */
+.grafico-box.rosca {
+  max-width: 400px;
+}
+
+.rosca-controls {
+  margin-bottom: 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Estilos Específicos para o Gráfico de Modelo */
+#containerGraficoModelo {
+  margin: 40px auto;
+  width: 90%;
+  max-width: 800px;
+  height: 500px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#containerGraficoModelo h3 {
+  text-align: center;
+  margin: 0 0 20px 0;
+  color: #40516c;
+  font-size: 1.3em;
+  flex-shrink: 0;
+}
+
+.chart-wrapper {
+  position: relative;
+  flex-grow: 1;
+}
+
+/* Mensagens de Status (Carregando/Erro) */
+.status-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #40516c;
+  font-size: 1.1em;
+  height: 100%;
+}

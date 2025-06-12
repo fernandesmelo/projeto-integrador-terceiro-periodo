@@ -18,6 +18,27 @@ const LaudoForm = () => {
   const [conclusion, setConclusion] = useState("");
   const [technicalAnalysis, setTechnicalAnalysis] = useState("");
 
+  const handleGenerateConclusion = async () => {
+    const token = await localStorage.getItem("token");
+    try {
+      const response = await axios.get(
+        `https://sistema-odonto-legal.onrender.com/api/llm/generate/laudo`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          params: {
+            evidence: evidence._id,
+          },
+        }
+      );
+      console.log(response.data);
+      setConclusion(response.data);
+    } catch (error) {
+      error.response.data.message;
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -80,61 +101,67 @@ const LaudoForm = () => {
       <div className={styles.content}>
         <Nav />
         <div className={styles.margin}>
-        <div className={styles.formContainer}>
-          <h1>Gerar Laudo da Evidência</h1>
-          <ToGoBack onClick={() => navigate(-1)} content="voltar" />
-          <fieldset className={styles.evidenceInfo}>
-            <legend>Dados da Evidência</legend>
-            {evidence?.photo && (
-              <div className={styles.imageWrapper}>
-                <img
-                  src={evidence.photo}
-                  alt="Imagem da evidência"
-                  className={styles.imagePreview}
-                />
-              </div>
-            )}
-            <p>
-              <strong>Título:</strong> {evidence?.title}
-            </p>
-            <p>
-              <strong>Relatos/Depoimentos Testemunhais:</strong>{" "}
-              {evidence?.testimony}
-            </p>
-            <p>
-              <strong>Descrição Técnica:</strong>{" "}
-              {evidence?.descriptionTechnical}
-            </p>
-            <p>
-              <strong>Condição:</strong> {evidence?.condition}
-            </p>
-            <p>
-              <strong>Categoria:</strong> {evidence?.category}
-            </p>
-          </fieldset>
-          <form onSubmit={handleSubmit}>
-            <label>Análise Técnica:*</label>
-            <textarea
-              value={technicalAnalysis}
-              onChange={(e) => setTechnicalAnalysis(e.target.value)}
-              rows="4"
-              required
-            />
-            <label>Conclusão do Laudo:*</label>
-            <textarea
-              value={conclusion}
-              onChange={(e) => setConclusion(e.target.value)}
-              rows="4"
-              required
-            />
-            <Button type="submit" variant="generic-primary">
-              Salvar laudo
-            </Button>
-          </form>
+          <div className={styles.formContainer}>
+            <h1>Gerar Laudo da Evidência</h1>
+            <ToGoBack onClick={() => navigate(-1)} content="voltar" />
+            <fieldset className={styles.evidenceInfo}>
+              <legend>Dados da Evidência</legend>
+              {evidence?.photo && (
+                <div className={styles.imageWrapper}>
+                  <img
+                    src={evidence.photo}
+                    alt="Imagem da evidência"
+                    className={styles.imagePreview}
+                  />
+                </div>
+              )}
+              <p>
+                <strong>Título:</strong> {evidence?.title}
+              </p>
+              <p>
+                <strong>Relatos/Depoimentos Testemunhais:</strong>{" "}
+                {evidence?.testimony}
+              </p>
+              <p>
+                <strong>Descrição Técnica:</strong>{" "}
+                {evidence?.descriptionTechnical}
+              </p>
+              <p>
+                <strong>Condição:</strong> {evidence?.condition}
+              </p>
+              <p>
+                <strong>Categoria:</strong> {evidence?.category}
+              </p>
+            </fieldset>
+            <form onSubmit={handleSubmit}>
+              <label>Análise Técnica:*</label>
+              <textarea
+                value={technicalAnalysis}
+                onChange={(e) => setTechnicalAnalysis(e.target.value)}
+                rows="4"
+                required
+              />
+              <label>Conclusão do Laudo:*</label>
+              <textarea
+                value={conclusion}
+                onChange={(e) => setConclusion(e.target.value)}
+                rows="4"
+                required
+              />
+              <Button
+                variant="generic-secondary"
+                onClick={handleGenerateConclusion}
+              >
+                Conclusão com IA
+              </Button>
+              <Button type="submit" variant="generic-primary">
+                Salvar laudo
+              </Button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   );
 };
 
