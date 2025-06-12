@@ -18,7 +18,7 @@ const CreateVictim = () => {
   const [formData, setFormData] = useState({
     nic: "",
     name: "N/A",
-    age: Number,
+    age: 0,
     cpf: "",
     gender: "",
     location: {
