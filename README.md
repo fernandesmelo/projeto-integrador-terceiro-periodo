@@ -7,6 +7,8 @@ evidências, gerar laudos e cruzar informações para identificação de indiví
 
 A solução conta com um Web App, para gestão e análise detalhada dos casos.
 
+https://github.com/user-attachments/assets/5fd0b25b-e82a-4881-a26d-0ff16b90be56
+
 ## Funcionalidades 
 1️⃣Autenticação e Gestão de Usuários
 * Login e logout com autenticação segura.
