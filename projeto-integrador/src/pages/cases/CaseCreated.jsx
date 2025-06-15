@@ -223,6 +223,10 @@ const CaseCreated = () => {
   }, [location.zipCode]);
   console.log('nic:', nic, 'tipo:', typeof nic);
 
+  const removeNic = (index) => {
+    setNic((prev) => prev.filter((_, i) => i !== index))
+  }
+
   return (
     <div className={styles.caseCreated}>
       <Header />
@@ -237,6 +241,7 @@ const CaseCreated = () => {
                 <label>NIC*:</label>
                 <div>
                   {nic.map((valor, i) => (
+                  <div className={styles.nicInput} key={i}>
                     <input
                       key={i}
                       type="text"
@@ -245,13 +250,24 @@ const CaseCreated = () => {
                       onChange={(e) => handleChange(i, e.target.value)}
                       style={{ display: 'block', marginBottom: '10px' }}
                     />
-                  ))}
 
+                    {i > 0 && (
+                    <button 
+                      onClick={() => removeNic(i)}
+                      type="button"
+                      
+                      className={styles.deleteNic}
+                    >
+                        X
+                    </button>)}
+                  
+                  </div>
+                  ))}  
                   <Button className={styles.addBtn} variant="generic-secondary" onClick={adicionarCampo} type="button">
                     Adicionar outro Nic
                   </Button>
-                  
-                </div>
+  
+                </div> 
                 <label htmlFor="Título">TÍtulo*:</label>
                 <input
                   className={styles.input}
