@@ -21,6 +21,23 @@
     }
 }
 
+.nicInput {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+}
+
+.deleteNic {
+    height: 2.3rem;
+    width: 2.5rem;
+    background-color: var(--accent-error);
+    color: white;
+    border: 1px rgb(233, 128, 128) solid;
+    border-radius: 5px;
+    
+}
+
 form {
     display: flex;
     flex-direction: column;
