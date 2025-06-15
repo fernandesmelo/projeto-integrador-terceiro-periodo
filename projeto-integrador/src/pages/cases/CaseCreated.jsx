@@ -52,7 +52,7 @@ const CaseCreated = () => {
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   const limparCampos = () => {
-    setNic("");
+    setNic([""]);
     setTitle("");
     setInquiryNumber("");
     setCaseType("ACIDENTE");
@@ -221,6 +221,7 @@ const CaseCreated = () => {
         });
     }
   }, [location.zipCode]);
+  console.log('nic:', nic, 'tipo:', typeof nic);
 
   return (
     <div className={styles.caseCreated}>
@@ -249,6 +250,7 @@ const CaseCreated = () => {
                   <Button className={styles.addBtn} variant="generic-secondary" onClick={adicionarCampo} type="button">
                     Adicionar outro Nic
                   </Button>
+                  
                 </div>
                 <label htmlFor="Título">TÍtulo*:</label>
                 <input
