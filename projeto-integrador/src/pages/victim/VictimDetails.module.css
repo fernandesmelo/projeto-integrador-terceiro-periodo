@@ -1,0 +1,27 @@
+.content {
+    display: flex;
+    background: var(--light-background);
+    margin: auto;
+}
+
+.marginContent {
+    width: 60%;
+    margin: auto;
+    max-width: 50rem; 
+    min-width: 34.375rem;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+
+    h1 {
+        color: var(--brand-colors-primary);
+        margin-bottom: 1rem;
+    }
+}
+
+.margin {
+    margin: 6rem 0 2rem 20rem;
+    width: 100%;
+}

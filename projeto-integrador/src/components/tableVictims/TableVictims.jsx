@@ -6,6 +6,7 @@ import axios from "axios";
 
 import ModalVictim from "./modalVictim";
 import Button from "../button/Button";
+import { useNavigate } from "react-router-dom";
 
 
 const TableVictims = ({ victims }) => {
@@ -73,6 +74,12 @@ const TableVictims = ({ victims }) => {
         }
     }
 
+    const navigate = useNavigate();
+
+    const verDetalhes = (victim) => {
+        navigate("/vitima/detalhes", { state: { victim } });
+    };
+
     return (
         <div className={styles.container}>
             <table className={styles.tabela}>
@@ -131,7 +138,7 @@ const TableVictims = ({ victims }) => {
                                 <BiSearch
                                     className={styles.icon}
                                     title="Ver detalhes"
-                                    onClick={() => verDetalhes(item.protocol)}
+                                    onClick={() => verDetalhes(item)} 
                                 />
                             </td>
 

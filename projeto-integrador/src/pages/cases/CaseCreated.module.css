@@ -35,7 +35,11 @@
     color: white;
     border: 1px rgb(233, 128, 128) solid;
     border-radius: 5px;
+    cursor: pointer;
     
+    &:hover {
+        opacity: 0.9;
+    }
 }
 
 form {

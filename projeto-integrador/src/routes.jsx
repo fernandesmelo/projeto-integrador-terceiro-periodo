@@ -15,6 +15,7 @@ import ReportCase from "./pages/cases/CaseReport";
 import RelatorioPage from "./pages/cases/ExportReportCase";
 import UsersAdmin from "./pages/admin/UsersAdmin";
 import Victim from "./pages/victim/Victim";
+import VictimDetails from "./pages/victim/VictimDetails";
 
 const AppRoutes = () => {
   return (
@@ -35,6 +36,7 @@ const AppRoutes = () => {
         <Route path="/casos/relatorio/final" element={<ReportCase/>} />
         <Route path="/casos/relatorio/imprimir" element={<RelatorioPage />} />
         <Route path="/vitima" element={<Victim/>} />
+        <Route path="/vitima/detalhes" element={<VictimDetails />} />
       </Routes>
     </Router>
   );

@@ -29,33 +29,46 @@
 
 /* Exemplo de cores para estados */
 .saudavel img {
-  filter: drop-shadow(0 0 4px #4caf50);
+  background: linear-gradient(45deg, #4caf50 50%, #81c784 50%);
+  border-radius: 50%;
+  padding: 0.35rem;
 }
 
 .ausente img {
-  filter: drop-shadow(0 0 4px #f44336);
+  background: linear-gradient(45deg, #f44336 50%, #fe8f87 50%);
+  border-radius: 50%;
+  padding: 0.35rem;
 }
 
 .restaurado img {
-  filter: drop-shadow(0 0 4px #2196f3);
+  background: linear-gradient(45deg, #2196f3 50%, #64b5f6 50%);
+  border-radius: 50%;
+  padding: 0.35rem;
 }
 
 .fraturado img {
-  filter: drop-shadow(0 0 4px #f3ec21);
+  background: linear-gradient(45deg, #f3ec21 50%, #f2ecb5 50%);
+  border-radius: 50%;
+  padding: 0.35rem;
 }
 
 .cariado img {
-  filter:  drop-shadow(0 0 4px #000000);
+  background: linear-gradient(45deg, #000000 50%, #666666 50%);
+  border-radius: 50%;
+  padding: 0.35rem;
 }
 
 .implante img {
-  filter:  drop-shadow(0 0 4px #9521f3);
+  background: linear-gradient(45deg, #9521f3 50%, #c691fb 50%);
+  border-radius: 50%;
+  padding: 0.35rem;
 }
 
 .outro img {
-  filter: drop-shadow(0 0 4px #999);
+  background: linear-gradient(45deg, #999999 50%, #cccccc 50%);
+  border-radius: 50%;
+  padding: 0.35rem;
 }
-
 @media screen and (max-width: 680px) {
   .imagemDente {
     width: 40px;
