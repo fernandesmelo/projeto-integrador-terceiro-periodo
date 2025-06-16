@@ -2,6 +2,8 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Button from "../../components/button/Button";
 import styles from "./VictimDetails.module.css"; // você pode criar seus estilos aqui
+import Header from "../../components/header/Header";
+import Nav from "../../components/nav/Nav";
 
 const VictimDetails = () => {
   const location = useLocation();
@@ -20,20 +22,16 @@ const VictimDetails = () => {
   }
 
   return (
-    <div className={styles.container}>
-      <h1>Detalhes da Vítima</h1>
-      <div className={styles.details}>
-        <p><strong>Nic:</strong> {victim.nic}</p>
-        <p><strong>Nome:</strong> {victim.name || "N/A"}</p>
-        <p><strong>Idade:</strong> {victim.age || "N/A"}</p>
-        <p><strong>Gênero:</strong> {victim.gender || "N/A"}</p>
-        <p><strong>CPF:</strong> {victim.cpf || "N/A"}</p>
-        <p><strong>Status do Caso:</strong> {victim.idCase?.status || "N/A"}</p>
-        <p><strong>Id do Caso:</strong> {victim.idCase?._id || "N/A"}</p>
-        <p><strong>Data de Criação:</strong> {new Date(victim.createdAt).toLocaleDateString("pt-BR")}</p>
-        <p><strong>Estado de Identificação:</strong> {victim.identificationStatus || "N/A"}</p>
+    <div className={styles.caseCreated}>
+      <Header/>
+      <div className={styles.content}>
+        <Nav />
+        <div className={styles.margin}>
+          <div className={styles.marginContent}>
+            <h1 className={styles.title}>Detalhes da vitima</h1>
+          </div>
+        </div>
       </div>
-      <Button onClick={() => navigate(-1)}>Voltar</Button>
     </div>
   );
 };
